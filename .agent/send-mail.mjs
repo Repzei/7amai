@@ -5,8 +5,13 @@
 // og saa Jespers adresse aldrig ligger i det offentlige repo.
 // Resend-noeglen er en "network secret" paa cloud-miljoeet: proxyen saetter Authorization-headeren
 // paa requests til api.resend.com, saa noeglen aldrig er i sessionen. RESEND_API_KEY bruges kun lokalt.
+// Kaldet gaar gennem curl, fordi Nodes indbyggede fetch ignorerer HTTPS_PROXY og dermed gaar
+// uden om proxyen, der saetter noeglen paa (gav 401 "Missing API Key" i foerste test).
 
 import fs from 'fs'
+import os from 'os'
+import path from 'path'
+import { execFileSync } from 'child_process'
 
 const [subject, htmlPath, textPath] = process.argv.slice(2)
 const { RESEND_API_KEY, NEWSLETTER_TO, NEWSLETTER_FROM } = process.env
@@ -21,24 +26,35 @@ if (!subject || !htmlPath || !textPath) {
   process.exit(2)
 }
 
-const res = await fetch('https://api.resend.com/emails', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    ...(RESEND_API_KEY ? { Authorization: `Bearer ${RESEND_API_KEY}` } : {}),
-  },
-  body: JSON.stringify({
-    from: NEWSLETTER_FROM,
-    to: [NEWSLETTER_TO],
-    subject,
-    html: fs.readFileSync(htmlPath, 'utf-8'),
-    text: fs.readFileSync(textPath, 'utf-8'),
-  }),
-})
+const payloadPath = path.join(os.tmpdir(), `resend-${process.pid}.json`)
+fs.writeFileSync(payloadPath, JSON.stringify({
+  from: NEWSLETTER_FROM,
+  to: [NEWSLETTER_TO],
+  subject,
+  html: fs.readFileSync(htmlPath, 'utf-8'),
+  text: fs.readFileSync(textPath, 'utf-8'),
+}))
 
-const body = await res.text()
-if (!res.ok) {
-  console.error(`Resend fejlede (${res.status}): ${body}`)
+const args = [
+  '-sS', '-X', 'POST', 'https://api.resend.com/emails',
+  '-H', 'Content-Type: application/json',
+  '--data-binary', `@${payloadPath}`,
+  '-w', '\n%{http_code}',
+]
+if (RESEND_API_KEY) args.push('-H', `Authorization: Bearer ${RESEND_API_KEY}`)
+
+let out
+try {
+  out = execFileSync('curl', args, { encoding: 'utf-8' })
+} finally {
+  fs.rmSync(payloadPath, { force: true })
+}
+
+const lines = out.trimEnd().split('\n')
+const status = Number(lines.pop())
+const body = lines.join('\n')
+if (status < 200 || status >= 300) {
+  console.error(`Resend fejlede (${status}): ${body}`)
   process.exit(1)
 }
 console.log(`Sendt: ${body}`)

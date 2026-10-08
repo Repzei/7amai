@@ -78,7 +78,9 @@ Regler:
 
 ## 5. Udgiv og send
 
-1. Tjek: `grep -nP '\x{2014}|\x{2013}' <indlæg>` giver 0 linjer, og front matter er gyldig.
+1. Tjek at indlægget ikke har em/en dash, og at front matter er gyldig:
+   `python3 -c "import sys;t=open(sys.argv[1],encoding='utf-8').read();print(t.count(chr(0x2014))+t.count(chr(0x2013)))" <indlæg>`
+   skal give 0. (`grep -P` med unicode virker ikke i sandboxen.)
 2. `git add` indlægget, commit `Udgave <dato>` og `git push origin main`.
    (Dette repo ER nyhedsbrevet; at pushe til main er selve udgivelsen.)
 3. Udgavens URL: `url` + `baseurl` fra `_config.yml` + `/<åååå>/<mm>/<dd>/`.
