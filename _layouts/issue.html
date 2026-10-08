@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="issue">
+  <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%d.%m.%Y' }}</time> · 07:00</p>
+  <h1>{{ page.title }}</h1>
+  {% if page.summary %}<p class="issue-lead">{{ page.summary }}</p>{% endif %}
+  <div class="issue-body">
+    {{ content }}
+  </div>
+  <nav class="issue-nav">
+    {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">&larr; {{ page.previous.date | date: '%d.%m' }}</a>{% else %}<span></span>{% endif %}
+    <a href="{{ '/' | relative_url }}">Alle udgaver</a>
+    {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.date | date: '%d.%m' }} &rarr;</a>{% else %}<span></span>{% endif %}
+  </nav>
+</article>

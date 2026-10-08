@@ -1,0 +1,21 @@
+title: 7am AI
+description: Dagens vigtigste AI-nyheder, klar kl. 7.
+lang: da
+# Midlertidig adresse indtil 7amai.com peger her. Naar domaenet er sat op:
+# url: https://7amai.com og baseurl: "" (og tilfoej filen CNAME med 7amai.com).
+url: https://repzei.github.io
+baseurl: /7amai
+timezone: Europe/Copenhagen
+# Udgaven dateres 07:00 men bygges ca. 06:30; uden dette ville Jekyll skjule den som "fremtidig".
+future: true
+permalink: /:year/:month/:day/
+markdown: kramdown
+plugins:
+  - jekyll-feed
+feed:
+  path: feed.xml
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: issue, lang: da }
+exclude:
+  - README.md

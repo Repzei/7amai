@@ -1,0 +1,74 @@
+:root {
+  color-scheme: light dark;
+  --bg: #FAF8F5;
+  --surface: #FFFFFF;
+  --border: #E7E3DD;
+  --text: #1A1A1A;
+  --muted: #5E5A55;
+  --accent: #E8572A;
+  --accent-text: #B83F17;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141312;
+    --surface: #1D1C1A;
+    --border: #2E2C29;
+    --text: #EDEAE5;
+    --muted: #A39E97;
+    --accent: #F06A3E;
+    --accent-text: #F58A65;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.65;
+}
+a { color: var(--accent-text); text-underline-offset: 3px; }
+h1, h2, h3 { line-height: 1.2; text-wrap: balance; letter-spacing: -0.02em; }
+
+.site-head, .site-foot, .wrap { max-width: 680px; margin: 0 auto; padding-inline: 20px; }
+.site-head { display: flex; justify-content: space-between; align-items: center; padding-block: 22px; }
+.logo { font-weight: 800; font-size: 19px; color: var(--text); text-decoration: none; display: flex; gap: 6px; align-items: baseline; }
+.logo-mark { font-family: var(--font-mono); color: var(--accent); }
+.head-link { color: var(--muted); font-size: 14px; text-decoration: none; }
+.site-foot { padding-block: 40px 56px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 64px; }
+
+.intro { padding-block: 32px 24px; }
+.intro h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 12px; }
+.intro p { color: var(--muted); margin: 0; max-width: 56ch; }
+
+.issue-list { list-style: none; padding: 0; margin: 24px 0 0; border-top: 1px solid var(--border); }
+.issue-list li { border-bottom: 1px solid var(--border); }
+.issue-list a { display: grid; gap: 2px; padding-block: 18px; color: var(--text); text-decoration: none; }
+.issue-list a:hover .issue-title { color: var(--accent-text); }
+.issue-list time { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.issue-title { font-weight: 700; font-size: 18px; }
+.issue-summary { color: var(--muted); font-size: 15px; }
+.issue-list .empty { padding-block: 18px; color: var(--muted); }
+
+.issue { padding-top: 24px; }
+.issue-date { font-family: var(--font-mono); font-size: 13px; color: var(--accent-text); margin: 0 0 8px; }
+.issue h1 { font-size: clamp(26px, 5.5vw, 36px); margin: 0 0 14px; }
+.issue-lead { font-size: 19px; color: var(--muted); margin: 0 0 32px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.issue-body h2 {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted); margin: 44px 0 6px;
+}
+.issue-body h3 { font-size: 20px; margin: 24px 0 8px; }
+.issue-body p, .issue-body li { max-width: 65ch; }
+.issue-body ul { padding-left: 20px; }
+.issue-body blockquote {
+  margin: 12px 0; padding: 10px 16px; background: var(--surface);
+  border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px;
+}
+.issue-body blockquote p { margin: 0; }
+.issue-body .sources { font-size: 14px; color: var(--muted); }
+.issue-body code { font-family: var(--font-mono); font-size: 0.9em; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; }
+
+.issue-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 14px; }

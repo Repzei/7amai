@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<title>7am AI</title>
+</head>
+<body style="margin:0;padding:0;background:#FAF8F5;">
+<div style="display:none;max-height:0;overflow:hidden;">{{PREHEADER}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAF8F5;">
+<tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border:1px solid #E7E3DD;border-radius:12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1A1A1A;">
+<tr><td style="padding:24px 24px 8px;">
+  <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#B83F17;">7am AI · {{DATE}}</div>
+  <h1 style="font-size:22px;line-height:1.25;margin:8px 0 6px;">{{TITLE}}</h1>
+  <p style="font-size:15px;line-height:1.55;color:#5E5A55;margin:0;">{{LEAD}}</p>
+</td></tr>
+<tr><td style="padding:8px 24px 8px;">
+{{SECTIONS}}
+</td></tr>
+<tr><td style="padding:16px 24px 28px;">
+  <a href="{{ISSUE_URL}}" style="display:inline-block;background:#1A1A1A;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;">Læs hele udgaven</a>
+</td></tr>
+</table>
+<p style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;color:#8A857E;margin:16px 0 0;">7am AI · <a href="{{SITE_URL}}" style="color:#8A857E;">arkiv</a></p>
+</td></tr>
+</table>
+</body>
+</html>
+
+<!--
+Sektion (gentages pr. sektion med indhold, i samme raekkefoelge som paa siden):
+
+<div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5A55;margin:22px 0 4px;">{{SEKTIONSNAVN}}</div>
+
+Punkt (gentages pr. nyhed i sektionen):
+
+<p style="font-size:15px;line-height:1.5;margin:8px 0 12px;"><a href="{{ISSUE_URL}}#{{ANKER}}" style="color:#1A1A1A;font-weight:700;text-decoration:none;">{{OVERSKRIFT}}</a><br>{{EN_TIL_TO_SAETNINGER}}{{BETYDER_FOR_DIG}}</p>
+
+{{BETYDER_FOR_DIG}} er enten tom eller: <br><span style="color:#B83F17;">Betyder for dig: {{TEKST}}</span>
+-->

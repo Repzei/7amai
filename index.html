@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<section class="intro">
+  <h1>Dagens vigtigste AI-nyheder, klar kl. 7.</h1>
+  <p>Modeller, udviklerværktøjer, lokale modeller, forretning og regulering. Kort, med kilder, og med hvad det betyder i praksis.</p>
+</section>
+
+<ol class="issue-list">
+  {% for post in site.posts %}
+  <li>
+    <a href="{{ post.url | relative_url }}">
+      <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%d.%m.%Y' }}</time>
+      <span class="issue-title">{{ post.title }}</span>
+      {% if post.summary %}<span class="issue-summary">{{ post.summary }}</span>{% endif %}
+    </a>
+  </li>
+  {% else %}
+  <li class="empty">Første udgave kommer i morgen kl. 7.</li>
+  {% endfor %}
+</ol>
