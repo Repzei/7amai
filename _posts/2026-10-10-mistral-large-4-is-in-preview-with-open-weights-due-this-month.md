@@ -1,6 +1,6 @@
 ---
 title: "Mistral Large 4 is in preview, with open weights due this month"
-summary: "Mistral opens Large 4 as an API preview with open weights promised by month-end. Also: Copilot sandboxing, Googles Gemini agent and the next EU AI Act deadline."
+summary: "Mistral opens Large 4 as an API preview with open weights promised by month-end. Also: Copilot sandboxing, Google's Gemini agent and the next EU AI Act deadline."
 date: 2026-10-10 07:00:00 +0200
 reviewed: true
 other_lang_url: /da/2026/10/10/
