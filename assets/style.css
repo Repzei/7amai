@@ -72,3 +72,16 @@ h1, h2, h3 { line-height: 1.2; text-wrap: balance; letter-spacing: -0.02em; }
 .issue-body code { font-family: var(--font-mono); font-size: 0.9em; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; }
 
 .issue-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 14px; }
+
+.head-nav { display: flex; gap: 16px; }
+
+.disclosure { font-size: 13px; color: var(--muted); margin: -16px 0 32px; padding: 8px 12px; border: 1px dashed var(--border); border-radius: 8px; }
+.disclosure-reviewed { border-style: solid; border-color: var(--accent); color: var(--text); }
+
+.item-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: -2px 0 10px; }
+.signal, .track {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted);
+}
+.signal-big { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+.signal-worth { border-color: var(--accent); color: var(--accent-text); }

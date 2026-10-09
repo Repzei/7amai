@@ -1,19 +1,29 @@
 title: 7am AI
-description: Dagens vigtigste AI-nyheder, klar kl. 7.
-lang: da
+description: "The 7 AI stories that matter. 7 minutes. Ready at 7am."
+lang: en
 url: https://7amai.com
 baseurl: ""
 timezone: Europe/Copenhagen
-# Udgaven dateres 07:00 men bygges ca. 06:30; uden dette ville Jekyll skjule den som "fremtidig".
+# Udgaven dateres 07:00 men bygges foer; uden dette ville Jekyll skjule den som "fremtidig".
 future: true
 permalink: /:year/:month/:day/
 markdown: kramdown
 plugins:
   - jekyll-feed
+# Engelsk = _posts (hovedudgave, /feed.xml). Dansk = samlingen _da (/da/..., /feed/da.xml).
+collections:
+  da:
+    output: true
+    permalink: /da/:year/:month/:day/
 feed:
   path: feed.xml
+  collections:
+    da:
+      path: feed/da.xml
 defaults:
   - scope: { path: "", type: posts }
+    values: { layout: issue, lang: en }
+  - scope: { path: "", type: da }
     values: { layout: issue, lang: da }
 exclude:
   - README.md

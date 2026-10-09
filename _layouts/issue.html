@@ -1,16 +1,18 @@
 ---
 layout: default
 ---
+{%- assign t = site.data.i18n[page.lang] -%}
 <article class="issue">
-  <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%d.%m.%Y' }}</time> · 07:00</p>
+  <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: t.date_format }}</time> · 07:00</p>
   <h1>{{ page.title }}</h1>
   {% if page.summary %}<p class="issue-lead">{{ page.summary }}</p>{% endif %}
+  <p class="disclosure{% if page.reviewed %} disclosure-reviewed{% endif %}">{% if page.reviewed %}{{ t.disclosure_reviewed }}{% else %}{{ t.disclosure_ai }}{% endif %}</p>
   <div class="issue-body">
     {{ content }}
   </div>
   <nav class="issue-nav">
     {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">&larr; {{ page.previous.date | date: '%d.%m' }}</a>{% else %}<span></span>{% endif %}
-    <a href="{{ '/' | relative_url }}">Alle udgaver</a>
+    <a href="{{ t.home | relative_url }}">{{ t.all_issues }}</a>
     {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.date | date: '%d.%m' }} &rarr;</a>{% else %}<span></span>{% endif %}
   </nav>
 </article>

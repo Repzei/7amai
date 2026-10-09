@@ -1,16 +1,17 @@
 ---
 layout: default
-lang: en
-other_lang_url: /da/
+lang: da
+other_lang_url: /
 ---
-{%- assign t = site.data.i18n.en -%}
+{%- assign t = site.data.i18n.da -%}
 <section class="intro">
   <h1>{{ t.tagline }}</h1>
   <p>{{ t.intro }}</p>
 </section>
 
 <ol class="issue-list">
-  {% for post in site.posts %}
+  {% assign issues = site.da | sort: "date" | reverse %}
+  {% for post in issues %}
   <li>
     <a href="{{ post.url | relative_url }}">
       <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: t.date_format }}</time>

@@ -1,0 +1,22 @@
+en:
+  home: /
+  feed: /feed.xml
+  tagline: "The 7 AI stories that matter. 7 minutes. Ready at 7am."
+  intro: "Models, developer tools, local AI, business and regulation. Every story links to its primary source and tells you what it means for you."
+  all_issues: "All issues"
+  empty: "The first issue arrives tomorrow at 7am."
+  other_lang_label: "Dansk"
+  disclosure_ai: "Written by AI. Every claim links to its primary source. Not reviewed by a human editor."
+  disclosure_reviewed: "Reviewed by Jesper. Written with AI; every claim links to its primary source."
+  date_format: "%b %-d, %Y"
+da:
+  home: /da/
+  feed: /feed/da.xml
+  tagline: "De 7 AI-historier der betyder noget. 7 minutter. Klar kl. 7."
+  intro: "Modeller, udviklerværktøjer, lokal AI, forretning og regulering. Hver historie linker til primærkilden og siger, hvad den betyder for dig."
+  all_issues: "Alle udgaver"
+  empty: "Første danske udgave kommer i morgen kl. 7."
+  other_lang_label: "English"
+  disclosure_ai: "Skrevet og oversat af AI. Hvert punkt linker til primærkilden. Ikke gennemgået af en redaktør."
+  disclosure_reviewed: "Skrevet og oversat af AI. Hvert punkt linker til primærkilden. Ikke gennemgået af en redaktør."
+  date_format: "%d.%m.%Y"

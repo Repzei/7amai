@@ -1,26 +1,33 @@
+{%- assign lang = page.lang | default: site.lang -%}
+{%- assign t = site.data.i18n[lang] -%}
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang }}">
+<html lang="{{ lang }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Prototype: skjult for soegemaskiner indtil nyhedsbrevet aabnes for andre. -->
   <meta name="robots" content="noindex, nofollow" />
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{{ page.summary | default: site.description }}" />
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}" />
+  <meta name="description" content="{{ page.summary | default: t.tagline }}" />
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ t.feed | relative_url }}" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23E8572A'/><text x='16' y='22' font-family='monospace' font-size='15' font-weight='700' text-anchor='middle' fill='white'>7</text></svg>" />
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}" />
 </head>
 <body>
   <header class="site-head">
-    <a class="logo" href="{{ '/' | relative_url }}"><span class="logo-mark">7am</span> AI</a>
-    <a class="head-link" href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    <a class="logo" href="{{ t.home | relative_url }}"><span class="logo-mark">7am</span> AI</a>
+    <nav class="head-nav">
+      {%- if page.other_lang_url -%}
+      <a class="head-link" href="{{ page.other_lang_url | relative_url }}" hreflang="{% if lang == 'en' %}da{% else %}en{% endif %}">{{ t.other_lang_label }}</a>
+      {%- endif -%}
+      <a class="head-link" href="{{ t.feed | relative_url }}">RSS</a>
+    </nav>
   </header>
   <main class="wrap">
     {{ content }}
   </main>
   <footer class="site-foot">
-    <span>{{ site.title }} · {{ site.description }}</span>
+    <span>{{ site.title }} · {{ t.tagline }}</span>
   </footer>
 </body>
 </html>

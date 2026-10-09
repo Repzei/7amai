@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,33 +10,48 @@
 <div style="display:none;max-height:0;overflow:hidden;">{{PREHEADER}}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAF8F5;">
 <tr><td align="center" style="padding:24px 12px;">
+{{BANNER}}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border:1px solid #E7E3DD;border-radius:12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1A1A1A;">
 <tr><td style="padding:24px 24px 8px;">
-  <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#B83F17;">7am AI · {{DATE}}</div>
+  <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#B83F17;">7am AI · {{DATE}} · The 7</div>
   <h1 style="font-size:22px;line-height:1.25;margin:8px 0 6px;">{{TITLE}}</h1>
-  <p style="font-size:15px;line-height:1.55;color:#5E5A55;margin:0;">{{LEAD}}</p>
+  <p style="font-size:15px;line-height:1.55;color:#5E5A55;margin:0 0 12px;">{{LEAD}}</p>
+  <p style="font-size:12px;line-height:1.5;color:#5E5A55;margin:0;padding:6px 10px;border:1px dashed #E7E3DD;border-radius:6px;">{{DISCLOSURE}}</p>
 </td></tr>
 <tr><td style="padding:8px 24px 8px;">
-{{SECTIONS}}
+{{ITEMS}}
 </td></tr>
 <tr><td style="padding:16px 24px 28px;">
-  <a href="{{ISSUE_URL}}" style="display:inline-block;background:#1A1A1A;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;">Læs hele udgaven</a>
+  <a href="{{ISSUE_URL}}" style="display:inline-block;background:#1A1A1A;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;">Read the full issue</a>
+  <span style="font-size:13px;color:#8A857E;margin-left:12px;"><a href="{{DA_URL}}" style="color:#8A857E;">Dansk udgave</a></span>
 </td></tr>
 </table>
-<p style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;color:#8A857E;margin:16px 0 0;">7am AI · <a href="{{SITE_URL}}" style="color:#8A857E;">arkiv</a></p>
+<p style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;color:#8A857E;margin:16px 0 0;">7am AI · 7 stories, 7 minutes, 7am · <a href="{{SITE_URL}}" style="color:#8A857E;">archive</a></p>
 </td></tr>
 </table>
 </body>
 </html>
 
 <!--
-Sektion (gentages pr. sektion med indhold, i samme raekkefoelge som paa siden):
+BYGGEKLODSER
 
-<div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5A55;margin:22px 0 4px;">{{SEKTIONSNAVN}}</div>
+{{ITEMS}} = de 7 punkter i raekkefoelge, hvert punkt saadan:
 
-Punkt (gentages pr. nyhed i sektionen):
+<p style="font-size:15px;line-height:1.5;margin:14px 0 4px;"><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;font-weight:700;color:{{SIGNAL_COLOR}};text-transform:uppercase;letter-spacing:0.04em;">{{NR}} · {{SIGNAL}}</span><br><a href="{{ISSUE_URL}}#{{ANKER}}" style="color:#1A1A1A;font-weight:700;text-decoration:none;">{{OVERSKRIFT}}</a><br>{{EN_TIL_TO_SAETNINGER}}<br><span style="color:#B83F17;">So what: {{SO_WHAT}}</span></p>
 
-<p style="font-size:15px;line-height:1.5;margin:8px 0 12px;"><a href="{{ISSUE_URL}}#{{ANKER}}" style="color:#1A1A1A;font-weight:700;text-decoration:none;">{{OVERSKRIFT}}</a><br>{{EN_TIL_TO_SAETNINGER}}{{BETYDER_FOR_DIG}}</p>
+{{SIGNAL}} er "Big deal", "Worth knowing" eller "Quick hit". {{SIGNAL_COLOR}}: Big deal #E8572A, Worth knowing #B83F17, Quick hit #8A857E.
+Har udgaven en "Corrections"-sektion, tilfoejes den efter punkt 7 som et almindeligt afsnit med overskriften "Corrections".
 
-{{BETYDER_FOR_DIG}} er enten tom eller: <br><span style="color:#B83F17;">Betyder for dig: {{TEKST}}</span>
+{{DISCLOSURE}}: ikke godkendt = "Written by AI. Every claim links to its primary source. Not reviewed by a human editor."
+                godkendt     = "Reviewed by Jesper. Written with AI; every claim links to its primary source."
+
+{{BANNER}} er tom i den endelige mail. I udkast-mailen:
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 0 12px;"><tr><td style="background:#1A1A1A;border-radius:12px;padding:16px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#FFFFFF;">
+<div style="font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#F58A65;">Draft · sends at 07:00</div>
+<p style="font-size:14px;line-height:1.5;margin:6px 0 12px;">Merge the pull request before 07:00 and this issue goes out as "Reviewed by Jesper". You can edit the text in the PR first. If you do nothing, it goes out at 07:00 labelled as AI-written.{{FREDAG}}</p>
+<a href="{{PR_URL}}" style="display:inline-block;background:#E8572A;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:10px 18px;border-radius:8px;">Approve on GitHub</a>
+</td></tr></table>
+
+{{FREDAG}} (kun fredag): " Want to add Jesper's pick? Add a '## Jesper's pick' section at the bottom of the file in the PR."
 -->
