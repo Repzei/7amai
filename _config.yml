@@ -18,3 +18,4 @@ defaults:
 exclude:
   - README.md
   - CLAUDE.md
+  - STRATEGI.md

@@ -30,6 +30,7 @@ Sprog: dansk nu, engelsk (`/en/`) når det skal ud.
 | `.agent/send-mail.mjs` | Afsendelse via Resend |
 | `.agent/sent.log` | Datoer der er sendt (idempotens) |
 | `.claude-memory/` | Kopi af Claude-memory for projektet + `restore-memory.ps1` |
+| `STRATEGI.md` | Mission, identitet "The 7", spor, redaktionel model, faser. Læs før større ændringer |
 
 ## Ufravigelige regler
 - **Repoet er offentligt.** Ingen mailadresser, API-nøgler eller private data i filer eller

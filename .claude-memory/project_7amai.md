@@ -1,34 +1,41 @@
 ---
 name: project-7amai
-description: 7am AI - Jespers daglige danske AI-nyhedsbrev (prototype, live 2026-10-09 på 7amai.com): formål, beslutninger, status og roadmap mod offentligt nyhedsbrev
+description: 7am AI - mission "best AI newsletter in the world". Identitet "The 7", strategi (spor, engelsk+dansk, AI-mærkning, faser mod sponsorer), låste beslutninger og status. Fuld strategi i 7amai/STRATEGI.md
 metadata:
   type: project
 ---
 
 # 7am AI (startet 2026-10-08, live 2026-10-09)
 
-Dagligt AI-nyhedsoverblik, klar før kl. 7 på hverdage: en udgave på https://7amai.com og en kort mail til Jesper med links til hvert punkt. Skrives af en Claude cloud-routine. Teknik og drift: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
+Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-routine. Teknik og drift: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]]. **Fuld strategi: `MitProjekt/7amai/STRATEGI.md`** (læs den før større ændringer).
 
-**Why:** Jesper vil hurtigt kunne læse og følge op på AI-nyt (modeller/priser, udviklerværktøjer, lokale modeller og hardware, apps/forretning, regulering/EU). Mulig fremtidig offentlig niche: et dansk AI-nyhedsbrev har langt mindre konkurrence end de engelske (The Rundown, TLDR AI, Ben's Bites).
+**Why:** Mission (Jesper, 2026-10-09): "7am AI best AI newsletter in the world". Mål: indtægt via sponsorer. Startede som Jespers eget AI-overblik.
 
-**How to apply:** Byg altid, så det kan åbnes for andre senere uden ombygning (sprog, tilmelding, branding), men lav ikke det offentlige før Jesper beslutter det.
+**How to apply:** Alt nyt skal styrke identiteten "The 7" og kunne køre uden Jesper (Gainfully har forrang). Byg i fasernes rækkefølge, spring ikke til vækst før kvaliteten er der.
 
-## Låste beslutninger (Jesper, 2026-10-08/09)
-- Navn: **7am AI**, domæne **7amai.com** (internationalt navn, forståeligt på alle sprog). 7amai.dk ikke nødvendigt nu. 7amai.store kun hvis gratis og med auto-fornyelse slået fra; merch hører under 7amai.com/shop senere.
-- Prototype til Jesper selv nu, offentligt senere. Siden har `noindex` indtil da.
-- Dansk først, engelsk (`/en/`) når det skal ud.
-- Hverdage, 5-10 punkter, faste sektioner: Modeller og priser · Udviklerværktøjer · Lokale modeller og hardware · Apps og forretning · Regulering og EU · Værd at prøve · Opfølgning. "Betyder for dig"-linje kun ved reel konsekvens. Hellere kort end fyld.
-- Kører på Jespers abonnement (cloud-routine), ikke på Anthropic API-saldoen som AI-coachen i Gainfully bruger.
-- Afsender `brief@7amai.com` via Resend (ikke gainfully.app).
+## Identitet: "The 7" (godkendt af Jesper 2026-10-09)
+- 7 historier. 7 minutter. Klar kl. 7.
+- Tre løfter: **Sourced** (hvert punkt linker til primærkilden, åbne rettelser), **So what** (hvad det betyder for læseren), **No hype**.
+- Signal-mærke pr. punkt: Big deal · Worth knowing · Quick hit.
+- "Verified" blev bevidst til "Sourced": "verified" lover menneskelig kontrol, vi ikke altid har.
+
+## Låste beslutninger
+- Navn 7am AI, domæne 7amai.com (.dk ikke nødvendigt; .store kun gratis og uden auto-fornyelse; merch senere under 7amai.com/shop).
+- **Engelsk hovedudgave + automatisk dansk udgave** (dansk må ikke koste Jesper tid).
+- **Tre spor læseren selv vælger:** Build, AI generelt, Europe. Alle får alt som standard, fravalg efter tilmelding. Én samlet udgave med mærkede punkter, mailen filtreres pr. læser.
+- **Redaktion:** sendes kl. 7 AI-mærket ("Written by AI. Every claim links to its primary source."). Når Jesper når at godkende (kladde ca. 6:30), sendes den som "Reviewed by Jesper". Godkendelse er bonus, aldrig flaskehals. Valgfri "Jesper's pick" om fredagen. Aftengodkendelse fravalgt (US-lanceringer kommer 18-23 dansk tid).
+- **EU AI Act art. 50(4)** gælder siden 2026-08-02 (ikke udskudt af Digital Omnibus): AI-tekst om offentlig interesse skal mærkes, medmindre menneskelig gennemgang + redaktionelt ansvar. AI-oversættelser tæller også.
+- Platform: side på 7amai.com (Jekyll), mail/liste på Resend. beehiiv revurderes ved ca. 1.000 læsere (tjek API til automatisk udgivelse først).
+- Droppet: pristracker, "Ask 7am"-chat, lydudgave (måske fase 3).
+
+## Faser
+- **0 Fundament (næste):** "The 7"-format, engelsk + dansk, godkend-flow + mærkning, nyt design (forside med tilmelding, udgave-side, mail), dobbelt opt-in, afmelding, privatlivspolitik.
+- **1 Blød lancering (0-500):** netværk, LinkedIn, danske udviklerfællesskaber, ét delbart opslag pr. dag, henvisningsprogram.
+- **2 Vækst (500-5.000):** emnesider + "Shipped or not?" (SEO), gensidige anbefalinger, Product Hunt / Hacker News.
+- **3 Indtægt (5.000+):** én sponsorplads om dagen, målrettet pr. spor.
+- Mål (forslag): >50 % åbner, >30 % klikker, 10.000 læsere på 12 mdr., første sponsor ved 2.000-5.000.
 
 ## Status
-- [x] Side, agent, routine, mail og domæne + HTTPS virker (første mail 2026-10-09).
-- [x] Hukommelse virker: udgave 2 fulgte op på og rettede et punkt fra udgave 1.
-- [ ] Følg de første 1-2 ugers udgaver: kvalitet, længde, kilder, om "Betyder for dig" rammer.
-
-## Roadmap når det skal være offentligt (ikke besluttet endnu)
-1. Fjern `noindex` i `_layouts/default.html`.
-2. Engelsk version (`/en/`, egen `_posts`-mappe eller `lang`-felt, egen mail).
-3. Tilmelding med dobbelt opt-in + afmeldingslink i hver mail (Resend Audiences/Broadcasts) + privatlivspolitik (GDPR).
-4. Kvalitetskontrol før udsendelse til andre (fejl i AI-skrevet indhold koster tillid).
-5. Først derefter: markedsføring, sponsorer (kræver typisk et par tusinde aktive læsere), evt. merch.
+- [x] Prototype live 2026-10-09: side, routine, mail, domæne + HTTPS. Hukommelse virker (udgave 2 rettede udgave 1).
+- [x] Strategi lagt 2026-10-09 (STRATEGI.md).
+- [ ] Fase 0 ikke startet.
