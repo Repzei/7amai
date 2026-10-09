@@ -6,20 +6,22 @@ udgives på https://7amai.com og sendes som en kort mail med links til hvert pun
 Indholdet skrives af en planlagt Claude Code cloud-routine. Lige nu er det en prototype
 til ejeren selv; det er bygget, så det kan åbnes som offentligt nyhedsbrev senere.
 
-Sprog: dansk nu, engelsk (`/en/`) når det skal ud.
+Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: "The 7" (se `STRATEGI.md`).
 
 ## Tech stack
 - **Jekyll på GitHub Pages** fra `main`. Ingen build-script, ingen npm-pakker til siden.
 - **jekyll-feed** til `feed.xml`.
 - **Resend** til mail (afsender `brief@7amai.com`), kaldt med `curl` fra `.agent/send-mail.mjs`.
-- **Claude Code cloud-routine** (hverdage 04:30 UTC, Sonnet 5.5) i et separat cloud-miljø.
+- **To Claude Code cloud-routines** (Sonnet 5.5, separat cloud-miljø): udkast kl. 6 (PR + udkast-mail til godkendelse) og afsendelse kl. 7 (godkendt = "Reviewed by Jesper", ellers AI-mærket).
 - Domæne og DNS hos simply.com. HTTPS via GitHub Pages (Let's Encrypt, fornyes automatisk).
 
 ## Filstruktur
 | Sti | Hvad |
 |---|---|
-| `_posts/<dato>-<slug>.md` | Én udgave pr. dag (skrives af agenten) |
-| `index.html` | Arkiv/forside |
+| `_posts/<dato>-<slug>.md` | Engelsk udgave (hovedudgave), `/<åååå>/<mm>/<dd>/` |
+| `_da/<dato>-<slug>.md` | Dansk udgave, `/da/...` (altid AI-mærket) |
+| `_data/i18n.yml` | Tekster pr. sprog (tagline, AI-mærkning m.m.) |
+| `index.html`, `da/index.html` | Forside/arkiv pr. sprog |
 | `_layouts/default.html`, `_layouts/issue.html` | Sideskabeloner (`noindex` i default, mens det er prototype) |
 | `assets/style.css` | Al styling, lys/mørk via `prefers-color-scheme` |
 | `_config.yml` | `url`, `future: true` (påkrævet), permalink, `exclude` |

@@ -38,4 +38,5 @@ Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-r
 ## Status
 - [x] Prototype live 2026-10-09: side, routine, mail, domæne + HTTPS. Hukommelse virker (udgave 2 rettede udgave 1).
 - [x] Strategi lagt 2026-10-09 (STRATEGI.md).
-- [ ] Fase 0 ikke startet.
+- [x] Fase 0 del 1 (2026-10-09): The 7-format, EN hovedudgave + DA under /da/, godkendelse via PR (udkast 06, afsendelse 07), AI-mærkning efter art. 50(4).
+- [ ] Fase 0 del 2: nyt design (mockup til Jespers godkendelse først), tilmelding (dobbelt opt-in, afmelding, privatlivspolitik).
