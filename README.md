@@ -8,3 +8,5 @@ Dagens vigtigste AI-nyheder, klar kl. 7 på hverdage. Prototype.
   cloud-miljøet (agenten kan bruge den, men aldrig læse den). Modtager og afsender ligger kun som
   miljøvariabler i cloud-miljøet (`NEWSLETTER_TO`, `NEWSLETTER_FROM`).
 - Kilder: `.agent/SOURCES.md`. Ret gerne i den.
+- Projektinstruktioner til Claude: `CLAUDE.md`. Claude-memory for projektet: `.claude-memory/`
+  (gendan på en ny computer med `powershell -ExecutionPolicy Bypass -File .claude-memory\restore-memory.ps1`).
