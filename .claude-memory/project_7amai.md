@@ -39,4 +39,6 @@ Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-r
 - [x] Prototype live 2026-10-09: side, routine, mail, domæne + HTTPS. Hukommelse virker (udgave 2 rettede udgave 1).
 - [x] Strategi lagt 2026-10-09 (STRATEGI.md).
 - [x] Fase 0 del 1 (2026-10-09): The 7-format, EN hovedudgave + DA under /da/, godkendelse via PR (udkast 06, afsendelse 07), AI-mærkning efter art. 50(4).
-- [ ] Fase 0 del 2: nyt design (mockup til Jespers godkendelse først), tilmelding (dobbelt opt-in, afmelding, privatlivspolitik).
+- [x] Godkendelsesflow testet end-to-end 2026-10-09 (testudgave 10. okt.: udkast -> PR #1 -> Jesper mergede -> 'Reviewed by Jesper' + mail sendt; dansk AI-mærket).
+- [ ] Fase 0 del 2: design. Jesper valgte retning **B + C** 2026-10-09 (B: Plakat-syverens hvide gitter, stort rødt 7-tal, Archivo/Source Serif; C: kildespalte med primary/reported, signal-mærker; A: kun lille '07:00'-tidsstempel i toppen). Udkast v2: https://claude.ai/artifact/2vZsg6jDCGL7GHYUrxmDvq. Afventer svar på: helhed, størrelse på 7-tallet, primary/reported. Derefter bygges det ind i side, udgave og mail.
+- [ ] Fase 0 del 3: tilmelding (dobbelt opt-in, afmelding, privatlivspolitik).
