@@ -17,7 +17,8 @@ Fælles regler:
 - Mail sendes KUN med `node .agent/send-mail.mjs` (modtager og afsender ligger i miljøet).
 - Em dash (U+2014) og en dash (U+2013) er forbudt i al tekst. Tjek hver fil, du har skrevet:
   `python3 -c "import sys;t=open(sys.argv[1],encoding='utf-8').read();print(t.count(chr(0x2014))+t.count(chr(0x2013)))" <fil>` skal give 0.
-- GitHub: brug `gh` (virker via proxyen) eller de indbyggede GitHub-værktøjer, hvis `gh` fejler.
+- GitHub: brug KUN REST via `gh api` (GraphQL er blokeret i sandboxen, så `gh pr create/list/merge` fejler med 403).
+  Repo: `Repzei/7amai`.
 - Dato i dansk tid: `TZ=Europe/Copenhagen date +%F`, ugedag `+%u`, time `+%H`.
 
 ---
@@ -100,7 +101,7 @@ Labels på dansk: "Stor nyhed" / "Værd at vide" / "Kort nyt", spor "Build" / "G
 
 ### U6. Pull request
 1. `git checkout -b issue/<dato>`, commit begge filer (`Udkast <dato>`), `git push -u origin issue/<dato>`.
-2. `gh pr create --base main --head issue/<dato> --title "7am AI <dato>: <titel>" --body "<de 7 overskrifter som liste + kilder>"`.
+2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<de 7 overskrifter som liste + kilder>" -q .html_url`.
    Notér PR-URL'en.
 
 ### U7. Udkast-mail
@@ -126,12 +127,13 @@ Afslut med én linje: PR-URL, titel, og om udkast-mailen blev sendt.
 3. Står `<dato>` allerede i `.agent/sent.log` på `main`: stop.
 
 ### A1. Godkendt eller ej?
-Find PR'en for `issue/<dato>`: `gh pr list --state all --head issue/<dato> --json number,state,mergedAt,url`.
-- **Merget** (af Jesper; agenten merger aldrig i UDKAST): godkendt. `git checkout main && git pull`,
+Find PR'en for `issue/<dato>`: `gh api "repos/Repzei/7amai/pulls?state=all&head=Repzei:issue/<dato>" -q '.[0] | {number, state, merged_at, html_url}'`.
+- **`merged_at` er sat** (Jesper har merget; agenten merger aldrig i UDKAST): godkendt. `git checkout main && git pull`,
   sæt `reviewed: true` i den ENGELSKE fil (ikke den danske), commit `Godkendt <dato>`, push.
-- **Åben:** ikke godkendt. Merge den selv: `gh pr merge <nr> --squash --delete-branch`.
+- **`state` er `open`:** ikke godkendt. Merge den selv: `gh api -X PUT repos/Repzei/7amai/pulls/<nr>/merge -f merge_method=squash`,
+  slet branchen: `gh api -X DELETE repos/Repzei/7amai/git/refs/heads/issue/<dato>`.
   `git checkout main && git pull`. `reviewed` forbliver `false`.
-- **Ingen PR** (udkastet fejlede): stop og skriv det i din afsluttende besked. Send ikke noget.
+- **Lukket uden merge eller ingen PR** (udkastet fejlede eller Jesper afviste): stop og skriv det i din afsluttende besked. Send ikke noget.
 
 Jesper kan have rettet teksten eller tilføjet "## Jesper's pick" i PR'en. Brug altid filen
 på `main` efter merge som sandheden.
