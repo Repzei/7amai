@@ -1,4 +1,5 @@
 ---
+redirect_from: /2026/10/09/
 title: "Gemini Nano Banana 2.1 er GA, og den gamle billedmodel udfases"
 summary: "Google gør Nano Banana 2.1 generelt tilgængelig og udfaser gemini-3.1-flash-image. Derudover en rettelse til Haiku 5.5-tallene og to ting fra OpenAI og Anthropic, du kan prøve."
 date: 2026-10-09 07:00:00 +0200

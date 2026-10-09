@@ -10,6 +10,7 @@ permalink: /:year/:month/:day/
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
 # Engelsk = _posts (hovedudgave, /feed.xml). Dansk = samlingen _da (/da/..., /feed/da.xml).
 collections:
   da:

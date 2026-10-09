@@ -1,4 +1,5 @@
 ---
+redirect_from: /2026/10/08/
 title: "Claude Haiku 5.5: 1M kontekst til $0,10 pr. million input-tokens"
 summary: "Anthropic har lanceret Haiku 5.5 med markant lavere priser og 1M-token kontekst, og i dag skal du også tjekke den nye usage policy og LMCache-hullet, hvis du kører egne servere."
 date: 2026-10-08 07:00:00 +0200
