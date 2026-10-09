@@ -13,12 +13,62 @@ igen i hver eneste udgave:
 
 | Løfte | Hvad det betyder i praksis |
 |---|---|
-| **Sourced** | Hvert punkt linker til primærkilden (firmaets egen blog, release notes, lovteksten). Fejl rettes åbent i "Corrections". |
-| **So what** | Hvert punkt siger, hvad det betyder for læseren. Ingen nyhed uden en konsekvens. |
+| **Sourced** | Hver historie har sine kilder ved siden af, mærket efter hvor sikre de er (se 1.3). Fejl rettes åbent i "Corrections". |
+| **So what** | Hver historie siger, hvad den betyder for læseren. Ingen nyhed uden en konsekvens. |
 | **No hype** | Rolig, præcis tone. Benchmarks kun med kontekst: hvad er bedre i praksis, og hvad koster det. |
 
-Hvert punkt får et **signal-mærke**: `Big deal` · `Worth knowing` · `Quick hit`.
-Visuelt: solopgangs-orange, mono-tal, "07:00" som gennemgående motiv.
+Hvert punkt får et **signal-mærke**: `Big deal` · `Worth knowing` · `Quick hit` (højst 2 Big deal pr. udgave).
+
+### 1.1 De fem faste kendetegn (låst 9. okt. 2026)
+
+Identitet kommer fra genkendelige elementer, der bruges ens hvert eneste sted (side, mail,
+sociale medier, delekort), ikke fra farverne alene:
+
+1. **Mærket "7am":** et rødt 7-tal med et lille "am" ved siden af. Bruges som logo, favicon,
+   profilbillede og på delekort. Aldrig et nøgent 7-tal (7-Eleven, 7UP og tv-kanaler ejer det).
+2. **Tidsstemplet "07:00"** i mono i toppen af alt, fx "Mon 12 Oct · 07:00".
+3. **De store tal 1 til 7**, der bærer hver udgave. Rødt tal ved Big deal.
+4. **Signal-mærkerne** Big deal (rød flade), Worth knowing (rød kant), Quick hit (grå kant).
+5. **Kildelinjen** ved hver historie med Official / Reported / Unconfirmed.
+
+Design: retning "B + C" (godkendt af Jesper 9. okt. 2026): hvid papirflade, sort blæk, én
+signal-rød, store smalle tal (Archivo), brødtekst i serif (Source Serif 4), kilder og klokkeslæt
+i mono (IBM Plex Mono). Rød bruges kun til mærket, Big deal og officielle kilder.
+Det store 7-tal vises kun på forsiden på computer; på mobil er det ca. 40 % og står ved siden af
+overskriften, så tilmeldingen er synlig uden scroll; udgave-sider har intet stort 7-tal.
+
+### 1.2 "7am, wherever you are"
+
+Mailen sendes kl. 7 i læserens egen tidszone (Resend kan planlægge pr. modtager). Så holder
+navnet i hele verden, og det bliver en feature i sig selv. Bygges i fase 1, når der er læsere
+uden for Danmark. Indtil da: kl. 7 dansk tid.
+
+### 1.3 Kilder: Official, Reported, Unconfirmed
+
+| Mærke | Betyder | Eksempler |
+|---|---|---|
+| **Official** | Fra firmaet, myndigheden eller forfatterne selv | blog, release notes, dokumentation, lovtekst, forskningsartikel |
+| **Reported** | Fra et navngivet medie | TechCrunch, The Verge, Reuters |
+| **Unconfirmed** | Rygte eller læk | anonyme kilder; bruges sjældent og står også i teksten |
+
+**Regel: ingen Big deal uden mindst én Official-kilde.** Mangler den, er historien højst
+Worth knowing. Kilderne nummereres [1], [2] i teksten. En linje i bunden af siden forklarer
+de tre mærker.
+
+### 1.4 Tone (stilguide)
+
+- Korte sætninger. Én pointe pr. sætning.
+- Tal frem for adjektiver: "$0.10 per million tokens", ikke "dramatically cheaper".
+- Overskriften siger, hvad der skete, ikke hvad man skal føle.
+- "So what" skrives i bydeform: "Turn it on before ...", "Wait for the license ...".
+- Forbudt: "game changer", "revolutionary", "in a world where", "let's dive in", udråbstegn.
+- Usikkerhed siges ærligt: "not published yet", "Google says", "unconfirmed".
+- Dansk: samme regler, med æ, ø og å, og "Hvad betyder det:" i stedet for "So what:".
+
+### 1.5 Tilgængelighed
+
+Kontrast mindst 4,5:1 i begge temaer for al tekst. Big deal-mærket har hvid tekst i lys
+tilstand og mørk tekst i mørk tilstand (hvid på lys rød er kun 3,1:1).
 
 ## 2. Læsere og spor
 
@@ -68,8 +118,9 @@ nyhedsbrevet åbnes for andre.)
 
 ## 6. Design (UI)
 
-- En identitet, man genkender på et halvt sekund: "07:00", orange, "The 7".
-- **Forside:** hvad man får (7 / 7 / 7), tilmelding over folden, dagens udgave som eksempel.
+- En identitet, man genkender på et halvt sekund: de fem faste kendetegn i afsnit 1.1.
+- **Forside:** stort rødt 7-tal (kun computer), "Seven AI stories. Seven minutes. Ready at
+  seven.", tilmelding over folden, dagens udgave som eksempel.
 - **Udgave-side:** de 7 punkter med signal-mærke, "So what", kilde og del-link pr. punkt.
 - **Mail:** mobil først, mørk tilstand, læsbar på 7 minutter, ét klik til hvert punkt.
 - Lys og mørk tilstand, ingen vandret scroll på 375 px, hurtig (ingen tunge scripts).
@@ -129,3 +180,7 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 - Tre spor, som læseren selv vælger (alle får alt som udgangspunkt)
 - AI-mærket som standard, "Reviewed by Jesper" når han når at godkende
 - Mål: indtægt via sponsorer
+- Design "B + C" med de fem faste kendetegn, mærket "7am" (aldrig nøgent 7-tal), tone efter 1.4
+- Kilder mærkes Official / Reported / Unconfirmed; ingen Big deal uden Official-kilde
+- "7am, wherever you are": udsendelse i læserens tidszone fra fase 1
+- Kontrast mindst 4,5:1 i begge temaer

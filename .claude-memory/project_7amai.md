@@ -20,6 +20,7 @@ Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-r
 - "Verified" blev bevidst til "Sourced": "verified" lover menneskelig kontrol, vi ikke altid har.
 
 ## Låste beslutninger
+- **Identitet låst 2026-10-10 (STRATEGI.md 1.1-1.5):** design B + C; fem faste kendetegn (mærket "7am" = rødt 7 + lille "am", aldrig nøgent 7-tal pga. 7-Eleven/7UP; tidsstempel "07:00"; store tal 1-7; signal-mærker; kildelinje). Kilder mærkes **Official / Reported / Unconfirmed**, regel: ingen Big deal uden Official. "7am, wherever you are" = udsendelse i læserens tidszone fra fase 1. Kontrast >= 4,5:1 (Big deal: mørk tekst i mørk tilstand). Tone-stilguide i 1.4. Stort 7-tal kun på forside/computer.
 - Navn 7am AI, domæne 7amai.com (.dk ikke nødvendigt; .store kun gratis og uden auto-fornyelse; merch senere under 7amai.com/shop).
 - **Engelsk hovedudgave + automatisk dansk udgave** (dansk må ikke koste Jesper tid).
 - **Tre spor læseren selv vælger:** Build, AI generelt, Europe. Alle får alt som standard, fravalg efter tilmelding. Én samlet udgave med mærkede punkter, mailen filtreres pr. læser.
@@ -40,5 +41,5 @@ Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-r
 - [x] Strategi lagt 2026-10-09 (STRATEGI.md).
 - [x] Fase 0 del 1 (2026-10-09): The 7-format, EN hovedudgave + DA under /da/, godkendelse via PR (udkast 06, afsendelse 07), AI-mærkning efter art. 50(4).
 - [x] Godkendelsesflow testet end-to-end 2026-10-09 (testudgave 10. okt.: udkast -> PR #1 -> Jesper mergede -> 'Reviewed by Jesper' + mail sendt; dansk AI-mærket).
-- [ ] Fase 0 del 2: design. Jesper valgte retning **B + C** 2026-10-09 (B: Plakat-syverens hvide gitter, stort rødt 7-tal, Archivo/Source Serif; C: kildespalte med primary/reported, signal-mærker; A: kun lille '07:00'-tidsstempel i toppen). Udkast v2: https://claude.ai/artifact/2vZsg6jDCGL7GHYUrxmDvq. Afventer svar på: helhed, størrelse på 7-tallet, primary/reported. Derefter bygges det ind i side, udgave og mail.
+- [ ] Fase 0 del 2: design. Jesper valgte retning **B + C** 2026-10-09 (B: Plakat-syverens hvide gitter, stort rødt 7-tal, Archivo/Source Serif; C: kildespalte med primary/reported, signal-mærker; A: kun lille '07:00'-tidsstempel i toppen). Udkast v3 (låst identitet): https://claude.ai/artifact/2vZsg6jDCGL7GHYUrxmDvq. Afventer Jespers godkendelse af v3, derefter bygges det ind i side, udgave, mail og agentens vejledning (Official/Reported/Unconfirmed).
 - [ ] Fase 0 del 3: tilmelding (dobbelt opt-in, afmelding, privatlivspolitik).
