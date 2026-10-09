@@ -40,9 +40,4 @@ Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-r
 - **Navnet:** "7am" er et etableret australsk dagligt nyhedspodcast (Schwartz Media 2019, solgt til Solstice Media 2025). Intet nyhedsbrev "7am AI" fundet. Varemærketjek (EUIPO, USPTO, IP Australia) anbefalet før større investering i mærket. Ikke juridisk rådgivning.
 
 ## Status
-- [x] Prototype live 2026-10-09: side, routine, mail, domæne + HTTPS. Hukommelse virker (udgave 2 rettede udgave 1).
-- [x] Strategi lagt 2026-10-09 (STRATEGI.md).
-- [x] Fase 0 del 1 (2026-10-09): The 7-format, EN hovedudgave + DA under /da/, godkendelse via PR (udkast 06, afsendelse 07), AI-mærkning efter art. 50(4).
-- [x] Godkendelsesflow testet end-to-end 2026-10-09 (testudgave 10. okt.: udkast -> PR #1 -> Jesper mergede -> 'Reviewed by Jesper' + mail sendt; dansk AI-mærket).
-- [ ] Fase 0 del 2: design. Jesper valgte retning **B + C** 2026-10-09 (B: Plakat-syverens hvide gitter, stort rødt 7-tal, Archivo/Source Serif; C: kildespalte med primary/reported, signal-mærker; A: kun lille '07:00'-tidsstempel i toppen). Udkast v4 (2026-10-10, samme link https://claude.ai/artifact/2vZsg6jDCGL7GHYUrxmDvq): tegnet SVG-mærke (kraftigt 7 + monoline "am"; micro-version 16/32 px hvor "am" er en prik), lead-historie (1 stor, 2-7 kompakte), **"The number"** (ét ægte nøgletal pr. historie, aldrig tvunget; foreslået som 6. kendetegn), 7-minutters læselinje, spor-filter, læsetid pr. historie. Afventer Jespers godkendelse af v4, derefter bygges det ind i side, udgave, mail og agentens vejledning (Official/Reported/Unconfirmed).
-- [ ] Fase 0 del 3: tilmelding (dobbelt opt-in, afmelding, privatlivspolitik).
+Aktiv to-do med status og næste skridt: [[project-7amai-todo]] (`project_7amai_todo.md`).
