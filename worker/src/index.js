@@ -46,7 +46,7 @@ async function broadcast(request, env) {
 
   const res = await fetch("https://api.resend.com/broadcasts", {
     method: "POST",
-    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${String(env.RESEND_API_KEY).trim()}`, "Content-Type": "application/json" },
     body: JSON.stringify({ segment_id: segment, from: env.FROM, subject: String(b.subject).slice(0, 200), html, text, name: String(b.name || b.subject).slice(0, 100), send: true }),
   });
   const out = await res.text();
@@ -87,10 +87,14 @@ async function subscribe(request, env, url, cors) {
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${String(env.RESEND_API_KEY).trim()}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from: env.FROM, to: [email], subject: mail.subject, html: mail.html, text: mail.text }),
   });
-  if (!res.ok) return json(502, { ok: false, error: "send_failed" });
+  if (!res.ok) {
+    const detail = await res.text();
+    const k = String(env.RESEND_API_KEY); console.log("resend /emails fejlede", res.status, detail.slice(0, 300), "noegle: laengde", k.trim().length, "re_", k.trim().startsWith("re_"), "mellemrum", /\s/.test(k));
+    return json(502, { ok: false, error: "send_failed", status: res.status });
+  }
   return json(200, { ok: true });
 }
 
@@ -101,7 +105,7 @@ async function confirm(url, env) {
   if (Math.floor(Date.now() / 1000) - payload.t > MAX_AGE_SECONDS) return go(payload.l, "expired");
 
   const segment = payload.l === "da" ? env.SEGMENT_DA : env.SEGMENT_EN;
-  const auth = { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" };
+  const auth = { Authorization: `Bearer ${String(env.RESEND_API_KEY).trim()}`, "Content-Type": "application/json" };
   const res = await fetch("https://api.resend.com/contacts", {
     method: "POST",
     headers: auth,
