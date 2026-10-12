@@ -1,0 +1,4 @@
+# Wrangler: lokal cache med konto-ID og kontonavn (maa aldrig i det offentlige repo)
+worker/.wrangler/
+.wrangler/
+node_modules/
