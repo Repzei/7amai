@@ -17,7 +17,8 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 
 ## Næste skridt
 1. [ ] **Jesper: godkend designudkast v5** (https://claude.ai/artifact/2vZsg6jDCGL7GHYUrxmDvq). v5 (2026-10-12, efter Jespers feedback): logo ca. 60 % mindre på forsiden, kraftigere "am" i små logoer, "denne uge"-tal (ægte tal: kilder, % official, rettelser) og tæt liste over seneste udgaver (inspireret af newsletter.alphasignal.ai, men kun ægte data), skiftende "Picked for builders/Europe/everyone", "Get the 7"-knap rettet.
-1b. [ ] **Beslut: 7 dage om ugen?** Jespers idé 2026-10-12. Forslag: hverdage The 7, lørdag "The week in 7" (ugens bedste + opfølgning), søndag "7 to try" (værktøjer/guides), weekend kan fravælges. Kræver 2 ekstra kørsler/uge. Ikke besluttet.
+1b. [x] **Format besluttet 2026-10-12:** kl. 7, alle 7 dage, højst 7 minutter; antal historier varierer. Vejledning, skabeloner, routines (daglig cron) og STRATEGI opdateret. Weekend-formater ("week in 7", "7 to try") droppet for nu.
+1c. [ ] **Identitet: nye designkoncepter** (Jesper 2026-10-12: v5 "har ikke det rigtige 7am AI-udtryk"). Undersøg og lav flere forslag, der gør 7am AI genkendelig og enestående.
 2. [ ] **Byg det godkendte design ind**: forside, udgave-sider (lead-historie, The number, læselinje, spor-filter, Official/Reported/Unconfirmed), dansk udgave, tegnet SVG-mærke + favicon, mail (til de skrifttyper Gmail/Outlook viser, test lys/mørk).
 3. [ ] **Opdatér agentens vejledning** (`.agent/INSTRUCTIONS.md`): The number (kun ægte tal), læsetid pr. historie, historie 1 = den der ændrer mest, kildemærker Official/Reported/Unconfirmed, regel "ingen Big deal uden Official", tone-stilguide (STRATEGI 1.4).
 4. [ ] **Følg de første 1-2 ugers udgaver** (første ude 12. okt.): kvalitet, længde, kilder, tidspunkt.

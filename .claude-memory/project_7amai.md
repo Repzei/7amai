@@ -13,14 +13,14 @@ Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-r
 
 **How to apply:** Alt nyt skal styrke identiteten "The 7" og kunne køre uden Jesper (Gainfully har forrang). Byg i fasernes rækkefølge, spring ikke til vækst før kvaliteten er der.
 
-## Identitet: "The 7" (godkendt af Jesper 2026-10-09)
-- 7 historier. 7 minutter. Klar kl. 7.
+## Identitet: tre gange 7 (format ændret af Jesper 2026-10-12)
+- **Kl. 7. Alle 7 dage. Højst 7 minutters læsning.** Antal historier varierer (typisk 4-7 hverdage, færre i weekenden); aldrig fyld. Erstatter "7 historier" ("The 7") fra 2026-10-09.
 - Tre løfter: **Sourced** (hvert punkt linker til primærkilden, åbne rettelser), **So what** (hvad det betyder for læseren), **No hype**.
 - Signal-mærke pr. punkt: Big deal · Worth knowing · Quick hit.
 - "Verified" blev bevidst til "Sourced": "verified" lover menneskelig kontrol, vi ikke altid har.
 
 ## Låste beslutninger
-- **Identitet låst 2026-10-10 (STRATEGI.md 1.1-1.5):** design B + C; fem faste kendetegn (mærket "7am" = rødt 7 + lille "am", aldrig nøgent 7-tal pga. 7-Eleven/7UP; tidsstempel "07:00"; store tal 1-7; signal-mærker; kildelinje). Kilder mærkes **Official / Reported / Unconfirmed**, regel: ingen Big deal uden Official. "7am, wherever you are" = udsendelse i læserens tidszone fra fase 1. Kontrast >= 4,5:1 (Big deal: mørk tekst i mørk tilstand). Tone-stilguide i 1.4. Stort 7-tal kun på forside/computer.
+- **Identitet låst 2026-10-10 (STRATEGI.md 1.1-1.5):** design B + C; fem faste kendetegn (mærket "7am" = rødt 7 + lille "am", aldrig nøgent 7-tal pga. 7-Eleven/7UP; tidsstempel "07:00"; nummererede historier + 7-minutters-linje; signal-mærker; kildelinje). Kilder mærkes **Official / Reported / Unconfirmed**, regel: ingen Big deal uden Official. "7am, wherever you are" = udsendelse i læserens tidszone fra fase 1. Kontrast >= 4,5:1 (Big deal: mørk tekst i mørk tilstand). Tone-stilguide i 1.4. Stort 7-tal kun på forside/computer.
 - Navn 7am AI, domæne 7amai.com (.dk ikke nødvendigt; .store kun gratis og uden auto-fornyelse; merch senere under 7amai.com/shop).
 - **Engelsk hovedudgave + automatisk dansk udgave** (dansk må ikke koste Jesper tid).
 - **Tre spor læseren selv vælger:** Build, AI generelt, Europe. Alle får alt som standard, fravalg efter tilmelding. Én samlet udgave med mærkede punkter, mailen filtreres pr. læser.

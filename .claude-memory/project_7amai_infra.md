@@ -22,8 +22,8 @@ Formål og beslutninger: [[project-7amai]]. Faldgruber: [[feedback-7amai-lessons
 - Hukommelse: agenten læser de 5 seneste `_posts` (ingen gentagelser, "Opfølgning"-sektion).
 
 ## Cloud-routines og miljø
-- **Udkast:** "7am AI · udkast", id `trig_01UdzqNcTDciDH39dndFmm6U`, cron `0 4 * * 1-5` UTC (06:00 sommer / 05:00 vinter). Research, 7 historier, EN + DA, PR på `issue/<dato>`, udkast-mail med "Approve on GitHub".
-- **Afsendelse:** "7am AI · afsendelse kl. 7", id `trig_01YSVgMBzR1gFKyWPqKPLgw4`, cron `0 5,6 * * 1-5` UTC; agenten stopper straks, hvis klokken ikke er 07 dansk tid (rammer kl. 7 i både sommer- og vintertid). PR merget af Jesper = `reviewed: true`; ellers merger agenten selv og udgaven er AI-mærket. Sender endelig mail, logger i sent.log.
+- **Udkast:** "7am AI · udkast", id `trig_01UdzqNcTDciDH39dndFmm6U`, cron `0 4 * * *` UTC (alle 7 dage fra 2026-10-12) (06:00 sommer / 05:00 vinter). Research, 7 historier, EN + DA, PR på `issue/<dato>`, udkast-mail med "Approve on GitHub".
+- **Afsendelse:** "7am AI · afsendelse kl. 7", id `trig_01YSVgMBzR1gFKyWPqKPLgw4`, cron `0 5,6 * * *` UTC (alle 7 dage); agenten stopper straks, hvis klokken ikke er 07 dansk tid (rammer kl. 7 i både sommer- og vintertid). PR merget af Jesper = `reviewed: true`; ellers merger agenten selv og udgaven er AI-mærket. Sender endelig mail, logger i sent.log.
 - **Test:** "7am AI · TEST udkast (manuel)", id `trig_01AXHWRTQU7esucVQbPwfkSW`, deaktiveret; køres manuelt. Prompten med `DATO-OVERRIDE: ÅÅÅÅ-MM-DD` springer weekend/klokkeslæt over og sætter [TEST] i mailemner.
 - Alle: Sonnet 5.5, ingen connectors (ryd dem efter hver create/update).
 - Miljø: "7am-ai", id `env_01CanacjFNnL3tfRTKUqMifC` (separat fra Gainfully-agentens Default-miljø). Netværk **Full**. Env-variabler `NEWSLETTER_TO` (Jespers Gmail) og `NEWSLETTER_FROM` (`7am AI <brief@7amai.com>`). Resend-nøglen er en **network secret** (Bearer, host api.resend.com): proxyen sætter den på, agenten kan aldrig læse den.

@@ -3,9 +3,13 @@
 **Mission:** 7am AI skal være et af verdens bedste AI-nyhedsbreve.
 **Lagt:** 9. oktober 2026 (Claudex Loop: forslag, kritik og syntese). Ejer: Jesper.
 
-## 1. Identitet: "The 7"
+## 1. Identitet: tre gange 7
 
-Navnet er formatet: **7 historier. 7 minutter. Klar kl. 7.**
+Navnet er formatet: **Kl. 7. Alle 7 dage. Højst 7 minutter.**
+
+Ændret 12. okt. 2026 (Jesper): vi lover ikke længere præcis 7 historier. Antallet følger
+dagens nyheder (typisk 4-7 på hverdage, færre i weekenden), men udgaven kan altid læses på
+højst 7 minutter. Det fjerner fristelsen til fyld, og "alle 7 dage" gør navnet stærkere.
 
 Vi vinder ikke ved at gøre det samme som de store engelske AI-nyhedsbreve (The Rundown,
 TLDR AI, Ben's Bites), bare pænere. Vi vinder på et skarpt format og tre løfter, som går
@@ -27,7 +31,8 @@ sociale medier, delekort), ikke fra farverne alene:
 1. **Mærket "7am":** et rødt 7-tal med et lille "am" ved siden af. Bruges som logo, favicon,
    profilbillede og på delekort. Aldrig et nøgent 7-tal (7-Eleven, 7UP og tv-kanaler ejer det).
 2. **Tidsstemplet "07:00"** i mono i toppen af alt, fx "Mon 12 Oct · 07:00".
-3. **De store tal 1 til 7**, der bærer hver udgave. Rødt tal ved Big deal.
+3. **Nummererede historier og 7-minutters-linjen:** store tal foran hver historie (rødt ved
+   Big deal) og en læselinje, der viser udgavens læsetid op til 7:00.
 4. **Signal-mærkerne** Big deal (rød flade), Worth knowing (rød kant), Quick hit (grå kant).
 5. **Kildelinjen** ved hver historie med Official / Reported / Unconfirmed.
 
@@ -139,7 +144,7 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 ## 8. Features
 
 **Ja:**
-1. "The 7"-format med signal-mærker og "So what" (fase 0)
+1. Formatet kl. 7 / 7 dage / højst 7 minutter med signal-mærker og "So what" (fase 0)
 2. Valgfrie spor (fase 0: mærkning, fase 1: fravalg i mailen)
 3. Henvisningsprogram (fase 1)
 4. "Shipped or not?" og emnesider (fase 2)
@@ -153,7 +158,7 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 
 | Fase | Mål | Hvad |
 |---|---|---|
-| **0: Fundament** (2-4 uger) | Kvaliteten er så god, at Jesper selv læser den hver dag | "The 7"-format, engelsk + dansk, godkend-flow, mærkning, nyt design, tilmelding (dobbelt opt-in, afmelding, privatlivspolitik) |
+| **0: Fundament** (2-4 uger) | Kvaliteten er så god, at Jesper selv læser den hver dag | Formatet (kl. 7, 7 dage, højst 7 min), engelsk + dansk, godkend-flow, mærkning, nyt design, tilmelding (dobbelt opt-in, afmelding, privatlivspolitik) |
 | **1: Blød lancering** | 0 til 500 læsere | Jespers netværk, LinkedIn, danske udviklerfællesskaber. Agenten laver ét delbart opslag om dagens bedste historie. Henvisningsprogram. |
 | **2: Vækst** | 500 til 5.000 | Emnesider + "Shipped or not?" (SEO), gensidige anbefalinger med andre nyhedsbreve, lancering på Product Hunt og Hacker News |
 | **3: Indtægt** | 5.000+ | Én sponsorplads om dagen, målrettet pr. spor. Mediekit. |
@@ -170,12 +175,12 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 - **Kvalitet:** fejl i AI-skrevet indhold koster tillid. Derfor "Sourced", åbne rettelser og
   godkendelse, når det er muligt.
 - **Tid:** Gainfully har forrang. Alt i 7am AI skal kunne køre uden Jesper.
-- **Forvekslelighed:** uden "The 7"-formatet er vi bare endnu et nyhedsbrev. Formatet
+- **Forvekslelighed:** uden formatet (kl. 7, 7 dage, højst 7 min) og de faste kendetegn er vi bare endnu et nyhedsbrev. Formatet
   forhandles ikke væk.
 
 ## Låste beslutninger
 
-- Navn 7am AI, domæne 7amai.com, identitet "The 7" (godkendt af Jesper 9. okt. 2026)
+- Navn 7am AI, domæne 7amai.com. Format: kl. 7, alle 7 dage, højst 7 minutters læsning (Jesper 12. okt. 2026; erstatter "7 historier")
 - Engelsk hovedudgave + automatisk dansk udgave
 - Tre spor, som læseren selv vælger (alle får alt som udgangspunkt)
 - AI-mærket som standard, "Reviewed by Jesper" når han når at godkende

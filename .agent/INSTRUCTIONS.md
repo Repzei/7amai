@@ -1,10 +1,11 @@
 # 7am AI: agent-vejledning
 
-7am AI er et dagligt AI-nyhedsbrev med formatet **The 7: 7 historier. 7 minutter. Klar kl. 7.**
+7am AI er et dagligt AI-nyhedsbrev med formatet **kl. 7, alle 7 dage, højst 7 minutters læsning.** Antallet af historier
+afhænger af dagen; længden må aldrig overstige 7 minutter.
 Hovedudgaven er på engelsk på https://7amai.com; en dansk udgave laves ud fra den.
 Strategi og identitet: `STRATEGI.md` (læs afsnit 1 og 4, hvis du er i tvivl om tonen).
 
-Der er to kørsler hver hverdag. Prompten siger, hvilken du er:
+Der er to kørsler hver dag, også i weekenden. Prompten siger, hvilken du er:
 - **UDKAST** (ca. 06:00 dansk tid): research, skriv udgaven, læg den som pull request, send
   udkast-mail til redaktøren (Jesper).
 - **AFSENDELSE** (07:00 dansk tid): udgiv udgaven (godkendt eller ej) og send den endelige mail.
@@ -26,8 +27,7 @@ Fælles regler:
 ## UDKAST
 
 ### U0. Skal der laves et udkast?
-1. Lørdag (6) og søndag (7): stop.
-2. Findes `_posts/<dato>-*.md` på `main` eller branchen `issue/<dato>` på origin
+1. Findes `_posts/<dato>-*.md` på `main` eller branchen `issue/<dato>` på origin
    (`git ls-remote --heads origin issue/<dato>`): stop, udkastet findes allerede.
 
 ### U1. Hvad ved vi i forvejen?
@@ -37,12 +37,12 @@ ventede, og tjek om de er sket. Har en tidligere udgave en faktuel fejl, skal de
 "Corrections".
 
 ### U2. Research
-- Periode: siden forrige udgave (mandag: siden fredag morgen).
+- Periode: siden forrige udgave (normalt de seneste 24 timer).
 - Gå `.agent/SOURCES.md` igennem og søg bredt med WebSearch. Åbn primærkilden med WebFetch,
   før du skriver om noget. Kan du ikke bekræfte det i en troværdig kilde, så drop det eller
   mærk det tydeligt som rygte med hvem der siger det.
 
-### U3. Vælg præcis 7 historier
+### U3. Vælg historierne (højst 7 minutter)
 Kriterier, i rækkefølge: ændrer det, hvad læseren kan bygge, hvad det koster, eller hvad han
 skal overholde? Er det reelt nyt (lancering, pris, release, vedtagelse), ikke en mening? Kan man
 prøve det i dag? Sæt den vigtigste først.
@@ -53,8 +53,14 @@ Hver historie får:
   (EU-regulering, europæiske modeller/priser, lokal AI og privatliv).
 - Sørg for, at hvert spor får mindst én historie, hvis der findes en reel kandidat.
 
-Er det en stille dag, så fyld op med ægte Quick hits (nye releases, værktøjer, mindre
-prisændringer). Find aldrig på noget.
+**Længde:** hele udgaven skal kunne læses på højst 7 minutter: maks ca. 1.500 ord brødtekst
+(ca. 230 ord pr. minut). Typisk 4-7 historier på en hverdag, ofte 2-4 i weekenden. Er det en
+stille dag, bliver udgaven kortere. Fyld aldrig op, og find aldrig på noget. Der er altid
+mindst én historie; er der virkelig intet nyt, så skriv én kort historie om det vigtigste
+fra ugen med en ny vinkel, og sig det ærligt.
+
+**Læsetid:** regn minutter ud pr. historie (ord / 230, afrundet til nærmeste halve minut) og
+for hele udgaven. Skriv dem i front matter (`minutes`) og pr. historie (`min` i `items`).
 
 ### U4. Skriv den engelske udgave
 Fil: `_posts/<dato>-<slug>.md` (slug af titlen, små bogstaver, kun a-z, 0-9 og bindestreger).
@@ -65,10 +71,11 @@ title: "<Dagens vigtigste historie i én sætning, maks ca. 70 tegn>"
 summary: "<1-2 sætninger: hvad du skal vide i dag>"
 date: <dato> 07:00:00 +0200   # +0100 i vintertid (fra sidste søndag i oktober)
 reviewed: false
+minutes: <udgavens læsetid, højst 7>
 other_lang_url: /da/<åååå>/<mm>/<dd>/
 items:
-  - { n: 1, anchor: "<anker>", signal: big, tracks: [build, europe] }
-  # ... 7 i alt, samme rækkefølge som nedenfor
+  - { n: 1, anchor: "<anker>", signal: big, tracks: [build, europe], min: 1.5 }
+  # ... én linje pr. historie, samme rækkefølge som nedenfor, fx { n: 2, anchor: "...", signal: worth, tracks: [build], min: 1 }
 ---
 
 ### 1. <Overskrift der siger hvad der skete> {#<anker>}
@@ -86,9 +93,9 @@ Source: [<navn>](<url>)
 
 - Signal-klasser: `signal-big` "Big deal", `signal-worth` "Worth knowing", `signal-quick`
   "Quick hit". Spor-labels: "Build", "General", "Europe".
-- Alle 7 har "So what". Er konsekvensen lille, så sig det kort og ærligt.
+- Alle historier har "So what". Er konsekvensen lille, så sig det kort og ærligt.
 - `{#anker}` er unikt, små bogstaver og bindestreger.
-- Efter punkt 7, kun hvis nødvendigt: `## Corrections` med hvad der var forkert, og hvor.
+- Efter sidste historie, kun hvis nødvendigt: `## Corrections` med hvad der var forkert, og hvor.
 - Tone: rolig, præcis, ingen hype. Ingen floskler ("game changer", "revolutionary",
   "in a world where"). Benchmarks kun med kontekst.
 
@@ -110,7 +117,7 @@ Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen):
 - `{{DISCLOSURE}}` = den ikke-godkendte tekst.
 - `{{ISSUE_URL}}` = `https://7amai.com/<åååå>/<mm>/<dd>/`, `{{DA_URL}}` = `https://7amai.com/da/<åååå>/<mm>/<dd>/`
   (siderne er først live efter afsendelsen kl. 7; det er i orden).
-- `{{ITEMS}}` = alle 7 punkter. Ingen `{{` må stå tilbage.
+- `{{ITEMS}}` = alle historier. `{{MIN}}` = udgavens læsetid i minutter. Ingen `{{` må stå tilbage.
 Gem som `/tmp/draft.html` og en ren tekstudgave `/tmp/draft.txt` (inkl. PR-URL'en øverst).
 Send: `node .agent/send-mail.mjs "[Draft] 7am AI · <d. mon>: <titel>" /tmp/draft.html /tmp/draft.txt`.
 
@@ -121,10 +128,9 @@ Afslut med én linje: PR-URL, titel, og om udkast-mailen blev sendt.
 ## AFSENDELSE
 
 ### A0. Skal der sendes nu?
-1. Lørdag/søndag: stop.
-2. `TZ=Europe/Copenhagen date +%H` skal være `07`. Ellers stop straks uden at gøre noget
+1. `TZ=Europe/Copenhagen date +%H` skal være `07`. Ellers stop straks uden at gøre noget
    (routinen kører både 05 og 06 UTC for at ramme kl. 7 i både sommer- og vintertid).
-3. Står `<dato>` allerede i `.agent/sent.log` på `main`: stop.
+2. Står `<dato>` allerede i `.agent/sent.log` på `main`: stop.
 
 ### A1. Godkendt eller ej?
 Find PR'en for `issue/<dato>`: `gh api "repos/Repzei/7amai/pulls?state=all&head=Repzei:issue/<dato>" -q '.[0] | {number, state, merged_at, html_url}'`.
@@ -142,7 +148,7 @@ på `main` efter merge som sandheden.
 Samme mail som udkastet, bygget ud fra filen på `main`, men:
 - `{{BANNER}}` er tom.
 - `{{DISCLOSURE}}` = godkendt-teksten, hvis `reviewed: true`, ellers den ikke-godkendte.
-- Er der en "Jesper's pick"-sektion, så tag den med efter punkt 7.
+- Er der en "Jesper's pick"-sektion, så tag den med efter sidste historie.
 Gem som `/tmp/mail.html` og `/tmp/mail.txt`.
 Emne: `7am AI · <d. mon>: <titel>` (maks ca. 90 tegn).
 Send: `node .agent/send-mail.mjs "<emne>" /tmp/mail.html /tmp/mail.txt`.
