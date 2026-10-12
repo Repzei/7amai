@@ -129,4 +129,7 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 .signup-msg { margin: 0; font-family: var(--font-news); font-size: 14px; font-weight: 700; padding: 8px 12px; border-radius: 10px; }
 .signup-ok { background: var(--tint); color: var(--ink); border-left: 3px solid var(--sun); }
 .signup-err { background: var(--paper); color: var(--sun-ink); border: 1px solid var(--line); }
+.signup-note a, .site-foot a { color: var(--mist); }
+.legal .issue-body { border-top: 0; }
+.legal .issue-body h3:first-of-type { font-size: 21px; font-weight: 800; }
 .signup-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }

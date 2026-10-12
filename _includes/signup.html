@@ -8,7 +8,7 @@
   <!-- Honeypot: skjult for mennesker, bots udfylder det. -->
   <div class="signup-hp" aria-hidden="true"><label for="signup-website">Website</label><input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
   <input type="hidden" name="lang" value="{{ include.lang }}" />
-  <p class="signup-note">{{ t.signup_note }}</p>
+  <p class="signup-note">{{ t.signup_note }} <a href="{{ t.privacy_url | relative_url }}">{{ t.privacy_label }}</a></p>
   <p class="signup-msg" id="signup-msg" role="status" aria-live="polite" hidden></p>
 </form>
 <script>

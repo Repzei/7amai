@@ -30,7 +30,7 @@
     {{ content }}
   </main>
   <footer class="site-foot">
-    <span>{{ site.title }} · {{ t.tagline }}</span>
+    <span>{{ site.title }} · {{ t.tagline }} · <a href="{{ t.privacy_url | relative_url }}">{{ t.privacy_label }}</a></span>
   </footer>
 </body>
 </html>
