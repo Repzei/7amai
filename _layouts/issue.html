@@ -2,11 +2,16 @@
 layout: default
 ---
 {%- assign t = site.data.i18n[page.lang] -%}
-<article class="issue">
-  <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: t.date_format }}</time> · 07:00</p>
+{%- if page.minutes -%}{%- assign mins = page.minutes -%}{%- else -%}{%- assign words = content | strip_html | number_of_words -%}{%- assign mins = words | divided_by: 230 | plus: 1 -%}{%- endif -%}
+<article class="issue" id="issue">
+  <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: t.date_format }}</time> · 07:00 · {{ mins }} min</p>
   <h1>{{ page.title }}</h1>
   {% if page.summary %}<p class="issue-lead">{{ page.summary }}</p>{% endif %}
   <p class="disclosure{% if page.reviewed %} disclosure-reviewed{% endif %}">{% if page.reviewed %}{{ t.disclosure_reviewed }}{% else %}{{ t.disclosure_ai }}{% endif %}</p>
+  <div class="hz-wrap" aria-hidden="true">
+    <div class="hz" id="hz"><span class="hz-line"></span><span class="hz-fill"></span><span class="hz-sun"></span></div>
+    <div class="hz-txt"><span id="hz-clock">0:00</span><span>{{ mins }}:00</span></div>
+  </div>
   <div class="issue-body">
     {{ content }}
   </div>
@@ -16,3 +21,20 @@ layout: default
     {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.date | date: '%d.%m' }} &rarr;</a>{% else %}<span></span>{% endif %}
   </nav>
 </article>
+<script>
+(function () {
+  // Horisont-læselinjen: solen følger, hvor langt man er nået i udgaven.
+  var a = document.getElementById('issue'), hz = document.getElementById('hz'), c = document.getElementById('hz-clock');
+  if (!a || !hz) return;
+  var total = {{ mins }} * 60;
+  function tick() {
+    var r = a.getBoundingClientRect(), vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh * 0.5 - r.top) / Math.max(1, r.height - vh * 0.5)));
+    hz.style.setProperty('--p', (p * 100).toFixed(1) + '%');
+    var s = Math.round(p * total); c.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+  window.addEventListener('scroll', tick, { passive: true });
+  window.addEventListener('resize', tick);
+  tick();
+})();
+</script>
