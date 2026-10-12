@@ -9,6 +9,10 @@ en:
   disclosure_ai: "Written by AI. Every claim links to its primary source. Not reviewed by a human editor."
   disclosure_reviewed: "Reviewed by Jesper. Written with AI; every claim links to its primary source."
   date_format: "%b %-d, %Y"
+  legend: "How sure are we?"
+  legend_official: "Official: from the company, regulator or authors"
+  legend_reported: "Reported: from a named outlet"
+  legend_unconfirmed: "Unconfirmed: rumor or leak"
 da:
   home: /da/
   feed: /feed/da.xml
@@ -20,3 +24,7 @@ da:
   disclosure_ai: "Skrevet og oversat af AI. Hvert punkt linker til primærkilden. Ikke gennemgået af en redaktør."
   disclosure_reviewed: "Skrevet og oversat af AI. Hvert punkt linker til primærkilden. Ikke gennemgået af en redaktør."
   date_format: "%d.%m.%Y"
+  legend: "Hvor sikre er vi?"
+  legend_official: "Officiel: fra firmaet, myndigheden eller forfatterne"
+  legend_reported: "Rapporteret: fra et navngivet medie"
+  legend_unconfirmed: "Ubekræftet: rygte eller læk"

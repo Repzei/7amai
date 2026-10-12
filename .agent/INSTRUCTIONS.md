@@ -74,18 +74,19 @@ reviewed: false
 minutes: <udgavens læsetid, højst 7>
 other_lang_url: /da/<åååå>/<mm>/<dd>/
 items:
-  - { n: 1, anchor: "<anker>", signal: big, tracks: [build, europe], min: 1.5 }
-  # ... én linje pr. historie, samme rækkefølge som nedenfor, fx { n: 2, anchor: "...", signal: worth, tracks: [build], min: 1 }
+  - { n: 1, anchor: "<anker>", signal: big, tracks: [build, europe], min: 1.5, source: official, number: "52B", number_label: "active parameters" }
+  # ... én linje pr. historie, samme rækkefølge som nedenfor. `number` og `number_label` kun når der er et ægte nøgletal.
 ---
 
 ### 1. <Overskrift der siger hvad der skete> {#<anker>}
-<p class="item-meta"><span class="signal signal-big">Big deal</span><span class="track">Build</span><span class="track">Europe</span></p>
+<p class="item-meta"><span class="signal signal-big">Big deal</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1½ min</span></p>
+<div class="number"><b>52B</b><span>active parameters</span></div>
 
 <2-5 sætninger: hvad, hvem, tal (pris, kontekst, tilgængelighed), hvad det er bedre til i praksis.>
 
 > **So what:** <konkret konsekvens for læseren: hvad skal han gøre, holde øje med eller undgå.>
 
-Source: [<navn>](<url>)
+Source: [<domæne>](<url>) · <span class="tag tag-official">Official</span>
 {: .sources}
 
 ### 2. ...
@@ -93,18 +94,29 @@ Source: [<navn>](<url>)
 
 - Signal-klasser: `signal-big` "Big deal", `signal-worth` "Worth knowing", `signal-quick`
   "Quick hit". Spor-labels: "Build", "General", "Europe".
+- **Kildemærke** på hver kilde (STRATEGI 1.3): `tag-official` "Official" (fra firmaet, myndigheden
+  eller forfatterne selv: blog, release notes, dokumentation, lovtekst, forskningsartikel),
+  `tag-reported` "Reported" (et navngivet medie), `tag-unconfirmed` "Unconfirmed" (rygte eller læk;
+  sjældent, og så også sagt i teksten). Flere kilder adskilles med " · ". Brug domænet som linktekst.
+- **Ingen Big deal uden mindst én Official-kilde.** Mangler den, er historien højst Worth knowing.
+- **The number:** en `<div class="number">` kun når kilden giver et ægte, betydningsfuldt nøgletal
+  (pris, parametre, dato, beløb, score). Aldrig et tvunget eller udregnet tal; intet tal er bedre.
+  Første historie (lead) er den, der ændrer mest for læseren; den får gerne sit tal, hvis det findes.
+- Læsetid pr. historie står som sidste `track` i `item-meta` (fx "1 min", "½ min").
 - Alle historier har "So what". Er konsekvensen lille, så sig det kort og ærligt.
 - `{#anker}` er unikt, små bogstaver og bindestreger.
 - Efter sidste historie, kun hvis nødvendigt: `## Corrections` med hvad der var forkert, og hvor.
-- Tone: rolig, præcis, ingen hype. Ingen floskler ("game changer", "revolutionary",
-  "in a world where"). Benchmarks kun med kontekst.
+- Tone (STRATEGI 1.4): korte sætninger, tal frem for adjektiver, overskriften siger hvad der
+  skete, "So what" i bydeform, usikkerhed siges ærligt. Forbudt: "game changer", "revolutionary",
+  "in a world where", "let's dive in", udråbstegn. Benchmarks kun med kontekst.
 
 ### U5. Skriv den danske udgave
 Fil: `_da/<dato>-<samme-slug>.md`. Samme indhold, struktur, ankre og `items` som den engelske,
 skrevet som naturligt dansk (ikke ordret oversat), med æ, ø og å. Front matter:
 `other_lang_url: /<åååå>/<mm>/<dd>/`, `reviewed: false` (den danske er altid AI-mærket).
 Labels på dansk: "Stor nyhed" / "Værd at vide" / "Kort nyt", spor "Build" / "Generelt" /
-"Europa", "**Hvad betyder det:**" i stedet for "So what", "Kilde:" og `## Rettelser`.
+"Europa", "**Hvad betyder det:**" i stedet for "So what", "Kilde:", kildemærker "Officiel" /
+"Rapporteret" / "Ubekræftet" (samme CSS-klasser) og `## Rettelser`. Nøgletallets forklaring på dansk.
 
 ### U6. Pull request
 1. `git checkout -b issue/<dato>`, commit begge filer (`Udkast <dato>`), `git push -u origin issue/<dato>`.
@@ -117,7 +129,9 @@ Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen):
 - `{{DISCLOSURE}}` = den ikke-godkendte tekst.
 - `{{ISSUE_URL}}` = `https://7amai.com/<åååå>/<mm>/<dd>/`, `{{DA_URL}}` = `https://7amai.com/da/<åååå>/<mm>/<dd>/`
   (siderne er først live efter afsendelsen kl. 7; det er i orden).
-- `{{ITEMS}}` = alle historier. `{{MIN}}` = udgavens læsetid i minutter. Ingen `{{` må stå tilbage.
+- `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
+  `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, tekst, So what, kildemærke).
+  `{{COUNT}}` = fx "5 stories". `{{MIN}}` = udgavens læsetid i minutter. Ingen `{{` må stå tilbage.
 Gem som `/tmp/draft.html` og en ren tekstudgave `/tmp/draft.txt` (inkl. PR-URL'en øverst).
 Send: `node .agent/send-mail.mjs "[Draft] 7am AI · <d. mon>: <titel>" /tmp/draft.html /tmp/draft.txt`.
 

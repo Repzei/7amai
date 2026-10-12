@@ -15,6 +15,7 @@ layout: default
   <div class="issue-body">
     {{ content }}
   </div>
+  <p class="legend"><span>{{ t.legend }}</span><span class="tag tag-official">{{ t.legend_official }}</span><span class="tag tag-reported">{{ t.legend_reported }}</span><span class="tag tag-unconfirmed">{{ t.legend_unconfirmed }}</span></p>
   <nav class="issue-nav">
     {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">&larr; {{ page.previous.date | date: '%d.%m' }}</a>{% else %}<span></span>{% endif %}
     <a href="{{ t.home | relative_url }}">{{ t.all_issues }}</a>
