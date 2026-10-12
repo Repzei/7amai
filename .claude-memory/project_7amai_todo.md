@@ -34,7 +34,7 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - [ ] "7am, wherever you are": udsendelse kl. 7 i læserens tidszone (fase 1).
 - [ ] Henvisningsprogram, delbart opslag pr. dag, automatiske delekort med The number (fase 1).
 - [ ] Emnesider + "Shipped or not?" (fase 2, SEO).
-- [ ] Fjern `noindex`, når kvaliteten er bevist og tilmeldingen virker.
+- [ ] Fjern `noindex`, når kvaliteten er bevist og tilmeldingen virker. Google Search Console er BEKRÆFTET for 7amai.com (domæne-ejendom via DNS-TXT, 2026-10-12); indsend sitemap der, når noindex fjernes (jekyll-sitemap mangler endnu).
 - [ ] beehiiv revurderes ved ca. 1.000 læsere.
 
 ## Færdigt
@@ -42,6 +42,7 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - [x] 2026-10-09: strategi (STRATEGI.md), "The 7"-format, EN + DA, godkendelse via PR, AI-mærkning (EU AI Act art. 50(4)), CLAUDE.md + .claude-memory.
 - [x] 2026-10-10: identitet låst (STRATEGI 1.1-1.5), designudkast v2, v3 og v4.
 - [x] 2026-10-12: første rigtige udgave ude (PR #2 udkast, afsendt 07:14 AI-mærket; ca. 15 min startforsinkelse i skyen). Designudkast v5.
+
 
 
 
