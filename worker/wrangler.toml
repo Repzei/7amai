@@ -11,4 +11,5 @@ SEGMENT_DA = ""
 
 # Hemmeligheder sættes med `npx wrangler secret put <NAVN>` og ligger aldrig i repoet:
 #   RESEND_API_KEY   (Resend-nøgle med fuld adgang)
-#   SIGNING_SECRET   (lang tilfældig streng, fx fra `openssl rand -hex 32`)
+#   SIGNING_SECRET   (lang tilfældig streng)
+#   BROADCAST_TOKEN  (lang tilfældig streng; samme værdi lægges som network secret i 7am-ai-miljøet)

@@ -18,9 +18,46 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
     if (url.pathname === "/subscribe" && request.method === "POST") return subscribe(request, env, url, cors);
     if (url.pathname === "/confirm" && request.method === "GET") return confirm(url, env);
+    if (url.pathname === "/broadcast" && request.method === "POST") return broadcast(request, env);
     return new Response("Not found", { status: 404 });
   },
 };
+
+// Mindste adgang: agenten har ikke Resend-nøglen med fuld adgang. Den kan kun bede workeren
+// om at sende dagens udgave til et af 7am AI-segmenterne (BROADCAST_TOKEN som network secret).
+async function broadcast(request, env) {
+  const json = (status, body) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
+  const given = (request.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
+  if (!env.BROADCAST_TOKEN || !(await sameSecret(given, env.BROADCAST_TOKEN))) return json(401, { ok: false, error: "unauthorized" });
+
+  let b;
+  try { b = await request.json(); } catch { return json(400, { ok: false, error: "bad_request" }); }
+  const segment = b.lang === "da" ? env.SEGMENT_DA : b.lang === "en" ? env.SEGMENT_EN : "";
+  if (!segment || !b.subject || !b.html) return json(400, { ok: false, error: "missing_fields" });
+
+  const unsub = b.lang === "da" ? "Afmeld" : "Unsubscribe";
+  const footer = `<p style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#55627A;text-align:center;margin:16px 0;"><a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color:#55627A;">${unsub}</a></p>`;
+  const html = b.html.includes("{{{RESEND_UNSUBSCRIBE_URL}}}") ? b.html : b.html.replace(/<\/body>/i, `${footer}</body>`);
+  const text = `${b.text || ""}\n\n${unsub}: {{{RESEND_UNSUBSCRIBE_URL}}}`;
+
+  const res = await fetch("https://api.resend.com/broadcasts", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ segment_id: segment, from: env.FROM, subject: String(b.subject).slice(0, 200), html, text, name: String(b.name || b.subject).slice(0, 100), send: true }),
+  });
+  const out = await res.text();
+  return json(res.ok ? 200 : 502, res.ok ? { ok: true, resend: JSON.parse(out || "{}") } : { ok: false, error: "resend_failed", detail: out.slice(0, 300) });
+}
+
+// Sammenligner hemmeligheder uden at afsløre noget via svartid.
+async function sameSecret(a, b) {
+  const k = await hmacKey("cmp");
+  const [x, y] = await Promise.all([crypto.subtle.sign("HMAC", k, enc.encode(a)), crypto.subtle.sign("HMAC", k, enc.encode(b))]);
+  const ua = new Uint8Array(x), ub = new Uint8Array(y);
+  let d = 0;
+  for (let i = 0; i < ua.length; i++) d |= ua[i] ^ ub[i];
+  return d === 0;
+}
 
 async function subscribe(request, env, url, cors) {
   const json = (status, body) => new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json" } });
