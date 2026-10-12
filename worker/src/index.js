@@ -16,6 +16,10 @@ export default {
     };
 
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
+    // Uden hemmeligheder kører intet: et link signeret med en tom eller gætbar nøgle ville kunne forfalskes.
+    if (!env.SIGNING_SECRET || env.SIGNING_SECRET.length < 32 || !env.RESEND_API_KEY) {
+      return new Response(JSON.stringify({ ok: false, error: "not_configured" }), { status: 503, headers: { ...cors, "Content-Type": "application/json" } });
+    }
     if (url.pathname === "/subscribe" && request.method === "POST") return subscribe(request, env, url, cors);
     if (url.pathname === "/confirm" && request.method === "GET") return confirm(url, env);
     if (url.pathname === "/broadcast" && request.method === "POST") return broadcast(request, env);
