@@ -20,7 +20,7 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 1b. [x] **Format besluttet 2026-10-12:** kl. 7, alle 7 dage, højst 7 minutter; antal historier varierer. Vejledning, skabeloner, routines (daglig cron) og STRATEGI opdateret. Weekend-formater ("week in 7", "7 to try") droppet for nu.
 1c. [x] **Identitet besluttet 2026-10-12:** First Light, ren version ("version 2"), låst i STRATEGI 1.1. Vej: v6 tre koncepter -> Jesper valgte First Light -> v7 fire varianter -> v8 hybrid + test-side -> Jesper valgte den rene uden test.
 1d. [x] **Finpudset version 2 (v9) GODKENDT af Jesper 2026-10-12** ("ser godt ud for nu"), https://claude.ai/artifact/2vZsg6jDCGL7GHYUrxmDvq: konstrueret mærke + 16 px-version, horisont-læselinje, solopgangs-animation, lead-historie + The number, mail, delekort, mørk tilstand, farve- og typespecifikation.
-2. [ ] **Byg v9 ind, trin for trin (startet 2026-10-12, hvert trin committes for sig):** (a) [ ] udseende: style.css-tokens (First Light), skrift Schibsted Grotesk + Newsreader, SVG-logo + favicon i layout; (b) [ ] udgave-side: horisont-læselinje, lead-historie, Official/Reported-mærker; (c) [ ] mailskabelon i nyt design; (d) [ ] agentens vejledning (Official/Reported/Unconfirmed, The number, regel om Big deal). Oprindelig liste:: forside, udgave-sider (lead-historie, The number, læselinje, spor-filter, Official/Reported/Unconfirmed), dansk udgave, tegnet SVG-mærke + favicon, mail (til de skrifttyper Gmail/Outlook viser, test lys/mørk).
+2. [ ] **Byg v9 ind, trin for trin (startet 2026-10-12, hvert trin committes for sig):** (a) [x] udseende (2026-10-12, commit 13efc50, live og tjekket): style.css-tokens (First Light), skrift Schibsted Grotesk + Newsreader, SVG-logo i layout, assets/favicon.svg; (b) [ ] udgave-side: horisont-læselinje, lead-historie, Official/Reported-mærker; (c) [ ] mailskabelon i nyt design; (d) [ ] agentens vejledning (Official/Reported/Unconfirmed, The number, regel om Big deal). Oprindelig liste:: forside, udgave-sider (lead-historie, The number, læselinje, spor-filter, Official/Reported/Unconfirmed), dansk udgave, tegnet SVG-mærke + favicon, mail (til de skrifttyper Gmail/Outlook viser, test lys/mørk).
 3. [ ] **Opdatér agentens vejledning** (`.agent/INSTRUCTIONS.md`): The number (kun ægte tal), læsetid pr. historie, historie 1 = den der ændrer mest, kildemærker Official/Reported/Unconfirmed, regel "ingen Big deal uden Official", tone-stilguide (STRATEGI 1.4).
 4. [ ] **Følg de første 1-2 ugers udgaver** (første ude 12. okt.): kvalitet, længde, kilder, tidspunkt.
 5. [ ] **Fase 0 del 3: tilmelding** (dobbelt opt-in via Resend, afmeldingslink, privatlivspolitik). Kræver en lille backend (statisk side kan ikke selv gemme tilmeldinger).
@@ -41,6 +41,7 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - [x] 2026-10-09: strategi (STRATEGI.md), "The 7"-format, EN + DA, godkendelse via PR, AI-mærkning (EU AI Act art. 50(4)), CLAUDE.md + .claude-memory.
 - [x] 2026-10-10: identitet låst (STRATEGI 1.1-1.5), designudkast v2, v3 og v4.
 - [x] 2026-10-12: første rigtige udgave ude (PR #2 udkast, afsendt 07:14 AI-mærket; ca. 15 min startforsinkelse i skyen). Designudkast v5.
+
 
 
 
