@@ -1,0 +1,31 @@
+{%- assign t = site.data.i18n[include.lang] -%}
+<form class="signup" id="signup" action="{{ site.signup_endpoint }}/subscribe" method="post" novalidate>
+  <label for="signup-email" class="signup-label">{{ t.signup_label }}</label>
+  <div class="signup-row">
+    <input id="signup-email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="{{ t.signup_placeholder }}" />
+    <button type="submit">{{ t.signup_button }}</button>
+  </div>
+  <!-- Honeypot: skjult for mennesker, bots udfylder det. -->
+  <div class="signup-hp" aria-hidden="true"><label for="signup-website">Website</label><input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
+  <input type="hidden" name="lang" value="{{ include.lang }}" />
+  <p class="signup-note">{{ t.signup_note }}</p>
+  <p class="signup-msg" id="signup-msg" role="status" aria-live="polite" hidden></p>
+</form>
+<script>
+(function () {
+  var f = document.getElementById('signup'), msg = document.getElementById('signup-msg'), btn = f.querySelector('button');
+  var text = { ok: {{ t.signup_ok | jsonify }}, email: {{ t.signup_err_email | jsonify }}, err: {{ t.signup_err | jsonify }} };
+  function show(kind) { msg.textContent = text[kind]; msg.className = 'signup-msg signup-' + (kind === 'ok' ? 'ok' : 'err'); msg.hidden = false; }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = f.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { show('email'); f.email.focus(); return; }
+    btn.disabled = true;
+    fetch(f.action, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, lang: f.lang.value, website: f.website.value }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok, j: j }; }); })
+      .then(function (res) { if (res.ok) { show('ok'); f.reset(); } else { show(res.j && res.j.error === 'invalid_email' ? 'email' : 'err'); } })
+      .catch(function () { show('err'); })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>

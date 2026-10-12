@@ -3,6 +3,7 @@ description: "The AI news that matters. 7am, 7 days a week, in under 7 minutes."
 lang: en
 url: https://7amai.com
 baseurl: ""
+signup_endpoint: "https://7amai-signup.jesperkhl.workers.dev"
 timezone: Europe/Copenhagen
 # Udgaven dateres 07:00 men bygges foer; uden dette ville Jekyll skjule den som "fremtidig".
 future: true
