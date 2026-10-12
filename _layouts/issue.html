@@ -4,13 +4,13 @@ layout: default
 {%- assign t = site.data.i18n[page.lang] -%}
 {%- if page.minutes -%}{%- assign mins = page.minutes -%}{%- else -%}{%- assign words = content | strip_html | number_of_words -%}{%- assign mins = words | divided_by: 230 | plus: 1 -%}{%- endif -%}
 <article class="issue" id="issue">
-  <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: t.date_format }}</time> · 07:00 · {{ mins }} min</p>
+  <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: t.date_format }}</time> · 07:00 · {{ mins | round }} min</p>
   <h1>{{ page.title }}</h1>
   {% if page.summary %}<p class="issue-lead">{{ page.summary }}</p>{% endif %}
   <p class="disclosure{% if page.reviewed %} disclosure-reviewed{% endif %}">{% if page.reviewed %}{{ t.disclosure_reviewed }}{% else %}{{ t.disclosure_ai }}{% endif %}</p>
   <div class="hz-wrap" aria-hidden="true">
     <div class="hz" id="hz"><span class="hz-line"></span><span class="hz-fill"></span><span class="hz-sun"></span></div>
-    <div class="hz-txt"><span id="hz-clock">0:00</span><span>{{ mins }}:00</span></div>
+    <div class="hz-txt"><span id="hz-clock">0:00</span><span>{{ mins | round }}:00</span></div>
   </div>
   <div class="issue-body">
     {{ content }}
