@@ -10,12 +10,15 @@
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.summary | default: t.tagline }}" />
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ t.feed | relative_url }}" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23E8572A'/><text x='16' y='22' font-family='monospace' font-size='15' font-weight='700' text-anchor='middle' fill='white'>7</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}" />
 </head>
 <body>
   <header class="site-head">
-    <a class="logo" href="{{ t.home | relative_url }}"><span class="logo-mark">7am</span> AI</a>
+    <a class="logo" href="{{ t.home | relative_url }}" aria-label="7am AI"><svg class="mark" viewBox="0 0 120 100" aria-hidden="true"><path d="M59 66 A28 28 0 0 1 115 66 Z" fill="#FF8A2A"/><polygon points="8,20 64,20 64,34 45,66 27,66 46,34 8,34" fill="currentColor"/><rect x="4" y="66" width="112" height="7" rx="3.5" fill="currentColor"/></svg><span>7am AI</span></a>
     <nav class="head-nav">
       {%- if page.other_lang_url -%}
       <a class="head-link" href="{{ page.other_lang_url | relative_url }}" hreflang="{% if lang == 'en' %}da{% else %}en{% endif %}">{{ t.other_lang_label }}</a>
