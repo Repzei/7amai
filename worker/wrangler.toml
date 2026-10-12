@@ -6,8 +6,8 @@ compatibility_date = "2026-09-01"
 SITE = "https://7amai.com"
 FROM = "7am AI <brief@7amai.com>"
 # Segment-ID'er fra Resend (Audience > Segments). Ikke hemmelige; sættes, når segmenterne er oprettet.
-SEGMENT_EN = ""
-SEGMENT_DA = ""
+SEGMENT_EN = "9df4ffd3-4a15-4e18-a2ec-15b3ad3ff93e"
+SEGMENT_DA = "dc0facb5-533c-4b69-babc-9e0017206d5d"
 
 # Hemmeligheder sættes med `npx wrangler secret put <NAVN>` og ligger aldrig i repoet:
 #   RESEND_API_KEY   (Resend-nøgle med fuld adgang)
