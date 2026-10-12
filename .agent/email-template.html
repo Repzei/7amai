@@ -3,54 +3,88 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="color-scheme" content="light dark" />
+<meta name="color-scheme" content="light only" />
+<meta name="supported-color-schemes" content="light" />
 <title>7am AI</title>
 </head>
-<body style="margin:0;padding:0;background:#FAF8F5;">
+<body style="margin:0;padding:0;background:#EEF3FA;">
 <div style="display:none;max-height:0;overflow:hidden;">{{PREHEADER}}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAF8F5;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EEF3FA;">
 <tr><td align="center" style="padding:24px 12px;">
 {{BANNER}}
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border:1px solid #E7E3DD;border-radius:12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1A1A1A;">
-<tr><td style="padding:24px 24px 8px;">
-  <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#B83F17;">7am AI · {{DATE}} · {{MIN}} min read</div>
-  <h1 style="font-size:22px;line-height:1.25;margin:8px 0 6px;">{{TITLE}}</h1>
-  <p style="font-size:15px;line-height:1.55;color:#5E5A55;margin:0 0 12px;">{{LEAD}}</p>
-  <p style="font-size:12px;line-height:1.5;color:#5E5A55;margin:0;padding:6px 10px;border:1px dashed #E7E3DD;border-radius:6px;">{{DISCLOSURE}}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border-radius:16px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#0E1A33;">
+<tr><td style="padding:22px 24px 0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td style="vertical-align:middle;"><a href="{{SITE_URL}}" style="text-decoration:none;color:#0E1A33;"><img src="https://7amai.com/assets/logo-mail.png" width="40" height="40" alt="" style="display:inline-block;vertical-align:middle;border:0;border-radius:9px;"><span style="font-size:19px;font-weight:800;letter-spacing:-0.3px;vertical-align:middle;margin-left:8px;">7am AI</span></a></td>
+    <td align="right" style="vertical-align:middle;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;">{{DATE}} · <span style="color:#B4500A;">07:00</span></td>
+  </tr></table>
 </td></tr>
-<tr><td style="padding:8px 24px 8px;">
+<tr><td style="padding:14px 24px 0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td style="height:3px;line-height:3px;font-size:0;background:#0E1A33;">&nbsp;</td>
+    <td width="18" style="width:18px;height:3px;line-height:3px;font-size:0;background:#FF8A2A;">&nbsp;</td>
+  </tr></table>
+</td></tr>
+<tr><td style="padding:18px 24px 6px;">
+  <div style="font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;">{{COUNT}} · {{MIN}} min read</div>
+  <h1 style="font-size:24px;line-height:1.15;font-weight:800;letter-spacing:-0.4px;margin:8px 0 8px;color:#0E1A33;">{{TITLE}}</h1>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.5;color:#55627A;margin:0 0 12px;">{{LEAD}}</p>
+  <p style="display:inline-block;font-size:12px;line-height:1.4;font-weight:600;color:#55627A;margin:0;padding:5px 12px;border:1px solid #D3DCEA;border-radius:999px;">{{DISCLOSURE}}</p>
+</td></tr>
+<tr><td style="padding:10px 24px 4px;">
 {{ITEMS}}
 </td></tr>
-<tr><td style="padding:16px 24px 28px;">
-  <a href="{{ISSUE_URL}}" style="display:inline-block;background:#1A1A1A;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;">Read the full issue</a>
-  <span style="font-size:13px;color:#8A857E;margin-left:12px;"><a href="{{DA_URL}}" style="color:#8A857E;">Dansk udgave</a></span>
+<tr><td style="padding:14px 24px 26px;">
+  <a href="{{ISSUE_URL}}" style="display:inline-block;background:#FF8A2A;color:#0E1A33;text-decoration:none;font-weight:800;font-size:15px;padding:12px 22px;border-radius:999px;">Read it on 7amai.com</a>
+  <span style="font-size:13px;margin-left:12px;"><a href="{{DA_URL}}" style="color:#55627A;">Dansk udgave</a></span>
 </td></tr>
 </table>
-<p style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;color:#8A857E;margin:16px 0 0;">7am AI · every day at 7am · under 7 minutes · <a href="{{SITE_URL}}" style="color:#8A857E;">archive</a></p>
+<p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:#55627A;margin:16px 0 0;">7am AI · every day at 7am · under 7 minutes · <a href="{{SITE_URL}}" style="color:#55627A;">archive</a></p>
 </td></tr>
 </table>
 </body>
 </html>
 
 <!--
-BYGGEKLODSER
+BYGGEKLODSER (First Light). Mailen bruger kun skrifttyper, der findes på alle enheder
+(Helvetica/Arial til overskrifter og mærker, Georgia til brødtekst), og logoet er et PNG,
+fordi Gmail ikke viser SVG. Alt på solorange og guld har natblå tekst (#0E1A33).
 
-{{ITEMS}} = de 7 punkter i raekkefoelge, hvert punkt saadan:
+{{COUNT}} = fx "5 stories" (dansk mail: "5 historier"). {{MIN}} = udgavens læsetid.
 
-<p style="font-size:15px;line-height:1.5;margin:14px 0 4px;"><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;font-weight:700;color:{{SIGNAL_COLOR}};text-transform:uppercase;letter-spacing:0.04em;">{{NR}} · {{SIGNAL}}</span><br><a href="{{ISSUE_URL}}#{{ANKER}}" style="color:#1A1A1A;font-weight:700;text-decoration:none;">{{OVERSKRIFT}}</a><br>{{EN_TIL_TO_SAETNINGER}}<br><span style="color:#B83F17;">So what: {{SO_WHAT}}</span></p>
+{{ITEMS}} = historierne i rækkefølge, hver som ét blok. Mellem blokkene en streg:
+<div style="height:1px;line-height:1px;font-size:0;background:#D3DCEA;margin:4px 0;">&nbsp;</div>
 
-{{SIGNAL}} er "Big deal", "Worth knowing" eller "Quick hit". {{SIGNAL_COLOR}}: Big deal #E8572A, Worth knowing #B83F17, Quick hit #8A857E.
-Har udgaven en "Corrections"-sektion, tilfoejes den efter punkt 7 som et almindeligt afsnit med overskriften "Corrections".
+Én historie:
+<div style="padding:14px 0;">
+  <span style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;border-radius:999px;{{SIGNAL_STYLE}}">{{SIGNAL}}</span>
+  <span style="font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;margin-left:6px;">{{MIN_ITEM}} min</span>
+  {{NUMBER}}
+  <a href="{{ISSUE_URL}}#{{ANKER}}" style="display:block;font-size:{{H_SIZE}};line-height:1.25;font-weight:800;color:#0E1A33;text-decoration:none;margin:8px 0 6px;">{{OVERSKRIFT}}</a>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;margin:0 0 8px;color:#0E1A33;">{{EN_TIL_TO_SAETNINGER}}</p>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;margin:0 0 8px;padding:8px 12px;background:#FFF4EA;border-left:3px solid #FF8A2A;color:#0E1A33;"><strong style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">So what:</strong> {{SO_WHAT}}</p>
+  <span style="font-size:11px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;color:{{SRC_COLOR}};">{{KILDEMÆRKE}} · {{DOMÆNE}}</span>
+</div>
+
+{{SIGNAL_STYLE}}:
+  Big deal      = background:#FFC447;color:#0E1A33;padding:3px 9px;
+  Worth knowing = border:1.5px solid #FF8A2A;color:#B4500A;padding:1.5px 7.5px;
+  Quick hit     = border:1.5px solid #D3DCEA;color:#55627A;padding:1.5px 7.5px;
+{{H_SIZE}}: første historie (lead) 21px, resten 17px.
+{{NUMBER}}: kun på lead-historien og kun med et ægte nøgletal fra kilden, ellers tom:
+  <div style="font-size:40px;line-height:1;font-weight:800;letter-spacing:-1px;color:#0E1A33;margin:10px 0 0;">{{TAL}}<span style="display:block;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;font-weight:700;margin-top:4px;">{{HVAD_TALLET_ER}}</span></div>
+{{KILDEMÆRKE}}: Official (SRC_COLOR #B4500A), Reported eller Unconfirmed (SRC_COLOR #55627A).
+Dansk mail: "Hvad betyder det:" i stedet for "So what:", "Officiel/Rapporteret/Ubekræftet".
+Har udgaven "Corrections", tilføjes de efter sidste historie som en almindelig blok med overskriften "Corrections".
 
 {{DISCLOSURE}}: ikke godkendt = "Written by AI. Every claim links to its primary source. Not reviewed by a human editor."
                 godkendt     = "Reviewed by Jesper. Written with AI; every claim links to its primary source."
 
 {{BANNER}} er tom i den endelige mail. I udkast-mailen:
-
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 0 12px;"><tr><td style="background:#1A1A1A;border-radius:12px;padding:16px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#FFFFFF;">
-<div style="font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#F58A65;">Draft · sends at 07:00</div>
-<p style="font-size:14px;line-height:1.5;margin:6px 0 12px;">Merge the pull request before 07:00 and this issue goes out as "Reviewed by Jesper". You can edit the text in the PR first. If you do nothing, it goes out at 07:00 labelled as AI-written.{{FREDAG}}</p>
-<a href="{{PR_URL}}" style="display:inline-block;background:#E8572A;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:10px 18px;border-radius:8px;">Approve on GitHub</a>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 0 12px;"><tr><td style="background:#0E1A33;border-radius:14px;padding:16px 20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#FFFFFF;">
+<div style="font-size:12px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;color:#FFC447;">Draft · sends at 07:00</div>
+<p style="font-size:14px;line-height:1.5;margin:6px 0 12px;color:#FFFFFF;">Merge the pull request before 07:00 and this issue goes out as "Reviewed by Jesper". You can edit the text in the PR first. If you do nothing, it goes out at 07:00 labelled as AI-written.{{FREDAG}}</p>
+<a href="{{PR_URL}}" style="display:inline-block;background:#FF8A2A;color:#0E1A33;text-decoration:none;font-weight:800;font-size:15px;padding:10px 18px;border-radius:999px;">Approve on GitHub</a>
 </td></tr></table>
 
 {{FREDAG}} (kun fredag): " Want to add Jesper's pick? Add a '## Jesper's pick' section at the bottom of the file in the PR."
