@@ -1,0 +1,14 @@
+name = "7amai-signup"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+SITE = "https://7amai.com"
+FROM = "7am AI <brief@7amai.com>"
+# Segment-ID'er fra Resend (Audience > Segments). Ikke hemmelige; sættes, når segmenterne er oprettet.
+SEGMENT_EN = ""
+SEGMENT_DA = ""
+
+# Hemmeligheder sættes med `npx wrangler secret put <NAVN>` og ligger aldrig i repoet:
+#   RESEND_API_KEY   (Resend-nøgle med fuld adgang)
+#   SIGNING_SECRET   (lang tilfældig streng, fx fra `openssl rand -hex 32`)

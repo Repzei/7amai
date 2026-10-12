@@ -24,7 +24,7 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
    **v9 ER FULDT BYGGET IND 2026-10-12.** Næste udgave (13. okt. kl. 6/7) er den første med det nye design i mailen og de nye mærker. Tjek udkast-mailen og udgaven i morgen. Oprindelig liste:: forside, udgave-sider (lead-historie, The number, læselinje, spor-filter, Official/Reported/Unconfirmed), dansk udgave, tegnet SVG-mærke + favicon, mail (til de skrifttyper Gmail/Outlook viser, test lys/mørk).
 3. [ ] **Opdatér agentens vejledning** (`.agent/INSTRUCTIONS.md`): The number (kun ægte tal), læsetid pr. historie, historie 1 = den der ændrer mest, kildemærker Official/Reported/Unconfirmed, regel "ingen Big deal uden Official", tone-stilguide (STRATEGI 1.4).
 4. [ ] **Følg de første 1-2 ugers udgaver** (første ude 12. okt.): kvalitet, længde, kilder, tidspunkt.
-5. [ ] **Fase 0 del 3: tilmelding** (dobbelt opt-in via Resend, afmeldingslink, privatlivspolitik). Kræver en lille backend (statisk side kan ikke selv gemme tilmeldinger).
+5. [ ] **Fase 0 del 3: tilmelding (startet 2026-10-12).** Valg: Cloudflare Worker (gratis, ingen database, signerede bekræftelseslinks), ny Resend-nøgle med fuld adgang (network secret) så agenten kan sende Broadcasts med Resends indbyggede afmelding, dataansvarlig "Jesper Larsen, privacy@7amai.com". Trin: (a) [x] worker-kode `worker/src/index.js` + `worker/wrangler.toml` (2026-10-12): POST /subscribe (honeypot `website`, mail-validering, signeret HMAC-token, bekræftelsesmail EN/DA via Resend) og GET /confirm (72 t gyldighed, opretter kontakt i SEGMENT_EN/DA, PATCH unsubscribed=false hvis den findes, redirect til /welcome/ eller /da/welcome/ med ?s=invalid|expired|error). Ingen npm-pakker. 10/10 lokale tests (scratch worker-test.mjs med falsk Resend). Ikke deployet endnu: kræver Cloudflare-konto, `npx wrangler login`, secrets RESEND_API_KEY + SIGNING_SECRET, segment-ID'er i wrangler.toml. `worker` er udelukket fra Jekyll. (b) [ ] sider: velkommen + privatlivspolitik (EN/DA); (c) [ ] tilmeldingsformular på forsiderne; (d) [ ] agent: afsendelse som Broadcast til EN/DA-lister. Jesper: Cloudflare-konto + `wrangler login`, ny Resend-nøgle (fuld adgang) i cloud-miljøet + som worker-secret, to lister (EN/DA) i Resend, mail-videresendelse for privacy@7amai.com. Oprindelig: (dobbelt opt-in via Resend, afmeldingslink, privatlivspolitik). Kræver en lille backend (statisk side kan ikke selv gemme tilmeldinger).
 
 ## Jesper skal selv
 - [ ] Varemærketjek af "7am" (EUIPO, USPTO, IP Australia): "7am" er et australsk dagligt nyhedspodcast (Schwartz Media 2019, Solstice Media 2025). Ikke juridisk rådgivning.
@@ -42,6 +42,8 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - [x] 2026-10-09: strategi (STRATEGI.md), "The 7"-format, EN + DA, godkendelse via PR, AI-mærkning (EU AI Act art. 50(4)), CLAUDE.md + .claude-memory.
 - [x] 2026-10-10: identitet låst (STRATEGI 1.1-1.5), designudkast v2, v3 og v4.
 - [x] 2026-10-12: første rigtige udgave ude (PR #2 udkast, afsendt 07:14 AI-mærket; ca. 15 min startforsinkelse i skyen). Designudkast v5.
+
+
 
 
 
