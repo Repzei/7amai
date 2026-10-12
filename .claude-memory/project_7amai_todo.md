@@ -1,4 +1,4 @@
----
+﻿---
 name: project-7amai-todo
 description: "AKTIV to-do for 7am AI (adskilt fra Gainfully) - START HER: status, næste skridt, åbne punkter. Opdateres løbende med [x]"
 metadata:
@@ -16,10 +16,11 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
 ## Næste skridt
-1. [ ] **Jesper: godkend designudkast v4** (https://claude.ai/artifact/2vZsg6jDCGL7GHYUrxmDvq) eller sig hvad der skal ændres. Jesper sagde 2026-10-10 "ser bedre ud", men har ikke godkendt endeligt.
-2. [ ] **Byg v4 ind** (når godkendt): forside, udgave-sider (lead-historie, The number, læselinje, spor-filter, Official/Reported/Unconfirmed), dansk udgave, tegnet SVG-mærke + favicon, mail (til de skrifttyper Gmail/Outlook viser, test lys/mørk).
+1. [ ] **Jesper: godkend designudkast v5** (https://claude.ai/artifact/2vZsg6jDCGL7GHYUrxmDvq). v5 (2026-10-12, efter Jespers feedback): logo ca. 60 % mindre på forsiden, kraftigere "am" i små logoer, "denne uge"-tal (ægte tal: kilder, % official, rettelser) og tæt liste over seneste udgaver (inspireret af newsletter.alphasignal.ai, men kun ægte data), skiftende "Picked for builders/Europe/everyone", "Get the 7"-knap rettet.
+1b. [ ] **Beslut: 7 dage om ugen?** Jespers idé 2026-10-12. Forslag: hverdage The 7, lørdag "The week in 7" (ugens bedste + opfølgning), søndag "7 to try" (værktøjer/guides), weekend kan fravælges. Kræver 2 ekstra kørsler/uge. Ikke besluttet.
+2. [ ] **Byg det godkendte design ind**: forside, udgave-sider (lead-historie, The number, læselinje, spor-filter, Official/Reported/Unconfirmed), dansk udgave, tegnet SVG-mærke + favicon, mail (til de skrifttyper Gmail/Outlook viser, test lys/mørk).
 3. [ ] **Opdatér agentens vejledning** (`.agent/INSTRUCTIONS.md`): The number (kun ægte tal), læsetid pr. historie, historie 1 = den der ændrer mest, kildemærker Official/Reported/Unconfirmed, regel "ingen Big deal uden Official", tone-stilguide (STRATEGI 1.4).
-4. [ ] **Første rigtige udgaver mandag 12. okt.**: tjek udkast-mail kl. 6, afsendelse kl. 7, kvalitet og længde. Følg 1-2 uger.
+4. [ ] **Følg de første 1-2 ugers udgaver** (første ude 12. okt.): kvalitet, længde, kilder, tidspunkt.
 5. [ ] **Fase 0 del 3: tilmelding** (dobbelt opt-in via Resend, afmeldingslink, privatlivspolitik). Kræver en lille backend (statisk side kan ikke selv gemme tilmeldinger).
 
 ## Jesper skal selv
@@ -37,3 +38,6 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - [x] 2026-10-08/09: prototype, domæne 7amai.com + HTTPS, Resend (network secret), routines.
 - [x] 2026-10-09: strategi (STRATEGI.md), "The 7"-format, EN + DA, godkendelse via PR, AI-mærkning (EU AI Act art. 50(4)), CLAUDE.md + .claude-memory.
 - [x] 2026-10-10: identitet låst (STRATEGI 1.1-1.5), designudkast v2, v3 og v4.
+- [x] 2026-10-12: første rigtige udgave ude (PR #2 udkast, afsendt 07:14 AI-mærket; ca. 15 min startforsinkelse i skyen). Designudkast v5.
+
+
