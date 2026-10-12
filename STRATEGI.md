@@ -28,19 +28,25 @@ Hvert punkt får et **signal-mærke**: `Big deal` · `Worth knowing` · `Quick h
 Identitet kommer fra genkendelige elementer, der bruges ens hvert eneste sted (side, mail,
 sociale medier, delekort), ikke fra farverne alene:
 
-1. **Mærket "7am":** et rødt 7-tal med et lille "am" ved siden af. Bruges som logo, favicon,
-   profilbillede og på delekort. Aldrig et nøgent 7-tal (7-Eleven, 7UP og tv-kanaler ejer det).
-2. **Tidsstemplet "07:00"** i mono i toppen af alt, fx "Mon 12 Oct · 07:00".
-3. **Nummererede historier og 7-minutters-linjen:** store tal foran hver historie (rødt ved
-   Big deal) og en læselinje, der viser udgavens læsetid op til 7:00.
-4. **Signal-mærkerne** Big deal (rød flade), Worth knowing (rød kant), Quick hit (grå kant).
+1. **Mærket "First Light":** et 7-tal, der står på en horisont, med solen på vej op bag sig.
+   Bruges som logo, favicon, profilbillede og på delekort. Aldrig et nøgent 7-tal (7-Eleven, 7UP)
+   og aldrig "7am" i en cirkel (det australske podcast "7am" bruger en ring).
+2. **Tidsstemplet "07:00"** i toppen af alt, fx "Mon 12 Oct · 07:00".
+3. **Horisont-læselinjen:** en tynd horisont, hvor solen bevæger sig, mens man læser, op til
+   udgavens læsetid (højst 7:00). Nummererede historier (solfarvet tal ved Big deal).
+4. **Signal-mærkerne** Big deal (guld flade), Worth knowing (solorange kant), Quick hit (grå kant).
 5. **Kildelinjen** ved hver historie med Official / Reported / Unconfirmed.
 
-Design: retning "B + C" (godkendt af Jesper 9. okt. 2026): hvid papirflade, sort blæk, én
-signal-rød, store smalle tal (Archivo), brødtekst i serif (Source Serif 4), kilder og klokkeslæt
-i mono (IBM Plex Mono). Rød bruges kun til mærket, Big deal og officielle kilder.
-Det store 7-tal vises kun på forsiden på computer; på mobil er det ca. 40 % og står ved siden af
-overskriften, så tilmeldingen er synlig uden scroll; udgave-sider har intet stort 7-tal.
+Design: **First Light, ren version ("version 2")**, endeligt valgt af Jesper 12. okt. 2026.
+Retro-varianten (70'er-sol i bånd) blev fravalgt til hverdag: fed, men "som en meme-coin, den
+holder ikke ved"; den rene er fremtidssikret. 70'er-solen må bruges til særlige øjeblikke
+(merch, jubilæumsudgave, kampagner).
+- Farver (lys = morgen): natblå blæk #0E1A33, morgenhimmel #EEF3FA, papir #FFFFFF, sol #FF8A2A,
+  sol-tekst #B4500A, guld #FFC447 (Big deal), dis #55627A (dæmpet tekst), horisont #D3DCEA.
+- Mørk tilstand = nattehimlen før solopgang: #0E1A33 baggrund, #16233F flader, #EAF0F8 tekst,
+  sol-tekst #FFA366. Solen beholder sine farver.
+- Skrift: Schibsted Grotesk (overskrifter, mærker, tal) og Newsreader (brødtekst).
+- Solorange og guld er kun til mærket, Big deal, officielle kilder og den primære knap.
 
 ### 1.2 "7am, wherever you are"
 
@@ -72,8 +78,9 @@ de tre mærker.
 
 ### 1.5 Tilgængelighed
 
-Kontrast mindst 4,5:1 i begge temaer for al tekst. Big deal-mærket har hvid tekst i lys
-tilstand og mørk tekst i mørk tilstand (hvid på lys rød er kun 3,1:1).
+Kontrast mindst 4,5:1 i begge temaer for al tekst. Alt på solorange og guld har natblå tekst
+(hvid på solorange er kun 2,35:1). Målt: sol-tekst på morgenhimmel 4,6:1, på papir 5,1:1,
+natblå på guld 10,9:1, sol-tekst i mørk tilstand 7,9:1.
 
 ## 2. Læsere og spor
 
@@ -124,8 +131,8 @@ nyhedsbrevet åbnes for andre.)
 ## 6. Design (UI)
 
 - En identitet, man genkender på et halvt sekund: de fem faste kendetegn i afsnit 1.1.
-- **Forside:** stort rødt 7-tal (kun computer), "Seven AI stories. Seven minutes. Ready at
-  seven.", tilmelding over folden, dagens udgave som eksempel.
+- **Forside:** mærket, "The AI news that matters, before your day begins.", tilmelding over
+  folden, dagens udgave som eksempel.
 - **Udgave-side:** de 7 punkter med signal-mærke, "So what", kilde og del-link pr. punkt.
 - **Mail:** mobil først, mørk tilstand, læsbar på 7 minutter, ét klik til hvert punkt.
 - Lys og mørk tilstand, ingen vandret scroll på 375 px, hurtig (ingen tunge scripts).
@@ -185,7 +192,7 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 - Tre spor, som læseren selv vælger (alle får alt som udgangspunkt)
 - AI-mærket som standard, "Reviewed by Jesper" når han når at godkende
 - Mål: indtægt via sponsorer
-- Design "B + C" med de fem faste kendetegn, mærket "7am" (aldrig nøgent 7-tal), tone efter 1.4
+- Design: First Light, ren version (Jesper 12. okt. 2026), med de fem faste kendetegn; tone efter 1.4
 - Kilder mærkes Official / Reported / Unconfirmed; ingen Big deal uden Official-kilde
 - "7am, wherever you are": udsendelse i læserens tidszone fra fase 1
 - Kontrast mindst 4,5:1 i begge temaer
