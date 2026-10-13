@@ -32,6 +32,8 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: "The 7" (se
 | `.agent/send-mail.mjs` | Afsendelse via Resend |
 | `.agent/sent.log` | Datoer der er sendt (idempotens) |
 | `.claude-memory/` | Kopi af Claude-memory for projektet + `restore-memory.ps1` |
+| `.claude/settings.json`, `.claude/hooks/guard.mjs` | Hårde regler (PreToolUse-hook), kører også i cloud-routinen: "Reviewed by Jesper" kun ved Jespers merge før kl. 7, ingen agent-merge før kl. 7, mail uden em dash og `{{`, Resend kun via send-mail.mjs. Test: `GUARD_NOW=<iso>` simulerer tidspunktet |
+| `.agent/EDITORIAL.md` | Jespers 9 redaktionelle kriterier (redaktørkontrol, trin U6) |
 | `STRATEGI.md` | Mission, identitet "The 7", spor, redaktionel model, faser. Læs før større ændringer |
 
 ## Ufravigelige regler

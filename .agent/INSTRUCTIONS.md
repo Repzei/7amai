@@ -21,6 +21,10 @@ Fælles regler:
 - GitHub: brug KUN REST via `gh api` (GraphQL er blokeret i sandboxen, så `gh pr create/list/merge` fejler med 403).
   Repo: `Repzei/7amai`.
 - Dato i dansk tid: `TZ=Europe/Copenhagen date +%F`, ugedag `+%u`, time `+%H`.
+- Hårde regler håndhæves af `.claude/hooks/guard.mjs` og blokerer handlingen med en forklaring:
+  `reviewed: true` kun når Jesper har merget før kl. 07:00, ingen merge før kl. 07:00, ingen mail
+  med em/en dash eller `{{`, Resend kun via `send-mail.mjs`, ingen em/en dash i tekstfiler.
+  Bliver du blokeret: ret årsagen. Prøv aldrig at komme uden om reglen.
 
 ---
 
