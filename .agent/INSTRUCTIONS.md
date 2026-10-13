@@ -71,6 +71,7 @@ title: "<Dagens vigtigste historie i én sætning, maks ca. 70 tegn>"
 summary: "<1-2 sætninger: hvad du skal vide i dag>"
 date: <dato> 07:00:00 +0200   # +0100 i vintertid (fra sidste søndag i oktober)
 reviewed: false
+checked: false   # sættes til true i U6, når redaktørkontrollen er gennemført
 minutes: <udgavens læsetid, højst 7>
 other_lang_url: /da/<åååå>/<mm>/<dd>/
 items:
@@ -113,20 +114,27 @@ Source: [<domæne>](<url>) · <span class="tag tag-official">Official</span>
 ### U5. Skriv den danske udgave
 Fil: `_da/<dato>-<samme-slug>.md`. Samme indhold, struktur, ankre og `items` som den engelske,
 skrevet som naturligt dansk (ikke ordret oversat), med æ, ø og å. Front matter:
-`other_lang_url: /<åååå>/<mm>/<dd>/`, `reviewed: false` (den danske er altid AI-mærket).
+`other_lang_url: /<åååå>/<mm>/<dd>/`, `reviewed: false` (den danske er altid AI-mærket), `checked: false` (sættes i U6).
 Labels på dansk: "Stor nyhed" / "Værd at vide" / "Kort nyt", spor "Build" / "Generelt" /
 "Europa", "**Hvad betyder det:**" i stedet for "So what", "Kilde:", kildemærker "Officiel" /
 "Rapporteret" / "Ubekræftet" (samme CSS-klasser) og `## Rettelser`. Nøgletallets forklaring på dansk.
 
-### U6. Pull request
+### U6. Redaktørkontrol (obligatorisk)
+Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils fremgangsmåde
+(åbn kilderne igen, ret / nedgradér / fjern, tilføj aldrig nye historier). Opdatér `minutes`,
+`min`, `items` og nummereringen, hvis noget er fjernet. Når alle 9 kriterier er tjekket, sæt
+`checked: true` i front matter i BEGGE filer. Kunne kontrollen ikke gennemføres (fx kilder kan
+ikke åbnes), sæt `checked: false` og skriv hvorfor i rapporten. Gem rapporten til PR-beskrivelsen.
+
+### U7. Pull request
 1. `git checkout -b issue/<dato>`, commit begge filer (`Udkast <dato>`), `git push -u origin issue/<dato>`.
-2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<de 7 overskrifter som liste + kilder>" -q .html_url`.
+2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<redaktørkontrollens rapport, derefter overskrifterne som liste + kilder>" -q .html_url`.
    Notér PR-URL'en.
 
-### U7. Udkast-mail
+### U8. Udkast-mail
 Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen):
 - `{{BANNER}}` = udkast-banneret med PR-URL'en (fredag: tilføj `{{FREDAG}}`-teksten).
-- `{{DISCLOSURE}}` = den ikke-godkendte tekst.
+- `{{DISCLOSURE}}` = den kontrollerede tekst, hvis `checked: true`, ellers den ikke-godkendte.
 - `{{ISSUE_URL}}` = `https://7amai.com/<åååå>/<mm>/<dd>/`, `{{DA_URL}}` = `https://7amai.com/da/<åååå>/<mm>/<dd>/`
   (siderne er først live efter afsendelsen kl. 7; det er i orden).
 - `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
@@ -161,7 +169,7 @@ på `main` efter merge som sandheden.
 ### A2. Endelig mail
 Samme mail som udkastet, bygget ud fra filen på `main`, men:
 - `{{BANNER}}` er tom.
-- `{{DISCLOSURE}}` = godkendt-teksten, hvis `reviewed: true`, ellers den ikke-godkendte.
+- `{{DISCLOSURE}}` = godkendt-teksten, hvis `reviewed: true`; ellers den kontrollerede, hvis `checked: true`; ellers den ikke-godkendte.
 - Er der en "Jesper's pick"-sektion, så tag den med efter sidste historie.
 Gem som `/tmp/mail.html` og `/tmp/mail.txt`.
 Emne: `7am AI · <d. mon>: <titel>` (maks ca. 90 tegn).

@@ -110,6 +110,11 @@ gennemgået den og har det redaktionelle ansvar.
 
 - **Standard:** udgaven sendes kl. 7 med mærkningen *"Written by AI. Every claim links to
   its primary source."*
+- **Redaktørkontrol (fra 2026-10-14):** hver udgave tjekkes automatisk mod Jespers kriterier
+  (`.agent/EDITORIAL.md`) før den lægges som udkast: kilder åbnes igen, forkerte mærker rettes,
+  fyld fjernes. Kontrolleret udgave mærkes *"Written by AI and checked against our editorial
+  standards ... Not reviewed by a human editor."* Kontrollen er ikke en menneskelig gennemgang
+  og giver derfor ALDRIG mærket "Reviewed by Jesper" (art. 50(4) kræver et menneske).
 - **Når Jesper når det:** godkend-knap i en kladde-mail ca. kl. 6:30. Godkendt udgave sendes
   som *"Reviewed by Jesper"*. Godkendelse er en bonus, aldrig en flaskehals.
 - **Jesper's pick (fredag, valgfri):** 2-3 linjer i Jespers egen stemme. Det giver en
