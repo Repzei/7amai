@@ -5,10 +5,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Prototype: skjult for soegemaskiner indtil nyhedsbrevet aabnes for andre. -->
-  <meta name="robots" content="noindex, nofollow" />
+  {%- if page.noindex %}
+  <meta name="robots" content="noindex" />
+  {%- endif %}
+  {%- assign page_title = page.title | default: site.title -%}
+  {%- assign page_desc = page.summary | default: t.tagline | strip_html | strip_newlines -%}
+  {%- assign canonical = page.url | replace: 'index.html', '' | absolute_url -%}
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{{ page.summary | default: t.tagline }}" />
+  <meta name="description" content="{{ page_desc }}" />
+  <link rel="canonical" href="{{ canonical }}" />
+  {%- if page.other_lang_url %}
+  {%- assign other_lang = 'da' -%}{%- if lang == 'da' -%}{%- assign other_lang = 'en' -%}{%- endif %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ canonical }}" />
+  <link rel="alternate" hreflang="{{ other_lang }}" href="{{ page.other_lang_url | absolute_url }}" />
+  <link rel="alternate" hreflang="x-default" href="{% if lang == 'en' %}{{ canonical }}{% else %}{{ page.other_lang_url | absolute_url }}{% endif %}" />
+  {%- endif %}
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}" />
+  <meta property="og:title" content="{{ page_title }}" />
+  <meta property="og:description" content="{{ page_desc }}" />
+  <meta property="og:url" content="{{ canonical }}" />
+  <meta property="og:locale" content="{% if lang == 'da' %}da_DK{% else %}en_US{% endif %}" />
+  <meta property="og:image" content="{{ '/assets/og.png' | absolute_url }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="7am AI: {{ t.tagline }}" />
+  {%- if page.date %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  {%- endif %}
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ t.feed | relative_url }}" />
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />

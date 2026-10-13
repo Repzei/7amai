@@ -151,7 +151,7 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
    leveret (bygger på agentens "Opfølgning").
 3. Udgave-sider med gode titler og struktureret data (NewsArticle).
 
-`noindex` bliver på, indtil kvaliteten er bevist og tilmeldingen virker.
+`noindex` fjernet 2026-10-13 (Jespers beslutning): siden er synlig for Google, med sitemap, delekort og hreflang.
 
 ## 8. Features
 

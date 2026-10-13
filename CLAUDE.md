@@ -22,17 +22,19 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: "The 7" (se
 | `_da/<dato>-<slug>.md` | Dansk udgave, `/da/...` (altid AI-mærket) |
 | `_data/i18n.yml` | Tekster pr. sprog (tagline, AI-mærkning m.m.) |
 | `index.html`, `da/index.html` | Forside/arkiv pr. sprog |
-| `_layouts/default.html`, `_layouts/issue.html` | Sideskabeloner (`noindex` i default, mens det er prototype) |
+| `_layouts/default.html`, `_layouts/issue.html` | Sideskabeloner. default: canonical, hreflang, OG/Twitter-kort (assets/og.png), `noindex` kun hvis siden har `noindex: true` (velkomstsiderne) |
 | `assets/style.css` | Al styling, lys/mørk via `prefers-color-scheme` |
 | `_config.yml` | `url`, `future: true` (påkrævet), permalink, `exclude` |
 | `CNAME` | `7amai.com` (styres af GitHub Pages-indstillingen) |
 | `.agent/INSTRUCTIONS.md` | Agentens fulde proces. Ret her for at ændre indhold eller format |
 | `.agent/SOURCES.md` | Kildeliste |
 | `.agent/email-template.html` | Mailskabelon + byggeklodser |
-| `.agent/send-mail.mjs` | Afsendelse via Resend |
+| `.agent/send-mail.mjs` | Mail til redaktøren (udkast + fallback) via Resend |
+| `.agent/broadcast.mjs` | Udgaven til alle tilmeldte (segment en/da) via workerens /broadcast |
+| `.agent/og-source.html` | Kilde til delingsbilledet assets/og.png (render: headless Edge 1200x630) |
 | `.agent/sent.log` | Datoer der er sendt (idempotens) |
 | `.claude-memory/` | Kopi af Claude-memory for projektet + `restore-memory.ps1` |
-| `.claude/settings.json`, `.claude/hooks/guard.mjs` | Hårde regler (PreToolUse-hook), kører også i cloud-routinen: "Reviewed by Jesper" kun ved Jespers merge før kl. 7, ingen agent-merge før kl. 7, mail uden em dash og `{{`, Resend kun via send-mail.mjs. Test: `GUARD_NOW=<iso>` simulerer tidspunktet |
+| `.claude/settings.json`, `.claude/hooks/guard.mjs` | Hårde regler (PreToolUse-hook), kører også i cloud-routinen: "Reviewed by Jesper" kun ved Jespers merge før kl. 7, ingen agent-merge før kl. 7, mail uden em dash og `{{`, Resend/broadcast kun via send-mail.mjs og broadcast.mjs. Test: `GUARD_NOW=<iso>` simulerer tidspunktet |
 | `.agent/EDITORIAL.md` | Jespers 9 redaktionelle kriterier (redaktørkontrol, trin U6) |
 | `STRATEGI.md` | Mission, identitet "The 7", spor, redaktionel model, faser. Læs før større ændringer |
 

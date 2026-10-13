@@ -8,7 +8,7 @@
 //    (agenten merger tidligst kl. 7, saa en merge foer kl. 7 er Jespers godkendelse).
 // 2. Agenten maa ikke merge en PR foer kl. 07:00 dansk tid.
 // 3. Ingen mail med em/en dash eller tilbagevaerende {{ fra skabelonen.
-// 4. Kald til Resend kun via .agent/send-mail.mjs.
+// 4. Kald til Resend og workerens /broadcast kun via .agent/send-mail.mjs og .agent/broadcast.mjs.
 // 5. Ingen em/en dash i filer der skrives i repoet.
 
 import fs from 'fs'
@@ -49,15 +49,16 @@ if (tool === 'Edit' || tool === 'Write' || tool === 'MultiEdit') {
 if (tool !== 'Bash') process.exit(0)
 const cmd = String(input.command || '')
 
-// Regel 4: Resend kun via send-mail.mjs.
-if (/api\.resend\.com/i.test(cmd) && !/send-mail\.mjs/.test(cmd)) {
-  block('mail sendes KUN med `node .agent/send-mail.mjs` (modtager og afsender kommer fra miljoeet).')
+// Regel 4: Resend og workerens /broadcast kun via scripts.
+const MAIL_SCRIPT = /(send-mail|broadcast)\.mjs/
+if (/api\.resend\.com|workers\.dev\/broadcast/i.test(cmd) && !MAIL_SCRIPT.test(cmd)) {
+  block('mail sendes KUN med `node .agent/send-mail.mjs` eller `node .agent/broadcast.mjs`.')
 }
 
 // Regel 3: tjek mailen foer afsendelse.
-if (/send-mail\.mjs/.test(cmd)) {
+if (MAIL_SCRIPT.test(cmd)) {
   const files = [...cmd.matchAll(/(?:"([^"]+\.(?:html|txt))"|'([^']+\.(?:html|txt))'|(\S+\.(?:html|txt)))/g)].map(m => m[1] || m[2] || m[3])
-  const subject = (cmd.match(/send-mail\.mjs\s+("([^"]*)"|'([^']*)')/) || [])
+  const subject = (cmd.match(/(?:send-mail|broadcast)\.mjs\s+(?:(?:en|da)\s+)?("([^"]*)"|'([^']*)')/) || [])
   if (DASHES.test(subject[2] || subject[3] || '')) block('mailemnet indeholder em dash eller en dash.')
   for (const f of files) {
     let body
