@@ -1,8 +1,11 @@
 ---
 name: feedback-7amai-lessons
-description: Faldgruber fundet under opsætningen af 7am AI (cloud-routines, network secrets, Jekyll, GitHub Pages-certifikat) - gælder også fremtidige cloud-agenter
+description: "Faldgruber fundet under opsætningen af 7am AI (cloud-routines, network secrets, Jekyll, GitHub Pages-certifikat) - gælder også fremtidige cloud-agenter"
 metadata:
+  node_type: memory
   type: feedback
+  originSessionId: e46f3b18-5cc3-4f90-9572-4af7f0591899
+  modified: 2026-10-14T21:16:51.065Z
 ---
 
 Lærdomme fra 7am AI ([[project-7amai]], [[project-7amai-infra]]). De fleste gælder alle Claude cloud-routines, også Gainfully-indholdsagenten.
@@ -13,7 +16,7 @@ Lærdomme fra 7am AI ([[project-7amai]], [[project-7amai-infra]]). De fleste gæ
 
 1. **Network secrets virker kun gennem proxyen.** Nodes indbyggede `fetch` ignorerer `HTTPS_PROXY` og går uden om proxyen, så nøglen kommer aldrig med (Resend svarede 401 "Missing API Key"). Brug `curl` (eller `NODE_USE_ENV_PROXY=1`) til kald, der skal have en network secret.
 2. **Trusted-netværk blokerer almindelige hjemmesider** (cloud-sandboxen kunne ikke nå gainfully.app eller nyhedssider). Agenter der læser nettet, skal have et miljø med **Full** eller **Custom** netværk.
-3. **Network secrets kan kun tilføjes, når et miljø redigeres**, ikke ved oprettelse.
+3. **Network secrets kan kun tilføjes, når et miljø redigeres**, ikke ved oprettelse. Kun i web-udgaven (claude.ai/code -> klik miljønavnet over inputfeltet -> Edit -> Add secret), ikke i desktop-appen, fordi miljøer hører til cloud-sessioner. Felter: Name (unikt, ellers er Add grå), Allowed websites (host), Custom header (fx Authorization + prefix Bearer + value = kun nøglen).
 4. **Routines får automatisk Google Drive og Claude Docs koblet på** ved oprettelse via API, selv med `mcp_connections: []`. Ryd dem bagefter med `update` + `clear_mcp_connections: true` (eller giv kun de nødvendige).
 5. **`grep -P` med unicode (`\x{2014}`) virker ikke i sandboxen** ("code point too large"). Tjek em/en dash med python: `t.count(chr(0x2014))`.
 6. **Jekyll skjuler fremtidigt daterede indlæg.** En udgave dateret 07:00, bygget 06:30, kræver `future: true` i `_config.yml`.
