@@ -1,6 +1,6 @@
 ﻿---
 name: project-7amai-infra
-description: 7am AI teknik og drift - repo, Jekyll/GitHub Pages, cloud-routine og miljø (ID'er), Resend, DNS hos simply.com, og hvordan man ændrer det
+description: 7am AI teknik og drift - repo, Jekyll/GitHub Pages, cloud-routine og miljø (ID'er), Resend, DNS hos Cloudflare (domæne registreret hos simply.com), og hvordan man ændrer det
 metadata:
   type: project
 ---
@@ -14,7 +14,7 @@ Formål og beslutninger: [[project-7amai]]. Faldgruber: [[feedback-7amai-lessons
 - Lokalt: `C:/Users/havnd/.claude/projects/MitProjekt/7amai`. Projektinstruktioner i `CLAUDE.md`, memory-kopi i `.claude-memory/`.
 - Jekyll på GitHub Pages fra `main` (ingen build-script). **Engelsk hovedudgave** = `_posts/<dato>-<slug>.md` (URL `/<åååå>/<mm>/<dd>/`, feed `/feed.xml`). **Dansk** = samlingen `_da/` (URL `/da/...`, feed `/feed/da.xml`, forside `da/index.html`). Tekster pr. sprog i `_data/i18n.yml`. Front matter: `reviewed` (styrer AI-mærkning), `other_lang_url`, `items` (anker/signal/spor pr. historie). `_layouts/default.html` (SVG-logo, Google Fonts Schibsted Grotesk + Newsreader, style.css?v=byggetid mod cache) + `issue.html` (sticky horisont-læselinje, legend for kildemærker), `assets/style.css` (First Light-tokens, lys = morgen, mørk = nat), `assets/favicon.svg`, `assets/logo-mail.png` (96 px PNG til mails; Gmail viser ikke SVG). Plugins: jekyll-feed, jekyll-redirect-from (de to første danske udgaver sender videre fra deres gamle adresser).
 - `_config.yml`: `url: https://7amai.com`, `baseurl: ""`, `future: true` (påkrævet), permalink `/:year/:month/:day/`, `exclude` README.md og CLAUDE.md.
-- Domæne: købt hos simply.com. **DNS flyttes til Cloudflare 2026-10-13** (navneservere frida.ns.cloudflare.com + guss.ns.cloudflare.com; alle linjer "DNS only", ikke proxied, så GitHub Pages styrer HTTPS). Linjer (genskabt hos Cloudflare): A @ -> 185.199.108.153 / .109 / .110 / .111.153, CNAME www -> repzei.github.io, plus Resends DNS-linjer. HTTPS: Let's Encrypt via GitHub, fornyes automatisk, "Enforce HTTPS" slået til.
+- Domæne: købt hos simply.com. **DNS hos Cloudflare fra 2026-10-14** (zone Active; Email Routing privacy@ -> Gmail; 11 records inkl. rsend CNAME) (navneservere frida.ns.cloudflare.com + guss.ns.cloudflare.com; alle linjer "DNS only", ikke proxied, så GitHub Pages styrer HTTPS). Linjer (genskabt hos Cloudflare): A @ -> 185.199.108.153 / .109 / .110 / .111.153, CNAME www -> repzei.github.io, plus Resends DNS-linjer. HTTPS: Let's Encrypt via GitHub, fornyes automatisk, "Enforce HTTPS" slået til.
 
 ## Agenten
 - `.agent/INSTRUCTIONS.md` = hele processen (læses af routinen hver gang; ret her for at ændre adfærd).
