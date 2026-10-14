@@ -1,0 +1,20 @@
+name = "7amai-stats"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+# Privat dashboard (HTTP Basic Auth). Ikke koblet til hjemmesiden; læser kun samlede tal.
+# Tilmeldte hentes fra tilmeldings-workerens interne entrypoint "Stats" (ikke tilgængelig over HTTP),
+# så Resend-nøglen med fuld adgang kun ligger i den worker.
+[[services]]
+binding = "SIGNUP"
+service = "7amai-signup"
+entrypoint = "Stats"
+
+# Samme database som tilmeldings-workerens POST /hit skriver til.
+[[d1_databases]]
+binding = "DB"
+database_name = "7amai-stats"
+database_id = "4f2e0520-82ad-4ffd-a1f2-17decfb4741d"
+
+# Hemmeligheder (sættes fra denne mappe med `npx.cmd wrangler secret put <NAVN>`, aldrig i repoet):
+#   STATS_PASSWORD   (min. 16 tegn; brugernavnet er ligegyldigt i login-boksen)

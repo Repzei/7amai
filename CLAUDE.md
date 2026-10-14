@@ -35,6 +35,9 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: "The 7" (se
 | `.agent/sent.log` | Datoer der er sendt (idempotens) |
 | `.claude-memory/` | Kopi af Claude-memory for projektet + `restore-memory.ps1` |
 | `.claude/settings.json`, `.claude/hooks/guard.mjs` | Hårde regler (PreToolUse-hook), kører også i cloud-routinen: "Reviewed by Jesper" kun ved Jespers merge før kl. 7, ingen agent-merge før kl. 7, mail uden em dash og `{{`, Resend/broadcast kun via send-mail.mjs og broadcast.mjs. Test: `GUARD_NOW=<iso>` simulerer tidspunktet |
+| `_includes/beacon.html` | Anonym besøgsstatistik (ingen cookies/IP; GPC/DNT respekteres): sender side, sprog, kilde, aktiv læsetid, scroll til `POST /hit`. Ikke på `noindex`-sider |
+| `worker/` | Tilmeldings-worker `7amai-signup`: /subscribe, /confirm, /broadcast, /hit (D1 `7amai-stats`, EU) + intern RPC-entrypoint `Stats` (tæller tilmeldte; Resend-nøglen ligger kun her). Skema: `worker/schema.sql` |
+| `worker/stats/` | Privat dashboard `7amai-stats` (https://7amai-stats.jesperkhl.workers.dev, Basic Auth med secret STATS_PASSWORD): tilmeldte, besøg, kilder, læsetid, læst til ende, top-udgaver. Henter tilmeldte via service binding til `Stats` |
 | `.agent/EDITORIAL.md` | Jespers 9 redaktionelle kriterier (redaktørkontrol, trin U6) |
 | `STRATEGI.md` | Mission, identitet "The 7", spor, redaktionel model, faser. Læs før større ændringer |
 

@@ -15,7 +15,7 @@
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border-radius:16px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#0E1A33;">
 <tr><td style="padding:22px 24px 0;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-    <td style="vertical-align:middle;"><a href="{{SITE_URL}}" style="text-decoration:none;color:#0E1A33;"><img src="https://7amai.com/assets/logo-mail.png" width="40" height="40" alt="" style="display:inline-block;vertical-align:middle;border:0;border-radius:9px;"><span style="font-size:19px;font-weight:800;letter-spacing:-0.3px;vertical-align:middle;margin-left:8px;">7am AI</span></a></td>
+    <td style="vertical-align:middle;"><a href="{{SITE_URL}}?ref=mail" style="text-decoration:none;color:#0E1A33;"><img src="https://7amai.com/assets/logo-mail.png" width="40" height="40" alt="" style="display:inline-block;vertical-align:middle;border:0;border-radius:9px;"><span style="font-size:19px;font-weight:800;letter-spacing:-0.3px;vertical-align:middle;margin-left:8px;">7am AI</span></a></td>
     <td align="right" style="vertical-align:middle;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;">{{DATE}} · <span style="color:#B4500A;">07:00</span></td>
   </tr></table>
 </td></tr>
@@ -35,11 +35,11 @@
 {{ITEMS}}
 </td></tr>
 <tr><td style="padding:14px 24px 26px;">
-  <a href="{{ISSUE_URL}}" style="display:inline-block;background:#FF8A2A;color:#0E1A33;text-decoration:none;font-weight:800;font-size:15px;padding:12px 22px;border-radius:999px;">Read it on 7amai.com</a>
-  <span style="font-size:13px;margin-left:12px;"><a href="{{DA_URL}}" style="color:#55627A;">Dansk udgave</a></span>
+  <a href="{{ISSUE_URL}}?ref=mail" style="display:inline-block;background:#FF8A2A;color:#0E1A33;text-decoration:none;font-weight:800;font-size:15px;padding:12px 22px;border-radius:999px;">Read it on 7amai.com</a>
+  <span style="font-size:13px;margin-left:12px;"><a href="{{DA_URL}}?ref=mail" style="color:#55627A;">Dansk udgave</a></span>
 </td></tr>
 </table>
-<p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:#55627A;margin:16px 0 0;">7am AI · every day at 7am · under 7 minutes · <a href="{{SITE_URL}}" style="color:#55627A;">archive</a></p>
+<p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:#55627A;margin:16px 0 0;">7am AI · every day at 7am · under 7 minutes · <a href="{{SITE_URL}}?ref=mail" style="color:#55627A;">archive</a></p>
 </td></tr>
 </table>
 </body>
@@ -60,7 +60,7 @@ fordi Gmail ikke viser SVG. Alt på solorange og guld har natblå tekst (#0E1A33
   <span style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;border-radius:999px;{{SIGNAL_STYLE}}">{{SIGNAL}}</span>
   <span style="font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;margin-left:6px;">{{MIN_ITEM}} min</span>
   {{NUMBER}}
-  <a href="{{ISSUE_URL}}#{{ANKER}}" style="display:block;font-size:{{H_SIZE}};line-height:1.25;font-weight:800;color:#0E1A33;text-decoration:none;margin:8px 0 6px;">{{OVERSKRIFT}}</a>
+  <a href="{{ISSUE_URL}}?ref=mail#{{ANKER}}" style="display:block;font-size:{{H_SIZE}};line-height:1.25;font-weight:800;color:#0E1A33;text-decoration:none;margin:8px 0 6px;">{{OVERSKRIFT}}</a>
   <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;margin:0 0 8px;color:#0E1A33;">{{EN_TIL_TO_SAETNINGER}}</p>
   <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;margin:0 0 8px;padding:8px 12px;background:#FFF4EA;border-left:3px solid #FF8A2A;color:#0E1A33;"><strong style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">So what:</strong> {{SO_WHAT}}</p>
   <span style="font-size:11px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;color:{{SRC_COLOR}};">{{KILDEMÆRKE}} · {{DOMÆNE}}</span>

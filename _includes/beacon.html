@@ -1,0 +1,58 @@
+<script>
+// Anonym besøgsstatistik (se privatlivspolitikken): ingen cookies, intet gemt i browseren, intet
+// om personen. Sender én gang, når siden forlades: side, sprog, kilde, aktiv læsetid og scroll.
+(function () {
+  if (navigator.globalPrivacyControl || navigator.doNotTrack === "1" || !navigator.sendBeacon) return;
+  var IDLE_CAP = 60000;
+  var engaged = 0, lastActive = Date.now(), maxScroll = 0, sent = false;
+  // Egen tilstand i stedet for document.visibilityState: den er allerede "hidden", når
+  // visibilitychange fyrer, og så ville det sidste stykke læsetid gå tabt.
+  var visible = document.visibilityState === "visible";
+
+  var params = new URLSearchParams(location.search);
+  var src = "direct";
+  if (params.get("ref") === "mail") {
+    src = "mail";
+    // Fjernes fra adresselinjen, så et delt link ikke tæller som et besøg fra mailen.
+    params.delete("ref");
+    var q = params.toString();
+    history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash);
+  } else if (document.referrer) {
+    var host = "";
+    try { host = new URL(document.referrer).hostname; } catch (e) {}
+    if (host === location.hostname) src = "internal";
+    else if (/(^|\.)(google|bing|duckduckgo|ecosia|yahoo|brave|qwant|startpage)\.[a-z.]+$/.test(host)) src = "search";
+    else if (/(^|\.)(linkedin\.com|lnkd\.in|x\.com|t\.co|twitter\.com|facebook\.com|reddit\.com|bsky\.app|threads\.net|news\.ycombinator\.com)$/.test(host)) src = "social";
+    else src = "other";
+  }
+
+  function activity() {
+    var now = Date.now();
+    if (visible) engaged += Math.min(now - lastActive, IDLE_CAP);
+    lastActive = now;
+  }
+  function measureScroll() {
+    var doc = document.documentElement;
+    var pct = Math.round(Math.min(1, (window.scrollY + window.innerHeight) / Math.max(doc.scrollHeight, 1)) * 100);
+    if (pct > maxScroll) maxScroll = pct;
+  }
+  function send() {
+    if (sent) return;
+    sent = true;
+    activity();
+    measureScroll();
+    var data = JSON.stringify({ p: location.pathname, l: document.documentElement.lang, s: src, t: Math.round(engaged / 1000), y: maxScroll });
+    navigator.sendBeacon("{{ site.signup_endpoint }}/hit", new Blob([data], { type: "text/plain" }));
+  }
+
+  ["scroll", "keydown", "pointerdown", "pointermove", "touchstart"].forEach(function (e) {
+    window.addEventListener(e, function () { activity(); if (e === "scroll") measureScroll(); }, { passive: true });
+  });
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") { activity(); visible = false; send(); }
+    else { visible = true; lastActive = Date.now(); }
+  });
+  window.addEventListener("pagehide", send);
+  measureScroll();
+})();
+</script>

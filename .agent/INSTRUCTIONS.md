@@ -142,7 +142,9 @@ Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen):
 - `{{BANNER}}` = udkast-banneret med PR-URL'en (fredag: tilføj `{{FREDAG}}`-teksten).
 - `{{DISCLOSURE}}` = den kontrollerede tekst, hvis `checked: true`, ellers den ikke-godkendte.
 - `{{ISSUE_URL}}` = `https://7amai.com/<åååå>/<mm>/<dd>/`, `{{DA_URL}}` = `https://7amai.com/da/<åååå>/<mm>/<dd>/`
-  (siderne er først live efter afsendelsen kl. 7; det er i orden).
+  (siderne er først live efter afsendelsen kl. 7; det er i orden). Skabelonens links har
+  `?ref=mail` efter URL'en (anonym optælling af besøg fra mailen); brug det også i tekstudgaven,
+  fx `https://7amai.com/<åååå>/<mm>/<dd>/?ref=mail`, men aldrig i PR-linket.
 - `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
   `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, tekst, So what, kildemærke).
   `{{COUNT}}` = fx "5 stories". `{{MIN}}` = udgavens læsetid i minutter. Ingen `{{` må stå tilbage.

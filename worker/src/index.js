@@ -1,7 +1,18 @@
-// 7am AI tilmelding: dobbelt opt-in uden database.
+// 7am AI tilmelding: dobbelt opt-in uden database (D1 bruges kun til anonym besøgsstatistik).
 // POST /subscribe  -> sender en bekræftelsesmail med et signeret link
 // GET  /confirm    -> tjekker signaturen og tilføjer kontakten til EN- eller DA-segmentet i Resend
 // Afmelding klares af Resend via {{{RESEND_UNSUBSCRIBE_URL}}} i hver udsendelse.
+// POST /hit        -> anonym besøgsstatistik i D1 "7amai-stats" (se schema.sql), læses af worker/stats
+
+import { WorkerEntrypoint } from "cloudflare:workers";
+import { subscriberStats } from "./subscribers.js";
+
+// Kun til dashboardet (worker/stats) via service binding: en navngiven entrypoint kan ikke nås over HTTP.
+export class Stats extends WorkerEntrypoint {
+  async subscribers(days) {
+    return subscriberStats(this.env, days);
+  }
+}
 
 const MAX_AGE_SECONDS = 72 * 3600;
 const EMAIL_RE = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[a-z]{2,}$/i;
@@ -16,6 +27,7 @@ export default {
     };
 
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
+    if (url.pathname === "/hit" && request.method === "POST") return hit(request, env, cors);
     // Uden hemmeligheder kører intet: et link signeret med en tom eller gætbar nøgle ville kunne forfalskes.
     if (!env.SIGNING_SECRET || env.SIGNING_SECRET.length < 32 || !env.RESEND_API_KEY) {
       return new Response(JSON.stringify({ ok: false, error: "not_configured" }), { status: 503, headers: { ...cors, "Content-Type": "application/json" } });
@@ -26,6 +38,34 @@ export default {
     return new Response("Not found", { status: 404 });
   },
 };
+
+// Anonym besøgsstatistik: kun tal, intet om personen (ingen IP, user agent eller klokkeslæt gemmes).
+// Siden sender med sendBeacon som text/plain, så browseren ikke laver en CORS-preflight.
+const HIT_SOURCES = new Set(["mail", "search", "social", "other", "direct", "internal"]);
+async function hit(request, env, cors) {
+  const done = (status) => new Response(null, { status, headers: cors });
+  if (request.headers.get("Origin") !== env.SITE) return done(403);
+  if (!env.DB) return done(204);
+  let b;
+  try {
+    const raw = await request.text();
+    if (raw.length > 1000) return done(413);
+    b = JSON.parse(raw);
+  } catch { return done(400); }
+
+  const path = String(b.p || "");
+  const seconds = Math.round(Number(b.t));
+  const scroll = Math.round(Number(b.y));
+  if (!/^\/[a-z0-9\/._-]{0,120}$/i.test(path) || !Number.isFinite(seconds) || !Number.isFinite(scroll)) return done(400);
+  const lang = b.l === "da" ? "da" : "en";
+  const src = HIT_SOURCES.has(b.s) ? b.s : "other";
+  const day = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Copenhagen" }).format(new Date());
+
+  await env.DB.prepare("INSERT INTO visits (day, path, lang, src, seconds, scroll) VALUES (?, ?, ?, ?, ?, ?)")
+    .bind(day, path, lang, src, Math.min(Math.max(seconds, 0), 1800), Math.min(Math.max(scroll, 0), 100))
+    .run();
+  return done(204);
+}
 
 // Mindste adgang: agenten har ikke Resend-nøglen med fuld adgang. Den kan kun bede workeren
 // om at sende dagens udgave til et af 7am AI-segmenterne (BROADCAST_TOKEN som network secret).
