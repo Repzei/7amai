@@ -9,7 +9,9 @@ ikke-godkendt udgave får `checked: true` og mærket "checked against our editor
 - Vær redaktøren, ikke skribenten: antag at der er fejl, og let efter dem. Brug Agent-værktøjet
   til en separat gennemgang, hvis det findes (giv den kun filerne og denne fil, ikke dine noter);
   ellers gå selv kriterierne igennem én for én, historie for historie.
-- Åbn hver kilde igen med WebFetch. Hvad der ikke står i kilden, står ikke i udgaven.
+- Åbn hver kilde IGEN med WebFetch i kontrollen, også dem der blev åbnet under research
+  (research-noter tæller ikke: kontrollen skal se kilden med friske øjne). Hvad der ikke står i
+  kilden, står ikke i udgaven.
 - Tilføj aldrig nye historier i kontrollen. Ret, nedgradér eller fjern.
 - Rettes den engelske udgave, rettes den danske tilsvarende (og omvendt).
 
@@ -30,7 +32,7 @@ ikke-godkendt udgave får `checked: true` og mærket "checked against our editor
 Skriv resultatet øverst i PR-beskrivelsen, så Jesper kan se det på et øjeblik:
 
 ```
-Redaktørkontrol: 9/9 kriterier tjekket, <n> historier.
+Redaktørkontrol: 9/9 kriterier tjekket, <n> historier, kilder genåbnet i kontrollen: <x>/<y>.
 Rettet: <kort liste, fx "#2 Big deal -> Worth knowing (ingen Official-kilde)"> eller "intet".
 Fjernet: <historie + kriterie> eller "intet".
 ```

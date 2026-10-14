@@ -46,6 +46,21 @@ if (tool === 'Edit' || tool === 'Write' || tool === 'MultiEdit') {
   process.exit(0)
 }
 
+const beforeSeven = () => copenhagen(process.env.GUARD_NOW || new Date().toISOString()).time < '07:00'
+
+// Cloud-miljoeet har en indbygget GitHub-connector (MCP), som ikke kan slaas fra. Den maa
+// merge efter samme regel som gh api, men ikke skrive filer: saa ville regel 1 kunne omgaas,
+// fordi den tjekker git commit/push.
+if (/^mcp__github__/.test(tool)) {
+  if (/merge/i.test(tool) && beforeSeven()) {
+    block('agenten maa ikke merge foer kl. 07:00 dansk tid. En merge foer kl. 7 betyder "godkendt af Jesper".')
+  }
+  if (/create_or_update_file|push_files|delete_file|create_branch|update_pull_request_branch/i.test(tool)) {
+    block('skriv ikke filer via GitHub-connectoren. Brug git (commit + push) og gh api, som beskrevet i INSTRUCTIONS.md.')
+  }
+  process.exit(0)
+}
+
 if (tool !== 'Bash') process.exit(0)
 const cmd = String(input.command || '')
 
@@ -72,7 +87,7 @@ if (MAIL_SCRIPT.test(cmd)) {
 // Regel 2: ingen merge foer kl. 07:00 dansk tid.
 if (/pulls\/\d+\/merge/.test(cmd) && /(-X|--method)\s*PUT/i.test(cmd)) {
   // GUARD_NOW bruges kun af testene til at simulere et tidspunkt.
-  if (copenhagen(process.env.GUARD_NOW || new Date().toISOString()).time < '07:00') {
+  if (beforeSeven()) {
     block('agenten maa ikke merge foer kl. 07:00 dansk tid. En merge foer kl. 7 betyder "godkendt af Jesper".')
   }
 }
