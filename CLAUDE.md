@@ -1,12 +1,12 @@
 # CLAUDE.md: 7am AI
 
 ## Projektbeskrivelse
-**7am AI** er et dagligt AI-nyhedsoverblik, klar før kl. 7 på hverdage. Hver udgave
+**7am AI** er et dagligt AI-nyhedsbrev, klar kl. 7 alle ugens 7 dage. Hver udgave
 udgives på https://7amai.com og sendes som en kort mail med links til hvert punkt.
 Indholdet skrives af en planlagt Claude Code cloud-routine. Lige nu er det en prototype
 til ejeren selv; det er bygget, så det kan åbnes som offentligt nyhedsbrev senere.
 
-Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: "The 7" (se `STRATEGI.md`).
+Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på ca. 7 minutter (hovedhistorier + Open source & local AI + Paper of the day) + bonus (On the radar + Try it today); se `STRATEGI.md` afsnit 1 og `.agent/INSTRUCTIONS.md` U3.
 
 ## Tech stack
 - **Jekyll på GitHub Pages** fra `main`. Ingen build-script, ingen npm-pakker til siden.

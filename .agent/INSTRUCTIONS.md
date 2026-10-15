@@ -1,7 +1,9 @@
 # 7am AI: agent-vejledning
 
-7am AI er et dagligt AI-nyhedsbrev med formatet **kl. 7, alle 7 dage, højst 7 minutters læsning.** Antallet af historier
-afhænger af dagen; længden må aldrig overstige 7 minutter.
+7am AI er et dagligt AI-nyhedsbrev med formatet **kl. 7, alle 7 dage, ca. 7 minutters læsning.**
+Kernen (hovedhistorier + "Open source & local AI" + "Paper of the day") skal ramme 6-7 minutter
+(mindst 5), alle dage, også i weekenden. Derefter kommer en tydeligt mærket **bonus** ("On the
+radar" + "Try it today") til dem med mere tid; den tæller ikke med i de 7 minutter.
 Hovedudgaven er på engelsk på https://7amai.com; en dansk udgave laves ud fra den.
 Strategi og identitet: `STRATEGI.md` (læs afsnit 1 og 4, hvis du er i tvivl om tonen).
 
@@ -47,13 +49,19 @@ hukommelse: gentag ikke en historie uden ny udvikling, og find ting, der var ann
 ventede, og tjek om de er sket. Har en tidligere udgave en faktuel fejl, skal den rettes i
 "Corrections".
 
-### U2. Research
+### U2. Research (grundig, ikke valgfri)
+Korte udgaver skyldes næsten altid for lidt research, ikke for få nyheder: der sker meget i AI
+hver dag. Brug den tid, det kræver (typisk 10-15 minutter).
 - Periode: siden forrige udgave (normalt de seneste 24 timer).
-- Gå `.agent/SOURCES.md` igennem og søg bredt med WebSearch. Åbn primærkilden med WebFetch,
-  før du skriver om noget. Kan du ikke bekræfte det i en troværdig kilde, så drop det eller
-  mærk det tydeligt som rygte med hvem der siger det.
+- Gå HELE `.agent/SOURCES.md` igennem (åbn hver liste-side med WebFetch), og søg derudover
+  bredt med WebSearch: mindst 6 søgninger på tværs af emnerne (modeller, udviklerværktøjer,
+  open source/lokal AI, forskning, forretning, regulering/EU).
+- Saml en kandidatliste på **mindst 15 kandidater** (titel + primærkilde + én linje), før du
+  vælger. Listen kommer med i PR-beskrivelsen under rapporten, så redaktøren kan se bredden.
+- Åbn primærkilden med WebFetch, før du skriver om noget. Kan du ikke bekræfte det i en
+  troværdig kilde, så drop det eller mærk det tydeligt som rygte med hvem der siger det.
 
-### U3. Vælg historierne (højst 7 minutter)
+### U3. Vælg historierne (kernen ca. 7 minutter + bonus)
 Kriterier, i rækkefølge: ændrer det, hvad læseren kan bygge, hvad det koster, eller hvad han
 skal overholde? Er det reelt nyt (lancering, pris, release, vedtagelse), ikke en mening? Kan man
 prøve det i dag? Sæt den vigtigste først.
@@ -64,14 +72,30 @@ Hver historie får:
   (EU-regulering, europæiske modeller/priser, lokal AI og privatliv).
 - Sørg for, at hvert spor får mindst én historie, hvis der findes en reel kandidat.
 
-**Længde:** hele udgaven skal kunne læses på højst 7 minutter: maks ca. 1.500 ord brødtekst
-(ca. 230 ord pr. minut). Typisk 4-7 historier på en hverdag, ofte 2-4 i weekenden. Er det en
-stille dag, bliver udgaven kortere. Fyld aldrig op, og find aldrig på noget. Der er altid
-mindst én historie; er der virkelig intet nyt, så skriv én kort historie om det vigtigste
-fra ugen med en ny vinkel, og sig det ærligt.
+**Struktur og længde** (ca. 230 ord pr. minut):
+1. **Hovedhistorier:** typisk 4-6. Lead-historien får kontekst og baggrund (ca. 250-400 ord),
+   de øvrige ca. 120-220 ord. Dybde er bedre end mange tynde historier.
+2. **Open source & local AI:** én historie om dagens vigtigste open source-model, lokale
+   AI-værktøj eller release (Ollama, llama.cpp, Hugging Face, LM Studio, MLX ...), ca. 120-200 ord.
+3. **Paper of the day:** én forskningsartikel (arXiv, Hugging Face Papers, et laboratoriums
+   egen udgivelse fra de seneste dage), forklaret i almindeligt sprog: hvad den viser, hvordan,
+   og hvorfor det betyder noget. Ca. 150-220 ord. Link til selve artiklen (Official).
+Kernen (1-3) skal være **ca. 1.380-1.610 ord = 6-7 minutter, mindst 5 minutter (1.150 ord)**,
+alle dage. Når du rammer under 5 minutter, er det et tegn på for lidt research: gå tilbage til
+U2 og find flere kandidater, i stedet for at skrive kort.
+4. **Bonus** (tæller ikke med i de 7 minutter):
+   - **On the radar:** 3-6 korte nyheder på én linje hver, med kilde og kildemærke. Kandidater,
+     der var reelle, men ikke store nok til en hel historie.
+   - **Try it today:** ét konkret værktøj, prompt, kommando eller trick, læseren kan prøve med det
+     samme, med link til officiel dokumentation. Kun ting, der faktisk findes og virker som
+     beskrevet; skriv aldrig en kommando eller indstilling, du ikke har set i kilden.
+"Aldrig fyld" gælder stadig, også i bonus: alt skal være nyt (siden forrige udgave, undtagen
+Try it today, der må være et nyttigt trick fra de seneste uger), have en kilde du har åbnet, og
+sige hvad det betyder. Find aldrig på noget.
 
 **Læsetid:** regn minutter ud pr. historie (ord / 230, afrundet til nærmeste halve minut) og
-for hele udgaven. Skriv dem i front matter (`minutes`) og pr. historie (`min` i `items`).
+for kernen. Skriv kernens tid i front matter (`minutes`), bonus i `bonus_minutes`, og pr.
+historie (`min` i `items`; også Open source- og Paper-historien, ikke bonus).
 
 ### U4. Skriv den engelske udgave
 Fil: `_posts/<dato>-<slug>.md` (slug af titlen, små bogstaver, kun a-z, 0-9 og bindestreger).
@@ -83,7 +107,8 @@ summary: "<1-2 sætninger: hvad du skal vide i dag>"
 date: <dato> 07:00:00 +0200   # +0100 i vintertid (fra sidste søndag i oktober)
 reviewed: false
 checked: false   # sættes til true i U6, når redaktørkontrollen er gennemført
-minutes: <udgavens læsetid, højst 7>
+minutes: <kernens læsetid, 6-7, mindst 5>
+bonus_minutes: <bonus-sektionens læsetid>
 other_lang_url: /da/<åååå>/<mm>/<dd>/
 items:
   - { n: 1, anchor: "<anker>", signal: big, tracks: [build, europe], min: 1.5, source: official, number: "52B", number_label: "active parameters" }
@@ -102,6 +127,33 @@ Source: [<domæne>](<url>) · <span class="tag tag-official">Official</span>
 {: .sources}
 
 ### 2. ...
+
+## Open source & local AI
+
+### <Overskrift> {#<anker>}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">1 min</span></p>
+
+<tekst> + > **So what:** ... + Source-linje som ovenfor.
+
+## Paper of the day
+
+### <Overskrift der siger hvad artiklen viser> {#<anker>}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1 min</span></p>
+
+<hvad den viser, hvordan, og hvorfor det betyder noget> + > **So what:** ... + Source: [arxiv.org](<url>) · <span class="tag tag-official">Official</span>
+
+***
+
+## Bonus: if you have more time
+
+### On the radar
+- **<Kort titel>:** <én linje>. [<domæne>](<url>) · <span class="tag tag-official">Official</span>
+- ...
+
+### Try it today
+<2-4 sætninger: hvad, hvordan (præcis kommando/indstilling fra kilden), hvad man får ud af det.>
+Docs: [<domæne>](<url>)
+{: .sources}
 ```
 
 - Signal-klasser: `signal-big` "Big deal", `signal-worth` "Worth knowing", `signal-quick`
@@ -117,7 +169,10 @@ Source: [<domæne>](<url>) · <span class="tag tag-official">Official</span>
 - Læsetid pr. historie står som sidste `track` i `item-meta` (fx "1 min", "½ min").
 - Alle historier har "So what". Er konsekvensen lille, så sig det kort og ærligt.
 - `{#anker}` er unikt, små bogstaver og bindestreger.
-- Efter sidste historie, kun hvis nødvendigt: `## Corrections` med hvad der var forkert, og hvor.
+- Efter Paper of the day og før bonus, kun hvis nødvendigt: `## Corrections` med hvad der var
+  forkert, og hvor.
+- Open source- og Paper-historierne har samme opbygning som hovedhistorierne (meta, So what,
+  kilde) og står i `items`. On the radar og Try it today står ikke i `items`.
 - Tone (STRATEGI 1.4): korte sætninger, tal frem for adjektiver, overskriften siger hvad der
   skete, "So what" i bydeform, usikkerhed siges ærligt. Forbudt: "game changer", "revolutionary",
   "in a world where", "let's dive in", udråbstegn. Benchmarks kun med kontekst.
@@ -127,7 +182,9 @@ Fil: `_da/<dato>-<samme-slug>.md`. Samme indhold, struktur, ankre og `items` som
 skrevet som naturligt dansk (ikke ordret oversat), med æ, ø og å. Front matter:
 `other_lang_url: /<åååå>/<mm>/<dd>/`, `reviewed: false` (den danske er altid AI-mærket), `checked: false` (sættes i U6).
 Labels på dansk: "Stor nyhed" / "Værd at vide" / "Kort nyt", spor "Build" / "Generelt" /
-"Europa", "**Hvad betyder det:**" i stedet for "So what", "Kilde:", kildemærker "Officiel" /
+"Europa", sektioner "Open source og lokal AI" / "Dagens forskningsartikel" / "Bonus: hvis du har
+mere tid" / "På radaren" / "Prøv det i dag" / "Dokumentation:",
+"**Hvad betyder det:**" i stedet for "So what", "Kilde:", kildemærker "Officiel" /
 "Rapporteret" / "Ubekræftet" (samme CSS-klasser) og `## Rettelser`. Nøgletallets forklaring på dansk.
 
 ### U6. Redaktørkontrol (obligatorisk, spring den ALDRIG over)
@@ -146,7 +203,7 @@ grund. Gem rapporten til PR-beskrivelsen.
 
 ### U7. Pull request
 1. `git checkout -b issue/<dato>`, commit begge filer (`Udkast <dato>`), `git push -u origin issue/<dato>`.
-2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<redaktørkontrollens rapport, derefter overskrifterne som liste + kilder>" -q .html_url`.
+2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<redaktørkontrollens rapport, derefter overskrifterne som liste + kilder, til sidst kandidatlisten fra U2 (mindst 15)>" -q .html_url`.
    Notér PR-URL'en.
 
 ### U8. Udkast-mail
@@ -159,7 +216,10 @@ Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen):
   fx `https://7amai.com/<åååå>/<mm>/<dd>/?ref=mail`, men aldrig i PR-linket.
 - `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
   `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, tekst, So what, kildemærke).
-  `{{COUNT}}` = fx "5 stories". `{{MIN}}` = udgavens læsetid i minutter. Ingen `{{` må stå tilbage.
+  Open source- og Paper-historien kommer efter hovedhistorierne, hver med skabelonens
+  sektionslabel ovenover. Bonus (On the radar + Try it today) kommer til sidst med bonus-blokken.
+  `{{COUNT}}` = antal historier i kernen, fx "7 stories". `{{MIN}}` = kernens læsetid i minutter.
+  Ingen `{{` må stå tilbage.
 Gem som `/tmp/draft.html` og en ren tekstudgave `/tmp/draft.txt` (inkl. PR-URL'en øverst).
 Send: `node .agent/send-mail.mjs "[Draft] 7am AI · <d. mon>: <titel>" /tmp/draft.html /tmp/draft.txt`.
 

@@ -81,6 +81,8 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 .issue-body blockquote p { margin: 0; }
 .issue-body blockquote strong { font-family: var(--font-news); font-weight: 800; }
 .issue-body .sources { font-family: var(--font-news); font-size: 13px; font-weight: 600; color: var(--mist); }
+.issue-body hr { border: 0; border-top: 1.5px dashed var(--line); margin: 40px 0 0; }
+.issue-body hr + h2 { color: var(--sun-ink); }
 .issue-body code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.85em; background: var(--sky); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
 
 .item-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: -2px 0 10px; }

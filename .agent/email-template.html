@@ -75,7 +75,20 @@ fordi Gmail ikke viser SVG. Alt på solorange og guld har natblå tekst (#0E1A33
   <div style="font-size:40px;line-height:1;font-weight:800;letter-spacing:-1px;color:#0E1A33;margin:10px 0 0;">{{TAL}}<span style="display:block;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;font-weight:700;margin-top:4px;">{{HVAD_TALLET_ER}}</span></div>
 {{KILDEMÆRKE}}: Official (SRC_COLOR #B4500A), Reported eller Unconfirmed (SRC_COLOR #55627A).
 Dansk mail: "Hvad betyder det:" i stedet for "So what:", "Officiel/Rapporteret/Ubekræftet".
-Har udgaven "Corrections", tilføjes de efter sidste historie som en almindelig blok med overskriften "Corrections".
+Har udgaven "Corrections", tilføjes de efter Paper of the day som en almindelig blok med overskriften "Corrections".
+
+Sektionslabel (før Open source-historien og før Paper-historien; dansk: "Open source og lokal AI", "Dagens forskningsartikel"):
+  <div style="font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#55627A;margin:22px 0 2px;">{{SEKTION}}</div>
+
+Bonus-blok (til sidst efter alle historier; dansk: "Bonus: hvis du har mere tid", "På radaren", "Prøv det i dag", "Dokumentation"):
+  <div style="margin:24px 0 0;padding:14px 16px;background:#EEF3FA;border-radius:12px;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#55627A;">Bonus: if you have more time</div>
+    <div style="font-size:15px;font-weight:800;color:#0E1A33;margin:10px 0 4px;">On the radar</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.5;margin:0 0 6px;color:#0E1A33;"><strong>{{TITEL}}:</strong> {{EN_LINJE}} <a href="{{URL}}" style="color:#55627A;">{{DOMÆNE}}</a></p>
+    (én linje pr. radar-nyhed)
+    <div style="font-size:15px;font-weight:800;color:#0E1A33;margin:12px 0 4px;">Try it today</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.5;margin:0;color:#0E1A33;">{{TRY_TEKST}} <a href="{{DOCS_URL}}" style="color:#55627A;">Docs</a></p>
+  </div>
 
 {{DISCLOSURE}}: ikke godkendt = "Written by AI. Every claim links to its primary source. Not reviewed by a human editor."
                 kontrolleret = "Written by AI and checked against our editorial standards. Every claim links to its primary source. Not reviewed by a human editor."

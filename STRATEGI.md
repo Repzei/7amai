@@ -5,11 +5,18 @@
 
 ## 1. Identitet: tre gange 7
 
-Navnet er formatet: **Kl. 7. Alle 7 dage. Højst 7 minutter.**
+Navnet er formatet: **Kl. 7. Alle 7 dage. Ca. 7 minutter.**
 
 Ændret 12. okt. 2026 (Jesper): vi lover ikke længere præcis 7 historier. Antallet følger
-dagens nyheder (typisk 4-7 på hverdage, færre i weekenden), men udgaven kan altid læses på
-højst 7 minutter. Det fjerner fristelsen til fyld, og "alle 7 dage" gør navnet stærkere.
+dagens nyheder.
+
+Ændret 15. okt. 2026 (Jesper): udgaverne var blevet for korte (1,5-2,5 min), fordi agenten
+researchede for lidt, ikke fordi der manglede nyheder. Nu: **kernen rammer ca. 7 minutter
+(6-7, mindst 5) alle dage** og består af hovedhistorier + "Open source & local AI" + "Paper of
+the day". Derefter en tydeligt mærket **bonus** til dem med mere tid ("On the radar" med korte
+nyheder på én linje og "Try it today" med ét konkret værktøj eller trick). Bonus tæller ikke
+med, så løftet om at kunne læse kernen på 7 minutter holder. "Aldrig fyld" gælder stadig: alt
+skal være nyt, have en kilde og sige, hvad det betyder; dybde frem for flere tynde historier.
 
 Vi vinder ikke ved at gøre det samme som de store engelske AI-nyhedsbreve (The Rundown,
 TLDR AI, Ben's Bites), bare pænere. Vi vinder på et skarpt format og tre løfter, som går
@@ -156,7 +163,7 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 ## 8. Features
 
 **Ja:**
-1. Formatet kl. 7 / 7 dage / højst 7 minutter med signal-mærker og "So what" (fase 0)
+1. Formatet kl. 7 / 7 dage / ca. 7 minutter (+ bonus) med signal-mærker og "So what" (fase 0)
 2. Valgfrie spor (fase 0: mærkning, fase 1: fravalg i mailen)
 3. Henvisningsprogram (fase 1)
 4. "Shipped or not?" og emnesider (fase 2)
@@ -170,7 +177,7 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 
 | Fase | Mål | Hvad |
 |---|---|---|
-| **0: Fundament** (2-4 uger) | Kvaliteten er så god, at Jesper selv læser den hver dag | Formatet (kl. 7, 7 dage, højst 7 min), engelsk + dansk, godkend-flow, mærkning, nyt design, tilmelding (dobbelt opt-in, afmelding, privatlivspolitik) |
+| **0: Fundament** (2-4 uger) | Kvaliteten er så god, at Jesper selv læser den hver dag | Formatet (kl. 7, 7 dage, ca. 7 min + bonus), engelsk + dansk, godkend-flow, mærkning, nyt design, tilmelding (dobbelt opt-in, afmelding, privatlivspolitik) |
 | **1: Blød lancering** | 0 til 500 læsere | Jespers netværk, LinkedIn, danske udviklerfællesskaber. Agenten laver ét delbart opslag om dagens bedste historie. Henvisningsprogram. |
 | **2: Vækst** | 500 til 5.000 | Emnesider + "Shipped or not?" (SEO), gensidige anbefalinger med andre nyhedsbreve, lancering på Product Hunt og Hacker News |
 | **3: Indtægt** | 5.000+ | Én sponsorplads om dagen, målrettet pr. spor. Mediekit. |
@@ -187,12 +194,12 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 - **Kvalitet:** fejl i AI-skrevet indhold koster tillid. Derfor "Sourced", åbne rettelser og
   godkendelse, når det er muligt.
 - **Tid:** Gainfully har forrang. Alt i 7am AI skal kunne køre uden Jesper.
-- **Forvekslelighed:** uden formatet (kl. 7, 7 dage, højst 7 min) og de faste kendetegn er vi bare endnu et nyhedsbrev. Formatet
+- **Forvekslelighed:** uden formatet (kl. 7, 7 dage, ca. 7 min) og de faste kendetegn er vi bare endnu et nyhedsbrev. Formatet
   forhandles ikke væk.
 
 ## Låste beslutninger
 
-- Navn 7am AI, domæne 7amai.com. Format: kl. 7, alle 7 dage, højst 7 minutters læsning (Jesper 12. okt. 2026; erstatter "7 historier")
+- Navn 7am AI, domæne 7amai.com. Format: kl. 7, alle 7 dage, ca. 7 minutters læsning + bonus (Jesper 15. okt. 2026; erstatter "højst 7 minutter" fra 12. okt., der erstattede "7 historier")
 - Engelsk hovedudgave + automatisk dansk udgave
 - Tre spor, som læseren selv vælger (alle får alt som udgangspunkt)
 - AI-mærket som standard, "Reviewed by Jesper" når han når at godkende
