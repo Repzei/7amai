@@ -8,8 +8,9 @@ Hovedudgaven er på engelsk på https://7amai.com; en dansk udgave laves ud fra 
 Strategi og identitet: `STRATEGI.md` (læs afsnit 1 og 4, hvis du er i tvivl om tonen).
 
 Der er to kørsler hver dag, også i weekenden. Prompten siger, hvilken du er:
-- **UDKAST** (ca. 06:00 dansk tid): research, skriv udgaven, læg den som pull request, send
-  udkast-mail til redaktøren (Jesper).
+- **UDKAST** (ca. 05:30 dansk tid, 04:30 i vintertid): research, skriv udgaven, læg den som pull
+  request. Ingen udkast-mail (Jesper 15/10: han får den endelige mail kl. 7 som tilmeldt, og
+  godkender kun via PR'en de dage, han er oppe).
 - **AFSENDELSE** (07:00 dansk tid): udgiv udgaven (godkendt eller ej) og send den endelige mail
   til alle tilmeldte (engelsk og dansk segment).
 
@@ -234,24 +235,10 @@ grund. Gem rapporten til PR-beskrivelsen.
 2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<redaktørkontrollens rapport, derefter overskrifterne som liste + kilder, til sidst kandidatlisten fra U2 (mindst 15)>" -q .html_url`.
    Notér PR-URL'en.
 
-### U8. Udkast-mail
-Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen):
-- `{{BANNER}}` = udkast-banneret med PR-URL'en (fredag: tilføj `{{FREDAG}}`-teksten).
-- `{{DISCLOSURE}}` = den kontrollerede tekst, hvis `checked: true`, ellers den ikke-godkendte.
-- `{{ISSUE_URL}}` = `https://7amai.com/<åååå>/<mm>/<dd>/`, `{{DA_URL}}` = `https://7amai.com/da/<åååå>/<mm>/<dd>/`
-  (siderne er først live efter afsendelsen kl. 7; det er i orden). Skabelonens links har
-  `?ref=mail` efter URL'en (anonym optælling af besøg fra mailen); brug det også i tekstudgaven,
-  fx `https://7amai.com/<åååå>/<mm>/<dd>/?ref=mail`, men aldrig i PR-linket.
-- `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
-  `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, tekst, So what, kildemærke).
-  Open source- og Paper-historien kommer efter hovedhistorierne, hver med skabelonens
-  sektionslabel ovenover. Bonus (On the radar + Try it today) kommer til sidst med bonus-blokken.
-  `{{COUNT}}` = antal historier i kernen, fx "7 stories". `{{MIN}}` = kernens læsetid i minutter.
-  Ingen `{{` må stå tilbage.
-Gem som `/tmp/draft.html` og en ren tekstudgave `/tmp/draft.txt` (inkl. PR-URL'en øverst).
-Send: `node .agent/send-mail.mjs "[Draft] 7am AI · <d. mon>: <titel>" /tmp/draft.html /tmp/draft.txt`.
+### U8. Ingen udkast-mail
+Der sendes ingen udkast-mail. PR'en er nok: redaktøren kan godkende den, hvis han er oppe.
 
-Afslut med én linje: PR-URL, titel, og om udkast-mailen blev sendt.
+Afslut med én linje: PR-URL, titel, antal historier, kernens læsetid og bonus, antal kandidater, kilder genåbnet x/y og readability OK/ikke OK.
 
 ---
 
@@ -275,9 +262,18 @@ Jesper kan have rettet teksten eller tilføjet "## Jesper's pick" i PR'en. Brug 
 på `main` efter merge som sandheden.
 
 ### A2. Endelig mail
-Samme mail som udkastet, bygget ud fra filen på `main`, men:
-- `{{BANNER}}` er tom.
+Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen) og filen på `main`:
+- `{{BANNER}}` er tom (udkast-banneret bruges ikke længere).
 - `{{DISCLOSURE}}` = godkendt-teksten, hvis `reviewed: true`; ellers den kontrollerede, hvis `checked: true`; ellers den ikke-godkendte.
+- `{{ISSUE_URL}}` = `https://7amai.com/<åååå>/<mm>/<dd>/`, `{{DA_URL}}` = `https://7amai.com/da/<åååå>/<mm>/<dd>/`.
+  Skabelonens links har `?ref=mail` efter URL'en (anonym optælling af besøg fra mailen); brug det også i tekstudgaven,
+  fx `https://7amai.com/<åååå>/<mm>/<dd>/?ref=mail`.
+- `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
+  `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, tekst, So what, kildemærke).
+  Open source- og Paper-historien kommer efter hovedhistorierne, hver med skabelonens
+  sektionslabel ovenover. Bonus (On the radar + Try it today) kommer til sidst med bonus-blokken.
+  `{{COUNT}}` = antal historier i kernen, fx "7 stories". `{{MIN}}` = kernens læsetid i minutter.
+  Ingen `{{` må stå tilbage.
 - Er der en "Jesper's pick"-sektion, så tag den med efter sidste historie.
 Gem som `/tmp/mail.html` og `/tmp/mail.txt`.
 Emne: `7am AI · <d. mon>: <titel>` (maks ca. 90 tegn).

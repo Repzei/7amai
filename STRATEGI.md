@@ -122,7 +122,7 @@ gennemgået den og har det redaktionelle ansvar.
   fyld fjernes. Kontrolleret udgave mærkes *"Written by AI and checked against our editorial
   standards ... Not reviewed by a human editor."* Kontrollen er ikke en menneskelig gennemgang
   og giver derfor ALDRIG mærket "Reviewed by Jesper" (art. 50(4) kræver et menneske).
-- **Når Jesper når det:** godkend-knap i en kladde-mail ca. kl. 6:30. Godkendt udgave sendes
+- **Når Jesper når det:** merge PR'en før kl. 7 (udkastet er klar ca. 5:30; ingen kladde-mail fra 15. okt., Jesper får den endelige mail som tilmeldt). Godkendt udgave sendes
   som *"Reviewed by Jesper"*. Godkendelse er en bonus, aldrig en flaskehals.
 - **Jesper's pick (fredag, valgfri):** 2-3 linjer i Jespers egen stemme. Det giver en
   person bag nyhedsbrevet, uden at det koster tid hver dag.

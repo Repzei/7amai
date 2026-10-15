@@ -12,7 +12,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 - **Jekyll på GitHub Pages** fra `main`. Ingen build-script, ingen npm-pakker til siden.
 - **jekyll-feed** til `feed.xml`.
 - **Resend** til mail (afsender `brief@7amai.com`), kaldt med `curl` fra `.agent/send-mail.mjs`.
-- **To Claude Code cloud-routines** (Sonnet 5.5, separat cloud-miljø): udkast kl. 6 (Opus 5.5 med fire parallelle research-specialister via Agent-værktøjet; PR + udkast-mail til godkendelse) og afsendelse kl. 7 (godkendt = "Reviewed by Jesper", ellers AI-mærket).
+- **To Claude Code cloud-routines** (Sonnet 5.5, separat cloud-miljø): udkast kl. 5:30 / 4:30 vinter (Opus 5.5 med fire parallelle research-specialister via Agent-værktøjet; PR til valgfri godkendelse, ingen udkast-mail) og afsendelse kl. 7 (godkendt = "Reviewed by Jesper", ellers AI-mærket).
 - Domæne registreret hos simply.com; DNS og Email Routing (privacy@7amai.com) hos Cloudflare fra 2026-10-14, alle records "DNS only". HTTPS via GitHub Pages (Let's Encrypt, fornyes automatisk).
 
 ## Filstruktur
