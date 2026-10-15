@@ -15,7 +15,8 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - Routines kører hverdage: **udkast kl. 6** (PR + udkast-mail med "Approve on GitHub") og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
-## TJEK 2026-10-16 (første morgen efter rettelserne be84cc1)
+## TJEK 2026-10-16 (første morgen efter rettelserne be84cc1 + nyt format cfb878a)
+0. [ ] NYT FORMAT (Jesper 15/10): kerne ca. 7 min (6-7, mindst 5) + bonus. Tjek: `minutes` 5-7, Open source- og Paper-sektion findes, bonus (On the radar + Try it today) efter `***`, kandidatliste (>= 15) nederst i PR'en, mailen har sektionslabels og bonusblok, siden ser rigtig ud (hr + bonus-overskrift i solorange). Tjek også udkastets varighed: bliver udkast-mailen først klar tæt på 07:00, så flyt udkast-cron fra `0 4 * * *` til fx `30 3 * * *` UTC (spørg Jesper).
 1. [ ] Udkast-PR: står "kilder genåbnet x/y" med x = y i rapporten, og har begge filer `checked: true`? Ses WebFetch-kald på kilderne EFTER skrivningen i routinens log? Hvis U6 stadig springes over: overvej en separat kontrol-routine kl. 06:40 eller en hook, der kræver rapporten.
 2. [ ] Afsendelse: broadcast en med UFORKORTET emne (exit 0), da = "ingen tilmeldte endnu" (exit 0, ikke fejl), ingen hook-blokering af skabelonen, ingen "divergent branches"-fejl, issue-branchen slettet automatisk af GitHub.
 

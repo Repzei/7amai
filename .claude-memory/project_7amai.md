@@ -1,8 +1,11 @@
 ---
 name: project-7amai
-description: 7am AI - mission "best AI newsletter in the world". Identitet "The 7", strategi (spor, engelsk+dansk, AI-mærkning, faser mod sponsorer), låste beslutninger og status. Fuld strategi i 7amai/STRATEGI.md
+description: "7am AI - mission \"best AI newsletter in the world\". Identitet \"The 7\", strategi (spor, engelsk+dansk, AI-mærkning, faser mod sponsorer), låste beslutninger og status. Fuld strategi i 7amai/STRATEGI.md"
 metadata:
+  node_type: memory
   type: project
+  originSessionId: e46f3b18-5cc3-4f90-9572-4af7f0591899
+  modified: 2026-10-15T18:39:58.721Z
 ---
 
 # 7am AI (startet 2026-10-08, live 2026-10-09)
@@ -13,8 +16,10 @@ Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-r
 
 **How to apply:** Alt nyt skal styrke identiteten "The 7" og kunne køre uden Jesper (Gainfully har forrang). Byg i fasernes rækkefølge, spring ikke til vækst før kvaliteten er der.
 
-## Identitet: tre gange 7 (format ændret af Jesper 2026-10-12)
-- **Kl. 7. Alle 7 dage. Højst 7 minutters læsning.** Antal historier varierer (typisk 4-7 hverdage, færre i weekenden); aldrig fyld. Erstatter "7 historier" ("The 7") fra 2026-10-09.
+## Identitet: tre gange 7 (format ændret af Jesper 2026-10-15)
+- **Kl. 7. Alle 7 dage. Ca. 7 minutters læsning + bonus.** Kerne 6-7 min (mindst 5) alle dage = hovedhistorier + "Open source & local AI" + "Paper of the day"; derefter tydeligt mærket bonus ("On the radar" one-liners + "Try it today"), som ikke tæller med i de 7 min. Aldrig fyld, dybde frem for antal.
+- **Why:** 13.-15. okt. var udgaverne kun 1,5-2,5 min, fordi agenten researchede ca. 30 sek. og læste "højst 7 min / aldrig fyld" som "kort er godt". Jesper: "det kan ikke passe der ikke er nok". Research er nu et krav (hele kildelisten, mindst 6 søgninger, mindst 15 kandidater i PR'en).
+- Historik: "7 historier" (9. okt.) -> "højst 7 min, varierende antal" (12. okt.) -> denne (15. okt.).
 - Tre løfter: **Sourced** (hvert punkt linker til primærkilden, åbne rettelser), **So what** (hvad det betyder for læseren), **No hype**.
 - Signal-mærke pr. punkt: Big deal · Worth knowing · Quick hit.
 - "Verified" blev bevidst til "Sourced": "verified" lover menneskelig kontrol, vi ikke altid har.
