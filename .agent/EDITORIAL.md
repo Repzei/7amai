@@ -1,6 +1,6 @@
 # 7am AI: redaktionelle kriterier
 
-Jespers kriterier for en udgave. Redaktørkontrollen (INSTRUCTIONS.md, trin U6) tjekker hver
+Jespers kriterier for en udgave (stil: `.agent/STYLE.md`). Redaktørkontrollen (INSTRUCTIONS.md, trin U6) tjekker hver
 historie mod dem, FØR udkastet lægges som pull request. Kontrollen erstatter ikke Jespers
 godkendelse: kun en udgave Jesper har merget, må stå som "Reviewed by Jesper". En kontrolleret,
 ikke-godkendt udgave får `checked: true` og mærket "checked against our editorial standards".
@@ -27,12 +27,13 @@ ikke-godkendt udgave får `checked: true` og mærket "checked against our editor
 | 7 | Kernen (hovedhistorier + Open source + Paper) er 6-7 minutter, mindst 5 (ca. 1.150-1.610 ord), og `minutes`/`bonus_minutes`/`min` passer med ordantallet (ord / 230). Bonus tæller ikke med. | Over 7: forkort eller flyt den svageste til On the radar. Under 5: tilføj en stærk kandidat fra kandidatlisten. Ret minuttallene. |
 | 8 | Den danske udgave er naturligt dansk med æ, ø og å (ikke ae/oe/aa), ikke ordret oversat, og har samme historier, ankre og `items` som den engelske. | Omskriv de stive sætninger; ret afvigelser. |
 | 9 | Ingen em dash (U+2014) eller en dash (U+2013) i nogen fil (python-tjekket i INSTRUCTIONS.md). | Erstat med bindestreg, kolon eller ny sætning. |
+| 10 | Let at læse og forstå (`.agent/STYLE.md`): nyheden først, korte afsnit, fagudtryk forklaret, få tal sat i forhold. `python3 .agent/readability.py` melder OK for begge filer (gennemsnit højst 16 ord pr. sætning, ingen over 25, kernen 5-7 min). Læs også én historie højt i tankerne: forstår en travl læser uden AI-baggrund den i første læsning? | Del lange sætninger, skær fakta fra der ikke ændrer noget for læseren, forklar fagudtryk, omskriv i aktiv form. Kør scriptet igen. |
 
 ## Rapport
 Skriv resultatet øverst i PR-beskrivelsen, så Jesper kan se det på et øjeblik:
 
 ```
-Redaktørkontrol: 9/9 kriterier tjekket, <n> historier, kilder genåbnet i kontrollen: <x>/<y>.
+Redaktørkontrol: 10/10 kriterier tjekket, <n> historier, kilder genåbnet i kontrollen: <x>/<y>.
 Rettet: <kort liste, fx "#2 Big deal -> Worth knowing (ingen Official-kilde)"> eller "intet".
 Fjernet: <historie + kriterie> eller "intet".
 ```
