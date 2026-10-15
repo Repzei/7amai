@@ -87,9 +87,12 @@ async function broadcast(request, env) {
   const res = await fetch("https://api.resend.com/broadcasts", {
     method: "POST",
     headers: { Authorization: `Bearer ${String(env.RESEND_API_KEY).trim()}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ segment_id: segment, from: env.FROM, subject: String(b.subject).slice(0, 200), html, text, name: String(b.name || b.subject).slice(0, 100), send: true }),
+    // Resend tillader højst 70 tegn i det interne navn; emnet (det læserne ser) forkortes aldrig her.
+    body: JSON.stringify({ segment_id: segment, from: env.FROM, subject: String(b.subject).slice(0, 200), html, text, name: String(b.name || b.subject).slice(0, 70), send: true }),
   });
   const out = await res.text();
+  // Et segment uden tilmeldte (fx det danske i starten) er ikke en fejl: der er bare ingen at sende til.
+  if (res.status === 422 && /no contacts/i.test(out)) return json(200, { ok: true, skipped: "empty_segment" });
   return json(res.ok ? 200 : 502, res.ok ? { ok: true, resend: JSON.parse(out || "{}") } : { ok: false, error: "resend_failed", detail: out.slice(0, 300) });
 }
 

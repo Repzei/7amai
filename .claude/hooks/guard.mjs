@@ -70,18 +70,19 @@ if (/api\.resend\.com|workers\.dev\/broadcast/i.test(cmd) && !MAIL_SCRIPT.test(c
   block('mail sendes KUN med `node .agent/send-mail.mjs` eller `node .agent/broadcast.mjs`.')
 }
 
-// Regel 3: tjek mailen foer afsendelse.
-if (MAIL_SCRIPT.test(cmd)) {
-  const files = [...cmd.matchAll(/(?:"([^"]+\.(?:html|txt))"|'([^']+\.(?:html|txt))'|(\S+\.(?:html|txt)))/g)].map(m => m[1] || m[2] || m[3])
-  const subject = (cmd.match(/(?:send-mail|broadcast)\.mjs\s+(?:(?:en|da)\s+)?("([^"]*)"|'([^']*)')/) || [])
-  if (DASHES.test(subject[2] || subject[3] || '')) block('mailemnet indeholder em dash eller en dash.')
-  for (const f of files) {
+// Regel 3: tjek mailen foer afsendelse. Kun de to filer, der gives til scriptet (ikke fx
+// skabelonen, som samme kommando kan laese). Filer, der foerst bygges senere i samme kommando,
+// eller stier med variabler, kan ikke laeses endnu og springes over (fail-open).
+const ARG = `("[^"]*"|'[^']*'|[^\\s;&|]+)`
+const unquote = (s) => s.replace(/^["']|["']$/g, '')
+for (const m of cmd.matchAll(new RegExp(`(?:send-mail|broadcast)\\.mjs\\s+(?:(?:en|da)\\s+)?${ARG}\\s+${ARG}\\s+${ARG}`, 'g'))) {
+  if (DASHES.test(unquote(m[1]))) block('mailemnet indeholder em dash eller en dash.')
+  for (const f of [m[2], m[3]].map(unquote)) {
     let body
     try { body = fs.readFileSync(path.resolve(root, f), 'utf8') } catch { continue }
     if (DASHES.test(body)) block(`${f} indeholder em dash eller en dash. Ret teksten foer afsendelse.`)
     if (body.includes('{{')) block(`${f} har stadig {{pladsholdere}} fra skabelonen. Udfyld eller fjern dem foer afsendelse.`)
   }
-  process.exit(0)
 }
 
 // Regel 2: ingen merge foer kl. 07:00 dansk tid.

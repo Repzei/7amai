@@ -23,6 +23,11 @@ Fælles regler:
 - GitHub: brug KUN REST via `gh api` (GraphQL er blokeret i sandboxen, så `gh pr create/list/merge` fejler med 403).
   Repo: `Repzei/7amai`.
 - Dato i dansk tid: `TZ=Europe/Copenhagen date +%F`, ugedag `+%u`, time `+%H`.
+- Sandboxen kan starte med en gammel lokal `main`. Start derfor altid med
+  `git fetch -q origin && git checkout -q main && git reset -q --hard origin/main` (der er aldrig
+  lokalt arbejde at miste ved start), så `git pull` ikke fejler.
+- Emnelinjen sendes altid uforkortet. Afsendelsesscriptet klarer Resends grænse på 70 tegn for
+  det interne navn; forkort aldrig emnet på grund af en fejl om `name`.
 - Hårde regler håndhæves af `.claude/hooks/guard.mjs` og blokerer handlingen med en forklaring:
   `reviewed: true` kun når Jesper har merget før kl. 07:00, ingen merge før kl. 07:00, ingen mail
   med em/en dash eller `{{`, Resend kun via `send-mail.mjs`/`broadcast.mjs`, ingen em/en dash i tekstfiler.
@@ -125,12 +130,19 @@ Labels på dansk: "Stor nyhed" / "Værd at vide" / "Kort nyt", spor "Build" / "G
 "Europa", "**Hvad betyder det:**" i stedet for "So what", "Kilde:", kildemærker "Officiel" /
 "Rapporteret" / "Ubekræftet" (samme CSS-klasser) og `## Rettelser`. Nøgletallets forklaring på dansk.
 
-### U6. Redaktørkontrol (obligatorisk)
+### U6. Redaktørkontrol (obligatorisk, spring den ALDRIG over)
 Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils fremgangsmåde
-(åbn kilderne igen, ret / nedgradér / fjern, tilføj aldrig nye historier). Opdatér `minutes`,
-`min`, `items` og nummereringen, hvis noget er fjernet. Når alle 9 kriterier er tjekket, sæt
-`checked: true` i front matter i BEGGE filer. Kunne kontrollen ikke gennemføres (fx kilder kan
-ikke åbnes), sæt `checked: false` og skriv hvorfor i rapporten. Gem rapporten til PR-beskrivelsen.
+(ret / nedgradér / fjern, tilføj aldrig nye historier). Gør det i denne rækkefølge:
+1. For HVER kilde-URL i udgaven: kald WebFetch på den igen nu, med en prompt der beder kilden
+   bekræfte de konkrete påstande, tal, navne og datoer, historien bruger. Det tager 1-2 minutter
+   og er ikke valgfrit, heller ikke på en stille dag, eller fordi kilden blev læst under research.
+2. Ret, nedgradér eller fjern ud fra svarene, og gå derefter de 9 kriterier igennem én for én.
+3. Opdatér `minutes`, `min`, `items` og nummereringen, hvis noget er fjernet.
+4. Sæt `checked: true` i front matter i BEGGE filer, når alle kilder er genåbnet og alle 9
+   kriterier er tjekket.
+`checked: false` er KUN tilladt, hvis en kilde ikke kan åbnes (fx 403 eller timeout); skriv så
+hvilken i rapporten. "Åbnet under research", "stille dag" eller "for få historier" er aldrig en
+grund. Gem rapporten til PR-beskrivelsen.
 
 ### U7. Pull request
 1. `git checkout -b issue/<dato>`, commit begge filer (`Udkast <dato>`), `git push -u origin issue/<dato>`.
@@ -166,9 +178,9 @@ Afslut med én linje: PR-URL, titel, og om udkast-mailen blev sendt.
 Find PR'en for `issue/<dato>`: `gh api "repos/Repzei/7amai/pulls?state=all&head=Repzei:issue/<dato>" -q '.[0] | {number, state, merged_at, html_url}'`.
 - **`merged_at` er sat** (Jesper har merget; agenten merger aldrig i UDKAST): godkendt. `git checkout main && git pull`,
   sæt `reviewed: true` i den ENGELSKE fil (ikke den danske), commit `Godkendt <dato>`, push.
-- **`state` er `open`:** ikke godkendt. Merge den selv: `gh api -X PUT repos/Repzei/7amai/pulls/<nr>/merge -f merge_method=squash`,
-  slet branchen: `gh api -X DELETE repos/Repzei/7amai/git/refs/heads/issue/<dato>`.
-  `git checkout main && git pull`. `reviewed` forbliver `false`.
+- **`state` er `open`:** ikke godkendt. Merge den selv: `gh api -X PUT repos/Repzei/7amai/pulls/<nr>/merge -f merge_method=squash`.
+  `git checkout main && git pull`. `reviewed` forbliver `false`. (Branchen slettes automatisk af
+  GitHub ved merge; proxyen tillader ikke, at agenten sletter den selv.)
 - **Lukket uden merge eller ingen PR** (udkastet fejlede eller Jesper afviste): stop og skriv det i din afsluttende besked. Send ikke noget.
 
 Jesper kan have rettet teksten eller tilføjet "## Jesper's pick" i PR'en. Brug altid filen

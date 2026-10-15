@@ -4,7 +4,7 @@
 // Agenten har ikke Resend-nøglen med fuld adgang: BROADCAST_TOKEN er en network secret for
 // workerens host, så proxyen sætter Authorization-headeren på. BROADCAST_TOKEN i miljøet bruges kun lokalt.
 // curl i stedet for fetch af samme grund som i send-mail.mjs (fetch går uden om proxyen).
-// Exit 0 = sendt, 3 = ikke autoriseret (token mangler: brug send-mail.mjs som fallback), 1 = anden fejl.
+// Exit 0 = sendt (eller segmentet er tomt, så der er ingen at sende til), 3 = ikke autoriseret (token mangler: brug send-mail.mjs som fallback), 1 = anden fejl.
 
 import fs from 'fs'
 import os from 'os'
@@ -23,7 +23,8 @@ const payloadPath = path.join(os.tmpdir(), `broadcast-${process.pid}.json`)
 fs.writeFileSync(payloadPath, JSON.stringify({
   lang,
   subject,
-  name: `${subject} (${lang})`,
+  // Kun Resends interne navn (højst 70 tegn); emnet sendes altid uforkortet.
+  name: `7am AI ${new Date().toISOString().slice(0, 10)} ${lang}`,
   html: fs.readFileSync(htmlPath, 'utf-8'),
   text: fs.readFileSync(textPath, 'utf-8'),
 }))
@@ -56,5 +57,9 @@ if (status === 401) {
 if (status < 200 || status >= 300) {
   console.error(`Broadcast fejlede (${status}): ${body.slice(0, 300)}`)
   process.exit(1)
+}
+if (/"skipped":"empty_segment"/.test(body)) {
+  console.log(`Segment ${lang} har ingen tilmeldte endnu: intet sendt (ikke en fejl).`)
+  process.exit(0)
 }
 console.log(`Sendt til segment ${lang}: ${body.slice(0, 200)}`)
