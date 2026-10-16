@@ -60,8 +60,38 @@ async function stats(env) {
   const week = days.slice(-7)[0];
   const prevWeekFrom = cphDay(new Date(Date.now() - 13 * 86400000));
   // Tilmeldte tælles i tilmeldings-workeren (service binding SIGNUP), så Resend-nøglen kun ligger dér.
-  const [subscribers, visits] = await Promise.all([env.SIGNUP.subscribers(days), visitStats(env, days, from, week, prevWeekFrom)]);
-  return { generated: new Date().toISOString(), days, subscribers, visits };
+  const [subscribers, visits, system] = await Promise.all([env.SIGNUP.subscribers(days), visitStats(env, days, from, week, prevWeekFrom), systemStatus()]);
+  return { generated: new Date().toISOString(), days, subscribers, visits, system };
+}
+
+// Til fanen "Sådan virker det": seneste udgave-PR og afsendelseslog fra det offentlige repo.
+async function systemStatus() {
+  const cache = { cf: { cacheTtl: 300, cacheEverything: true } };
+  const gh = (path) => fetch(`https://api.github.com/repos/Repzei/7amai/${path}`, { headers: { "User-Agent": "7amai-stats", Accept: "application/vnd.github+json" }, ...cache })
+    .then(r => (r.ok ? r.json() : null)).catch(() => null);
+  const [prs, sentLog] = await Promise.all([
+    gh("pulls?state=all&per_page=5"),
+    fetch("https://raw.githubusercontent.com/Repzei/7amai/main/.agent/sent.log", cache).then(r => (r.ok ? r.text() : "")).catch(() => ""),
+  ]);
+  const cph = (iso) => {
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Copenhagen", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
+    return { date: `${p.year}-${p.month}-${p.day}`, time: `${p.hour}:${p.minute}` };
+  };
+  const pr = (Array.isArray(prs) ? prs : []).find(x => /^issue\/\d{4}-\d{2}-\d{2}$/.test(x.head && x.head.ref)) || null;
+  let issue = null;
+  if (pr) {
+    const date = pr.head.ref.slice(6);
+    const merged = pr.merged_at ? cph(pr.merged_at) : null;
+    issue = {
+      date, title: pr.title.replace(/^7am AI \d{4}-\d{2}-\d{2}: /, ""), pr: pr.number, prUrl: pr.html_url,
+      created: cph(pr.created_at).time, state: pr.merged_at ? "merged" : pr.state,
+      mergedAt: merged ? `${merged.date} ${merged.time}` : null,
+      approved: merged ? (merged.date < date || (merged.date === date && merged.time < "07:00")) : null,
+      url: `https://7amai.com/${date.replace(/-/g, "/")}/`,
+    };
+  }
+  const sent = sentLog.trim().split("\n").filter(Boolean);
+  return { today: cphDay(new Date()), lastSent: sent[sent.length - 1] || null, sentCount: sent.length, issue };
 }
 
 const ISSUE_PATH = "(path GLOB '/[0-9][0-9][0-9][0-9]/*' OR path GLOB '/da/[0-9][0-9][0-9][0-9]/*')";
@@ -140,17 +170,150 @@ td a { color:var(--ink); }
 .hbar .n { text-align:right; font-variant-numeric: tabular-nums; }
 .err { background:var(--paper); border-left:3px solid var(--sun); padding:12px 16px; border-radius:8px; }
 footer { margin-top:24px; }
+.tabs { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 4px; }
+.tabs button { font:700 14px "Helvetica Neue", Helvetica, Arial, sans-serif; border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:999px; padding:8px 16px; cursor:pointer; }
+.tabs button[aria-selected="true"] { background:var(--sun); border-color:var(--sun); color:#0E1A33; }
+.sys h2 { margin:28px 0 10px; }
+.sys p.intro { color:var(--mist); margin:8px 0 0; max-width:70ch; }
+.status { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; margin-top:14px; }
+.status .card .v { font-size:18px; font-weight:800; margin-top:4px; }
+.dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px; vertical-align:1px; background:var(--mist); }
+.dot.ok { background:#2E9E5B; } .dot.warn { background:var(--sun); } .dot.bad { background:#D14343; }
+.flow { list-style:none; margin:0; padding:0; position:relative; }
+.flow::before { content:""; position:absolute; left:46px; top:8px; bottom:8px; width:2px; background:var(--line); }
+.flow li { display:grid; grid-template-columns:92px 1fr; gap:14px; padding:10px 0; position:relative; }
+.flow .t { font-weight:900; font-variant-numeric:tabular-nums; text-align:center; background:var(--paper); border:1.5px solid var(--line); border-radius:999px; padding:4px 0; height:fit-content; position:relative; z-index:1; font-size:14px; }
+.flow li.key .t { border-color:var(--sun); color:var(--mark); }
+.flow .b { background:var(--paper); border-radius:12px; padding:12px 14px; min-width:0; }
+.flow .b strong { display:block; font-size:15px; margin-bottom:2px; }
+.flow .b span { color:var(--mist); font-size:14px; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.chip { font-size:11px; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; border:1.5px solid var(--line); border-radius:999px; padding:2px 8px; color:var(--mist); }
+.svc { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; }
+.svc .card h3 { margin:0 0 6px; font-size:16px; }
+.svc .card .role { font-size:12px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; color:var(--mark); margin-bottom:6px; }
+.svc .card ul { margin:0; padding-left:18px; font-size:14px; }
+.svc .card li { margin:3px 0; }
+.svc .card a { color:var(--ink); }
+.steps { counter-reset:s; list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+.steps li { counter-increment:s; background:var(--paper); border-radius:12px; padding:10px 14px 10px 46px; position:relative; font-size:14px; }
+.steps li::before { content:counter(s); position:absolute; left:14px; top:10px; width:22px; height:22px; border-radius:50%; background:var(--sun); color:#0E1A33; font-weight:900; font-size:12px; display:grid; place-items:center; }
+.sys table td:first-child { white-space:nowrap; font-weight:700; }
+.sys code { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:0.86em; background:var(--sky); border:1px solid var(--line); border-radius:4px; padding:1px 5px; }
+.scroll { overflow-x:auto; }
+.sys a, .sys a:visited { color:var(--mark); font-weight:700; }
+@media (max-width:520px) { .flow::before { left:30px; } .flow li { grid-template-columns:60px 1fr; gap:10px; } .flow .t { font-size:12px; } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header><h1>7am AI statistik</h1><span class="muted" id="gen">Henter tal ...</span></header>
+  <div class="tabs" role="tablist">
+    <button id="b-stats" role="tab" aria-selected="true" aria-controls="tab-stats">Tal</button>
+    <button id="b-system" role="tab" aria-selected="false" aria-controls="tab-system">Sådan virker det</button>
+  </div>
+  <section id="tab-stats" role="tabpanel">
   <div id="app"></div>
   <footer class="muted">
     Besøg tælles anonymt uden cookies: ingen IP, ingen personer, så det er besøg, ikke unikke læsere.
     Læsetid = aktiv tid med siden synlig på udgavesider (besøg under 3 sek. tæller som "kiggede kun forbi").
     Læst til ende = scrollet mindst 90 %. Tilmeldte = aktive kontakter i Resend (EN + DA). Seneste 30 dage, dansk tid.
   </footer>
+  </section>
+
+  <section id="tab-system" role="tabpanel" class="sys" hidden>
+    <p class="intro">Hele 7am AI på én side: hvad der sker hver morgen, hvilke tjenester der er med, og hvordan de hænger sammen. Status øverst opdateres live (højst 5 minutter gammel).</p>
+
+    <h2>Status lige nu</h2>
+    <div class="status" id="sys-status"><div class="card muted">Henter status ...</div></div>
+
+    <h2>En morgen i 7am AI</h2>
+    <ol class="flow">
+      <li class="key"><div class="t">05:30</div><div class="b"><strong>Udkastet starter i skyen</strong><span>En planlagt Claude-agent (Opus 5.5) i Anthropics sky starter med repoet tjekket ud. Den læser sin vejledning (.agent/INSTRUCTIONS.md) og stilguiden. Kl. 04:30 i vintertid.</span><div class="chips"><span class="chip">Claude routine</span><span class="chip">miljø 7am-ai</span></div></div></li>
+      <li><div class="t">05:31</div><div class="b"><strong>Fire research-specialister</strong><span>Agenten sender fire hjælpere ud samtidig: modeller og laboratorier, udviklerværktøjer, open source og lokal AI, forskning og regulering. Mindst 15 kandidater med kilder kommer tilbage og får point.</span><div class="chips"><span class="chip">WebSearch</span><span class="chip">WebFetch</span><span class="chip">SOURCES.md</span></div></div></li>
+      <li><div class="t">05:40</div><div class="b"><strong>Skriver udgaven på to sprog</strong><span>Kerne på 5-7 min (hovedhistorier, Open source og lokal AI, Paper of the day) på engelsk og dansk, plus dagens tre Explained-begreber. Nye begreber skrives ind i biblioteket.</span><div class="chips"><span class="chip">_posts</span><span class="chip">_da</span><span class="chip">_explained</span></div></div></li>
+      <li><div class="t">05:45</div><div class="b"><strong>Redaktørkontrol</strong><span>Alle kilder åbnes igen, 10 kriterier tjekkes, og readability.py måler sætningslængde og skriver de ærlige læsetider (200 ord/min, rundet op). Rapporten kommer øverst i PR'en.</span><div class="chips"><span class="chip">EDITORIAL.md</span><span class="chip">readability.py</span></div></div></li>
+      <li class="key"><div class="t">05:50</div><div class="b"><strong>Pull request på GitHub</strong><span>Udgaven lægges på branchen issue/&lt;dato&gt;. Ingen mail til Jesper. En hook (guard.mjs) holder øje med hvert skridt og blokerer, hvis en regel brydes.</span><div class="chips"><span class="chip">GitHub</span><span class="chip">guard.mjs</span></div></div></li>
+      <li><div class="t">før 07:00</div><div class="b"><strong>Valgfrit: Jesper godkender</strong><span>Merger Jesper PR'en før kl. 7 (fx i GitHub-appen), står der "Reviewed by Jesper". Ellers står der det ærlige mærke "checked against our editorial standards".</span><div class="chips"><span class="chip">EU AI Act art. 50</span></div></div></li>
+      <li class="key"><div class="t">07:16</div><div class="b"><strong>Afsendelsen</strong><span>En anden agent (Sonnet 5.5) merger PR'en, så GitHub Pages bygger 7amai.com på et par minutter. Den bygger mailen på begge sprog og sender den via broadcast.mjs til tilmeldings-workeren, som beder Resend sende den til alle i segmentet (med afmeldingslink). Dagen skrives i sent.log.</span><div class="chips"><span class="chip">GitHub Pages</span><span class="chip">Cloudflare worker</span><span class="chip">Resend</span></div></div></li>
+      <li><div class="t">hele dagen</div><div class="b"><strong>Læserne</strong><span>Folk læser mailen og siden. Siden sender anonyme tal (side, kilde, læsetid, scroll) til /hit, som gemmer dem i databasen D1 i EU. Det er dem, fanen "Tal" viser. Nye læsere tilmelder sig via formularen.</span><div class="chips"><span class="chip">beacon</span><span class="chip">D1</span><span class="chip">dette dashboard</span></div></div></li>
+    </ol>
+
+    <h2>Tjenesterne, og hvad de gør</h2>
+    <div class="svc">
+      <div class="card"><div class="role">Hjernen</div><h3>Anthropic / Claude</h3><ul>
+        <li>Routine <b>udkast</b>: kl. 05:30, Opus 5.5 + 4 research-hjælpere</li>
+        <li>Routine <b>afsendelse</b>: kl. 07:16, Sonnet 5.5</li>
+        <li>Miljø <b>7am-ai</b>: fuldt netværk, network secrets til Resend og broadcast</li>
+        <li><a href="https://claude.ai/code/routines" rel="noreferrer">Routines og kørselslogs</a></li></ul></div>
+      <div class="card"><div class="role">Kode, historik og hjemmeside</div><h3>GitHub</h3><ul>
+        <li>Repo <a href="https://github.com/Repzei/7amai" rel="noreferrer">Repzei/7amai</a> (offentligt)</li>
+        <li>Én PR pr. udgave, branchen slettes automatisk ved merge</li>
+        <li>GitHub Pages bygger og hoster 7amai.com (Jekyll)</li>
+        <li>.agent/: vejledning, stil, kriterier, kilder, scripts</li></ul></div>
+      <div class="card"><div class="role">Domæne, mail og små servere</div><h3>Cloudflare</h3><ul>
+        <li>DNS for 7amai.com (alle records "DNS only")</li>
+        <li>Email Routing: privacy@7amai.com til Jespers Gmail</li>
+        <li>Worker <b>7amai-signup</b>: /subscribe, /confirm, /broadcast, /hit</li>
+        <li>Worker <b>7amai-stats</b>: dette dashboard (adgangskode)</li>
+        <li>D1-database <b>7amai-stats</b> i EU: anonyme besøg</li></ul></div>
+      <div class="card"><div class="role">Mailudsendelse</div><h3>Resend</h3><ul>
+        <li>Domæne 7amai.com (records på send. og rsend.)</li>
+        <li>Segmenter: 7am AI EN og 7am AI DA</li>
+        <li>Broadcasts med indbygget afmelding</li>
+        <li>Bekræftelsesmails ved tilmelding</li></ul></div>
+      <div class="card"><div class="role">Synlighed</div><h3>Google</h3><ul>
+        <li>Search Console: 7amai.com bekræftet, sitemap indsendt</li>
+        <li>Sitemap og robots.txt laves automatisk af Jekyll</li>
+        <li>Google Fonts leverer skrifttyperne</li></ul></div>
+      <div class="card"><div class="role">Domænet</div><h3>simply.com</h3><ul>
+        <li>7amai.com er registreret her</li>
+        <li>Navneserverne peger på Cloudflare (frida og guss)</li>
+        <li>Rør ikke knappen "Ændre navneservere til Simply.com"</li></ul></div>
+    </div>
+
+    <h2>Når nogen tilmelder sig (dobbelt opt-in)</h2>
+    <ol class="steps">
+      <li>Læseren skriver sin mail i formularen på 7amai.com (engelsk eller dansk side).</li>
+      <li>Tilmeldings-workeren laver et signeret link (gyldigt i 72 timer) og sender en bekræftelsesmail via Resend.</li>
+      <li>Læseren klikker på linket. Workeren tjekker signaturen og lægger kontakten i segmentet EN eller DA i Resend.</li>
+      <li>Læseren lander på velkomstsiden og får den næste udgave kl. 7. Afmelding sker med ét klik i hver mail.</li>
+    </ol>
+
+    <h2>Hvor hemmelighederne ligger</h2>
+    <p class="intro">Kun navne. Værdierne står aldrig i repoet, og agenterne kan ikke læse dem: en proxy sætter dem på undervejs.</p>
+    <div class="card scroll" style="margin-top:10px"><table>
+      <thead><tr><th>Navn</th><th>Ligger i</th><th>Bruges til</th></tr></thead>
+      <tbody>
+        <tr><td>RESEND_API_KEY (fuld adgang)</td><td>Worker 7amai-signup</td><td>Broadcasts, kontakter, tælle tilmeldte. Kun ét sted.</td></tr>
+        <tr><td>SIGNING_SECRET</td><td>Worker 7amai-signup</td><td>Signerer bekræftelseslinks</td></tr>
+        <tr><td>BROADCAST_TOKEN</td><td>Worker 7amai-signup + miljø 7am-ai</td><td>Agenten må bede workeren sende udgaven</td></tr>
+        <tr><td>Resend sende-nøgle</td><td>Miljø 7am-ai (network secret)</td><td>Mail til Jesper (fallback)</td></tr>
+        <tr><td>STATS_PASSWORD</td><td>Worker 7amai-stats</td><td>Login til dette dashboard</td></tr>
+      </tbody></table></div>
+
+    <h2>Sikkerhedsnet</h2>
+    <div class="svc">
+      <div class="card"><h3>Hårde regler (guard.mjs)</h3><ul>
+        <li>"Reviewed by Jesper" kun ved Jespers merge før 07:00</li>
+        <li>Agenten må ikke merge før 07:00</li>
+        <li>Ingen mail med em dash eller rester fra skabelonen</li>
+        <li>Mail kun via send-mail.mjs og broadcast.mjs</li>
+        <li>GitHub-connectoren må ikke skrive filer</li></ul></div>
+      <div class="card"><h3>Kvalitet</h3><ul>
+        <li>Redaktørkontrol med 10 kriterier og genåbnede kilder</li>
+        <li>readability.py: korte sætninger og ærlige læsetider</li>
+        <li>Kun fakta fra kilder, agenten selv har åbnet</li></ul></div>
+      <div class="card"><h3>Når noget fejler</h3><ul>
+        <li>Broadcast fejler: mailen går til Jesper i stedet</li>
+        <li>Tomt segment: springes over, ikke en fejl</li>
+        <li>Agenten skriver altid status i sin sidste linje (se kørselsloggen)</li></ul></div>
+      <div class="card"><h3>Privatliv</h3><ul>
+        <li>Ingen sporing af åbninger eller klik i mails</li>
+        <li>Besøg tælles uden cookies og uden IP</li>
+        <li>Data i EU, privatlivspolitik på begge sprog</li></ul></div>
+    </div>
+  </section>
 </div>
 <script>
 (function () {
@@ -208,8 +371,29 @@ footer { margin-top:24px; }
     });
   }
 
+  var tabs = document.querySelectorAll(".tabs button");
+  function show(id) {
+    tabs.forEach(function (b) { var on = b.getAttribute("aria-controls") === id; b.setAttribute("aria-selected", on ? "true" : "false"); document.getElementById(b.getAttribute("aria-controls")).hidden = !on; });
+  }
+  tabs.forEach(function (b) { b.addEventListener("click", function () { var id = b.getAttribute("aria-controls"); show(id); history.replaceState(null, "", id === "tab-system" ? "#system" : "#"); }); });
+  if (location.hash === "#system") show("tab-system");
+
+  function renderSystem(s) {
+    var el = document.getElementById("sys-status");
+    if (!s) { el.innerHTML = '<div class="card muted">Status kunne ikke hentes lige nu.</div>'; return; }
+    var i = s.issue, cards = [];
+    var sentToday = s.lastSent === s.today;
+    cards.push('<div class="card"><div class="label">Seneste udgave</div><div class="v">' + (i ? '<a href="' + esc(i.url) + '" rel="noreferrer">' + dk(i.date) + '</a>' : "-") + '</div><div class="sub">' + (i ? esc(i.title) : "") + '</div></div>');
+    var st = !i ? "-" : i.state === "merged" ? (i.approved ? '<span class="dot ok"></span>Reviewed by Jesper' : '<span class="dot ok"></span>Udgivet, AI-mærket') : i.state === "open" ? '<span class="dot warn"></span>Venter (PR åben)' : '<span class="dot bad"></span>Lukket uden merge';
+    cards.push('<div class="card"><div class="label">Godkendelse</div><div class="v">' + st + '</div><div class="sub">' + (i ? 'PR <a href="' + esc(i.prUrl) + '" rel="noreferrer">#' + i.pr + '</a> oprettet ' + esc(i.created) + (i.mergedAt ? ", merget " + esc(i.mergedAt.slice(11)) : "") : "") + '</div></div>');
+    cards.push('<div class="card"><div class="label">Afsendelse</div><div class="v">' + (sentToday ? '<span class="dot ok"></span>Sendt i dag' : '<span class="dot warn"></span>Ikke sendt i dag endnu') + '</div><div class="sub">Senest sendt: ' + (s.lastSent ? dk(s.lastSent) : "-") + " · " + s.sentCount + ' udgaver i alt</div></div>');
+    cards.push('<div class="card"><div class="label">Næste kørsler</div><div class="v">05:30 og 07:16</div><div class="sub">Udkast og afsendelse, alle 7 dage (04:30 / 07:16 i vintertid)</div></div>');
+    el.innerHTML = cards.join("");
+  }
+
   fetch("/api", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (d) {
     if (d.error) throw new Error(d.error);
+    renderSystem(d.system);
     var s = d.subscribers, v = d.visits;
     document.getElementById("gen").textContent = "Opdateret " + new Date(d.generated).toLocaleString("da-DK");
     var trend = v.prev7 ? Math.round((v.total7 - v.prev7) / v.prev7 * 100) : null;

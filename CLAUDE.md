@@ -62,6 +62,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 - Visuel kontrol: åbn udgaven på 375 px bredde i lys og mørk tilstand; ingen vandret scroll.
 
 ## Drift
+- **Systemoversigt:** fanen "Sådan virker det" på dashboardet (https://7amai-stats.jesperkhl.workers.dev/#system, kode i `worker/stats/src/index.js`) forklarer hele kæden for Jesper. Ændres flowet, en tjeneste, tidspunkter, hemmeligheder eller sikkerhedsnet: opdatér fanen i samme ændring og deploy (`npx.cmd wrangler deploy` fra `worker/stats`).
 - Routine-ID, miljø-ID, DNS og faldgruber står i `.claude-memory/project_7amai_infra.md` og
   `.claude-memory/feedback_7amai_lessons.md`.
 - Hvis GitHub Pages-certifikatet ikke udstedes: fjern og sæt custom domain igen, når DNS er synlig.
