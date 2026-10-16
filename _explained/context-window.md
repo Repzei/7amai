@@ -18,8 +18,8 @@ It is measured in tokens. A token is a small piece of text, roughly three quarte
 
 > **Think of it like this:** the context window is the model's desk. Everything on the desk it can read and use. Anything that does not fit on the desk is out of sight.
 
-When a conversation gets longer than the window, something has to go. Tools like Claude Code and ChatGPT summarise older parts of the chat to make room, which is why a model can "forget" details from early in a long session.
+When a conversation gets longer than the window, something has to go. Tools like Claude Code and ChatGPT summarise older parts of the chat to make room. That is why a model can "forget" details from early in a long session.
 
-A bigger window is not automatically better. Long inputs cost more, because you pay per token, and models can be less precise about details buried in the middle of a very long text.
+A bigger window is not automatically better. Long inputs cost more, because you pay per token. Models can also be less precise about details buried in the middle of a very long text.
 
 **Why it matters to you:** for big documents or codebases, check the window size. For everyday questions, a shorter and well-chosen context often gives better and cheaper answers.

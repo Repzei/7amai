@@ -2,8 +2,8 @@
 """Læsbarhedstjek for en 7am AI-udgave (STYLE.md). Ingen pakker.
 
 Brug: python3 .agent/readability.py _posts/<dato>-<slug>.md [_da/<dato>-<slug>.md ...]
-Måler kun brødtekst (ikke front matter, meta-linjer, kildelinjer eller HTML). Kernen er alt
-før `***`; bonus er efter. Exit 0 = OK, 1 = noget skal rettes.
+Måler kun brødtekst (ikke front matter, meta-linjer, kildelinjer eller HTML). Virker også på
+biblioteksfiler i _explained/ (der tjekkes læsetiden ikke). Exit 0 = OK, 1 = noget skal rettes.
 """
 import re
 import sys
@@ -54,7 +54,9 @@ def words(s):
 
 def check(path):
     text = open(path, encoding='utf-8').read()
-    danish = '/_da/' in path.replace('\\', '/')
+    norm = path.replace('\\', '/')
+    danish = '/_da/' in norm or '_explained/da/' in norm
+    explainer = '_explained/' in norm
     core, bonus = body_blocks(text)
     core_h, core_p = clean(core)
     _, bonus_p = clean(bonus)
@@ -74,7 +76,7 @@ def check(path):
         problems.append(f'gennemsnitlig sætningslængde {avg:.1f} ord (højst {MAX_AVG})')
     for s in long_ones:
         problems.append(f'sætning på {len(words(s))} ord (højst {MAX_SENTENCE}): "{s[:90]}..."')
-    if not MIN_CORE_MIN <= core_min <= MAX_CORE_MIN:
+    if not explainer and not MIN_CORE_MIN <= core_min <= MAX_CORE_MIN:
         problems.append(f'kernens læsetid {core_min:.1f} min (skal være {MIN_CORE_MIN:.0f}-7)')
     if '!' in ' '.join(core_p + bonus_p):
         problems.append('udråbstegn i teksten')
@@ -84,7 +86,9 @@ def check(path):
         notes.append(f'{passive} mulige passive konstruktioner (foretræk aktiv form)')
 
     print(f'== {path}')
-    print(f'   kerne: {core_words} ord = {core_min:.1f} min | bonus: {bonus_words} ord = {bonus_words / WPM:.1f} min')
+    extra = f' | efter ***: {bonus_words} ord' if bonus_words else ''
+    label = 'tekst' if explainer else 'kerne'
+    print(f'   {label}: {core_words} ord = {core_min:.1f} min{extra}')
     print(f'   sætninger: {len(lengths)}, gennemsnit {avg:.1f} ord, længste {max(lengths) if lengths else 0} ord')
     for n in notes:
         print(f'   bemærk: {n}')

@@ -6,7 +6,7 @@ udgives på https://7amai.com og sendes som en kort mail med links til hvert pun
 Indholdet skrives af en planlagt Claude Code cloud-routine. Lige nu er det en prototype
 til ejeren selv; det er bygget, så det kan åbnes som offentligt nyhedsbrev senere.
 
-Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på ca. 7 minutter (hovedhistorier + Open source & local AI + Paper of the day) + bonus (On the radar + Try it today); se `STRATEGI.md` afsnit 1 og `.agent/INSTRUCTIONS.md` U3.
+Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på ca. 7 minutter (hovedhistorier + Open source & local AI + Paper of the day) + Explained (3 begreber fra biblioteket `_explained/`, vist via `explained:` i front matter); se `STRATEGI.md` afsnit 1 og `.agent/INSTRUCTIONS.md` U3.
 
 ## Tech stack
 - **Jekyll på GitHub Pages** fra `main`. Ingen build-script, ingen npm-pakker til siden.

@@ -62,6 +62,9 @@ lovteksten, selve forskningsartiklen) slår altid en artikel om den.
 - UK AI Security Institute: https://www.aisi.gov.uk
 - US: NIST AI og Det Hvide Hus, når der er nye regler eller ordrer
 
-## Try it today (idéer)
-- Officielle docs og changelogs for de værktøjer, der er nævnt ovenfor: nye flag, kommandoer,
-  indstillinger eller prompts, man kan prøve på 5 minutter. Link altid til dokumentationen.
+## Explained (anerkendte kilder til forklaringer i `read_more`)
+- Officiel dokumentation fra laboratorierne (Anthropic, OpenAI, Google, Meta, Mistral), fx deres
+  ordlister og guides om tokens, context windows, fine-tuning og agenter
+- Hugging Face Learn og blog: https://huggingface.co/learn og https://huggingface.co/blog
+- Google Machine Learning Crash Course: https://developers.google.com/machine-learning/crash-course
+- Standarder og definitioner: Open Source Initiative (open source-AI), NIST (AI-risiko), EU AI Act-teksten

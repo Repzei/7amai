@@ -24,7 +24,7 @@ Enkelt, let at læse, let at forstå. Klogt indhold, enkelt sprog. Læs denne fi
 9. **Ærlig usikkerhed, kort.** "Google gives no benchmark numbers." Ikke en lang liste over, hvad
    kilden ikke siger; kun det, læseren ville savne.
 10. **Kode og ID'er kun når læseren skal bruge dem.** Et model-ID eller et flag hører hjemme i
-    Try it today eller i So what, ikke midt i nyheden.
+    So what, ikke midt i nyheden.
 
 Forbudt (også i STRATEGI 1.4): hype ("game changer", "revolutionary", "groundbreaking"),
 "in a world where", "let's dive in", udråbstegn, retoriske spørgsmål, fyldord ("basically",
@@ -57,11 +57,15 @@ Forbudt (også i STRATEGI 1.4): hype ("game changer", "revolutionary", "groundbr
   engelske fagudtryk, som danske udviklere selv bruger ("API", "open source", "token", "prompt").
 - Æ, ø og å. Datoer som "1. december". Tal med punktum som tusindtalsseparator ("1.500 ord").
 
-## Paper of the day og Try it today
+## Paper of the day og Explained
 - **Paper:** Forklar som til en nysgerrig kollega uden forskerbaggrund: problemet, ideen, resultatet
   (med ét tal, sat i forhold), og hvorfor det betyder noget i praksis. Ingen formler.
-- **Try it today:** Skridt for skridt, højst 3 skridt, præcis som i dokumentationen. Sig hvad man
-  får ud af det i første sætning.
+- **Explained:** Skriv til en klog person, der aldrig har arbejdet med AI. Start med, hvad det er,
+  i én enkel sætning. Brug én hverdagssammenligning ("Think of it like this" / "Tænk på det sådan
+  her"), der faktisk passer, og sig ærligt, hvor den halter. Forklar hvordan det virker uden
+  formler, og slut med "Why it matters to you" / "Hvad betyder det for dig". Nævn gerne dagens
+  nyhed som eksempel i hovedbegrebet, men skriv biblioteksfilen, så den også giver mening om et år.
+  Mønster: `_explained/open-weight.md`.
 
 ## Tjek før du er færdig
 Kør `python3 .agent/readability.py <fil>` på begge udgaver (U6). Den viser gennemsnitlig

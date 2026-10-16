@@ -20,4 +20,4 @@ Når et firma kalder en model "open-weight", betyder det, at alle kan hente den 
 
 Den sidste del er vigtig. Open-weight er ikke det samme som open source. Træningsdata og koden bag modellen er som regel hemmelige. Licensen kan også sætte grænser, fx for hvordan meget store firmaer må bruge den.
 
-**Hvad betyder det for dig:** Åbne vægte giver lavere priser i stor skala, mere kontrol over dine data og ingen risiko for, at en leverandør ændrer eller fjerner modellen. Prisen er, at du selv skal drive, sikre og opdatere den.
+**Hvad betyder det for dig:** Åbne vægte kan give lavere priser i stor skala og mere kontrol over dine data. Ingen leverandør kan ændre eller fjerne modellen under dig. Prisen er, at du selv skal drive, sikre og opdatere den.

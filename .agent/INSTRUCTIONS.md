@@ -2,8 +2,9 @@
 
 7am AI er et dagligt AI-nyhedsbrev med formatet **kl. 7, alle 7 dage, ca. 7 minutters læsning.**
 Kernen (hovedhistorier + "Open source & local AI" + "Paper of the day") skal ramme 6-7 minutter
-(mindst 5), alle dage, også i weekenden. Derefter kommer en tydeligt mærket **bonus** ("On the
-radar" + "Try it today") til dem med mere tid; den tæller ikke med i de 7 minutter.
+(mindst 5), alle dage, også i weekenden. Derefter kommer **Explained** til dem med mere tid: tre
+begreber fra dagens nyheder forklaret i almindeligt sprog (ét i fuld længde, to som fold-ud),
+hentet fra det voksende bibliotek på /explained/. Explained tæller ikke med i de 7 minutter.
 Hovedudgaven er på engelsk på https://7amai.com; en dansk udgave laves ud fra den.
 Strategi og identitet: `STRATEGI.md` (læs afsnit 1 og 4, hvis du er i tvivl om tonen).
 
@@ -86,7 +87,7 @@ drop det eller mærk det tydeligt som rygte med hvem der siger det.
 
 Kandidatlisten (titel, point, primærkilde, valgt/ikke valgt) kommer med nederst i PR-beskrivelsen.
 
-### U3. Vælg historierne (kernen ca. 7 minutter + bonus)
+### U3. Vælg historierne (kernen ca. 7 minutter) og dagens tre begreber
 Kriterier, i rækkefølge: ændrer det, hvad læseren kan bygge, hvad det koster, eller hvad han
 skal overholde? Er det reelt nyt (lancering, pris, release, vedtagelse), ikke en mening? Kan man
 prøve det i dag? Sæt den vigtigste først.
@@ -108,19 +109,22 @@ Hver historie får:
 Kernen (1-3) skal være **ca. 1.380-1.610 ord = 6-7 minutter, mindst 5 minutter (1.150 ord)**,
 alle dage. Når du rammer under 5 minutter, er det et tegn på for lidt research: gå tilbage til
 U2 og find flere kandidater, i stedet for at skrive kort.
-4. **Bonus** (tæller ikke med i de 7 minutter):
-   - **On the radar:** 3-6 korte nyheder på én linje hver, med kilde og kildemærke. Kandidater,
-     der var reelle, men ikke store nok til en hel historie.
-   - **Try it today:** ét konkret værktøj, prompt, kommando eller trick, læseren kan prøve med det
-     samme, med link til officiel dokumentation. Kun ting, der faktisk findes og virker som
-     beskrevet; skriv aldrig en kommando eller indstilling, du ikke har set i kilden.
-"Aldrig fyld" gælder stadig, også i bonus: alt skal være nyt (siden forrige udgave, undtagen
-Try it today, der må være et nyttigt trick fra de seneste uger), have en kilde du har åbnet, og
-sige hvad det betyder. Find aldrig på noget.
+4. **Explained** (tæller ikke med i de 7 minutter): vælg tre begreber, som dagens historier
+   bruger, og som en travl læser uden AI-baggrund ikke nødvendigvis kender (fx "open-weight",
+   "context window", "MoE", "agent", "fine-tuning", "RAG", "inference", "benchmark").
+   - **Hovedbegrebet** hører til den vigtigste historie og vises i fuld længde. Vælg helst et
+     begreb, der IKKE findes i biblioteket endnu (`ls _explained`), så biblioteket vokser.
+   - **To ekstra begreber** vises som fold-ud. De må gerne findes i biblioteket allerede; så
+     genbruges de bare (skriv dem ikke igen).
+   Find aldrig på noget: forklaringer skal være korrekte, og hvert nyt begreb skal have en
+   anerkendt kilde i `read_more` (officiel dokumentation, Hugging Face, en lærebog, en
+   standard), som du har åbnet. Se U5b for, hvordan nye begreber skrives.
+"Aldrig fyld" gælder stadig: alt i kernen skal være nyt, have en kilde du har åbnet, og sige
+hvad det betyder.
 
 **Læsetid:** regn minutter ud pr. historie (ord / 230, afrundet til nærmeste halve minut) og
-for kernen. Skriv kernens tid i front matter (`minutes`), bonus i `bonus_minutes`, og pr.
-historie (`min` i `items`; også Open source- og Paper-historien, ikke bonus).
+for kernen. Skriv kernens tid i front matter (`minutes`) og pr. historie (`min` i `items`;
+også Open source- og Paper-historien). Explained har sin egen `minutes` i biblioteksfilen.
 
 ### U4. Skriv den engelske udgave
 **Læs `.agent/STYLE.md` først og følg den.** Enkelt, let at læse, let at forstå: nyheden først,
@@ -136,7 +140,7 @@ date: <dato> 07:00:00 +0200   # +0100 i vintertid (fra sidste søndag i oktober)
 reviewed: false
 checked: false   # sættes til true i U6, når redaktørkontrollen er gennemført
 minutes: <kernens læsetid, 6-7, mindst 5>
-bonus_minutes: <bonus-sektionens læsetid>
+explained: { main: "<slug>", from: <nr. på historien>, more: ["<slug>", "<slug>"] }
 other_lang_url: /da/<åååå>/<mm>/<dd>/
 items:
   - { n: 1, anchor: "<anker>", signal: big, tracks: [build, europe], min: 1.5, source: official, number: "52B", number_label: "active parameters" }
@@ -169,20 +173,9 @@ Source: [<domæne>](<url>) · <span class="tag tag-official">Official</span>
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1 min</span></p>
 
 <hvad den viser, hvordan, og hvorfor det betyder noget> + > **So what:** ... + Source: [arxiv.org](<url>) · <span class="tag tag-official">Official</span>
-
-***
-
-## Bonus: if you have more time
-
-### On the radar
-- **<Kort titel>:** <én linje>. [<domæne>](<url>) · <span class="tag tag-official">Official</span>
-- ...
-
-### Try it today
-<2-4 sætninger: hvad, hvordan (præcis kommando/indstilling fra kilden), hvad man får ud af det.>
-Docs: [<domæne>](<url>)
-{: .sources}
 ```
+Explained skrives IKKE i udgavens brødtekst: layoutet viser det automatisk ud fra `explained:`
+i front matter (slugs = filnavne i `_explained/` uden `.md`). Brug samme slugs i den danske udgave.
 
 - Signal-klasser: `signal-big` "Big deal", `signal-worth` "Worth knowing", `signal-quick`
   "Quick hit". Spor-labels: "Build", "General", "Europe".
@@ -197,10 +190,9 @@ Docs: [<domæne>](<url>)
 - Læsetid pr. historie står som sidste `track` i `item-meta` (fx "1 min", "½ min").
 - Alle historier har "So what". Er konsekvensen lille, så sig det kort og ærligt.
 - `{#anker}` er unikt, små bogstaver og bindestreger.
-- Efter Paper of the day og før bonus, kun hvis nødvendigt: `## Corrections` med hvad der var
-  forkert, og hvor.
+- Efter Paper of the day, kun hvis nødvendigt: `## Corrections` med hvad der var forkert, og hvor.
 - Open source- og Paper-historierne har samme opbygning som hovedhistorierne (meta, So what,
-  kilde) og står i `items`. On the radar og Try it today står ikke i `items`.
+  kilde) og står i `items`.
 - Tone (STRATEGI 1.4): korte sætninger, tal frem for adjektiver, overskriften siger hvad der
   skete, "So what" i bydeform, usikkerhed siges ærligt. Forbudt: "game changer", "revolutionary",
   "in a world where", "let's dive in", udråbstegn. Benchmarks kun med kontekst.
@@ -210,10 +202,34 @@ Fil: `_da/<dato>-<samme-slug>.md`. Samme indhold, struktur, ankre og `items` som
 skrevet som naturligt dansk (ikke ordret oversat), med æ, ø og å. Front matter:
 `other_lang_url: /<åååå>/<mm>/<dd>/`, `reviewed: false` (den danske er altid AI-mærket), `checked: false` (sættes i U6).
 Labels på dansk: "Stor nyhed" / "Værd at vide" / "Kort nyt", spor "Build" / "Generelt" /
-"Europa", sektioner "Open source og lokal AI" / "Dagens forskningsartikel" / "Bonus: hvis du har
-mere tid" / "På radaren" / "Prøv det i dag" / "Dokumentation:",
+"Europa", sektioner "Open source og lokal AI" / "Dagens forskningsartikel",
 "**Hvad betyder det:**" i stedet for "So what", "Kilde:", kildemærker "Officiel" /
 "Rapporteret" / "Ubekræftet" (samme CSS-klasser) og `## Rettelser`. Nøgletallets forklaring på dansk.
+
+### U5b. Nye begreber til biblioteket (Explained)
+For hvert begreb, der ikke findes i `_explained/` endnu: skriv BÅDE `_explained/<slug>.md`
+(engelsk) og `_explained/da/<slug>.md` (dansk, naturligt dansk; samme slug). Slug: små bogstaver,
+a-z, 0-9 og bindestreger, fx `context-window`. Følg STYLE.md (afsnittet om Explained).
+```markdown
+---
+term: "<Begrebet som i en ordbog, fx Context window>"
+title: "<Spørgsmålet, fx What is a context window?>"
+summary: "<Én linje: hvad læseren får at vide>"
+date: <dato>
+minutes: 2
+other_lang_url: /da/explained/<slug>/      # i den danske fil: /explained/<slug>/
+read_more:
+  - { label: "<Kilde: titel>", url: "<url du har åbnet>" }
+short: |
+  <2 korte afsnit, ca. 60-90 ord i alt: kernen af forklaringen, til fold-ud-visningen>
+---
+<Fuld forklaring, ca. 250-400 ord: hvad det er (1-2 sætninger), en hverdagssammenligning i en
+blockquote der starter med **Think of it like this:** (dansk: **Tænk på det sådan her:**),
+hvordan det virker, og en sidste linje med **Why it matters to you:** (dansk: **Hvad betyder
+det for dig:**).>
+```
+Eksempler: `_explained/open-weight.md` og `_explained/da/open-weight.md`. Ret aldrig eksisterende
+biblioteksfiler uden grund; finder du en fejl i en, så ret den og nævn det i rapporten.
 
 ### U6. Redaktørkontrol (obligatorisk, spring den ALDRIG over)
 Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils fremgangsmåde
@@ -222,7 +238,9 @@ Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils
    bekræfte de konkrete påstande, tal, navne og datoer, historien bruger. Det tager 1-2 minutter
    og er ikke valgfrit, heller ikke på en stille dag, eller fordi kilden blev læst under research.
 2. Ret, nedgradér eller fjern ud fra svarene, og gå derefter de 10 kriterier igennem én for én.
-   Kør `python3 .agent/readability.py _posts/<fil> _da/<fil>` og ret, til begge melder OK.
+   Kør `python3 .agent/readability.py _posts/<fil> _da/<fil>` og på hver ny fil i `_explained/`
+   (begge sprog), og ret, til alle melder OK. Tjek også, at slugs i `explained:` findes som filer
+   på begge sprog.
 3. Opdatér `minutes`, `min`, `items` og nummereringen, hvis noget er fjernet.
 4. Sæt `checked: true` i front matter i BEGGE filer, når alle kilder er genåbnet og alle 10
    kriterier er tjekket.
@@ -231,14 +249,14 @@ hvilken i rapporten. "Åbnet under research", "stille dag" eller "for få histor
 grund. Gem rapporten til PR-beskrivelsen.
 
 ### U7. Pull request
-1. `git checkout -b issue/<dato>`, commit begge filer (`Udkast <dato>`), `git push -u origin issue/<dato>`.
+1. `git checkout -b issue/<dato>`, commit begge filer + nye filer i `_explained/` (`Udkast <dato>`), `git push -u origin issue/<dato>`.
 2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<redaktørkontrollens rapport, derefter overskrifterne som liste + kilder, til sidst kandidatlisten fra U2 (mindst 15)>" -q .html_url`.
    Notér PR-URL'en.
 
 ### U8. Ingen udkast-mail
 Der sendes ingen udkast-mail. PR'en er nok: redaktøren kan godkende den, hvis han er oppe.
 
-Afslut med én linje: PR-URL, titel, antal historier, kernens læsetid og bonus, antal kandidater, kilder genåbnet x/y og readability OK/ikke OK.
+Afslut med én linje: PR-URL, titel, antal historier, kernens læsetid, dagens tre begreber (nye/genbrugte), antal kandidater, kilder genåbnet x/y og readability OK/ikke OK.
 
 ---
 
@@ -271,7 +289,9 @@ Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen) og
 - `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
   `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, tekst, So what, kildemærke).
   Open source- og Paper-historien kommer efter hovedhistorierne, hver med skabelonens
-  sektionslabel ovenover. Bonus (On the radar + Try it today) kommer til sidst med bonus-blokken.
+  sektionslabel ovenover. Til sidst Explained-blokken: hovedbegrebet i fuld længde (fra
+  biblioteksfilens brødtekst) og de to andre som links til deres biblioteksside med `?ref=mail`
+  (mailprogrammer kan ikke folde ud).
   `{{COUNT}}` = antal historier i kernen, fx "7 stories". `{{MIN}}` = kernens læsetid i minutter.
   Ingen `{{` må stå tilbage.
 - Er der en "Jesper's pick"-sektion, så tag den med efter sidste historie.

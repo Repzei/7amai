@@ -20,4 +20,4 @@ When a company calls a model "open-weight", it means anyone can download that fi
 
 That last part matters. Open-weight is not the same as open source. The training data and the code used to build the model usually stay secret. The license can also set limits, for example on how very large companies may use it.
 
-**Why it matters to you:** open weights mean lower costs at scale, more control over your data, and no risk that a provider changes or removes the model. The price is that you run, secure and update it yourself.
+**Why it matters to you:** open weights can mean lower costs at scale and more control over your data. No provider can change or remove the model from under you. The price is that you run, secure and update it yourself.

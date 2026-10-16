@@ -80,14 +80,16 @@ Har udgaven "Corrections", tilføjes de efter Paper of the day som en almindelig
 Sektionslabel (før Open source-historien og før Paper-historien; dansk: "Open source og lokal AI", "Dagens forskningsartikel"):
   <div style="font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#55627A;margin:22px 0 2px;">{{SEKTION}}</div>
 
-Bonus-blok (til sidst efter alle historier; dansk: "Bonus: hvis du har mere tid", "På radaren", "Prøv det i dag", "Dokumentation"):
-  <div style="margin:24px 0 0;padding:14px 16px;background:#EEF3FA;border-radius:12px;">
-    <div style="font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#55627A;">Bonus: if you have more time</div>
-    <div style="font-size:15px;font-weight:800;color:#0E1A33;margin:10px 0 4px;">On the radar</div>
-    <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.5;margin:0 0 6px;color:#0E1A33;"><strong>{{TITEL}}:</strong> {{EN_LINJE}} <a href="{{URL}}" style="color:#55627A;">{{DOMÆNE}}</a></p>
-    (én linje pr. radar-nyhed)
-    <div style="font-size:15px;font-weight:800;color:#0E1A33;margin:12px 0 4px;">Try it today</div>
-    <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.5;margin:0;color:#0E1A33;">{{TRY_TEKST}} <a href="{{DOCS_URL}}" style="color:#55627A;">Docs</a></p>
+Explained-blok (til sidst efter alle historier; dansk: "Forklaret: hvis du har 2 minutter mere", "To mere fra i dag, på 7amai.com"):
+  <div style="margin:24px 0 0;border-top:1.5px dashed #D3DCEA;padding-top:16px;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#B4500A;margin:0 0 6px;">Explained: if you have 2 more minutes</div>
+    <div style="font-size:20px;line-height:1.2;font-weight:800;color:#0E1A33;margin:0 0 8px;">{{BEGREB_TITEL}}</div>
+    {{BEGREB_TEKST}}  (hovedbegrebets brødtekst som afsnit: <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.55;margin:0 0 10px;color:#0E1A33;">; sammenligningen i <p style="...;background:#FFF4EA;border-left:3px solid #FF8A2A;padding:8px 12px;">)
+    <div style="margin:14px 0 0;padding:12px 14px;background:#EEF3FA;border-radius:12px;">
+      <div style="font-size:13px;font-weight:800;color:#55627A;margin:0 0 6px;">Two more from today, on 7amai.com</div>
+      <a href="https://7amai.com/explained/{{SLUG}}/?ref=mail" style="display:block;font-size:15px;font-weight:700;color:#0E1A33;margin:4px 0;text-decoration:none;"><span style="color:#B4500A;">&rarr;</span> {{TITEL}}</a>
+      (ét link pr. ekstra begreb; dansk: https://7amai.com/da/explained/{{SLUG}}/?ref=mail)
+    </div>
   </div>
 
 {{DISCLOSURE}}: ikke godkendt = "Written by AI. Every claim links to its primary source. Not reviewed by a human editor."
