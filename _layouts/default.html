@@ -48,6 +48,7 @@
       {%- if page.other_lang_url -%}
       <a class="head-link" href="{{ page.other_lang_url | relative_url }}" hreflang="{% if lang == 'en' %}da{% else %}en{% endif %}">{{ t.other_lang_label }}</a>
       {%- endif -%}
+      <a class="head-link" href="{{ t.explained_url | relative_url }}">{{ t.explained_name }}</a>
       <a class="head-link" href="{{ t.feed | relative_url }}">RSS</a>
     </nav>
   </header>
