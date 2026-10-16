@@ -3,7 +3,7 @@ term: "Mixture of experts (MoE)"
 title: "Hvad er en mixture-of-experts-model (MoE)?"
 summary: "Hvorfor kæmpemodeller kun bruger en lille del af sig selv pr. ord."
 date: 2026-10-16
-minutes: 2
+minutes: 1
 other_lang_url: /explained/mixture-of-experts/
 read_more:
   - { label: "Hugging Face: Mixture of Experts Explained (engelsk)", url: "https://huggingface.co/blog/moe" }

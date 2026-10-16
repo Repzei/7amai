@@ -3,7 +3,7 @@ term: "Mixture of experts (MoE)"
 title: "What is a mixture-of-experts (MoE) model?"
 summary: "Why huge models only use a slice of themselves for each word."
 date: 2026-10-16
-minutes: 2
+minutes: 1
 other_lang_url: /da/explained/mixture-of-experts/
 read_more:
   - { label: "Hugging Face: Mixture of Experts Explained", url: "https://huggingface.co/blog/moe" }

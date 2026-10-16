@@ -3,7 +3,7 @@ term: "Context window"
 title: "Hvad er et context window?"
 summary: "Hvor meget en model kan læse på én gang, og hvorfor pladsen slipper op."
 date: 2026-10-16
-minutes: 2
+minutes: 1
 other_lang_url: /explained/context-window/
 read_more:
   - { label: "Anthropic: Context windows (engelsk)", url: "https://docs.anthropic.com/en/docs/build-with-claude/context-windows" }

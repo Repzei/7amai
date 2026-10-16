@@ -138,6 +138,7 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 
 /* "Explained": bonus nederst i udgaven + biblioteket (/explained/). */
 .issue-body hr.bonus { margin-top: 40px; }
+.ex-time { color: var(--sun-ink); white-space: nowrap; }
 .ex-head { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; margin: 18px 0 2px; }
 .ex-head h2 { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); }
 .ex-head span { font-family: var(--font-news); font-size: 12px; font-weight: 700; color: var(--mist); }

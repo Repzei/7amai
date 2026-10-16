@@ -4,22 +4,22 @@ summary: "Meta puts the weights of an 816B model online for anyone to download. 
 date: 2026-10-16 07:00:00 +0200
 reviewed: false
 checked: true
-minutes: 6
+minutes: 8
 explained: { main: "open-weight", from: 1, more: ["mixture-of-experts", "context-window"] }
 other_lang_url: /da/2026/10/16/
 items:
-  - { n: 1, anchor: "muse-spark-open", signal: big, tracks: [build, general, europe], min: 1.5, source: official, number: "816B", number_label: "parameters, 42B active per token" }
-  - { n: 2, anchor: "ai-act-enforcement", signal: worth, tracks: [europe, general], min: 1, source: reported }
+  - { n: 1, anchor: "muse-spark-open", signal: big, tracks: [build, general, europe], min: 2, source: official, number: "816B", number_label: "parameters, 42B active per token" }
+  - { n: 2, anchor: "ai-act-enforcement", signal: worth, tracks: [europe, general], min: 1.5, source: reported }
   - { n: 3, anchor: "opus-fast-mode", signal: worth, tracks: [build], min: 1, source: official }
-  - { n: 4, anchor: "gpt-4o-retirement", signal: worth, tracks: [build], min: 0.5, source: official }
+  - { n: 4, anchor: "gpt-4o-retirement", signal: worth, tracks: [build], min: 1, source: official }
   - { n: 5, anchor: "github-ai-scan", signal: worth, tracks: [build], min: 1, source: official }
-  - { n: 6, anchor: "metr-access", signal: quick, tracks: [general], min: 0.5, source: official }
-  - { n: 7, anchor: "nemotron-bolt", signal: worth, tracks: [build, europe], min: 0.5, source: official }
-  - { n: 8, anchor: "judges-agree", signal: worth, tracks: [build, general], min: 0.5, source: official }
+  - { n: 6, anchor: "metr-access", signal: quick, tracks: [general], min: 1, source: official }
+  - { n: 7, anchor: "nemotron-bolt", signal: worth, tracks: [build, europe], min: 1, source: official }
+  - { n: 8, anchor: "judges-agree", signal: worth, tracks: [build, general], min: 1, source: official }
 ---
 
 ### 1. Meta releases Muse Spark Open, an 816B model anyone can download {#muse-spark-open}
-<p class="item-meta"><span class="signal signal-big">Big deal</span><span class="track">Build</span><span class="track">General</span><span class="track">Europe</span><span class="track">1½ min</span></p>
+<p class="item-meta"><span class="signal signal-big">Big deal</span><span class="track">Build</span><span class="track">General</span><span class="track">Europe</span><span class="track">2 min</span></p>
 <div class="number"><b>816B</b><span>parameters, 42B active per token</span></div>
 
 Meta published the weights of Muse Spark Open on 15 October. Anyone can download it and run it on their own machines, if they have the hardware.
@@ -44,7 +44,7 @@ Source: [research.meta.ai](https://research.meta.ai/blog/muse-spark-open) · <sp
 {: .sources}
 
 ### 2. The EU's AI Office presses OpenAI and Anthropic over summer incidents {#ai-act-enforcement}
-<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Europe</span><span class="track">General</span><span class="track">1 min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Europe</span><span class="track">General</span><span class="track">1½ min</span></p>
 
 The EU's AI Office has asked OpenAI and Anthropic for information about two incidents from this summer, Euronews reports. EU digital chief Henna Virkkunen said in Dublin on 14 October: "Our AI Office has started enforcing these rules."
 
@@ -78,7 +78,7 @@ Source: [platform.claude.com](https://platform.claude.com/docs/en/release-notes/
 {: .sources}
 
 ### 4. OpenAI will switch off GPT-4o and GPT-4.1 in its API on 14 January {#gpt-4o-retirement}
-<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">½ min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">1 min</span></p>
 
 OpenAI told developers on 14 October that GPT-4o, GPT-4o mini, GPT-4.1 and GPT-4.1 mini leave the API on 14 January 2027. Fine-tuned versions go the same day.
 
@@ -108,7 +108,7 @@ Source: [github.blog](https://github.blog/changelog/2026-10-15-ai-scan-for-pull-
 {: .sources}
 
 ### 6. Anthropic gives METR's safety researchers near-employee access {#metr-access}
-<p class="item-meta"><span class="signal signal-quick">Quick hit</span><span class="track">General</span><span class="track">½ min</span></p>
+<p class="item-meta"><span class="signal signal-quick">Quick hit</span><span class="track">General</span><span class="track">1 min</span></p>
 
 Anthropic has given six researchers from METR, an independent AI safety group, access close to that of its own risk teams. They get company hardware, office space and internal tools.
 
@@ -124,7 +124,7 @@ Source: [anthropic.com](https://www.anthropic.com/news/an-update-on-independent-
 ## Open source & local AI
 
 ### NVIDIA's Nemotron 3.5 Bolt fits a 74B model into 24 GB {#nemotron-bolt}
-<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">½ min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1 min</span></p>
 
 NVIDIA released Nemotron 3.5 Bolt 74B-A9B on 15 October, with open weights on Hugging Face. It fits the 74 billion parameters in its name into 24 GB of memory.
 
@@ -140,7 +140,7 @@ Source: [blogs.nvidia.com](https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/)
 ## Paper of the day
 
 ### Most wrong AI answers look consistent, so agreement checks miss them {#judges-agree}
-<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">General</span><span class="track">½ min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">General</span><span class="track">1 min</span></p>
 
 A new paper finds that 60% of wrong AI answers would pass a popular agreement check. Xiang Zhang, Lovedeep Gondara and Jekaterina Novikova posted it on arXiv on 15 October.
 

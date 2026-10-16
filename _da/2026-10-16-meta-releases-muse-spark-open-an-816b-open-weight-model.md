@@ -4,22 +4,22 @@ summary: "Meta lægger vægtene til en model på 816 mia. parametre ud, så alle
 date: 2026-10-16 07:00:00 +0200
 reviewed: false
 checked: true
-minutes: 6
+minutes: 8
 explained: { main: "open-weight", from: 1, more: ["mixture-of-experts", "context-window"] }
 other_lang_url: /2026/10/16/
 items:
-  - { n: 1, anchor: "muse-spark-open", signal: big, tracks: [build, general, europe], min: 1.5, source: official, number: "816B", number_label: "parametre, 42B aktive pr. token" }
+  - { n: 1, anchor: "muse-spark-open", signal: big, tracks: [build, general, europe], min: 2, source: official, number: "816B", number_label: "parametre, 42B aktive pr. token" }
   - { n: 2, anchor: "ai-act-enforcement", signal: worth, tracks: [europe, general], min: 1, source: reported }
   - { n: 3, anchor: "opus-fast-mode", signal: worth, tracks: [build], min: 1, source: official }
-  - { n: 4, anchor: "gpt-4o-retirement", signal: worth, tracks: [build], min: 0.5, source: official }
+  - { n: 4, anchor: "gpt-4o-retirement", signal: worth, tracks: [build], min: 1, source: official }
   - { n: 5, anchor: "github-ai-scan", signal: worth, tracks: [build], min: 1, source: official }
-  - { n: 6, anchor: "metr-access", signal: quick, tracks: [general], min: 0.5, source: official }
-  - { n: 7, anchor: "nemotron-bolt", signal: worth, tracks: [build, europe], min: 0.5, source: official }
-  - { n: 8, anchor: "judges-agree", signal: worth, tracks: [build, general], min: 0.5, source: official }
+  - { n: 6, anchor: "metr-access", signal: quick, tracks: [general], min: 1, source: official }
+  - { n: 7, anchor: "nemotron-bolt", signal: worth, tracks: [build, europe], min: 1, source: official }
+  - { n: 8, anchor: "judges-agree", signal: worth, tracks: [build, general], min: 1, source: official }
 ---
 
 ### 1. Meta frigiver Muse Spark Open, en model på 816 mia. parametre, som alle kan hente {#muse-spark-open}
-<p class="item-meta"><span class="signal signal-big">Stor nyhed</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">Europa</span><span class="track">1½ min</span></p>
+<p class="item-meta"><span class="signal signal-big">Stor nyhed</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">Europa</span><span class="track">2 min</span></p>
 <div class="number"><b>816B</b><span>parametre, 42B aktive pr. token</span></div>
 
 Meta offentliggjorde den 15. oktober vægtene til Muse Spark Open. Alle kan hente den og køre den på egne maskiner, hvis de har hardwaren til det.
@@ -78,7 +78,7 @@ Kilde: [platform.claude.com](https://platform.claude.com/docs/en/release-notes/o
 {: .sources}
 
 ### 4. OpenAI lukker GPT-4o og GPT-4.1 i sit API den 14. januar {#gpt-4o-retirement}
-<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">½ min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">1 min</span></p>
 
 OpenAI meddelte den 14. oktober, at GPT-4o, GPT-4o mini, GPT-4.1 og GPT-4.1 mini forsvinder fra API'et den 14. januar 2027. Finjusterede udgaver lukker samme dag.
 
@@ -108,7 +108,7 @@ Kilde: [github.blog](https://github.blog/changelog/2026-10-15-ai-scan-for-pull-r
 {: .sources}
 
 ### 6. Anthropic giver METRs sikkerhedsforskere næsten samme adgang som ansatte {#metr-access}
-<p class="item-meta"><span class="signal signal-quick">Kort nyt</span><span class="track">Generelt</span><span class="track">½ min</span></p>
+<p class="item-meta"><span class="signal signal-quick">Kort nyt</span><span class="track">Generelt</span><span class="track">1 min</span></p>
 
 Anthropic har givet seks forskere fra METR, en uafhængig gruppe inden for AI-sikkerhed, adgang tæt på det, firmaets egne risikoteams har. De får firmaets hardware, kontorplads og interne værktøjer.
 
@@ -124,7 +124,7 @@ Kilde: [anthropic.com](https://www.anthropic.com/news/an-update-on-independent-e
 ## Open source og lokal AI
 
 ### NVIDIAs Nemotron 3.5 Bolt får en model på 74 mia. parametre ned i 24 GB {#nemotron-bolt}
-<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">½ min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1 min</span></p>
 
 NVIDIA udgav den 15. oktober Nemotron 3.5 Bolt 74B-A9B med åbne vægte på Hugging Face. Den får de 74 milliarder parametre, som navnet nævner, til at passe i 24 GB hukommelse.
 
@@ -140,7 +140,7 @@ Kilde: [blogs.nvidia.com](https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/) 
 ## Dagens forskningsartikel
 
 ### De fleste forkerte AI-svar er konsistente, så enighedstjek overser dem {#judges-agree}
-<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">½ min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">1 min</span></p>
 
 En ny artikel viser, at 60 procent af forkerte AI-svar ville bestå et populært enighedstjek. Xiang Zhang, Lovedeep Gondara og Jekaterina Novikova lagde den på arXiv den 15. oktober.
 

@@ -98,7 +98,7 @@ Hver historie får:
   (EU-regulering, europæiske modeller/priser, lokal AI og privatliv).
 - Sørg for, at hvert spor får mindst én historie, hvis der findes en reel kandidat.
 
-**Struktur og længde** (ca. 230 ord pr. minut):
+**Struktur og længde** (200 ord pr. minut, se "Læsetid" nedenfor):
 1. **Hovedhistorier:** typisk 4-6. Lead-historien får kontekst og baggrund (ca. 250-400 ord),
    de øvrige ca. 120-220 ord. Dybde er bedre end mange tynde historier.
 2. **Open source & local AI:** én historie om dagens vigtigste open source-model, lokale
@@ -106,7 +106,7 @@ Hver historie får:
 3. **Paper of the day:** én forskningsartikel (arXiv, Hugging Face Papers, et laboratoriums
    egen udgivelse fra de seneste dage), forklaret i almindeligt sprog: hvad den viser, hvordan,
    og hvorfor det betyder noget. Ca. 150-220 ord. Link til selve artiklen (Official).
-Kernen (1-3) skal være **ca. 1.380-1.610 ord = 6-7 minutter, mindst 5 minutter (1.150 ord)**,
+Kernen (1-3) skal være **ca. 1.000-1.400 ord = 5-7 minutter ved 200 ord/min (helst 1.200-1.400)**,
 alle dage. Når du rammer under 5 minutter, er det et tegn på for lidt research: gå tilbage til
 U2 og find flere kandidater, i stedet for at skrive kort.
 4. **Explained** (tæller ikke med i de 7 minutter): vælg tre begreber, som dagens historier
@@ -122,9 +122,12 @@ U2 og find flere kandidater, i stedet for at skrive kort.
 "Aldrig fyld" gælder stadig: alt i kernen skal være nyt, have en kilde du har åbnet, og sige
 hvad det betyder.
 
-**Læsetid:** regn minutter ud pr. historie (ord / 230, afrundet til nærmeste halve minut) og
-for kernen. Skriv kernens tid i front matter (`minutes`) og pr. historie (`min` i `items`;
-også Open source- og Paper-historien). Explained har sin egen `minutes` i biblioteksfilen.
+**Læsetid er et løfte til læseren, så regn den aldrig i hånden.** Skriv udgaven med et
+foreløbigt tal, og kør så `python3 .agent/readability.py --fix _posts/<fil> _da/<fil>` (og på nye
+filer i `_explained/`). Scriptet skriver de rigtige tider: 200 ord pr. minut, altid rundet OP
+(kernen i hele minutter i `minutes`, hver historie i halve minutter i `min` og i `item-meta`).
+Melder det, at kernen er over 7 minutter, så skær i teksten (STYLE.md regel 6) eller drop den
+svageste historie; under 5: tilføj en stærk kandidat. Kør det igen bagefter.
 
 ### U4. Skriv den engelske udgave
 **Læs `.agent/STYLE.md` først og følg den.** Enkelt, let at læse, let at forstå: nyheden først,

@@ -10,10 +10,10 @@ Hovedbegrebet vises i fuld længde, de øvrige som fold-ud med feltet `short`.
 {%- assign main = pool | where: "slug", ex.main | first -%}
 {%- if main %}
 <hr class="bonus">
-<div class="ex-head"><h2>{{ t.explained_title }}</h2><span>{{ t.explained_count }}</span></div>
+<div class="ex-head"><h2>{{ t.explained_title }}</h2><span>{{ t.explained_count }}{% if ex_min > 0 %} · {{ ex_min }} min{% endif %}</span></div>
 <div class="ex-main">
 <h3 id="explained-{{ main.slug }}">{{ main.title }}</h3>
-<div class="ex-meta">{% if ex.from %}<span class="pill">{{ t.explained_from }} #{{ ex.from }}</span>{% endif %}<span>{{ main.minutes | default: 2 }} min</span></div>
+<div class="ex-meta">{% if ex.from %}<span class="pill">{{ t.explained_from }} #{{ ex.from }}</span>{% endif %}<span>{{ main.minutes | default: 1 }} min</span></div>
 {{ main.content }}
 <p class="lib-link"><a href="{{ main.url | relative_url }}">{{ t.explained_permalink }}</a></p>
 </div>
