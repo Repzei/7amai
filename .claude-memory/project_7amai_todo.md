@@ -15,6 +15,10 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - Routines kører hverdage: **udkast kl. 6** (PR + udkast-mail med "Approve on GitHub") og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
+## SYSTEMOVERSIGT PÅ DASHBOARDET (2026-10-16, commit 6037a86)
+- Fanen "Sådan virker det" (https://7amai-stats.jesperkhl.workers.dev/#system): tidslinje for en morgen (05:30 udkast -> 07:16 afsendelse -> læsere), tjenester (Claude, GitHub, Cloudflare, Resend, Google, simply.com), tilmeldingsflow, hemmeligheder (kun navne), sikkerhedsnet, live-status (seneste udgave, godkendt/AI-mærket, sendt i dag) fra GitHub API + raw sent.log, cachet 5 min.
+- REGEL (også i 7amai/CLAUDE.md): ændres flow, tjenester, tider, hemmeligheder eller sikkerhedsnet, så opdatér fanen i samme ændring og deploy fra worker/stats.
+
 ## ÆRLIG LÆSETID (2026-10-16, commit a7d070c)
 Jesper: forkerte tidsestimater giver dårligt omdømme. Fund: 230 ord/min + afrunding NED + håndregning gav "6 min" for en udgave, der ærligt er 8 min (1.433 ord), og "½ min" for historier på 1 min.
 - Nu: 200 ord/min (under Brysbaert 2019's gennemsnit på ca. 238 for faglitteratur, fordi teksten er teknisk og mange læser på andetsprog), ALTID rundet op. `readability.py --fix` skriver minutes (hele min) + hver histories `min` (halve min) i items og item-meta; tjek-tilstand melder afvigelser. Kernen fremover 1.000-1.400 ord (5-7 min).
