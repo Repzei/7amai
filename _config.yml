@@ -18,6 +18,10 @@ collections:
   da:
     output: true
     permalink: /da/:year/:month/:day/
+  # "Explained"-biblioteket: én fil pr. begreb og sprog (_explained/<slug>.md og _explained/da/<slug>.md).
+  explained:
+    output: true
+    permalink: /explained/:name/
 feed:
   path: feed.xml
   collections:
@@ -28,6 +32,10 @@ defaults:
     values: { layout: issue, lang: en }
   - scope: { path: "", type: da }
     values: { layout: issue, lang: da }
+  - scope: { path: "_explained", type: explained }
+    values: { layout: explained, lang: en }
+  - scope: { path: "_explained/da", type: explained }
+    values: { layout: explained, lang: da, permalink: "/da/explained/:name/" }
 exclude:
   - README.md
   - CLAUDE.md

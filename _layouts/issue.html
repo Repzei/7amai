@@ -14,6 +14,7 @@ layout: default
   </div>
   <div class="issue-body">
     {{ content }}
+    {%- if page.explained %}{% include explained.html %}{% endif %}
   </div>
   <p class="legend"><span>{{ t.legend }}</span><span class="tag tag-official">{{ t.legend_official }}</span><span class="tag tag-reported">{{ t.legend_reported }}</span><span class="tag tag-unconfirmed">{{ t.legend_unconfirmed }}</span></p>
   <nav class="issue-nav">

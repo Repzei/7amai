@@ -1,0 +1,37 @@
+{%- assign t = site.data.i18n[page.lang] -%}
+{%- assign entries = site.explained | where: "lang", page.lang | sort: "term" -%}
+<section class="intro">
+  <h1>{{ t.explained_name }}</h1>
+  <p>{{ t.explained_lead }}</p>
+</section>
+<div class="lib">
+  <label class="lib-label" for="lib-q">{{ t.explained_search }}</label>
+  <input id="lib-q" class="lib-search" type="search" placeholder="{{ t.explained_search_hint }}" autocomplete="off">
+  <ul class="terms" id="lib-terms">
+  {%- assign letter = "" -%}
+  {%- for e in entries -%}
+    {%- assign first = e.term | slice: 0 | upcase -%}
+    {%- if first != letter %}{% assign letter = first %}<li class="letter" data-letter>{{ letter }}</li>{% endif %}
+    <li><a href="{{ e.url | relative_url }}"><span class="t">{{ e.term }}</span><span class="d">{{ e.summary }}</span><span class="w">{{ e.date | date: t.date_format }}</span></a></li>
+  {%- else -%}
+    <li class="empty">{{ t.explained_empty }}</li>
+  {%- endfor %}
+  </ul>
+</div>
+<script>
+(function () {
+  var q = document.getElementById('lib-q');
+  if (!q) return;
+  q.addEventListener('input', function () {
+    var v = q.value.toLowerCase().trim();
+    document.querySelectorAll('#lib-terms li:not([data-letter])').forEach(function (li) {
+      li.hidden = !!v && li.textContent.toLowerCase().indexOf(v) === -1;
+    });
+    document.querySelectorAll('#lib-terms li[data-letter]').forEach(function (h) {
+      var n = h.nextElementSibling, any = false;
+      while (n && !n.hasAttribute('data-letter')) { if (!n.hidden) any = true; n = n.nextElementSibling; }
+      h.hidden = !!v && !any;
+    });
+  });
+})();
+</script>

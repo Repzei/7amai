@@ -1,0 +1,20 @@
+---
+layout: default
+---
+{%- assign t = site.data.i18n[page.lang] -%}
+<article class="issue explained-entry">
+  <p class="issue-date"><a href="{{ t.explained_url | relative_url }}">{{ t.explained_name }}</a> · {{ page.minutes | default: 2 }} min</p>
+  <h1>{{ page.title }}</h1>
+  {% if page.summary %}<p class="issue-lead">{{ page.summary }}</p>{% endif %}
+  <p class="disclosure">{{ t.disclosure_explained }}</p>
+  <div class="issue-body ex-main">
+    {{ content }}
+    {%- if page.read_more %}
+    <p class="sources">{{ t.explained_read_more }}: {% for r in page.read_more %}<a href="{{ r.url }}">{{ r.label }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+    {%- endif %}
+  </div>
+  <nav class="issue-nav">
+    <a href="{{ t.explained_url | relative_url }}">&larr; {{ t.explained_all }}</a>
+    <a href="{{ t.home | relative_url }}">{{ t.all_issues }}</a>
+  </nav>
+</article>
