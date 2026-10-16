@@ -38,6 +38,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `_includes/beacon.html` | Anonym besøgsstatistik (ingen cookies/IP; GPC/DNT respekteres): sender side, sprog, kilde, aktiv læsetid, scroll til `POST /hit`. Ikke på `noindex`-sider |
 | `worker/` | Tilmeldings-worker `7amai-signup`: /subscribe, /confirm, /broadcast, /hit (D1 `7amai-stats`, EU) + intern RPC-entrypoint `Stats` (tæller tilmeldte; Resend-nøglen ligger kun her). Skema: `worker/schema.sql` |
 | `worker/stats/` | Privat dashboard `7amai-stats` (https://7amai-stats.jesperkhl.workers.dev, Basic Auth med secret STATS_PASSWORD): tilmeldte, besøg, kilder, læsetid, læst til ende, top-udgaver. Henter tilmeldte via service binding til `Stats` |
+| `.agent/roadmap.json` | Køreplanen (faser + status) som dashboardet viser live. Opdateres sammen med to-do'en, når noget bliver færdigt eller planen ændres |
 | `.agent/EDITORIAL.md` | Jespers 10 redaktionelle kriterier (redaktørkontrol, trin U6) |
 | `.agent/STYLE.md` | Stilguide: enkelt, let at læse og forstå (10 regler, før/efter-eksempel, dansk) |
 | `.agent/readability.py` | Læsbarhedstjek uden pakker: sætningslængde (gns. højst 16, ingen over 25), kernens læsetid (5-7 min). Køres i U6 |
@@ -62,7 +63,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 - Visuel kontrol: åbn udgaven på 375 px bredde i lys og mørk tilstand; ingen vandret scroll.
 
 ## Drift
-- **Systemoversigt:** fanen "Sådan virker det" på dashboardet (https://7amai-stats.jesperkhl.workers.dev/#system, kode i `worker/stats/src/index.js`) forklarer hele kæden for Jesper. Ændres flowet, en tjeneste, tidspunkter, hemmeligheder eller sikkerhedsnet: opdatér fanen i samme ændring og deploy (`npx.cmd wrangler deploy` fra `worker/stats`).
+- **Systemoversigt:** fanen "Sådan virker det" på dashboardet (https://7amai-stats.jesperkhl.workers.dev/#system, kode i `worker/stats/src/index.js`) forklarer hele kæden for Jesper. Ændres flowet, en tjeneste, tidspunkter, hemmeligheder eller sikkerhedsnet: opdatér fanen i samme ændring og deploy (`npx.cmd wrangler deploy` fra `worker/stats`). Køreplanen kræver ingen deploy: ret `.agent/roadmap.json` og push.
 - Routine-ID, miljø-ID, DNS og faldgruber står i `.claude-memory/project_7amai_infra.md` og
   `.claude-memory/feedback_7amai_lessons.md`.
 - Hvis GitHub Pages-certifikatet ikke udstedes: fjern og sæt custom domain igen, når DNS er synlig.

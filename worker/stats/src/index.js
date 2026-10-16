@@ -73,6 +73,8 @@ async function systemStatus() {
     gh("pulls?state=all&per_page=5"),
     fetch("https://raw.githubusercontent.com/Repzei/7amai/main/.agent/sent.log", cache).then(r => (r.ok ? r.text() : "")).catch(() => ""),
   ]);
+  const roadmap = await fetch("https://raw.githubusercontent.com/Repzei/7amai/main/.agent/roadmap.json", cache)
+    .then(r => (r.ok ? r.json() : null)).catch(() => null);
   const cph = (iso) => {
     const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Copenhagen", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
     return { date: `${p.year}-${p.month}-${p.day}`, time: `${p.hour}:${p.minute}` };
@@ -91,7 +93,7 @@ async function systemStatus() {
     };
   }
   const sent = sentLog.trim().split("\n").filter(Boolean);
-  return { today: cphDay(new Date()), lastSent: sent[sent.length - 1] || null, sentCount: sent.length, issue };
+  return { today: cphDay(new Date()), lastSent: sent[sent.length - 1] || null, sentCount: sent.length, issue, roadmap };
 }
 
 const ISSUE_PATH = "(path GLOB '/[0-9][0-9][0-9][0-9]/*' OR path GLOB '/da/[0-9][0-9][0-9][0-9]/*')";
@@ -202,6 +204,42 @@ footer { margin-top:24px; }
 .sys code { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:0.86em; background:var(--sky); border:1px solid var(--line); border-radius:4px; padding:1px 5px; }
 .scroll { overflow-x:auto; }
 .sys a, .sys a:visited { color:var(--mark); font-weight:700; }
+:root { --c-claude:#8A5CF6; --c-gh:#24292F; --c-cf:#F38020; --c-rs:#0E1A33; --c-web:#B4500A; --c-reader:#2E9E5B; --c-jesper:#C08A00; }
+@media (prefers-color-scheme: dark) { :root { --c-gh:#A9B6CC; --c-rs:#EAF0F8; --c-web:#FFA366; } }
+.fd { display:flex; flex-direction:column; align-items:center; gap:0; }
+.fd-node { background:var(--paper); border:1.5px solid var(--line); border-left:5px solid var(--c, var(--line)); border-radius:12px; padding:10px 14px; width:100%; max-width:340px; }
+.fd-node b { display:block; font-size:15px; }
+.fd-node small { display:block; color:var(--mist); font-size:13px; margin-top:2px; }
+.fd-node .who { font-size:10px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--c); }
+.fd-node.claude { --c:var(--c-claude); } .fd-node.gh { --c:var(--c-gh); } .fd-node.cf { --c:var(--c-cf); } .fd-node.rs { --c:var(--c-rs); } .fd-node.web { --c:var(--c-web); } .fd-node.reader { --c:var(--c-reader); } .fd-node.jesper { --c:var(--c-jesper); border-style:dashed; border-left-style:solid; }
+.fd-arrow { position:relative; height:44px; width:100%; max-width:340px; display:flex; align-items:center; justify-content:center; }
+.fd-arrow::before { content:""; position:absolute; left:50%; top:4px; bottom:10px; width:2px; background:var(--mark); transform:translateX(-50%); }
+.fd-arrow::after { content:""; position:absolute; left:50%; bottom:4px; border:6px solid transparent; border-top:7px solid var(--mark); border-bottom:0; transform:translateX(-50%); }
+.fd-arrow span { position:relative; z-index:1; background:var(--sky); color:var(--mist); font-size:12px; font-weight:700; padding:0 8px; margin-left:110px; white-space:nowrap; }
+.fd-split { display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100%; max-width:720px; align-items:start; }
+.fd-col { display:flex; flex-direction:column; align-items:center; min-width:0; }
+.fd-col .fd-arrow span { margin-left:0; position:absolute; top:0; left:calc(50% + 10px); }
+.fd-row { display:flex; gap:12px; width:100%; max-width:720px; justify-content:center; align-items:stretch; flex-wrap:wrap; }
+.fd-row .fd-node { max-width:340px; flex:1 1 220px; }
+.fd-title { font-size:12px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--mist); margin:0 0 8px; text-align:center; }
+.fd-legend { display:flex; flex-wrap:wrap; gap:6px 14px; justify-content:center; margin:14px 0 0; font-size:12px; color:var(--mist); }
+.fd-legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px; background:var(--c); }
+.rm { display:grid; gap:12px; }
+.rm .card h3 { margin:0; font-size:16px; display:flex; justify-content:space-between; gap:10px; align-items:baseline; flex-wrap:wrap; }
+.rm .goal { color:var(--mist); font-size:13px; margin:2px 0 8px; }
+.rm .bar { height:6px; background:var(--line); border-radius:4px; overflow:hidden; margin-bottom:8px; }
+.rm .bar span { display:block; height:100%; background:var(--c-reader); border-radius:0 4px 4px 0; }
+.rm ul { list-style:none; margin:0; padding:0; }
+.rm li { display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:baseline; padding:5px 0; border-top:1px solid var(--line); font-size:14px; }
+.rm li:first-child { border-top:0; }
+.rm .note { color:var(--mist); font-size:12px; }
+.pill { font-size:10px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; border-radius:999px; padding:2px 8px; white-space:nowrap; border:1.5px solid var(--line); color:var(--mist); }
+.pill.done { background:var(--c-reader); border-color:var(--c-reader); color:#FFFFFF; }
+.pill.doing { border-color:var(--sun); color:var(--mark); }
+.pill.next { border-color:var(--ink); color:var(--ink); }
+.pill.jesper { border-color:var(--c-jesper); color:var(--c-jesper); border-style:dashed; }
+.phase-status { font-size:11px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; color:var(--mist); }
+@media (max-width:560px) { .fd-split { grid-template-columns:1fr; } .fd-arrow span { margin-left:120px; } }
 @media (max-width:520px) { .flow::before { left:30px; } .flow li { grid-template-columns:60px 1fr; gap:10px; } .flow .t { font-size:12px; } }
 </style>
 </head>
@@ -226,6 +264,73 @@ footer { margin-top:24px; }
 
     <h2>Status lige nu</h2>
     <div class="status" id="sys-status"><div class="card muted">Henter status ...</div></div>
+
+    <h2>Flowdiagram: sådan bliver udgaven til</h2>
+    <div class="card">
+      <div class="fd">
+        <div class="fd-node claude"><span class="who">Claude · 05:30</span><b>Udkast-agenten</b><small>Opus 5.5 + 4 research-specialister i skyen</small></div>
+        <div class="fd-arrow"><span>research, skriv, tjek</span></div>
+        <div class="fd-row">
+          <div class="fd-node gh"><span class="who">GitHub</span><b>Pull request</b><small>Udgave EN + DA, nye Explained-begreber, kontrolrapport</small></div>
+          <div class="fd-node jesper"><span class="who">Jesper · valgfrit</span><b>Merger før 07:00</b><small>Så står der "Reviewed by Jesper"</small></div>
+        </div>
+        <div class="fd-arrow"><span>kl. 07:16</span></div>
+        <div class="fd-node claude"><span class="who">Claude · 07:16</span><b>Afsendelses-agenten</b><small>Sonnet 5.5: merger PR, bygger mails</small></div>
+        <div class="fd-split">
+          <div class="fd-col">
+            <p class="fd-title" style="margin:10px 0 0">Spor 1: hjemmesiden</p>
+            <div class="fd-arrow"><span>merge</span></div>
+            <div class="fd-node gh"><span class="who">GitHub Pages</span><b>Bygger siden</b><small>Jekyll, et par minutter</small></div>
+            <div class="fd-arrow"></div>
+            <div class="fd-node web"><span class="who">7amai.com</span><b>Udgaven + biblioteket</b><small>/explained/, sitemap til Google</small></div>
+          </div>
+          <div class="fd-col">
+            <p class="fd-title" style="margin:10px 0 0">Spor 2: mailen (samtidig)</p>
+            <div class="fd-arrow"><span>broadcast.mjs</span></div>
+            <div class="fd-node cf"><span class="who">Cloudflare</span><b>Worker 7amai-signup</b><small>/broadcast, Resend-nøglen ligger kun her</small></div>
+            <div class="fd-arrow"></div>
+            <div class="fd-node rs"><span class="who">Resend</span><b>Sender mailen</b><small>Segment EN og DA, med afmeldingslink</small></div>
+          </div>
+        </div>
+        <div class="fd-arrow"><span>kl. 7</span></div>
+        <div class="fd-node reader"><span class="who">Læserne</span><b>Indbakken og 7amai.com</b><small>Engelsk eller dansk</small></div>
+      </div>
+      <div class="fd-legend">
+        <span style="--c:var(--c-claude)"><i></i>Claude (Anthropic)</span><span style="--c:var(--c-gh)"><i></i>GitHub</span><span style="--c:var(--c-cf)"><i></i>Cloudflare</span><span style="--c:var(--c-rs)"><i></i>Resend</span><span style="--c:var(--c-web)"><i></i>Hjemmesiden</span><span style="--c:var(--c-reader)"><i></i>Læserne</span><span style="--c:var(--c-jesper)"><i></i>Dig</span>
+      </div>
+    </div>
+
+    <h2>Flowdiagram: læserne og tallene</h2>
+    <div class="card">
+      <div class="fd-split">
+        <div class="fd-col">
+          <p class="fd-title">Tilmelding (dobbelt opt-in)</p>
+          <div class="fd-node web"><span class="who">7amai.com</span><b>Formularen</b><small>Mail + sprog</small></div>
+          <div class="fd-arrow"></div>
+          <div class="fd-node cf"><span class="who">Cloudflare</span><b>/subscribe</b><small>Signeret link, 72 timer</small></div>
+          <div class="fd-arrow"></div>
+          <div class="fd-node rs"><span class="who">Resend</span><b>Bekræftelsesmail</b></div>
+          <div class="fd-arrow"><span>læseren klikker</span></div>
+          <div class="fd-node cf"><span class="who">Cloudflare</span><b>/confirm</b><small>Tjekker signaturen</small></div>
+          <div class="fd-arrow"></div>
+          <div class="fd-node rs"><span class="who">Resend</span><b>Segment EN eller DA</b><small>Får næste udgave kl. 7</small></div>
+        </div>
+        <div class="fd-col">
+          <p class="fd-title">Anonyme tal (ingen cookies)</p>
+          <div class="fd-node reader"><span class="who">Læseren</span><b>Læser en side</b></div>
+          <div class="fd-arrow"><span>side, kilde, tid</span></div>
+          <div class="fd-node cf"><span class="who">Cloudflare</span><b>/hit</b><small>Kun tal, intet om personen</small></div>
+          <div class="fd-arrow"></div>
+          <div class="fd-node cf"><span class="who">Cloudflare</span><b>D1-database i EU</b><small>Anonyme besøg</small></div>
+          <div class="fd-arrow"></div>
+          <div class="fd-node cf"><span class="who">Cloudflare</span><b>Dette dashboard</b><small>Henter tilmeldte via intern forbindelse</small></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Køreplan</h2>
+    <p class="intro">Hvad der er bygget, hvad der er i gang, og hvad der kommer. Læses live fra <code>.agent/roadmap.json</code> i repoet.</p>
+    <div class="rm" id="roadmap" style="margin-top:10px"><div class="card muted">Henter køreplanen ...</div></div>
 
     <h2>En morgen i 7am AI</h2>
     <ol class="flow">
@@ -389,6 +494,22 @@ footer { margin-top:24px; }
     cards.push('<div class="card"><div class="label">Afsendelse</div><div class="v">' + (sentToday ? '<span class="dot ok"></span>Sendt i dag' : '<span class="dot warn"></span>Ikke sendt i dag endnu') + '</div><div class="sub">Senest sendt: ' + (s.lastSent ? dk(s.lastSent) : "-") + " · " + s.sentCount + ' udgaver i alt</div></div>');
     cards.push('<div class="card"><div class="label">Næste kørsler</div><div class="v">05:30 og 07:16</div><div class="sub">Udkast og afsendelse, alle 7 dage (04:30 / 07:16 i vintertid)</div></div>');
     el.innerHTML = cards.join("");
+    renderRoadmap(s.roadmap);
+  }
+
+  function renderRoadmap(r) {
+    var el = document.getElementById("roadmap");
+    if (!r || !r.phases) { el.innerHTML = '<div class="card muted">Køreplanen kunne ikke hentes lige nu.</div>'; return; }
+    var L = { done: "Færdig", doing: "I gang", next: "Næste", later: "Senere", jesper: "Dit trin" };
+    var P = { done: "Færdig", doing: "I gang nu", next: "Næste", later: "Senere" };
+    el.innerHTML = r.phases.map(function (ph) {
+      var items = ph.items || [], done = items.filter(function (i) { return i.s === "done"; }).length;
+      var pctDone = items.length ? Math.round(done / items.length * 100) : 0;
+      return '<div class="card"><h3>' + esc(ph.name) + '<span class="phase-status">' + esc(P[ph.status] || "") + " · " + done + "/" + items.length + '</span></h3>' +
+        '<div class="goal">' + esc(ph.goal || "") + '</div><div class="bar"><span style="width:' + pctDone + '%"></span></div><ul>' +
+        items.map(function (i) { return '<li><span class="pill ' + esc(i.s) + '">' + esc(L[i.s] || i.s) + '</span><span>' + esc(i.t) + (i.note ? ' <span class="note">(' + esc(i.note) + ')</span>' : "") + "</span></li>"; }).join("") +
+        "</ul></div>";
+    }).join("") + '<div class="muted" style="font-size:12px">Opdateret ' + esc(r.updated || "") + "</div>";
   }
 
   fetch("/api", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (d) {
