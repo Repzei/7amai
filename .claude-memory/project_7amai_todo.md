@@ -18,6 +18,7 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 ## SYSTEMOVERSIGT PÅ DASHBOARDET (2026-10-16, commit 6037a86)
 - Fanen "Sådan virker det" (https://7amai-stats.jesperkhl.workers.dev/#system): tidslinje for en morgen (05:30 udkast -> 07:16 afsendelse -> læsere), tjenester (Claude, GitHub, Cloudflare, Resend, Google, simply.com), tilmeldingsflow, hemmeligheder (kun navne), sikkerhedsnet, live-status (seneste udgave, godkendt/AI-mærket, sendt i dag) fra GitHub API + raw sent.log, cachet 5 min.
 - REGEL (også i 7amai/CLAUDE.md): ændres flow, tjenester, tider, hemmeligheder eller sikkerhedsnet, så opdatér fanen i samme ændring og deploy fra worker/stats.
+- Fanen har også to flowdiagrammer (udgaven bliver til; læserne og tallene) og en KØREPLAN læst live fra `.agent/roadmap.json` (faser 0-3 + Marketing + Snart, status done/doing/next/later/jesper). REGEL: når et punkt i denne to-do bliver færdigt eller planen ændres, opdatér roadmap.json i samme commit (ingen deploy nødvendig, cache 5 min). Commit b28c2ec.
 
 ## ÆRLIG LÆSETID (2026-10-16, commit a7d070c)
 Jesper: forkerte tidsestimater giver dårligt omdømme. Fund: 230 ord/min + afrunding NED + håndregning gav "6 min" for en udgave, der ærligt er 8 min (1.433 ord), og "½ min" for historier på 1 min.
