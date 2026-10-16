@@ -5,7 +5,7 @@ date: 2026-10-16 07:00:00 +0200
 reviewed: false
 checked: true
 minutes: 6
-bonus_minutes: 1
+explained: { main: "open-weight", from: 1, more: ["mixture-of-experts", "context-window"] }
 other_lang_url: /2026/10/16/
 items:
   - { n: 1, anchor: "muse-spark-open", signal: big, tracks: [build, general, europe], min: 1.5, source: official, number: "816B", number_label: "parametre, 42B aktive pr. token" }
@@ -153,31 +153,4 @@ Et tjek, der kun ser på enighed, opfatter netop de svar som de sikreste. Mønst
 > **Hvad betyder det:** Brug ikke enighed alene som kvalitetskontrol. Hav et lille sæt eksempler med facit, eller tjek svarene mod en ekstern kilde.
 
 Kilde: [arxiv.org](https://arxiv.org/abs/2610.21128) · <span class="tag tag-official">Officiel</span>
-{: .sources}
-
-***
-
-## Bonus: hvis du har mere tid
-
-### På radaren
-
-- **llama.cpp v0.7.0 flytter serverens port:** Serveren lytter nu på 9931 i stedet for 8080. Docker-images beholder 8080 inde i containeren. En ny ekspert-cache gør store MoE-modeller op til 2,2 gange hurtigere, når dele ligger i systemhukommelsen. [github.com](https://github.com/ggml-org/llama.cpp/releases/tag/v0.7.0) · <span class="tag tag-official">Officiel</span>
-
-- **Copilot dropper tre modeller den 16. november:** Claude Opus 4.8, Claude Opus 5 og GPT-5.6 Terra forsvinder. GitHub peger i stedet på Opus 5.5, GPT-6.1 Sol og GPT-6 Luna. Personlige årsabonnementer beholder Opus 4.8. [github.blog](https://github.blog/changelog/2026-10-15-upcoming-deprecation-of-selected-github-copilot-models-in-mid-november) · <span class="tag tag-official">Officiel</span>
-
-- **Expo SDK 58:** React Native 0.88 og et eksperimentelt `@expo/agent-cli`, bygget til kodeagenter. [expo.dev](https://expo.dev/changelog/sdk-58) · <span class="tag tag-official">Officiel</span>
-
-- **Proofpoint køber Varonis for omkring 6,3 mia. dollar:** Handlen om datasikkerhed begrundes med, at AI-agenter får adgang til følsomme data. [sec.gov](https://www.sec.gov/Archives/edgar/data/0001361113/000121390026109901/ea030861001ex99-1.htm) · <span class="tag tag-official">Officiel</span>
-
-- **Claude får officiel amerikansk valginformation:** Senere i oktober henter Claude den fra Democracy Works. Claude viser også officielle resultater på valgnatten. [anthropic.com](https://www.anthropic.com/news/2026-us-midterms) · <span class="tag tag-official">Officiel</span>
-
-- **Mistral Timestral:** Fire modeller til prognoser, fra 5M til 209M parametre, under en modificeret MIT-licens. De kræver ingen GPU. [mistral.ai](https://mistral.ai/news/timestral) · <span class="tag tag-official">Officiel</span>
-
-### Prøv det i dag
-
-Vend tilbage til en lang Claude Code-session efter en pause uden at behandle det hele igen. Siden v2.1.299 komprimerer Claude Code i terminalen en samtale på over 200K tokens efter omkring 54 minutters pause. Det sker, før den timelange prompt-cache udløber.
-
-Du skal ikke slå noget til: Release notes nævner kun, hvordan man slår den fra. Vil du ændre minimummet på 200K, så sæt `CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS`. Vil du slå den fra, så tilføj `"idleCompaction": false` i settings.json.
-
-Dokumentation: [github.com](https://github.com/anthropics/claude-code/releases/tag/v2.1.299)
 {: .sources}

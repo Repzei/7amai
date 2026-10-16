@@ -5,7 +5,7 @@ date: 2026-10-16 07:00:00 +0200
 reviewed: false
 checked: true
 minutes: 6
-bonus_minutes: 1
+explained: { main: "open-weight", from: 1, more: ["mixture-of-experts", "context-window"] }
 other_lang_url: /da/2026/10/16/
 items:
   - { n: 1, anchor: "muse-spark-open", signal: big, tracks: [build, general, europe], min: 1.5, source: official, number: "816B", number_label: "parameters, 42B active per token" }
@@ -153,31 +153,4 @@ An agreement check sees these answers as the safest ones. The pattern held acros
 > **So what:** Don't use agreement alone as your quality gate. Keep a small set of labelled examples, or check answers against an outside source.
 
 Source: [arxiv.org](https://arxiv.org/abs/2610.21128) · <span class="tag tag-official">Official</span>
-{: .sources}
-
-***
-
-## Bonus: if you have more time
-
-### On the radar
-
-- **llama.cpp v0.7.0 moves the server port:** the server now listens on 9931 instead of 8080. Docker images keep 8080 inside the container. A new expert cache makes big MoE models up to 2.2x faster when parts sit in system memory. [github.com](https://github.com/ggml-org/llama.cpp/releases/tag/v0.7.0) · <span class="tag tag-official">Official</span>
-
-- **Copilot drops three models on 16 November:** Claude Opus 4.8, Claude Opus 5 and GPT-5.6 Terra go. GitHub points to Opus 5.5, GPT-6.1 Sol and GPT-6 Luna instead. Individual annual plans keep Opus 4.8. [github.blog](https://github.blog/changelog/2026-10-15-upcoming-deprecation-of-selected-github-copilot-models-in-mid-november) · <span class="tag tag-official">Official</span>
-
-- **Expo SDK 58:** React Native 0.88, plus an experimental `@expo/agent-cli` built for coding agents. [expo.dev](https://expo.dev/changelog/sdk-58) · <span class="tag tag-official">Official</span>
-
-- **Proofpoint buys Varonis for about $6.3 billion:** the data security deal is pitched around AI agents reaching sensitive data. [sec.gov](https://www.sec.gov/Archives/edgar/data/0001361113/000121390026109901/ea030861001ex99-1.htm) · <span class="tag tag-official">Official</span>
-
-- **Claude adds official US voting information:** later in October, it will draw on Democracy Works. It will also show official results on election night. [anthropic.com](https://www.anthropic.com/news/2026-us-midterms) · <span class="tag tag-official">Official</span>
-
-- **Mistral Timestral:** four forecasting models, 5M to 209M parameters, under a modified MIT license. They need no GPU. [mistral.ai](https://mistral.ai/news/timestral) · <span class="tag tag-official">Official</span>
-
-### Try it today
-
-Return to a long Claude Code session after a break without reprocessing all of it. Since v2.1.299, Claude Code in the terminal compacts a conversation over 200K tokens after about 54 minutes idle. That happens before its one-hour prompt cache runs out.
-
-There is nothing to switch on: the release notes only give a way to turn it off. To change the 200K minimum, set `CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS`. To turn it off, add `"idleCompaction": false` to settings.json.
-
-Docs: [github.com](https://github.com/anthropics/claude-code/releases/tag/v2.1.299)
 {: .sources}
