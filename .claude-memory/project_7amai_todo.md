@@ -15,7 +15,12 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - Routines kører hverdage: **udkast kl. 6** (PR + udkast-mail med "Approve on GitHub") og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
-## TJEK 2026-10-16 (første morgen efter rettelserne be84cc1 + nyt format cfb878a)
+## RESULTAT 2026-10-16: ALT VIRKEDE (første udgave i nyt format, Opus + 4 specialister)
+- [x] Udkast 05:34-05:51 (17 min). PR #6: 8 historier, kerne 6,2 min + bonus 1 min, Open source + Paper + bonus-sektioner, readability OK (EN gns. 12,6 ord, DA 12,3), redaktørkontrol 10/10 med 21/21 kilder genåbnet og mange reelle rettelser (bl.a. benchmark-påstand, faktafejl, omvendt statistik i Paper-overskrift), separat redaktør-agent kørt.
+- [x] Afsendelse 07:17-07:18 (84 s): uforkortet emne, broadcast EN ok, DA "ingen tilmeldte" exit 0, ingen hook-blokering, ingen divergent-fejl, sektioner i mailen.
+- Små ting at følge: agenten skriver em dash i sin egen afsluttende log-linje (ikke i udgaven; ufarligt). Kandidatliste-antal stod ikke i uddraget; tjek PR-bunden en af dagene.
+
+## (arkiv) TJEK 2026-10-16 (første morgen efter rettelserne be84cc1 + nyt format cfb878a)
 0. [ ] NYT FORMAT (Jesper 15/10): kerne ca. 7 min (6-7, mindst 5) + bonus. Tjek: `minutes` 5-7, Open source- og Paper-sektion findes, bonus (On the radar + Try it today) efter `***`, kandidatliste (>= 15) nederst i PR'en, mailen har sektionslabels og bonusblok, siden ser rigtig ud (hr + bonus-overskrift i solorange). Udkast flyttet til `30 3 * * *` UTC (05:30) og udkast-mailen fjernet 2026-10-15 (Jesper). Tjek udkastets varighed med Opus + 4 specialister (bør være færdigt i god tid før 07:16), og at der IKKE kom en udkast-mail.
 1. [ ] Udkast-PR: står "kilder genåbnet x/y" med x = y i rapporten, og har begge filer `checked: true`? Ses WebFetch-kald på kilderne EFTER skrivningen i routinens log? Hvis U6 stadig springes over: overvej en separat kontrol-routine kl. 06:40 eller en hook, der kræver rapporten.
 2. [ ] Afsendelse: broadcast en med UFORKORTET emne (exit 0), da = "ingen tilmeldte endnu" (exit 0, ikke fejl), ingen hook-blokering af skabelonen, ingen "divergent branches"-fejl, issue-branchen slettet automatisk af GitHub.
