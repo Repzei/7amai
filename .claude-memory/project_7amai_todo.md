@@ -15,6 +15,14 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - Routines kører hverdage: **udkast kl. 6** (PR + udkast-mail med "Approve on GitHub") og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
+## EXPLAINED ERSTATTER BONUS (bygget 2026-10-16, commits 9b2a9b2, e5d1034, 5021c16)
+Jesper: bonus (On the radar + Try it today) var "rodet" og gav ham intet. Valgte "Explained" efter mockup (https://claude.ai/artifact/EbFDK6tRC49EUkd2d1fqVe).
+- Bibliotek: collection `explained`, filer `_explained/<slug>.md` (EN) og `_explained/da/<slug>.md` (DA, permalink /da/explained/:name/ via defaults). Front matter: term, title, summary, date, minutes, other_lang_url, read_more [{label,url}], short (til fold-ud). Layout `explained.html`, oversigt `explained/index.html` + `da/explained/index.html` (include `explained-index.html`, A-Å + søgning), link i sidens menu.
+- Udgaven: `explained: { main, from, more: [..] }` i front matter -> `_includes/explained.html` (kaldt fra issue.html) viser hovedbegrebet fuldt + 2 som <details>. Teksten findes kun i biblioteket. Mail: hovedbegreb fuldt + 2 links (skabelonens Explained-blok).
+- Seed: open-weight, mixture-of-experts, context-window (EN+DA), alle readability OK. Testet live via midlertidig /ex-test/ (fjernet), telefonbredde uden vandret scroll.
+- Agent: INSTRUCTIONS U3 punkt 4 + U5b, EDITORIAL 4/7, STYLE (Explained-afsnit), SOURCES (kilder til forklaringer), readability.py springer læsetid over for _explained-filer. Udkast-prompt opdateret.
+- [ ] TJEK 2026-10-17: `explained:` i begge udgaver, nye begreber skrevet på begge sprog med read_more, slugs findes, siden viser sektionen, mailen har Explained-blokken med links.
+
 ## RESULTAT 2026-10-16: ALT VIRKEDE (første udgave i nyt format, Opus + 4 specialister)
 - [x] Udkast 05:34-05:51 (17 min). PR #6: 8 historier, kerne 6,2 min + bonus 1 min, Open source + Paper + bonus-sektioner, readability OK (EN gns. 12,6 ord, DA 12,3), redaktørkontrol 10/10 med 21/21 kilder genåbnet og mange reelle rettelser (bl.a. benchmark-påstand, faktafejl, omvendt statistik i Paper-overskrift), separat redaktør-agent kørt.
 - [x] Afsendelse 07:17-07:18 (84 s): uforkortet emne, broadcast EN ok, DA "ingen tilmeldte" exit 0, ingen hook-blokering, ingen divergent-fejl, sektioner i mailen.

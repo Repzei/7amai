@@ -17,7 +17,7 @@ Dagligt AI-nyhedsbrev på https://7amai.com + mail, skrevet af en Claude cloud-r
 **How to apply:** Alt nyt skal styrke identiteten "The 7" og kunne køre uden Jesper (Gainfully har forrang). Byg i fasernes rækkefølge, spring ikke til vækst før kvaliteten er der.
 
 ## Identitet: tre gange 7 (format ændret af Jesper 2026-10-15)
-- **Kl. 7. Alle 7 dage. Ca. 7 minutters læsning + bonus.** Kerne 6-7 min (mindst 5) alle dage = hovedhistorier + "Open source & local AI" + "Paper of the day"; derefter tydeligt mærket bonus ("On the radar" one-liners + "Try it today"), som ikke tæller med i de 7 min. Aldrig fyld, dybde frem for antal.
+- **Kl. 7. Alle 7 dage. Ca. 7 minutters læsning + bonus.** Kerne 6-7 min (mindst 5) alle dage = hovedhistorier + "Open source & local AI" + "Paper of the day"; derefter "Explained": 3 begreber fra dagens nyheder (ét fuldt, to som fold-ud) fra et voksende bibliotek på /explained/ (erstattede 16. okt. bonussen On the radar + Try it today, som Jesper fandt rodet); tæller ikke med i de 7 min. Aldrig fyld, dybde frem for antal.
 - **Why:** 13.-15. okt. var udgaverne kun 1,5-2,5 min, fordi agenten researchede ca. 30 sek. og læste "højst 7 min / aldrig fyld" som "kort er godt". Jesper: "det kan ikke passe der ikke er nok". Research er nu et krav (hele kildelisten, mindst 6 søgninger, mindst 15 kandidater i PR'en).
 - Historik: "7 historier" (9. okt.) -> "højst 7 min, varierende antal" (12. okt.) -> denne (15. okt.).
 - Tre løfter: **Sourced** (hvert punkt linker til primærkilden, åbne rettelser), **So what** (hvad det betyder for læseren), **No hype**.
