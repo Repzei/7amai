@@ -15,6 +15,13 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - Routines kører hverdage: **udkast kl. 6** (PR + udkast-mail med "Approve on GitHub") og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
+## ÆRLIG LÆSETID (2026-10-16, commit a7d070c)
+Jesper: forkerte tidsestimater giver dårligt omdømme. Fund: 230 ord/min + afrunding NED + håndregning gav "6 min" for en udgave, der ærligt er 8 min (1.433 ord), og "½ min" for historier på 1 min.
+- Nu: 200 ord/min (under Brysbaert 2019's gennemsnit på ca. 238 for faglitteratur, fordi teksten er teknisk og mange læser på andetsprog), ALTID rundet op. `readability.py --fix` skriver minutes (hele min) + hver histories `min` (halve min) i items og item-meta; tjek-tilstand melder afvigelser. Kernen fremover 1.000-1.400 ord (5-7 min).
+- Udgavens hoved viser "kerne + X min Explained" (udregnet i Liquid fra teksterne, 200 ord/min). Fast "2 minutter" fjernet fra Explained-overskriften.
+- 16/10 rettet til 8 min på siden (mailen var allerede sendt med 6).
+- [ ] OM 2-4 UGER: sammenlign dashboardets faktiske median-læsetid for besøg med scroll >= 90 % med estimatet. Er folk systematisk hurtigere/langsommere, så justér WPM i readability.py og issue.html (beslut med Jesper).
+
 ## EXPLAINED ERSTATTER BONUS (bygget 2026-10-16, commits 9b2a9b2, e5d1034, 5021c16)
 Jesper: bonus (On the radar + Try it today) var "rodet" og gav ham intet. Valgte "Explained" efter mockup (https://claude.ai/artifact/EbFDK6tRC49EUkd2d1fqVe).
 - Bibliotek: collection `explained`, filer `_explained/<slug>.md` (EN) og `_explained/da/<slug>.md` (DA, permalink /da/explained/:name/ via defaults). Front matter: term, title, summary, date, minutes, other_lang_url, read_more [{label,url}], short (til fold-ud). Layout `explained.html`, oversigt `explained/index.html` + `da/explained/index.html` (include `explained-index.html`, A-Å + søgning), link i sidens menu.
