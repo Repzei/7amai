@@ -33,7 +33,7 @@ Jesper: bonus (On the radar + Try it today) var "rodet" og gav ham intet. Valgte
 - Udgaven: `explained: { main, from, more: [..] }` i front matter -> `_includes/explained.html` (kaldt fra issue.html) viser hovedbegrebet fuldt + 2 som <details>. Teksten findes kun i biblioteket. Mail: hovedbegreb fuldt + 2 links (skabelonens Explained-blok).
 - Seed: open-weight, mixture-of-experts, context-window (EN+DA), alle readability OK. Testet live via midlertidig /ex-test/ (fjernet), telefonbredde uden vandret scroll.
 - Agent: INSTRUCTIONS U3 punkt 4 + U5b, EDITORIAL 4/7, STYLE (Explained-afsnit), SOURCES (kilder til forklaringer), readability.py springer læsetid over for _explained-filer. Udkast-prompt opdateret.
-- [ ] TJEK 2026-10-17: `explained:` i begge udgaver, nye begreber skrevet på begge sprog med read_more, slugs findes, siden viser sektionen, mailen har Explained-blokken med links.
+- [x] TJEKKET 2026-10-18: 17/10 og 18/10 begge med `explained:`, nye begreber quantization + benchmark på begge sprog med read_more (Hugging Face), readability OK, kerne 7 min (1.320-1.381 ord), siden viser "7 min + 2 min Explained". Biblioteket har 5 begreber.
 
 ## RESULTAT 2026-10-16: ALT VIRKEDE (første udgave i nyt format, Opus + 4 specialister)
 - [x] Udkast 05:34-05:51 (17 min). PR #6: 8 historier, kerne 6,2 min + bonus 1 min, Open source + Paper + bonus-sektioner, readability OK (EN gns. 12,6 ord, DA 12,3), redaktørkontrol 10/10 med 21/21 kilder genåbnet og mange reelle rettelser (bl.a. benchmark-påstand, faktafejl, omvendt statistik i Paper-overskrift), separat redaktør-agent kørt.
