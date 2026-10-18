@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-19",
   "note": "Køreplanen på dashboardet (fanen 'Sådan virker det') læses live herfra. Status: done, doing, next, later, jesper (Jespers eget trin). Opdateres sammen med 7am AI's to-do.",
   "phases": [
     {
@@ -7,19 +7,64 @@
       "goal": "Kvaliteten er så god, at Jesper selv læser den hver dag",
       "status": "doing",
       "items": [
-        { "t": "Daglig udgave kl. 7, alle 7 dage, engelsk + dansk", "s": "done" },
-        { "t": "Design First Light på side og mail", "s": "done" },
-        { "t": "Godkendelse via PR + ærlig AI-mærkning", "s": "done" },
-        { "t": "Tilmelding med dobbelt opt-in, afmelding og privatlivspolitik", "s": "done" },
-        { "t": "Mail til alle tilmeldte (broadcast) + privacy@7amai.com", "s": "done" },
-        { "t": "Synlig for Google: sitemap, delekort, Search Console", "s": "done" },
-        { "t": "Privat dashboard med anonyme besøgstal og systemoversigt", "s": "done" },
-        { "t": "Research i top: fire specialister, Opus 5.5, kerne ca. 7 min", "s": "done" },
-        { "t": "Stilguide, læsbarhedstjek og ærlig læsetid (200 ord/min)", "s": "done" },
-        { "t": "Explained: tre begreber pr. udgave + bibliotek", "s": "done" },
-        { "t": "Følge de første udgaver i det nye format", "s": "doing" },
-        { "t": "Forfine STYLE.md ud fra en uges redaktørrapporter", "s": "next", "note": "ca. 21. okt." },
-        { "t": "Kalibrere læsetiden mod faktiske læsetider fra dashboardet", "s": "later", "note": "om 2-4 uger" }
+        {
+          "t": "Daglig udgave kl. 7, alle 7 dage, engelsk + dansk",
+          "s": "done"
+        },
+        {
+          "t": "Design First Light på side og mail",
+          "s": "done"
+        },
+        {
+          "t": "Godkendelse via PR + ærlig AI-mærkning",
+          "s": "done"
+        },
+        {
+          "t": "Tilmelding med dobbelt opt-in, afmelding og privatlivspolitik",
+          "s": "done"
+        },
+        {
+          "t": "Mail til alle tilmeldte (broadcast) + privacy@7amai.com",
+          "s": "done"
+        },
+        {
+          "t": "Synlig for Google: sitemap, delekort, Search Console",
+          "s": "done"
+        },
+        {
+          "t": "Privat dashboard med anonyme besøgstal og systemoversigt",
+          "s": "done"
+        },
+        {
+          "t": "Research i top: fire specialister, Opus 5.5, kerne ca. 7 min",
+          "s": "done"
+        },
+        {
+          "t": "Stilguide, læsbarhedstjek og ærlig læsetid (200 ord/min)",
+          "s": "done"
+        },
+        {
+          "t": "Explained: tre begreber pr. udgave + bibliotek",
+          "s": "done"
+        },
+        {
+          "t": "Historiestil: dagen på 60 sekunder, kort fortalt, tråd, derfor er det vigtigt, samlede historier",
+          "s": "done"
+        },
+        {
+          "t": "Følge de første udgaver i det nye format",
+          "s": "doing"
+        },
+        {
+          "t": "Forfine STYLE.md ud fra en uges redaktørrapporter",
+          "s": "next",
+          "note": "ca. 21. okt."
+        },
+        {
+          "t": "Kalibrere læsetiden mod faktiske læsetider fra dashboardet",
+          "s": "later",
+          "note": "om 2-4 uger"
+        }
       ]
     },
     {
@@ -27,11 +72,26 @@
       "goal": "Fuldt automatisk, AI-mærket, med stramme regler",
       "status": "next",
       "items": [
-        { "t": "Marketing-skill + skabelon til alle projekter", "s": "next" },
-        { "t": "7am AI: daglige opslag i kø i en uge (Bluesky og Threads)", "s": "next" },
-        { "t": "Konti og API-nøgler til Bluesky og Threads", "s": "jesper" },
-        { "t": "7am AI: fuld automatik med hårde regler", "s": "later" },
-        { "t": "Gainfully: samme opsætning, når det virker for 7am AI", "s": "later" }
+        {
+          "t": "Marketing-skill + skabelon til alle projekter",
+          "s": "next"
+        },
+        {
+          "t": "7am AI: daglige opslag i kø i en uge (Bluesky og Threads)",
+          "s": "next"
+        },
+        {
+          "t": "Konti og API-nøgler til Bluesky og Threads",
+          "s": "jesper"
+        },
+        {
+          "t": "7am AI: fuld automatik med hårde regler",
+          "s": "later"
+        },
+        {
+          "t": "Gainfully: samme opsætning, når det virker for 7am AI",
+          "s": "later"
+        }
       ]
     },
     {
@@ -39,9 +99,18 @@
       "goal": "Lære af læserne og sikre driften",
       "status": "next",
       "items": [
-        { "t": "Feedback uden sporing: Nyttig / Ikke nyttig nederst i hver udgave", "s": "next" },
-        { "t": "Overvågning: besked til Jesper, hvis udgaven ikke er sendt kl. 7:15", "s": "next" },
-        { "t": "Beslutning: dansk udgave som indgang til de første læsere?", "s": "jesper" }
+        {
+          "t": "Feedback uden sporing: Nyttig / Ikke nyttig nederst i hver udgave",
+          "s": "next"
+        },
+        {
+          "t": "Overvågning: besked til Jesper, hvis udgaven ikke er sendt kl. 7:15",
+          "s": "next"
+        },
+        {
+          "t": "Beslutning: dansk udgave som indgang til de første læsere?",
+          "s": "jesper"
+        }
       ]
     },
     {
@@ -49,11 +118,26 @@
       "goal": "0 til 500 læsere",
       "status": "later",
       "items": [
-        { "t": "Del 7am AI i netværket, på LinkedIn og i danske udviklerfællesskaber", "s": "jesper" },
-        { "t": "Henvisningsprogram og delbare kort med dagens tal", "s": "later" },
-        { "t": "Udsendelse kl. 7 i læserens egen tidszone", "s": "later" },
-        { "t": "5-sekunders-test af forsiden med 5 personer", "s": "jesper" },
-        { "t": "Varemærketjek af \"7am\"", "s": "jesper" }
+        {
+          "t": "Del 7am AI i netværket, på LinkedIn og i danske udviklerfællesskaber",
+          "s": "jesper"
+        },
+        {
+          "t": "Henvisningsprogram og delbare kort med dagens tal",
+          "s": "later"
+        },
+        {
+          "t": "Udsendelse kl. 7 i læserens egen tidszone",
+          "s": "later"
+        },
+        {
+          "t": "5-sekunders-test af forsiden med 5 personer",
+          "s": "jesper"
+        },
+        {
+          "t": "Varemærketjek af \"7am\"",
+          "s": "jesper"
+        }
       ]
     },
     {
@@ -61,10 +145,22 @@
       "goal": "500 til 5.000 læsere",
       "status": "later",
       "items": [
-        { "t": "Emnesider og \"Shipped or not?\" (hvad AI-firmaer lovede, og om det kom)", "s": "later" },
-        { "t": "Gensidige anbefalinger med andre nyhedsbreve", "s": "later" },
-        { "t": "Lancering på Product Hunt og Hacker News (manuelt)", "s": "later" },
-        { "t": "Revurdér platform (fx beehiiv) ved ca. 1.000 læsere", "s": "later" }
+        {
+          "t": "Emnesider og \"Shipped or not?\" (hvad AI-firmaer lovede, og om det kom)",
+          "s": "later"
+        },
+        {
+          "t": "Gensidige anbefalinger med andre nyhedsbreve",
+          "s": "later"
+        },
+        {
+          "t": "Lancering på Product Hunt og Hacker News (manuelt)",
+          "s": "later"
+        },
+        {
+          "t": "Revurdér platform (fx beehiiv) ved ca. 1.000 læsere",
+          "s": "later"
+        }
       ]
     },
     {
@@ -72,8 +168,14 @@
       "goal": "5.000+ læsere",
       "status": "later",
       "items": [
-        { "t": "Én sponsorplads om dagen, målrettet pr. spor", "s": "later" },
-        { "t": "Mediekit", "s": "later" }
+        {
+          "t": "Én sponsorplads om dagen, målrettet pr. spor",
+          "s": "later"
+        },
+        {
+          "t": "Mediekit",
+          "s": "later"
+        }
       ]
     }
   ]
