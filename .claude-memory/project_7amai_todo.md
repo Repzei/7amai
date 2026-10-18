@@ -15,6 +15,13 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - Routines kører hverdage: **udkast kl. 6** (PR + udkast-mail med "Approve on GitHub") og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
+## HISTORIESTIL (2026-10-18, commits 4349ef0, cdd8987, 0c0f1d3)
+Jesper læste 18/10 (langsom læser på engelsk, ordblind): historierne føltes som "tilfældige sætninger sat sammen", So what gav intet aha, 3 Claude-historier stod hver for sig, 8 historier for mange. Mockup (https://claude.ai/artifact/GMFmT5eGkcFamhQNbSmM8s) godkendt: "meget bedre".
+- Nu: `today:` i front matter -> "Today in 60 seconds"/"Dagen på 60 sekunder" øverst (layout); hver historie `<p class="short"><span>The short version</span>...</p>`, tråd (hvorfor interessant, hvad skete, fangsten), `<div class="why"><b>Why it matters</b><p>...</p></div>` (aha, ikke ordre), `<p class="todo">` kun ved konkret handling; samme firma/emne = én historie med `#### <span>1 of 3</span>`-dele; højst 5 hovedhistorier; højst 3 tal pr. historie. So what-blockquote udgået.
+- STYLE.md omskrevet (før/efter med DeepSeek 18/10), INSTRUCTIONS U3/U4/U5/A2, EDITORIAL 5, mailskabelonens blokke, CSS, readability.py springer mærkater over. Udkast-prompt opdateret. Testet live via midlertidig /style-test/ (fjernet).
+- Rodårsag (min egen): stilguidens "korte sætninger, én idé pr. sætning" + mange fakta + 8 historier gav hakkende fakta-lister.
+- [ ] TJEK 2026-10-19: today: findes og matcher historierne, højst 5 hovedhistorier, relaterede samlet, short/why i alle, ingen So what, readability OK, mailen har de nye blokke.
+
 ## SYSTEMOVERSIGT PÅ DASHBOARDET (2026-10-16, commit 6037a86)
 - Fanen "Sådan virker det" (https://7amai-stats.jesperkhl.workers.dev/#system): tidslinje for en morgen (05:30 udkast -> 07:16 afsendelse -> læsere), tjenester (Claude, GitHub, Cloudflare, Resend, Google, simply.com), tilmeldingsflow, hemmeligheder (kun navne), sikkerhedsnet, live-status (seneste udgave, godkendt/AI-mærket, sendt i dag) fra GitHub API + raw sent.log, cachet 5 min.
 - REGEL (også i 7amai/CLAUDE.md): ændres flow, tjenester, tider, hemmeligheder eller sikkerhedsnet, så opdatér fanen i samme ændring og deploy fra worker/stats.
