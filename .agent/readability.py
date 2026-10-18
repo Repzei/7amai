@@ -43,6 +43,8 @@ def clean(block):
         if not lines:
             continue
         chunk = ' '.join(lines)
+        # Mærkater ("The short version", "Why it matters", "Try it:", "1 of 3") er ikke brødtekst.
+        chunk = re.sub(r'<(span|b)\b[^>]*>.*?</\1>', ' ', chunk)
         chunk = re.sub(r'\{#[^}]*\}', '', chunk)
         chunk = re.sub(r'<[^>]+>', ' ', chunk)
         chunk = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', chunk)
