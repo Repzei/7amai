@@ -3,15 +3,15 @@ title: "DeepSeek opdaterer sin åbne Flash-model og sænker prisen pr. opgave"
 summary: "DeepSeeks nye åbne model scorer højere i kodetests og bruger færre ord på det. Desuden: Claude opklarer et 25 år gammelt kryptomysterium, Claude Design lukker som selvstændigt site, og Replit vælger OpenAI."
 date: 2026-10-18 07:00:00 +0200
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "benchmark", from: 1, more: ["open-weight", "context-window"] }
 other_lang_url: /2026/10/18/
 items:
-  - { n: 1, anchor: "deepseek-flash-1017", signal: big, tracks: [build, europe], min: 1.5, source: official, number: "77,0", number_label: "i DeepSWE mod 74,0 til Claude Opus 5 (DeepSeeks egen kørsel)" }
+  - { n: 1, anchor: "deepseek-flash-1017", signal: big, tracks: [build], min: 1.5, source: official, number: "77,0", number_label: "DeepSWE-score mod 74,0 for Claude Opus 5 (DeepSeeks egen kørsel)" }
   - { n: 2, anchor: "nist-curve-seeds", signal: worth, tracks: [general], min: 1, source: official }
   - { n: 3, anchor: "quantum-circuits", signal: quick, tracks: [general], min: 0.5, source: official }
-  - { n: 4, anchor: "claude-design-closes", signal: worth, tracks: [build, general], min: 1, source: official }
+  - { n: 4, anchor: "claude-design-closes", signal: worth, tracks: [build, general], min: 0.5, source: official }
   - { n: 5, anchor: "replit-openai", signal: worth, tracks: [build], min: 1, source: reported }
   - { n: 6, anchor: "agent-incident-guide", signal: worth, tracks: [build, general], min: 1, source: official }
   - { n: 7, anchor: "meta-crawling-terms", signal: quick, tracks: [general], min: 0.5, source: reported }
@@ -21,8 +21,8 @@ items:
 ---
 
 ### 1. DeepSeeks opdaterede Flash-model scorer højere og koster mindre pr. opgave {#deepseek-flash-1017}
-<p class="item-meta"><span class="signal signal-big">Stor nyhed</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1½ min</span></p>
-<div class="number"><b>77,0</b><span>i DeepSWE mod 74,0 til Claude Opus 5 (DeepSeeks egen kørsel)</span></div>
+<p class="item-meta"><span class="signal signal-big">Stor nyhed</span><span class="track">Build</span><span class="track">1½ min</span></p>
+<div class="number"><b>77,0</b><span>DeepSWE-score mod 74,0 for Claude Opus 5 (DeepSeeks egen kørsel)</span></div>
 
 DeepSeek udgav DeepSeek-V4.1-Flash-1017 den 17. oktober. Det er en opdatering af firmaets Flash-model, og den kører allerede i DeepSeeks app, på hjemmesiden og i API'et.
 
@@ -34,13 +34,11 @@ I DeepSeeks egen kørsel af kodetesten DeepSWE får den 77,0, op fra 74,2 for de
 
 På samme graf koster konkurrenterne 2 dollar eller mere pr. opgave. Claude Opus 5 får 74,0 i den test.
 
-Se dog på hele tabellen.
+Se dog på hele tabellen. Opus 5 scorer stadig højere i de fleste af dens tests. I Terminal-Bench 4.0 får den 51,8 mod 42,3. Ingen har testet den nye model uafhængigt endnu.
 
-Opus 5 fører stadig i 8 af de 11 tests i DeepSeeks tabel. I Terminal-Bench 4.0 får den 51,8 mod 42,3. Ingen har testet den nye model uafhængigt endnu.
+DeepSeek åbner også sin egen websøgning for udviklere. Search- og Fetch-API'erne koster 0,75 dollar pr. 1.000 kald hver.
 
-DeepSeek åbner også sin egen websøgning for udviklere. Search og Fetch API'erne koster 0,75 dollar pr. 1.000 kald hver.
-
-Kald gennem Claude Code, Codex eller DeepSeeks eget værktøj er gratis indtil 31. oktober kl. 16:00 UTC.
+Search- og Fetch-kald gennem Claude Code, Codex eller DeepSeeks eget værktøj er gratis indtil 31. oktober kl. 16:00 UTC.
 
 Vil du køre den selv, kræver det tung hardware. Siden på Hugging Face angiver 763 milliarder parametre.
 
@@ -52,7 +50,7 @@ Kilde: [api-docs.deepseek.com](https://api-docs.deepseek.com/news/news261017) ·
 ### 2. Claude finder ud af, hvor tallene bag udbredte krypteringskurver kom fra {#nist-curve-seeds}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Generelt</span><span class="track">1 min</span></p>
 
-Anthropic fortalte den 16. oktober, at Claude har løst en 25 år gammel gåde i kryptografi. Claude fandt ud af, hvor starttallene til NIST-kurverne kom fra.
+Anthropic fortalte den 16. oktober, at Claude har løst en 25 år gammel gåde i kryptografi. Claude fandt ud af, hvor starttallene til de fleste NIST-kurver kom fra.
 
 Kurverne hører til ECDSA, den mest udbredte standard af sin slags. P-256 er den mest kendte.
 
@@ -60,9 +58,9 @@ NSA leverede starttallene, de såkaldte seeds, i slutningen af 1990'erne. NSA fo
 
 Claude fandt ud af, at tallene kom fra en helt almindelig funktion til tilfældige tal i C. Den blev sat i gang med tidsstempler fra 1997 og 1998.
 
-Det tog under en halv time. Starttallet til P-256 var nummer 1.842 i rækken, metoden gav.
+Det tog under en halv time. Starttallet til P-256 var nummer 1.842 i den række, metoden gav.
 
-Anthropic understreger, at der hverken er tale om et brud eller en svaghed. Fundet gør en bagdør mindre sandsynlig. Dusøren på 36.864 dollar gik til organisationen bag Let's Encrypt.
+Anthropic understreger, at der hverken er tale om et brud eller en svaghed. Fundet gør en bagdør mindre sandsynlig. Dusøren på 36.864 dollar går til organisationen bag Let's Encrypt.
 
 > **Hvad betyder det:** Du skal ikke ændre noget i dine systemer. Se det som et tegn på, at AI nu kan hjælpe med at afgøre gamle spørgsmål i sikkerhedsforskning.
 
@@ -72,9 +70,9 @@ Kilde: [anthropic.com](https://www.anthropic.com/research/ecdsa-curve-origins) �
 ### 3. Claude har designet kvantekredsløb, der kræver langt færre trin {#quantum-circuits}
 <p class="item-meta"><span class="signal signal-quick">Kort nyt</span><span class="track">Generelt</span><span class="track">½ min</span></p>
 
-Anthropic fortalte også den 16. oktober, at Claude har slået de bedste offentliggjorte designs til otte kvantekredsløb. Hvert design brugte færre qubits og færre gates (de grundlæggende trin).
+Anthropic fortalte også den 16. oktober, at Claude har slået de bedste offentliggjorte designs til otte kvantekredsløb. Designene krævede færre qubits og færre gates (de grundlæggende trin).
 
-I ét tilfælde brugte det 17 gange færre gates mod 12 % flere qubits. Det er designs til fremtidens maskiner, ikke kørsler på rigtig hardware.
+Ét kredsløb byttede 12 % flere qubits for 17 gange færre gates. Det er designs til fremtidens maskiner, ikke kørsler på rigtig hardware.
 
 > **Hvad betyder det:** Intet at gøre i dag. Forvent, at AI gør forskning hurtigere, hvor en computer selv kan tjekke hvert svar.
 
@@ -82,17 +80,15 @@ Kilde: [anthropic.com](https://www.anthropic.com/research/designing-efficient-qu
 {: .sources}
 
 ### 4. Claude Design lukker som selvstændigt site den 14. december, så gem dine projekter {#claude-design-closes}
-<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">1 min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">½ min</span></p>
 
 Anthropic lukker det selvstændige Claude Design-site den 14. december. Derefter åbner claude.ai/design i stedet selve Claude.
 
 Designsystemer kan allerede flyttes over i Claude som artifacts. Projekter kan ikke flyttes endnu. Chats og kommentarer bliver slettet i december, og offentlige links til projekter holder op med at virke.
 
-Claude Code 2.1.302 fra den 16. oktober slår også fork-subagenter til som standard flere steder. Det er en slags hjælpeagenter. Sæt `CLAUDE_CODE_FORK_SUBAGENT=0` for at slå dem fra.
+> **Hvad betyder det:** Bruger du Claude Design, så hent hvert projekt, du har brug for, som en .zip-fil. Brug Share og derefter Project HTML, og lad "Project archive" være valgt. Gør det før den 14. december.
 
-> **Hvad betyder det:** Bruger du Claude Design, så hent hvert projekt, du har brug for, som en .zip-fil. Brug Share og derefter Project HTML før den 14. december.
-
-Kilde: [support.claude.com](https://support.claude.com/en/articles/17440474-migrate-from-standalone-claude-design-to-claude) · <span class="tag tag-official">Officiel</span> · [github.com](https://github.com/anthropics/claude-code/releases/tag/v2.1.302) · <span class="tag tag-official">Officiel</span>
+Kilde: [support.claude.com](https://support.claude.com/en/articles/17440474-migrate-from-standalone-claude-design-to-claude) · <span class="tag tag-official">Officiel</span>
 {: .sources}
 
 ### 5. Replit gør OpenAI til standardmodel i sin kodeagent {#replit-openai}
@@ -100,7 +96,7 @@ Kilde: [support.claude.com](https://support.claude.com/en/articles/17440474-migr
 
 Replits topchef, Amjad Masad, sagde på scenen ved TechCrunch Disrupt, at OpenAI nu driver Replit Agent som standard. Replit er en populær platform, hvor man bygger apps ved at chatte med en AI.
 
-Indtil for nylig var Replit en af Anthropics fem største kunder, skriver TechCrunch. Masad nævnte pris, samarbejdet og ydeevne som grunde. "I think ChatGPT is better now," sagde han.
+Ifølge Masad var Replit indtil for nylig en af Anthropics fem største kunder. Han nævnte pris, samarbejdet og ydeevne som grunde. "I think ChatGPT is better now," sagde han.
 
 Claude kan stadig vælges på Replit. Men de fleste brugere beholder standardvalget, så ændringen betyder noget. En unavngiven kilde siger til TechCrunch, at samarbejdet med Anthropic stadig består.
 
@@ -126,7 +122,7 @@ Kilde: [nist.gov](https://www.nist.gov/news-events/news/2026/10/key-practices-in
 ### 7. Meta fjerner formulering, der lod firmaet træne AI på erhvervshjemmesider {#meta-crawling-terms}
 <p class="item-meta"><span class="signal signal-quick">Kort nyt</span><span class="track">Generelt</span><span class="track">½ min</span></p>
 
-Meta fjernede den 17. oktober en klausul fra sine nye erhvervsvilkår, skriver TechCrunch. Den lod Meta bruge indhold fra hjemmesider hos firmaer med en erhvervskonto til at træne sine produkter.
+Meta har fjernet en klausul fra sine opdaterede erhvervsvilkår, skrev TechCrunch den 17. oktober. Den lod Meta bruge indhold fra hjemmesider hos firmaer med en erhvervskonto til at træne sine produkter.
 
 Juridiske eksperter havde advaret om, at den kunne omfatte mediers hjemmesider. Meta siger, at vilkårene kun gjaldt firmaets annoncer og erhvervsprodukter.
 
@@ -140,7 +136,7 @@ Kilde: [techcrunch.com](https://techcrunch.com/2026/10/17/meta-removes-language-
 
 Brugere af OpenAIs Codex-app til Mac med Apple Silicon melder om en fejl, der bliver ved med at skrive crash-filer. En bruger fandt omkring 323 GB i denne uge, fordelt på to mapper. Fejlen blev første gang meldt i juni, og OpenAI har ikke svaret i tråden.
 
-> **Hvad betyder det:** Bruger du Codex på en Mac, så tjek mappen `~/Library/Application Support/Codex/Crashpad/pending`. Tjek også samme mappe under `com.openai.codex/web`, og tøm begge.
+> **Hvad betyder det:** Bruger du Codex på en Mac, så luk appen og tjek `~/Library/Application Support/Codex/Crashpad/pending`. Tjek også `~/Library/Application Support/com.openai.codex/web/Crashpad/pending`, og tøm begge.
 
 Kilde: [github.com](https://github.com/openai/codex/issues/25921) · <span class="tag tag-reported">Rapporteret</span>
 {: .sources}
@@ -158,7 +154,7 @@ Downloads kan sættes på pause og genoptages. Appen henter også en lille hjæl
 
 Funktionen er slået fra som standard. Du slår den til med indstillingen "Enable Discover Models".
 
-> **Hvad betyder det:** Kører du llama.cpp's server, så opdatér den og slå indstillingen til. Lad den finde en model, der passer til din hukommelse, og behold dine data på din egen maskine.
+> **Hvad betyder det:** Kører du serveren i llama.cpp, så opdatér den og slå indstillingen til. Vælg en udgave, den markerer som passende til din hukommelse, og behold dine data på din egen maskine.
 
 Kilde: [github.com](https://github.com/ggml-org/llama.cpp/pull/29584) · <span class="tag tag-official">Officiel</span>
 {: .sources}
@@ -170,13 +166,13 @@ Kilde: [github.com](https://github.com/ggml-org/llama.cpp/pull/29584) · <span c
 
 En artikel på arXiv fra den 15. oktober viser, hvordan agenter til computerbrug kan blive billigere. Agenterne klikker og skriver på en computer for at løse opgaver. Metoden hedder LEASH.
 
-Det er dyrt at køre en topmodel i hvert trin. Små åbne modeller er billige, men de fejler ofte alene. LEASH lader en lille model gøre arbejdet og give kontrollen til en stærk model, kun når den er i tvivl.
+Det er dyrt at køre en topmodel i hvert trin. Små åbne modeller er billige, men de fejler ofte alene. LEASH lader en lille model gøre arbejdet og kun give kontrollen videre til en stærk model, når den er i tvivl.
 
 Tricket er, hvordan den måler tvivl. Den sammenligner den lille models indre tilstand med dens tidligere succeser og fejl.
 
-Ligner den aktuelle tilstand en tidligere fejl, beder den om hjælp. Det koster ikke ekstra i hvert trin.
+Ligner den aktuelle tilstand en tidligere fejl, beder den om hjælp. Den genbruger arbejde, modellen allerede gør, så den kræver ingen ekstra kørsel.
 
-I testen OSWorld løste en lille Qwen-model med LEASH 73,7 % af opgaverne. Claude Opus 5 i hvert trin løste 72,9 %. LEASH gjorde det for 19 % færre penge.
+I testen OSWorld løste en billigere Qwen-model med LEASH 73,7 % af opgaverne. Claude Opus 5 i hvert trin løste 72,9 %. LEASH gjorde det for 19 % færre penge.
 
 > **Hvad betyder det:** Kører du lange agentopgaver, så prøv en billig model først, og giv kun de svære trin videre. Mål, hvor den fejler, før du betaler for en topmodel overalt.
 

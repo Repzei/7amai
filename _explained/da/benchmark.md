@@ -14,7 +14,7 @@ short: |
 ---
 Et benchmark er en fast test for AI-modeller. Det er en række opgaver, fx kodeopgaver eller eksamensspørgsmål, og en regel for, hvordan hvert svar får point.
 
-Fordi alle modeller tager den samme test, kan du stille resultaterne op ved siden af hinanden. Derfor er AI-nyheder fulde af navne som SWE-bench, Terminal-Bench og HLE. Hver test måler noget forskelligt, fra at rette rigtig kode til at svare på svære ekspertspørgsmål.
+Fordi alle modeller tager den samme test, kan du stille resultaterne op ved siden af hinanden. Derfor er AI-nyheder fulde af navne som SWE-bench, DeepSWE, Terminal-Bench og HLE. Hver test måler noget forskelligt, fra at rette rigtig kode til at svare på svære ekspertspørgsmål.
 
 > **Tænk på det sådan her:** en køreprøve. Alle kører den samme rute, og den sagkyndige bruger den samme tjekliste, så resultaterne kan sammenlignes. Her halter sammenligningen: til en køreprøve sidder der en uafhængig sagkyndig. Inden for AI er det ofte firmaet bag modellen, der selv kører testen og oplyser resultatet.
 

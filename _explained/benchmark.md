@@ -14,7 +14,7 @@ short: |
 ---
 A benchmark is a fixed test for AI models. It is a set of tasks, such as coding problems or exam questions, plus a rule for scoring each answer.
 
-Because every model takes the same test, you can line up the scores. That is why AI news is full of names like SWE-bench, Terminal-Bench or HLE. Each one tests a different skill, from fixing real code to answering hard expert questions.
+Because every model takes the same test, you can line up the scores. That is why AI news is full of names like SWE-bench, DeepSWE, Terminal-Bench or HLE. Each one tests a different skill, from fixing real code to answering hard expert questions.
 
 > **Think of it like this:** a driving test. Everyone drives the same route, and the examiner uses the same checklist, so the results are comparable. Where the comparison fails: a driving test has an independent examiner. With AI, the company that built the model often runs the test and reports the score.
 
