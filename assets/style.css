@@ -170,3 +170,21 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 .terms .d { grid-column: 1; color: var(--mist); font-size: 15px; }
 .terms .w { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-family: var(--font-news); font-size: 12px; font-weight: 700; color: var(--mist); font-variant-numeric: tabular-nums; }
 .explained-entry .issue-body { border-top: 0; }
+
+/* Historie-stil fra 19. okt.: dagen på 60 sekunder, kort fortalt, derfor er det vigtigt, samlede historier. */
+:root { --calm: #EAF2EC; --calm-ink: #1F6B3E; }
+@media (prefers-color-scheme: dark) { :root { --calm: #1C3326; --calm-ink: #8FD3A8; } }
+.minute { background: var(--paper); border: 2px solid var(--ink); border-radius: 16px; padding: 16px clamp(16px, 3vw, 24px); margin: 4px 0 22px; }
+.minute h2 { font-family: var(--font-news); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); margin: 0 0 10px; }
+.minute ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+.minute li { font-family: var(--font-news); font-size: 16px; line-height: 1.45; font-weight: 600; }
+.minute li span { font-weight: 500; color: var(--mist); }
+.issue-body p.short { font-family: var(--font-news); font-size: 17px; line-height: 1.45; font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin: 0 0 14px; max-width: none; }
+.issue-body p.short span { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); margin-bottom: 2px; }
+.issue-body .why { background: var(--calm); border-radius: 12px; padding: 12px 16px; margin: 6px 0 12px; }
+.issue-body .why b { display: block; font-family: var(--font-news); font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--calm-ink); margin-bottom: 4px; }
+.issue-body .why p { margin: 0; }
+.issue-body p.todo { font-family: var(--font-news); font-size: 15px; font-weight: 600; }
+.issue-body p.todo b { color: var(--sun-ink); }
+.issue-body h4 { font-family: var(--font-news); font-size: 17px; font-weight: 800; line-height: 1.25; border-top: 1px solid var(--line); padding-top: 12px; margin: 16px 0 6px; }
+.issue-body h4 span { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mist); margin-right: 8px; }

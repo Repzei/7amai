@@ -97,10 +97,13 @@ Hver historie får:
 - **Spor** (mindst ét): `build` (udviklere/produkt), `general` (AI for alle), `europe`
   (EU-regulering, europæiske modeller/priser, lokal AI og privatliv).
 - Sørg for, at hvert spor får mindst én historie, hvis der findes en reel kandidat.
+- **Saml det, der hører sammen:** flere nyheder fra samme firma eller om samme emne bliver ÉN
+  historie med nummererede dele (STYLE.md "Saml historier"). Den tæller som én historie.
 
 **Struktur og længde** (200 ord pr. minut, se "Læsetid" nedenfor):
-1. **Hovedhistorier:** typisk 4-6. Lead-historien får kontekst og baggrund (ca. 250-400 ord),
-   de øvrige ca. 120-220 ord. Dybde er bedre end mange tynde historier.
+1. **Hovedhistorier:** 4-5 (aldrig flere end 5, samlede historier tæller som én). Lead-historien
+   får kontekst og baggrund (ca. 250-350 ord), de øvrige ca. 150-250 ord. Færre historier, der
+   forklarer noget, er bedre end mange, der bare nævner det. Det, der ikke kommer med, nævnes ikke.
 2. **Open source & local AI:** én historie om dagens vigtigste open source-model, lokale
    AI-værktøj eller release (Ollama, llama.cpp, Hugging Face, LM Studio, MLX ...), ca. 120-200 ord.
 3. **Paper of the day:** én forskningsartikel (arXiv, Hugging Face Papers, et laboratoriums
@@ -130,9 +133,10 @@ Melder det, at kernen er over 7 minutter, så skær i teksten (STYLE.md regel 6)
 svageste historie; under 5: tilføj en stærk kandidat. Kør det igen bagefter.
 
 ### U4. Skriv den engelske udgave
-**Læs `.agent/STYLE.md` først og følg den.** Enkelt, let at læse, let at forstå: nyheden først,
-korte sætninger (gennemsnit højst 16 ord, ingen over 25), hverdagsord, fagudtryk forklaret,
-korte afsnit, få tal sat i forhold.
+**Læs `.agent/STYLE.md` først og følg den.** Hver historie er en historie med én tråd (hvorfor
+er det interessant, hvad skete, hvad er fangsten, derfor er det vigtigt), ikke en liste af fakta.
+"Kort fortalt" først, højst 3 tal, sætninger der hænger sammen, og et "Derfor er det vigtigt",
+der giver læseren et aha.
 Fil: `_posts/<dato>-<slug>.md` (slug af titlen, små bogstaver, kun a-z, 0-9 og bindestreger).
 
 ```markdown
@@ -144,6 +148,8 @@ reviewed: false
 checked: false   # sættes til true i U6, når redaktørkontrollen er gennemført
 minutes: <kernens læsetid, 6-7, mindst 5>
 explained: { main: "<slug>", from: <nr. på historien>, more: ["<slug>", "<slug>"] }
+today:   # "Today in 60 seconds": én linje pr. hovedhistorie, samme rækkefølge (STYLE.md)
+  - { t: "<Nyheden i én sætning, højst ca. 20 ord>", why: "<Hvem det betyder noget for, kort>" }
 other_lang_url: /da/<åååå>/<mm>/<dd>/
 items:
   - { n: 1, anchor: "<anker>", signal: big, tracks: [build, europe], min: 1.5, source: official, number: "52B", number_label: "active parameters" }
@@ -154,28 +160,55 @@ items:
 <p class="item-meta"><span class="signal signal-big">Big deal</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1½ min</span></p>
 <div class="number"><b>52B</b><span>active parameters</span></div>
 
-<2-5 sætninger: hvad, hvem, tal (pris, kontekst, tilgængelighed), hvad det er bedre til i praksis.>
+<p class="short"><span>The short version</span><Én sætning, det læseren skal huske.></p>
 
-> **So what:** <konkret konsekvens for læseren: hvad skal han gøre, holde øje med eller undgå.>
+<Afsnit 1: hvorfor er det interessant (det læseren kender eller bekymrer sig om).>
+
+<Afsnit 2: hvad skete der, med de 1-3 vigtigste fakta, sat i forhold.>
+
+<Afsnit 3: fangsten / det ærlige forbehold.>
+
+<div class="why"><b>Why it matters</b><p><Aha-forklaringen, gerne med en hverdagssammenligning.></p></div>
+
+<p class="todo"><b>Try it:</b> <kun hvis der er noget konkret at gøre; ellers udelad linjen></p>
 
 Source: [<domæne>](<url>) · <span class="tag tag-official">Official</span>
 {: .sources}
 
-### 2. ...
+### 2. <Samlet historie, når flere nyheder hører sammen> {#<anker>}
+<p class="item-meta">...</p>
+
+<p class="short"><span>The short version</span><Fælles sætning for alle delene.></p>
+
+#### <span>1 of 3</span> <Titel på del 1>
+<1-2 korte afsnit.>
+
+#### <span>2 of 3</span> <Titel på del 2>
+<1-2 korte afsnit.>
+
+<div class="why"><b>Why it matters</b><p><Det, delene har til fælles.></p></div>
+
+#### <span>3 of 3</span> <Titel på del 3>
+<1-2 korte afsnit.> + evt. <p class="todo"><b>Do this:</b> ...</p>
+
+Source: ... (alle kilder for delene)
+{: .sources}
+
+### 3. ...
 
 ## Open source & local AI
 
 ### <Overskrift> {#<anker>}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">1 min</span></p>
 
-<tekst> + > **So what:** ... + Source-linje som ovenfor.
+<samme opbygning: short, tråd, why, evt. todo, Source-linje.>
 
 ## Paper of the day
 
 ### <Overskrift der siger hvad artiklen viser> {#<anker>}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1 min</span></p>
 
-<hvad den viser, hvordan, og hvorfor det betyder noget> + > **So what:** ... + Source: [arxiv.org](<url>) · <span class="tag tag-official">Official</span>
+<short, hvilket problem, hvad de fandt (ét tal i forhold), why> + Source: [arxiv.org](<url>) · <span class="tag tag-official">Official</span>
 ```
 Explained skrives IKKE i udgavens brødtekst: layoutet viser det automatisk ud fra `explained:`
 i front matter (slugs = filnavne i `_explained/` uden `.md`). Brug samme slugs i den danske udgave.
@@ -191,13 +224,14 @@ i front matter (slugs = filnavne i `_explained/` uden `.md`). Brug samme slugs i
   (pris, parametre, dato, beløb, score). Aldrig et tvunget eller udregnet tal; intet tal er bedre.
   Første historie (lead) er den, der ændrer mest for læseren; den får gerne sit tal, hvis det findes.
 - Læsetid pr. historie står som sidste `track` i `item-meta` (fx "1 min", "½ min").
-- Alle historier har "So what". Er konsekvensen lille, så sig det kort og ærligt.
+- Alle historier har "The short version" og "Why it matters". "Try it" / "Do this" kun når der er
+  noget konkret at gøre. Ingen "So what"-blockquote længere.
 - `{#anker}` er unikt, små bogstaver og bindestreger.
 - Efter Paper of the day, kun hvis nødvendigt: `## Corrections` med hvad der var forkert, og hvor.
-- Open source- og Paper-historierne har samme opbygning som hovedhistorierne (meta, So what,
-  kilde) og står i `items`.
-- Tone (STRATEGI 1.4): korte sætninger, tal frem for adjektiver, overskriften siger hvad der
-  skete, "So what" i bydeform, usikkerhed siges ærligt. Forbudt: "game changer", "revolutionary",
+- Open source- og Paper-historierne har samme opbygning som hovedhistorierne (meta, short, tråd,
+  why, kilde) og står i `items`. De står ikke i `today:` (kun hovedhistorierne).
+- Tone (STRATEGI 1.4): korte sætninger der hænger sammen, tal frem for adjektiver, overskriften
+  siger hvad der skete, usikkerhed siges ærligt. Forbudt: "game changer", "revolutionary",
   "in a world where", "let's dive in", udråbstegn. Benchmarks kun med kontekst.
 
 ### U5. Skriv den danske udgave
@@ -205,8 +239,9 @@ Fil: `_da/<dato>-<samme-slug>.md`. Samme indhold, struktur, ankre og `items` som
 skrevet som naturligt dansk (ikke ordret oversat), med æ, ø og å. Front matter:
 `other_lang_url: /<åååå>/<mm>/<dd>/`, `reviewed: false` (den danske er altid AI-mærket), `checked: false` (sættes i U6).
 Labels på dansk: "Stor nyhed" / "Værd at vide" / "Kort nyt", spor "Build" / "Generelt" /
-"Europa", sektioner "Open source og lokal AI" / "Dagens forskningsartikel",
-"**Hvad betyder det:**" i stedet for "So what", "Kilde:", kildemærker "Officiel" /
+"Europa", sektioner "Open source og lokal AI" / "Dagens forskningsartikel", "Kort fortalt",
+"Derfor er det vigtigt", "Prøv det:" / "Gør dette:", dele `#### <span>1 af 3</span>`, `today:` på
+dansk, "Kilde:", kildemærker "Officiel" /
 "Rapporteret" / "Ubekræftet" (samme CSS-klasser) og `## Rettelser`. Nøgletallets forklaring på dansk.
 
 ### U5b. Nye begreber til biblioteket (Explained)
@@ -290,9 +325,11 @@ Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen) og
   Skabelonens links har `?ref=mail` efter URL'en (anonym optælling af besøg fra mailen); brug det også i tekstudgaven,
   fx `https://7amai.com/<åååå>/<mm>/<dd>/?ref=mail`.
 - `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
-  `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, tekst, So what, kildemærke).
-  Open source- og Paper-historien kommer efter hovedhistorierne, hver med skabelonens
-  sektionslabel ovenover. Til sidst Explained-blokken: hovedbegrebet i fuld længde (fra
+  `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, The short version, afsnittene, Why it matters, evt. Try it, kildemærke).
+  Øverst (før første historie): "Today in 60 seconds"-blokken ud fra `today:`. Hver historie
+  får "The short version", tråden, "Why it matters"-boksen og evt. "Try it"; samlede historier
+  får deres dele som små overskrifter. Open source- og Paper-historien kommer efter
+  hovedhistorierne, hver med skabelonens sektionslabel ovenover. Til sidst Explained-blokken: hovedbegrebet i fuld længde (fra
   biblioteksfilens brødtekst) og de to andre som links til deres biblioteksside med `?ref=mail`
   (mailprogrammer kan ikke folde ud).
   `{{COUNT}}` = antal historier i kernen, fx "7 stories". `{{MIN}}` = kernens læsetid i minutter.

@@ -22,6 +22,16 @@ layout: default
     <div class="hz" id="hz"><span class="hz-line"></span><span class="hz-fill"></span><span class="hz-sun"></span></div>
     <div class="hz-txt"><span id="hz-clock">0:00</span><span>{{ mins | ceil }}:00</span></div>
   </div>
+  {%- if page.today %}
+  <section class="minute" aria-labelledby="minute-h">
+    <h2 id="minute-h">{{ t.today_title }}</h2>
+    <ol>
+      {%- for d in page.today %}
+      <li>{{ d.t }}{% if d.why %} <span>{{ d.why }}</span>{% endif %}</li>
+      {%- endfor %}
+    </ol>
+  </section>
+  {%- endif %}
   <div class="issue-body">
     {{ content }}
     {%- if page.explained %}{% include explained.html %}{% endif %}

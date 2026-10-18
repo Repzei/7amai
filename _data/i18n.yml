@@ -23,6 +23,7 @@ en:
   legend_official: "Official: from the company, regulator or authors"
   legend_reported: "Reported: from a named outlet"
   legend_unconfirmed: "Unconfirmed: rumor or leak"
+  today_title: "Today in 60 seconds"
   explained_name: "Explained"
   explained_url: /explained/
   explained_title: "Explained: if you have a little more time"
@@ -63,6 +64,7 @@ da:
   legend_official: "Officiel: fra firmaet, myndigheden eller forfatterne"
   legend_reported: "Rapporteret: fra et navngivet medie"
   legend_unconfirmed: "Ubekræftet: rygte eller læk"
+  today_title: "Dagen på 60 sekunder"
   explained_name: "Forklaret"
   explained_url: /da/explained/
   explained_title: "Forklaret: hvis du har lidt mere tid"
