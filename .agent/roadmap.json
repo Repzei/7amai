@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "note": "Køreplanen på dashboardet (fanen 'Sådan virker det') læses live herfra. Status: done, doing, next, later, jesper (Jespers eget trin). Opdateres sammen med 7am AI's to-do.",
   "phases": [
     {
@@ -72,6 +72,10 @@
       "goal": "Fuldt automatisk, AI-mærket, med stramme regler",
       "status": "next",
       "items": [
+        {
+          "t": "One-liner låst: \"Daily AI news you can trust. 7 minutes at 7am.\" (side, Google, mail, delekort)",
+          "s": "done"
+        },
         {
           "t": "Marketing-skill + skabelon til alle projekter",
           "s": "next"

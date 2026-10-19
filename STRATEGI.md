@@ -57,6 +57,15 @@ holder ikke ved"; den rene er fremtidssikret. 70'er-solen må bruges til særlig
 - Skrift: Schibsted Grotesk (overskrifter, mærker, tal) og Newsreader (brødtekst).
 - Solorange og guld er kun til mærket, Big deal, officielle kilder og den primære knap.
 
+**One-liner (låst 19. okt. 2026, Jesper):** "Daily AI news you can trust. 7 minutes at 7am."
+Dansk: "Dagens AI-nyheder, du kan stole på. 7 minutter kl. 7." Signatur over den: "7am · 7 days ·
+7 minutes" / "Kl. 7 · 7 dage · 7 minutter". Bruges ens overalt: forsidens overskrift, sidens titel og
+beskrivelse i Google (søgeordet "daily AI news" forrest), mailens bundlinje, delekortet, velkomstsider,
+bekræftelsesmailen og profiler på sociale medier. Salgsværdier: tid (7 minutter kl. 7) og vished
+(kilder og kildemærker); status ("start the day ahead") i introen og i marketing. Identiteten er
+7-tallet, ikke "Today in 60 seconds" (det er en funktion i udgaven). Connection er fravalgt, indtil
+der er mange læsere. Mockup: https://claude.ai/artifact/7YgEtCuFvcMKfu7Qt8RdqA
+
 ### 1.2 "7am, wherever you are"
 
 Mailen sendes kl. 7 i læserens egen tidszone (Resend kan planlægge pr. modtager). Så holder
@@ -145,7 +154,7 @@ nyhedsbrevet åbnes for andre.)
 ## 6. Design (UI)
 
 - En identitet, man genkender på et halvt sekund: de fem faste kendetegn i afsnit 1.1.
-- **Forside:** mærket, "The AI news that matters, before your day begins.", tilmelding over
+- **Forside:** mærket, signaturen og one-lineren (afsnit 1.1), tilmelding over
   folden, dagens udgave som eksempel.
 - **Udgave-side:** de 7 punkter med signal-mærke, "So what", kilde og del-link pr. punkt.
 - **Mail:** mobil først, mørk tilstand, læsbar på 7 minutter, ét klik til hvert punkt.

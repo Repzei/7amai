@@ -1,8 +1,11 @@
 en:
   home: /
   feed: /feed.xml
-  tagline: "The AI news that matters. 7am, 7 days a week, in under 7 minutes."
-  intro: "Models, developer tools, local AI, business and regulation. Every story links to its primary source and tells you what it means for you."
+  tagline: "Daily AI news you can trust. 7 minutes at 7am."
+  kicker: "7am · 7 days · 7 minutes"
+  home_title: "Daily AI news you can trust, 7 minutes at 7am"
+  home_desc: "Daily AI news you can trust. 7 minutes at 7am. Models, developer tools, business and regulation, every story linked to its primary source."
+  intro: "Start the day ahead on AI: models, developer tools, local AI, business and regulation. Every story links to its primary source and tells you what it means for you."
   all_issues: "All issues"
   empty: "The first issue arrives tomorrow at 7am."
   other_lang_label: "Dansk"
@@ -42,8 +45,11 @@ en:
 da:
   home: /da/
   feed: /feed/da.xml
-  tagline: "De AI-nyheder der betyder noget. Kl. 7, alle ugens 7 dage, på under 7 minutter."
-  intro: "Modeller, udviklerværktøjer, lokal AI, forretning og regulering. Hver historie linker til primærkilden og siger, hvad den betyder for dig."
+  tagline: "Dagens AI-nyheder, du kan stole på. 7 minutter kl. 7."
+  kicker: "Kl. 7 · 7 dage · 7 minutter"
+  home_title: "Dagens AI-nyheder, du kan stole på, 7 minutter kl. 7"
+  home_desc: "Dagens AI-nyheder, du kan stole på. 7 minutter kl. 7. Modeller, udviklerværktøjer, forretning og regulering, hver historie med link til primærkilden."
+  intro: "Start dagen foran på AI: modeller, udviklerværktøjer, lokal AI, forretning og regulering. Hver historie linker til primærkilden og siger, hvad den betyder for dig."
   all_issues: "Alle udgaver"
   empty: "Første danske udgave kommer i morgen kl. 7."
   other_lang_label: "English"

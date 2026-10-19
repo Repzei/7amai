@@ -8,10 +8,12 @@
   {%- if page.noindex %}
   <meta name="robots" content="noindex" />
   {%- endif %}
+  {%- assign is_home = false -%}{%- if page.url == t.home -%}{%- assign is_home = true -%}{%- endif -%}
   {%- assign page_title = page.title | default: site.title -%}
   {%- assign page_desc = page.summary | default: t.tagline | strip_html | strip_newlines -%}
+  {%- if is_home -%}{%- assign page_title = t.home_title | append: ' · ' | append: site.title -%}{%- assign page_desc = t.home_desc -%}{%- endif -%}
   {%- assign canonical = page.url | replace: 'index.html', '' | absolute_url -%}
-  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <title>{% if is_home %}{{ page_title }}{% elsif page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ page_desc }}" />
   <link rel="canonical" href="{{ canonical }}" />
   {%- if page.other_lang_url %}
