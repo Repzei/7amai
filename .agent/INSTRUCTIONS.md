@@ -332,14 +332,15 @@ Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen) og
   hovedhistorierne, hver med skabelonens sektionslabel ovenover. Til sidst Explained-blokken: hovedbegrebet i fuld længde (fra
   biblioteksfilens brødtekst) og de to andre som links til deres biblioteksside med `?ref=mail`
   (mailprogrammer kan ikke folde ud).
-  `{{COUNT}}` = antal historier i kernen, fx "7 stories". `{{MIN}}` = kernens læsetid i minutter.
+  `{{COUNT}}` = antal hovedhistorier = antal linjer i `today:`, fx "5 top stories" (Open source og
+  Paper tælles ikke med, så tallet matcher "Today in 60 seconds"). `{{MIN}}` = kernens læsetid i minutter.
   Ingen `{{` må stå tilbage.
 - Er der en "Jesper's pick"-sektion, så tag den med efter sidste historie.
 Gem som `/tmp/mail.html` og `/tmp/mail.txt`.
 Emne: `7am AI · <d. mon>: <titel>` (maks ca. 90 tegn).
 
 **Dansk mail** ud fra `_da/<dato>-*.md` med samme skabelon: `<html lang="da">`, dansk dato,
-`{{COUNT}}` fx "5 historier", "min læsetid", danske labels (se skabelonens noter), dansk
+`{{COUNT}}` fx "5 hovedhistorier", "min læsetid", danske labels (se skabelonens noter), dansk
 mærkning fra `_data/i18n.yml` (`da.disclosure_checked` hvis `checked: true`, ellers
 `da.disclosure_ai`; den danske er aldrig "Reviewed"). Knappen "Læs den på 7amai.com" peger på
 `{{DA_URL}}`, og det lille link "English edition" på `{{ISSUE_URL}}`. Gem som `/tmp/mail-da.html`
