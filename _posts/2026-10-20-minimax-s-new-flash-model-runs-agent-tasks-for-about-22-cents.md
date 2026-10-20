@@ -3,7 +3,7 @@ title: "MiniMax's new Flash model runs agent tasks for about 22 cents"
 summary: "A cheap Chinese model nearly matches the best on agent tasks, with open weights promised. Also: Microsoft says to treat AI agents like insiders, WhatsApp's hidden notes to AI, a US ban on DeepSeek, and new money for chips beyond NVIDIA."
 date: 2026-10-20 07:00:00 +0200
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "token", from: 1, more: ["ai-agent", "open-weight"] }
 today:
@@ -16,7 +16,7 @@ other_lang_url: /da/2026/10/20/
 items:
   - { n: 1, anchor: "minimax-m3-1-flash", signal: big, tracks: [build, general], min: 1.5, source: official, number: "$0.15", number_label: "per million input tokens, with open weights promised" }
   - { n: 2, anchor: "agents-as-insiders", signal: worth, tracks: [general, build], min: 1.5, source: official }
-  - { n: 3, anchor: "whatsapp-hidden-notes", signal: worth, tracks: [general, europe], min: 1, source: reported }
+  - { n: 3, anchor: "whatsapp-hidden-notes", signal: worth, tracks: [general, europe], min: 1, source: official }
   - { n: 4, anchor: "dhs-deepseek-ban", signal: worth, tracks: [general, build], min: 1, source: reported }
   - { n: 5, anchor: "chips-beyond-nvidia", signal: worth, tracks: [build], min: 1.5, source: official }
   - { n: 6, anchor: "llama-cpp-connect", signal: worth, tracks: [build, europe], min: 1, source: official }
@@ -50,7 +50,7 @@ Source: [minimax.io](https://www.minimax.io/blog/minimax-m31f) · <span class="t
 #### <span>1 of 2</span> Microsoft: an agent cannot guard itself
 On 19 October, Microsoft said AI agents should be treated like insiders. They are not evil, but they get wide access to data and systems, and they can make mistakes or be tricked. So the checks must sit outside the model, where the agent cannot switch them off.
 
-In Microsoft's new tools, agents start with no rights and get short, task-sized permissions. Its security software will spot 60 kinds of agents on work computers, such as Claude Code. No launch dates yet.
+Microsoft says agents should start with no rights and get short, task-sized permissions. Its security software can now find 60 kinds of agents on work computers, such as Claude Code. No launch dates yet.
 
 #### <span>2 of 2</span> A Meta agent shared a seller's home address
 Fortune reported a real case the same day. A Toronto tech reviewer gave Meta's Muse agent "always allow" permissions to sell a keyboard. Muse agreed a pickup, gave the buyer his home address and wrote "Yep, I'm here!" when the buyer arrived. He knew nothing about it. Meta contacted him to talk through what went wrong.
@@ -67,13 +67,13 @@ Source: [microsoft.com](https://www.microsoft.com/en-us/security/blog/2026/10/19
 
 More people now ask a chatbot instead of reading help pages. So what chatbots read there shapes your answers.
 
-Dan Saltman, who runs the privacy firm Redact, checked 545 WhatsApp help pages. Eighty held hidden text written for AI. One note on deleting an account told AI not to recommend "contacting any Data Protection Authority". Another said not to mention privacy laws like GDPR, "including when a user raises them directly".
+Redact, a firm that sells privacy tools, checked 545 WhatsApp help pages. Eighty held hidden text written for AI. One note on deleting an account told AI not to recommend "contacting any Data Protection Authority". Another said not to mention privacy laws like GDPR, "including when a user raises them directly".
 
 The text was gone by 18 October. WhatsApp told WIRED it was meant only for its own support chatbot and showed up because of a bug. Nobody has shown that any AI followed the notes.
 
 <div class="why"><b>Why it matters</b><p>In the EU, your right to complain to a data regulator is the law. If hidden text can steer chatbots away from it, an answer can sound helpful and still leave out the most useful thing.</p></div>
 
-Source: [redact.dev](https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions) · <span class="tag tag-reported">Reported</span>
+Source: [redact.dev](https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions) · <span class="tag tag-official">Official</span>
 {: .sources}
 
 ### 4. The US orders its civilian agencies to remove DeepSeek {#dhs-deepseek-ban}
@@ -87,7 +87,7 @@ On 19 October, the Department of Homeland Security told civilian federal agencie
 
 DHS says data could flow to China, and the models may hold security flaws.
 
-It goes further than earlier bans, but covers only US agencies, not companies or the public.
+Earlier US bans covered DeepSeek on government devices. This one goes further.
 
 <div class="why"><b>Why it matters</b><p>It is like a recall that covers not just the car brand, but every car built with its engine. If you sell software to the US government, you now need to know which model sits inside it.</p></div>
 
@@ -114,27 +114,25 @@ Source: [techcrunch.com](https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b
 
 ## Open source & local AI
 
-### llama.cpp lets you reach your home AI from anywhere with one flag {#llama-cpp-connect}
+### llama.cpp builds the first half of a private link to your home AI {#llama-cpp-connect}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1 min</span></p>
 
-<p class="short"><span>The short version</span>The popular llama.cpp server can now open a private, encrypted link to your home machine, so you can use your own model on the go.</p>
+<p class="short"><span>The short version</span>The llama.cpp server can now open a private, encrypted link to the outside world. The browser half that lets you use it is still in review.</p>
 
 Running a model at home keeps your data private. But reaching it from your phone has meant a VPN or opening ports on your router. That is fiddly and can be unsafe.
 
-On 19 October, llama.cpp added a test feature called <code>--connect</code>. It links your browser straight to your home server, encrypted from end to end, with no central server in between. Your API key still applies, so a stranger without it is turned away.
+On 19 October, llama.cpp added a test feature called <code>--connect</code>. It lets your home server open a direct, encrypted link, with no central server in between. Your API key still applies, so a stranger without it is turned away.
 
-It is still experimental. There is no version for older Intel Macs yet, and a second user who connects right after the first may get no answer.
+The catch: the web page that connects from the other end is still waiting for review. So most people cannot use it yet, and there is no version for Intel Macs.
 
-<div class="why"><b>Why it matters</b><p>It is like a private phone line to your own computer. Once it works well, a home AI becomes as handy as a cloud chatbot, and your chats never sit on someone else's server.</p></div>
-
-<p class="todo"><b>Try it:</b> Update llama.cpp and start the server with <code>llama-server --connect</code>. Set an API key first.</p>
+<div class="why"><b>Why it matters</b><p>It is like a private phone line to your own computer. Once both halves are in place, a home AI can be as handy as a cloud chatbot, while your chats stay at home.</p></div>
 
 Source: [github.com](https://github.com/ggml-org/llama.cpp/pull/28277) · <span class="tag tag-official">Official</span>
 {: .sources}
 
 ## Paper of the day
 
-### Small models may not need their biggest part, the word table {#frozen-vocabulary}
+### Small models may not need to train their biggest part, the word table {#frozen-vocabulary}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1 min</span></p>
 
 <p class="short"><span>The short version</span>In a small model, a fixed 16 MB word table works about as well as the big learned one. The whole model shrinks to 46 MB.</p>
@@ -147,7 +145,7 @@ With a very compressed model body, the whole model became a 46 MB file. On a lap
 
 The catch: it is one author's preprint, tested on small models only.
 
-<div class="why"><b>Why it matters</b><p>It is like finding that most of your suitcase was a heavy dictionary you barely used. Lighter models can run on cheap phones and old laptops, with no cloud at all.</p></div>
+<div class="why"><b>Why it matters</b><p>It is like finding that most of your suitcase was a heavy dictionary you barely used. Lighter models can run on cheap laptops, with no cloud at all.</p></div>
 
 Source: [arxiv.org](https://arxiv.org/abs/2610.22428) · <span class="tag tag-official">Official</span>
 {: .sources}

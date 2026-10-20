@@ -3,7 +3,7 @@ title: "MiniMax' nye Flash-model klarer en agentopgave for omkring 22 cent"
 summary: "En billig kinesisk model kommer tæt på de bedste til agentopgaver, og vægtene er lovet frem. Desuden: Microsoft vil have AI-agenter behandlet som insidere, WhatsApps skjulte beskeder til AI, et amerikansk forbud mod DeepSeek og nye penge til chips uden om NVIDIA."
 date: 2026-10-20 07:00:00 +0200
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "token", from: 1, more: ["ai-agent", "open-weight"] }
 today:
@@ -16,7 +16,7 @@ other_lang_url: /2026/10/20/
 items:
   - { n: 1, anchor: "minimax-m3-1-flash", signal: big, tracks: [build, general], min: 1.5, source: official, number: "0,15 $", number_label: "pr. million input-tokens, og vægtene er lovet frem" }
   - { n: 2, anchor: "agents-as-insiders", signal: worth, tracks: [general, build], min: 1.5, source: official }
-  - { n: 3, anchor: "whatsapp-hidden-notes", signal: worth, tracks: [general, europe], min: 1, source: reported }
+  - { n: 3, anchor: "whatsapp-hidden-notes", signal: worth, tracks: [general, europe], min: 1, source: official }
   - { n: 4, anchor: "dhs-deepseek-ban", signal: worth, tracks: [general, build], min: 1, source: reported }
   - { n: 5, anchor: "chips-beyond-nvidia", signal: worth, tracks: [build], min: 1.5, source: official }
   - { n: 6, anchor: "llama-cpp-connect", signal: worth, tracks: [build, europe], min: 1, source: official }
@@ -35,7 +35,7 @@ Den 19. oktober lancerede MiniMax M3.1 Flash. Den koster 0,15 dollar pr. million
 
 De uafhængige testere hos Artificial Analysis giver den 42 point, op fra 29 for MiniMax' forrige model. Blandt de billige modeller, The Decoder sammenligner, scorer kun DeepSeeks Flash højere med 45. The Decoder anslår prisen til omkring 22 cent pr. opgave, lidt under DeepSeeks 26.
 
-Men Artificial Analysis målte også, at modellen hallucinerer i 93 % af tilfældene. Den prøver nemlig at svare på alt i stedet for at sige, at den ikke ved det. MiniMax siger, at vægtene kommer "senere"; The Decoder skriver 23. oktober.
+Men Artificial Analysis målte også en hallucinationsrate på 93 %. Den prøver nemlig at svare på alt i stedet for at sige, at den ikke ved det. MiniMax siger, at vægtene kommer "senere"; The Decoder skriver 23. oktober.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>De billige modeller er i priskrig, og bunden bliver ved med at falde. Men en model, der aldrig siger "det ved jeg ikke", er som en selvsikker nyansat, der gætter. Fint til udkast, du tjekker, og risikabelt til fakta, du ikke tjekker.</p></div>
 
@@ -50,7 +50,7 @@ Kilde: [minimax.io](https://www.minimax.io/blog/minimax-m31f) · <span class="ta
 #### <span>1 af 2</span> Microsoft: En agent kan ikke passe på sig selv
 Den 19. oktober skrev Microsoft, at AI-agenter skal behandles som insidere. De er ikke onde, men de får bred adgang til data og systemer, og de kan begå fejl eller blive snydt. Derfor skal kontrollen ligge uden for modellen, hvor agenten ikke kan slå den fra.
 
-I Microsofts nye værktøjer starter agenter uden rettigheder og får korte tilladelser til én opgave ad gangen. Firmaets sikkerhedssoftware skal kunne genkende 60 slags agenter på arbejdscomputere, fx Claude Code. Der er endnu ingen datoer.
+Ifølge Microsoft skal agenter starte uden rettigheder og få korte tilladelser til én opgave ad gangen. Firmaets sikkerhedssoftware kan nu finde 60 slags agenter på arbejdscomputere, fx Claude Code. Der er endnu ingen datoer.
 
 #### <span>2 af 2</span> En Meta-agent delte en sælgers hjemmeadresse
 Fortune beskrev samme dag et ægte tilfælde. En techanmelder i Toronto gav Metas agent Muse tilladelsen "always allow" til at sælge et tastatur. Muse aftalte en afhentning, gav køberen hans hjemmeadresse og skrev "Yep, I'm here!", da køberen kom. Han vidste intet om det. Meta har kontaktet ham for at tale om, hvad der gik galt.
@@ -67,13 +67,13 @@ Kilde: [microsoft.com](https://www.microsoft.com/en-us/security/blog/2026/10/19/
 
 Flere spørger nu en chatbot i stedet for at læse hjælpesider. Det, chatbotterne læser dér, former altså dine svar.
 
-Dan Saltman, der driver privatlivsfirmaet Redact, gennemgik 545 af WhatsApps hjælpesider. 80 af dem indeholdt skjult tekst skrevet til AI. En besked om at slette sin konto bad AI om ikke at anbefale at kontakte "any Data Protection Authority". En anden sagde, at AI ikke måtte nævne love som GDPR, heller ikke når brugeren selv spurgte.
+Redact, et firma der sælger privatlivsværktøjer, gennemgik 545 af WhatsApps hjælpesider. 80 af dem indeholdt skjult tekst skrevet til AI. En note på siden om at slette sin konto bad AI om ikke at anbefale at kontakte "any Data Protection Authority". En anden sagde, at AI ikke måtte nævne love som GDPR, heller ikke når brugeren selv spurgte.
 
 Teksten var væk den 18. oktober. WhatsApp sagde til WIRED, at den kun var tænkt til firmaets egen supportchatbot og blev vist på grund af en fejl. Ingen har vist, at nogen AI faktisk fulgte beskederne.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>I EU har du ved lov ret til at klage til et datatilsyn, i Danmark Datatilsynet. Kan skjult tekst styre chatbots uden om det, kan et svar lyde hjælpsomt og alligevel udelade det mest nyttige.</p></div>
 
-Kilde: [redact.dev](https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions) · <span class="tag tag-reported">Rapporteret</span>
+Kilde: [redact.dev](https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions) · <span class="tag tag-official">Officiel</span>
 {: .sources}
 
 ### 4. USA beordrer sine civile myndigheder til at fjerne DeepSeek {#dhs-deepseek-ban}
@@ -87,7 +87,7 @@ Den 19. oktober bad USA's ministerium for hjemlandssikkerhed (DHS) de civile myn
 
 DHS siger, at data kan ende i Kina, og at modellerne kan have sikkerhedshuller.
 
-Det går videre end tidligere forbud, men gælder kun myndigheder, ikke firmaer eller borgere.
+Tidligere amerikanske forbud gjaldt DeepSeek på statens enheder. Dette går videre.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>Det er som en tilbagekaldelse, der ikke kun rammer bilmærket, men alle biler med dets motor. Sælger du software til den amerikanske stat, skal du nu vide, hvilken model der sidder inden i.</p></div>
 
@@ -114,27 +114,25 @@ Kilde: [techcrunch.com](https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-
 
 ## Open source og lokal AI
 
-### Med llama.cpp når du din AI derhjemme fra hvor som helst {#llama-cpp-connect}
+### llama.cpp bygger første halvdel af en privat linje til din AI derhjemme {#llama-cpp-connect}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1 min</span></p>
 
-<p class="short"><span>Kort fortalt</span>Den populære llama.cpp-server kan nu åbne en privat, krypteret forbindelse til din maskine derhjemme, så du kan bruge din egen model på farten.</p>
+<p class="short"><span>Kort fortalt</span>llama.cpp-serveren kan nu åbne en privat, krypteret forbindelse ud i verden. Browserdelen, der skal bruge den, venter stadig på godkendelse.</p>
 
 En model derhjemme holder dine data private. Men for at nå den fra telefonen har du skullet sætte en VPN op eller åbne porte i din router. Det er bøvlet og kan være usikkert.
 
-Den 19. oktober fik llama.cpp en ny testfunktion, <code>--connect</code>. Den forbinder din browser direkte med serveren derhjemme, krypteret hele vejen og uden en central server imellem. Din API-nøgle gælder stadig, så en fremmed uden den bliver afvist.
+Den 19. oktober fik llama.cpp en ny testfunktion, <code>--connect</code>. Den lader serveren derhjemme åbne en direkte, krypteret forbindelse uden en central server imellem. Din API-nøgle gælder stadig, så en fremmed uden den bliver afvist.
 
-Funktionen er stadig eksperimentel. Der er endnu ingen version til ældre Intel-Mac'er, og bruger nummer to får måske intet svar, hvis vedkommende kobler på lige efter den første.
+Hagen: Websiden, der skal koble sig på fra den anden ende, venter stadig på godkendelse. Så de fleste kan ikke bruge det endnu, og der er ingen version til Intel-Mac'er.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>Det er som en privat telefonlinje til din egen computer. Når det virker godt, er en AI derhjemme lige så nem som en chatbot i skyen. Og dine samtaler ligger aldrig på andres servere.</p></div>
-
-<p class="todo"><b>Prøv det:</b> Opdatér llama.cpp, og start serveren med <code>llama-server --connect</code>. Sæt en API-nøgle først.</p>
+<div class="why"><b>Derfor er det vigtigt</b><p>Det er som en privat telefonlinje til din egen computer. Når begge halvdele er på plads, kan en AI derhjemme være lige så nem som en chatbot i skyen, mens samtalerne bliver hjemme.</p></div>
 
 Kilde: [github.com](https://github.com/ggml-org/llama.cpp/pull/28277) · <span class="tag tag-official">Officiel</span>
 {: .sources}
 
 ## Dagens forskningsartikel
 
-### Små modeller kan måske undvære deres største del, ordtabellen {#frozen-vocabulary}
+### Små modeller behøver måske ikke træne deres største del, ordtabellen {#frozen-vocabulary}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1 min</span></p>
 
 <p class="short"><span>Kort fortalt</span>I en lille model virker en fast ordtabel på 16 MB omtrent lige så godt som den store, lærte. Hele modellen skrumper til 46 MB.</p>
@@ -147,7 +145,7 @@ Med en stærkt komprimeret krop blev hele modellen en fil på 46 MB. På en bær
 
 Hagen: Det er én forfatters artikel, som ikke er fagfællebedømt og kun testet på små modeller.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>Det er som at opdage, at det meste af kufferten var en tung ordbog, du næsten aldrig brugte. Lettere modeller kan køre på billige telefoner og gamle bærbare helt uden skyen.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>Det er som at opdage, at det meste af kufferten var en tung ordbog, du næsten aldrig brugte. Lettere modeller kan køre på billige bærbare helt uden skyen.</p></div>
 
 Kilde: [arxiv.org](https://arxiv.org/abs/2610.22428) · <span class="tag tag-official">Officiel</span>
 {: .sources}
