@@ -8,11 +8,12 @@ metadata:
   modified: 2026-10-18T18:33:56.320Z
 ---
 
-# 7am AI: handoff (sessioner 13.-18. okt. 2026)
+# 7am AI: handoff (sessioner 13.-21. okt. 2026)
 
 Detaljer står i [[project-7amai-todo]]; dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
 
 ## Lavet og hvorfor
+- **21/10: mailen bygges af Jekyll** (`/mail/en/`, `/mail/da/`), så mail og side kommer fra samme fil; routinen henter den med `.agent/fetch-mail.sh` og sender den. Årsag: AI-bygget mail mistede afsnit under "1 of 2". Detaljer: to-do "MAIL BYGGES AF JEKYLL".
 - **Infrastruktur:** DNS flyttet til Cloudflare (DNSSEC fjernet først, `rsend` CNAME tilføjet), privacy@7amai.com via Email Routing, broadcast til alle tilmeldte (workerens /broadcast), privat dashboard (7amai-stats, Basic Auth) med anonyme besøgstal (D1 i EU, ingen cookies), siden synlig for Google.
 - **Kvalitet:** redaktørkontrol med 10 kriterier (kilder genåbnes), hårde regler som hook (guard.mjs, også GitHub-connectoren), research med 4 parallelle specialister på Opus 5.5, stilguide + readability.py.
 - **Format:** kerne 5-7 min ved 200 ord/min (scriptet skriver tiderne, rundet op), Explained-bibliotek (3 begreber pr. udgave) i stedet for bonus, og fra 19/10 historiestil: "Dagen på 60 sekunder", "Kort fortalt", én tråd, "Derfor er det vigtigt", samlede historier, højst 5.
@@ -34,5 +35,7 @@ Detaljer står i [[project-7amai-todo]]; dette er overblikket. Overskriv denne f
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
-1. Tjek udgaven 19/10: følger den historiestilen (today:, short, why, samlede historier, højst 5)?
-2. Marketing D1 i en frisk session, efter forbrugstjek.
+0. Tjek afsendelsen 22/10 (første med Jekyll-mailen): fetch-mail.sh exit 0, broadcast en + da, mailen ser ud som https://7amai.com/mail/en/.
+1. [x] Udgaven 19/10 tjekket: historiestilen virker på side og i mail (små ting noteret til STYLE-forfiningen ca. 21/10).
+2. 19/10: one-liner "Daily AI news you can trust. 7 minutes at 7am." låst og live (se to-do ONE-LINER). Worker deployet.
+3. Marketing (eget projekt, `Projekter/marketing`): D1 + D2 færdige 19/10 (repo, RULES.md, skill `marketing`, 7am AI-profil med EN + DA). Dansk er nu en hovedindgang (STRATEGI 3). D3 + D4 færdige 20/10: daglig marketing-routine lægger opslag i kø fra 21/10. NÆSTE: tjek 21/10-kørslen, start fra `project_marketing_todo.md`. Besluttet: separate danske konti (Jesper 19/10).

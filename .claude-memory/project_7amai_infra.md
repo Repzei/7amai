@@ -1,4 +1,4 @@
-﻿---
+---
 name: project-7amai-infra
 description: 7am AI teknik og drift - repo, Jekyll/GitHub Pages, cloud-routine og miljø (ID'er), Resend, DNS hos Cloudflare (domæne registreret hos simply.com), og hvordan man ændrer det
 metadata:
@@ -18,12 +18,12 @@ Formål og beslutninger: [[project-7amai]]. Faldgruber: [[feedback-7amai-lessons
 
 ## Agenten
 - `.agent/INSTRUCTIONS.md` = hele processen (læses af routinen hver gang; ret her for at ændre adfærd).
-- `.agent/SOURCES.md` = kildeliste, `.agent/email-template.html` = mailskabelon, `.agent/send-mail.mjs` = afsendelse via curl til Resend, `.agent/sent.log` = datoer der er sendt (idempotens: findes udgave men ikke i sent.log -> send kun).
+- `.agent/SOURCES.md` = kildeliste, `_layouts/email.html` + `mail/` = den endelige mail (bygget af Jekyll, hentes af `.agent/fetch-mail.sh`), `.agent/send-mail.mjs` = afsendelse via curl til Resend, `.agent/sent.log` = datoer der er sendt (idempotens: findes udgave men ikke i sent.log -> send kun).
 - Hukommelse: agenten læser de 5 seneste `_posts` (ingen gentagelser, "Opfølgning"-sektion).
 
 ## Cloud-routines og miljø
 - **Udkast-model fra 2026-10-15: Opus 5.5** (Jesper valgte kvalitet frem for forbrug) med allowed_tools inkl. `Agent` til fire parallelle research-specialister. Afsendelse kører stadig Sonnet 5.5 (mekanisk).
-- **Udkast:** "7am AI · udkast", id `trig_01UdzqNcTDciDH39dndFmm6U`, cron `30 3 * * *` UTC fra 2026-10-15 (05:30 sommer / 04:30 vinter; før: `0 4 * * *`). INGEN udkast-mail fra 2026-10-15 (Jesper er sjældent oppe; godkender kun via PR). Research, 7 historier, EN + DA, PR på `issue/<dato>`, udkast-mail med "Approve on GitHub".
+- **Udkast:** "7am AI · udkast", id `trig_01UdzqNcTDciDH39dndFmm6U`, cron `30 3 * * *` UTC fra 2026-10-15 (05:30 sommer / 04:30 vinter; før: `0 4 * * *`). INGEN udkast-mail fra 2026-10-15 (Jesper er sjældent oppe; godkender kun via PR). Research, EN + DA, PR på `issue/<dato>`.
 - **Afsendelse:** "7am AI · afsendelse kl. 7", id `trig_01YSVgMBzR1gFKyWPqKPLgw4`, cron `0 5,6 * * *` UTC (alle 7 dage); agenten stopper straks, hvis klokken ikke er 07 dansk tid (rammer kl. 7 i både sommer- og vintertid). PR merget af Jesper = `reviewed: true`; ellers merger agenten selv og udgaven er AI-mærket. Sender endelig mail, logger i sent.log.
 - **Test:** "7am AI · TEST udkast (manuel)", id `trig_01AXHWRTQU7esucVQbPwfkSW`, deaktiveret; køres manuelt. Prompten med `DATO-OVERRIDE: ÅÅÅÅ-MM-DD` springer weekend/klokkeslæt over og sætter [TEST] i mailemner.
 - Alle: Sonnet 5.5, ingen connectors (ryd dem efter hver create/update).

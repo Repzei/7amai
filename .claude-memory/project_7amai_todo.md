@@ -1,26 +1,41 @@
-﻿---
+---
 name: project-7amai-todo
 description: "AKTIV to-do for 7am AI (adskilt fra Gainfully) - START HER: status, næste skridt, åbne punkter. Opdateres løbende med [x]"
 metadata:
   type: project
 ---
 
-# 7am AI: to-do (START HER, opdateret 2026-10-13 aften)
+# 7am AI: to-do (START HER, opdateret 2026-10-21)
 
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 
 ## Status
 - Live på https://7amai.com (EN) og /da/ (DA). **Synlig for Google fra 2026-10-13** (noindex fjernet, undtagen velkomstsiderne; sitemap via jekyll-sitemap, OG-billede assets/og.png, canonical + hreflang).
-- Routines kører hverdage: **udkast kl. 6** (PR + udkast-mail med "Approve on GitHub") og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Første rigtige udgave: mandag 12. okt.
+- Routines kører alle 7 dage: **udkast kl. 05:30** (PR, ingen udkast-mail) og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Mailen bygges af Jekyll (se MAIL BYGGES AF JEKYLL). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
+
+## MAIL BYGGES AF JEKYLL (2026-10-21, commits aa30106, ab56172; dashboard version b07a796b)
+Fejl i mailen 21/10: afsnittene under "1 of 2"/"2 of 2" manglede, fordi send-agenten byggede mail-HTML i hånden fra byggeklodser og læste afsnittet lige under `#### <span>1 of 2</span>` som en del af overskriften. Siden (kramdown) var rigtig. Jesper valgte den holdbare løsning: Jekyll bygger mailen fra samme kilde som siden.
+- Sider `/mail/en/`, `/mail/da/` (layout `_layouts/email.html`) og `/mail/en.txt`, `/mail/da.txt` (`_layouts/email-text.html`). Viser nyeste udgave (`site.posts.first`, `site.da | sort: 'date' | last`). Kramdowns HTML deles ved hver `<h3`; mærke, læsetid og nøgletal tages fra item-meta/number-blokkene, resten får inline styles i `_includes/mail-style.html` (tekst: `_includes/mail-text.html`). Labels `mail_*` + danske `months` i i18n. noindex, ikke i sitemap/feed. Meta `7amai-date` og `7amai-revision` (= `site.github.build_revision`). Emnet står i `<title>` ("7am AI · Oct 21: ..." / "7am AI · 21. oktober: ...").
+- Routinen A2: `bash .agent/fetch-mail.sh <dato>` venter op til 10 min på Pages-build af nyeste commit på main + dagens dato, tjekker `{{`/dash, skriver /tmp/mail*.html/txt + /tmp/subject*.txt. Exit 1 = intet sendes. `email-template.html` slettet.
+- Testet 21/10: alle 68 afsnit fra siden i mailen på EN og DA, 375 px uden vandret scroll, script exit 0. Jesper godkendte: "yes det er godkendt".
+- [ ] Tjek afsendelsen 22/10 i kørselsloggen: fetch-mail.sh exit 0, emner fra /tmp/subject*.txt, broadcast en + da ok, mailen i indbakken ser ud som /mail/en/.
+- Kendt valg: mangler den danske udgave, sendes den engelske heller ikke (scriptet kræver begge).
+
+## ONE-LINER / BRAND (2026-10-19, commits 3109152, 8dc7e09)
+Jesper: brand skal slå på salgsværdierne tid og vished (+ status); connection fravalgt indtil mange læsere. Identiteten er 7-tallet (kl. 7, 7 min), IKKE "Today in 60 seconds" (en funktion). Mockup godkendt "perfect": https://claude.ai/artifact/7YgEtCuFvcMKfu7Qt8RdqA
+- One-liner LÅST i STRATEGI 1.1: "Daily AI news you can trust. 7 minutes at 7am." / "Dagens AI-nyheder, du kan stole på. 7 minutter kl. 7." Signatur "7am · 7 days · 7 minutes" / "Kl. 7 · 7 dage · 7 minutter". Status i introen ("Start the day ahead on AI").
+- Live: forsidens overskrift + signatur (i18n `tagline`, `kicker`), forsidens <title>/description i Google (`home_title`, `home_desc`, default.html `is_home`), _config description, mailens bundlinje (EN + DA-note), og.png (re-renderet), velkomstsider EN/DA, roadmap.json. Mailens {{COUNT}} tæller nu kun hovedhistorier ("5 top stories").
+- [x] Bekræftelsesmailen deployet af Jesper 2026-10-19 (version 18bd1424). NB: wrangler skal køres FRA 7amai/worker, ellers "Could not detect a directory containing static files".
+- [ ] Brug one-lineren i Bluesky/Threads-profilerne i marketing D1.
 
 ## HISTORIESTIL (2026-10-18, commits 4349ef0, cdd8987, 0c0f1d3)
 Jesper læste 18/10 (langsom læser på engelsk, ordblind): historierne føltes som "tilfældige sætninger sat sammen", So what gav intet aha, 3 Claude-historier stod hver for sig, 8 historier for mange. Mockup (https://claude.ai/artifact/GMFmT5eGkcFamhQNbSmM8s) godkendt: "meget bedre".
 - Nu: `today:` i front matter -> "Today in 60 seconds"/"Dagen på 60 sekunder" øverst (layout); hver historie `<p class="short"><span>The short version</span>...</p>`, tråd (hvorfor interessant, hvad skete, fangsten), `<div class="why"><b>Why it matters</b><p>...</p></div>` (aha, ikke ordre), `<p class="todo">` kun ved konkret handling; samme firma/emne = én historie med `#### <span>1 of 3</span>`-dele; højst 5 hovedhistorier; højst 3 tal pr. historie. So what-blockquote udgået.
 - STYLE.md omskrevet (før/efter med DeepSeek 18/10), INSTRUCTIONS U3/U4/U5/A2, EDITORIAL 5, mailskabelonens blokke, CSS, readability.py springer mærkater over. Udkast-prompt opdateret. Testet live via midlertidig /style-test/ (fjernet).
 - Rodårsag (min egen): stilguidens "korte sætninger, én idé pr. sætning" + mange fakta + 8 historier gav hakkende fakta-lister.
-- [ ] TJEK 2026-10-19: today: findes og matcher historierne, højst 5 hovedhistorier, relaterede samlet, short/why i alle, ingen So what, readability OK, mailen har de nye blokke.
+- [x] TJEKKET 2026-10-19 (PR #9, sendt): today: med 5 linjer der matcher de 5 hovedhistorier (+ Open source og Paper), short/why i alle 7, 2 samlede dele (#### 1 of 2), todo kun 2 steder, ingen So what/em dash, readability OK (EN 1.398 ord, DA 1.387 = 7 min), live-siden viser "Today in 60 seconds". Små ting: lead-historien har en løs sidste sætning ("The fund is also owned by Anthropic itself...") og 4 tal (5 %, 2 %, halvdelen, en femtedel), mod reglen om højst 3. Mailen tjekket af Jesper: "Today in 60 seconds"-blokken ser god ud. Følg det i STYLE-forfiningen ca. 21/10.
 
 ## SYSTEMOVERSIGT PÅ DASHBOARDET (2026-10-16, commit 6037a86)
 - Fanen "Sådan virker det" (https://7amai-stats.jesperkhl.workers.dev/#system): tidslinje for en morgen (05:30 udkast -> 07:16 afsendelse -> læsere), tjenester (Claude, GitHub, Cloudflare, Resend, Google, simply.com), tilmeldingsflow, hemmeligheder (kun navne), sikkerhedsnet, live-status (seneste udgave, godkendt/AI-mærket, sendt i dag) fra GitHub API + raw sent.log, cachet 5 min.
@@ -37,7 +52,7 @@ Jesper: forkerte tidsestimater giver dårligt omdømme. Fund: 230 ord/min + afru
 ## EXPLAINED ERSTATTER BONUS (bygget 2026-10-16, commits 9b2a9b2, e5d1034, 5021c16)
 Jesper: bonus (On the radar + Try it today) var "rodet" og gav ham intet. Valgte "Explained" efter mockup (https://claude.ai/artifact/EbFDK6tRC49EUkd2d1fqVe).
 - Bibliotek: collection `explained`, filer `_explained/<slug>.md` (EN) og `_explained/da/<slug>.md` (DA, permalink /da/explained/:name/ via defaults). Front matter: term, title, summary, date, minutes, other_lang_url, read_more [{label,url}], short (til fold-ud). Layout `explained.html`, oversigt `explained/index.html` + `da/explained/index.html` (include `explained-index.html`, A-Å + søgning), link i sidens menu.
-- Udgaven: `explained: { main, from, more: [..] }` i front matter -> `_includes/explained.html` (kaldt fra issue.html) viser hovedbegrebet fuldt + 2 som <details>. Teksten findes kun i biblioteket. Mail: hovedbegreb fuldt + 2 links (skabelonens Explained-blok).
+- Udgaven: `explained: { main, from, more: [..] }` i front matter -> `_includes/explained.html` (kaldt fra issue.html) viser hovedbegrebet fuldt + 2 som <details>. Teksten findes kun i biblioteket. Mail: hovedbegreb fuldt + 2 links (Explained-blokken i `_layouts/email.html`).
 - Seed: open-weight, mixture-of-experts, context-window (EN+DA), alle readability OK. Testet live via midlertidig /ex-test/ (fjernet), telefonbredde uden vandret scroll.
 - Agent: INSTRUCTIONS U3 punkt 4 + U5b, EDITORIAL 4/7, STYLE (Explained-afsnit), SOURCES (kilder til forklaringer), readability.py springer læsetid over for _explained-filer. Udkast-prompt opdateret.
 - [x] TJEKKET 2026-10-18: 17/10 og 18/10 begge med `explained:`, nye begreber quantization + benchmark på begge sprog med read_more (Hugging Face), readability OK, kerne 7 min (1.320-1.381 ord), siden viser "7 min + 2 min Explained". Biblioteket har 5 begreber.
@@ -91,7 +106,7 @@ Jesper: bonus (On the radar + Try it today) var "rodet" og gav ham intet. Valgte
 - [x] `noindex` fjernet 2026-10-13 (Jesper: "gøre siden synlig for Google"), jekyll-sitemap tilføjet (robots.txt laves automatisk), OG/Twitter-kort med assets/og.png (kilde: `.agent/og-source.html`, renderet med headless Edge for de rigtige skrifttyper), canonical, hreflang en/da/x-default. Velkomstsiderne har `noindex: true` + `sitemap: false`. Sitemap indsendes i GSC (I MORGEN punkt 4).
 - [ ] **Feedback uden tracking:** "Nyttig 👍 / Ikke nyttig 👎" nederst i hver mail og udgave; anonym optælling pr. udgave i workeren (fx Cloudflare KV eller Analytics Engine, ingen personhenførbare data, nævnes i privatlivspolitikken). Fodrer redaktørkontrol og STYLE.md med læsernes mening. Højeste langsigtede værdi.
 - [ ] **Overvågning af afsendelsen:** tjek ca. 07:15 om `<dato>` står i sent.log; hvis ikke, besked til Jesper (fx lille cloud-routine eller Cloudflare Cron Trigger i workeren). Vigtigt så snart andre end Jesper er tilmeldt.
-- [ ] **Jesper beslutter: dansk udgave som indgang?** Næsten intet dagligt, kildebelagt AI-nyhedsbrev på dansk; de første 100 læsere er nok lettest at få via LinkedIn, netværk og danske udviklermiljøer. Strategisk valg, Jespers beslutning.
+- [x] **Dansk som indgang: JA (Jesper 2026-10-19)**, fordi der næsten ikke findes danske AI-nyhedsbreve. Separate danske marketing-konti (Bluesky/Threads) med opslag fra `_da/`; STRATEGI 3 opdateret. Forslag til senere: dansk SEO (danske søgeord på /da/, fx "AI-nyheder"), danske udviklermiljøer og LinkedIn.
 - [ ] beehiiv revurderes ved ca. 1.000 læsere.
 
 ## Færdigt
