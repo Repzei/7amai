@@ -39,7 +39,7 @@ Mistral offers it through a European endpoint as well as US and global ones.
 
 There is a catch. These are Mistral's own charts, and they show Microsoft's model level with it and others close behind. The page also does not say whether anyone can download the models.
 
-<div class="why"><b>Why it matters</b><p>Whisper is like a typist who needs a lot of correcting. Voxtral is a better typist for a small fee, based in Europe. For a Danish clinic or law firm, that means far less fixing, and the audio can stay in Europe.</p></div>
+<div class="why"><b>Why it matters</b><p>Whisper is like a typist who needs a lot of correcting. Voxtral is a better typist for a small fee. For a Danish clinic or law firm, that means far less fixing, and the audio can stay in Europe.</p></div>
 
 <p class="todo"><b>Try it:</b> Mistral's API has Voxtral 3 today. Test it on a recording in your own language before you switch.</p>
 

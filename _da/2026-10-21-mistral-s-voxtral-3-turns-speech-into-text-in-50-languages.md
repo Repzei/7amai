@@ -31,7 +31,7 @@ items:
 
 Tale til tekst gør møder til noter og interview til citater. Men hvert forkert ord betyder, at nogen skal rette teksten i hånden. Derfor afgør fejlraten, hvor nyttigt det er.
 
-Nu har Mistral lanceret Voxtral 3. De vigtigste transskriptionsmodeller dækker nu 50 sprog, herunder alle 24 officielle EU-sprog.
+Mistral har lanceret Voxtral 3. De vigtigste transskriptionsmodeller dækker nu 50 sprog, herunder alle 24 officielle EU-sprog.
 
 På en standardtest i 45 sprog får den største model omkring 4 ud af 100 ord forkert. OpenAIs Whisper large-v3 får 16 forkert. Den lille model koster 0,0035 dollar i minuttet.
 
@@ -39,7 +39,7 @@ Mistral tilbyder den gennem et europæisk endpoint og desuden et amerikansk og e
 
 Men der er en hage. Graferne er Mistrals egne, og de viser Microsofts model på niveau og andre tæt efter. Siden siger heller ikke, om man kan hente modellerne.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>Whisper er som en skrivehjælp, der skal rettes meget. Voxtral er en bedre skrivehjælp mod et lille gebyr, og den holder til i Europa. For en dansk klinik eller et advokatkontor betyder det langt mindre retning, og lyden kan blive i Europa.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>Whisper er som en skrivehjælp, der skal rettes meget. Voxtral er en bedre skrivehjælp mod et lille gebyr. For en dansk klinik eller et advokatkontor betyder det langt mindre retning, og lyden kan blive i Europa.</p></div>
 
 <p class="todo"><b>Prøv det:</b> Voxtral 3 ligger i Mistrals API i dag. Test den på en optagelse på dit eget sprog, før du skifter.</p>
 
