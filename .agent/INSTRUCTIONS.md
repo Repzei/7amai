@@ -318,40 +318,31 @@ Jesper kan have rettet teksten eller tilføjet "## Jesper's pick" i PR'en. Brug 
 på `main` efter merge som sandheden.
 
 ### A2. Endelig mail
-Byg mailen ud fra `.agent/email-template.html` (byggeklodser nederst i filen) og filen på `main`:
-- `{{BANNER}}` er tom (udkast-banneret bruges ikke længere).
-- `{{DISCLOSURE}}` = godkendt-teksten, hvis `reviewed: true`; ellers den kontrollerede, hvis `checked: true`; ellers den ikke-godkendte.
-- `{{ISSUE_URL}}` = `https://7amai.com/<åååå>/<mm>/<dd>/`, `{{DA_URL}}` = `https://7amai.com/da/<åååå>/<mm>/<dd>/`.
-  Skabelonens links har `?ref=mail` efter URL'en (anonym optælling af besøg fra mailen); brug det også i tekstudgaven,
-  fx `https://7amai.com/<åååå>/<mm>/<dd>/?ref=mail`.
-- `{{ITEMS}}` = alle historier efter byggeklodsen nederst i skabelonen (signal-stil, læsetid,
-  `{{NUMBER}}` kun på lead-historien med ægte tal, overskrift, The short version, afsnittene, Why it matters, evt. Try it, kildemærke).
-  Øverst (før første historie): "Today in 60 seconds"-blokken ud fra `today:`. Hver historie
-  får "The short version", tråden, "Why it matters"-boksen og evt. "Try it"; samlede historier
-  får deres dele som små overskrifter. Open source- og Paper-historien kommer efter
-  hovedhistorierne, hver med skabelonens sektionslabel ovenover. Til sidst Explained-blokken: hovedbegrebet i fuld længde (fra
-  biblioteksfilens brødtekst) og de to andre som links til deres biblioteksside med `?ref=mail`
-  (mailprogrammer kan ikke folde ud).
-  `{{COUNT}}` = antal hovedhistorier = antal linjer i `today:`, fx "5 top stories" (Open source og
-  Paper tælles ikke med, så tallet matcher "Today in 60 seconds"). `{{MIN}}` = kernens læsetid i minutter.
-  Ingen `{{` må stå tilbage.
-- Er der en "Jesper's pick"-sektion, så tag den med efter sidste historie.
-Gem som `/tmp/mail.html` og `/tmp/mail.txt`.
-Emne: `7am AI · <d. mon>: <titel>` (maks ca. 90 tegn).
+Du skriver IKKE mailen. Jekyll bygger den på GitHub Pages ud fra filerne på `main`, samme kilde
+som hjemmesiden: `/mail/en/` og `/mail/da/` (HTML) og `/mail/en.txt` og `/mail/da.txt` (tekst),
+lavet af `_layouts/email.html` og `_layouts/email-text.html`. Siden viser altid den nyeste udgave
+og har mærkningen (Reviewed/kontrolleret/AI) fra front matter. Skal mailens udseende eller
+tekster ændres, så ret i de to layouts, `_includes/mail-style.html`, `_includes/mail-text.html`
+eller `_data/i18n.yml` (`mail_*`), aldrig i den hentede fil.
 
-**Dansk mail** ud fra `_da/<dato>-*.md` med samme skabelon: `<html lang="da">`, dansk dato,
-`{{COUNT}}` fx "5 hovedhistorier", "min læsetid", danske labels (se skabelonens noter), dansk
-mærkning fra `_data/i18n.yml` (`da.disclosure_checked` hvis `checked: true`, ellers
-`da.disclosure_ai`; den danske er aldrig "Reviewed"). Knappen "Læs den på 7amai.com" peger på
-`{{DA_URL}}`, og det lille link "English edition" på `{{ISSUE_URL}}`. Gem som `/tmp/mail-da.html`
-og `/tmp/mail-da.txt`. Emne: `7am AI · <d. mon>: <dansk titel>`.
+Hent mailen (efter alle pushes i A1, så Pages bygger den endelige version):
+`bash .agent/fetch-mail.sh <dato>`
+Scriptet venter i op til 10 minutter, til Pages har bygget den nyeste commit på `main`, og
+datoen på siden er `<dato>`. Det tjekker også for `{{` og em/en dash og skriver
+`/tmp/mail.html`, `/tmp/mail.txt`, `/tmp/mail-da.html`, `/tmp/mail-da.txt` samt emnerne i
+`/tmp/subject.txt` og `/tmp/subject-da.txt` (fra sidens titel: `7am AI · <dato>: <titel>`).
+- **Exit 0:** send. Brug emnerne uændret (i test med `[TEST] ` foran). Ret aldrig i mailfilerne.
+- **Exit 1:** send INTET, heller ikke en mail du selv bygger. Skriv scriptets fejl i din
+  afsluttende besked (fx at Pages-buildet fejlede: `gh api repos/Repzei/7amai/pages/builds/latest`).
+- **Test med DATO-OVERRIDE:** mailsiden viser altid den nyeste udgave på `main`, så A2 virker kun,
+  når override-datoen er den nyeste udgave.
 
 **Send til alle tilmeldte** (workeren tilføjer afmeldingslink):
-1. `node .agent/broadcast.mjs en "<emne>" /tmp/mail.html /tmp/mail.txt`
-2. `node .agent/broadcast.mjs da "<dansk emne>" /tmp/mail-da.html /tmp/mail-da.txt`
+1. `node .agent/broadcast.mjs en "$(cat /tmp/subject.txt)" /tmp/mail.html /tmp/mail.txt`
+2. `node .agent/broadcast.mjs da "$(cat /tmp/subject-da.txt)" /tmp/mail-da.html /tmp/mail-da.txt`
 
 **Fallback:** fejler den engelske broadcast (exit 3 = BROADCAST_TOKEN mangler, eller anden fejl),
-så send den engelske til redaktøren som før: `node .agent/send-mail.mjs "<emne>" /tmp/mail.html /tmp/mail.txt`,
+så send den engelske til redaktøren som før: `node .agent/send-mail.mjs "$(cat /tmp/subject.txt)" /tmp/mail.html /tmp/mail.txt`,
 og skriv årsagen i din afsluttende besked. Spring så den danske broadcast over. Send aldrig
 samme udgave to gange til samme segment.
 

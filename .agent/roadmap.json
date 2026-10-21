@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-21",
   "note": "Køreplanen på dashboardet (fanen 'Sådan virker det') læses live herfra. Status: done, doing, next, later, jesper (Jespers eget trin). Opdateres sammen med 7am AI's to-do.",
   "phases": [
     {
@@ -49,6 +49,10 @@
         },
         {
           "t": "Historiestil: dagen på 60 sekunder, kort fortalt, tråd, derfor er det vigtigt, samlede historier",
+          "s": "done"
+        },
+        {
+          "t": "Mailen bygges af Jekyll fra samme kilde som siden (ingen AI-skrevet mail-HTML)",
           "s": "done"
         },
         {

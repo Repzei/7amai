@@ -28,7 +28,8 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `CNAME` | `7amai.com` (styres af GitHub Pages-indstillingen) |
 | `.agent/INSTRUCTIONS.md` | Agentens fulde proces. Ret her for at ændre indhold eller format |
 | `.agent/SOURCES.md` | Kildeliste |
-| `.agent/email-template.html` | Mailskabelon + byggeklodser |
+| `_layouts/email.html`, `_layouts/email-text.html`, `mail/` | Den endelige mail, bygget af Jekyll fra nyeste udgave (samme kilde som siden): `/mail/en/`, `/mail/da/`, `/mail/en.txt`, `/mail/da.txt`. Styles i `_includes/mail-style.html`, tekstudgave i `_includes/mail-text.html`, labels `mail_*` i i18n. noindex, ikke i sitemap/feed |
+| `.agent/fetch-mail.sh` | Henter mailen til routinen (trin A2): venter til Pages har bygget nyeste commit på main og dagens dato, tjekker `{{`/dash, skriver /tmp-filer og emner |
 | `.agent/send-mail.mjs` | Mail til redaktøren (udkast + fallback) via Resend |
 | `.agent/broadcast.mjs` | Udgaven til alle tilmeldte (segment en/da) via workerens /broadcast |
 | `.agent/og-source.html` | Kilde til delingsbilledet assets/og.png (render: headless Edge 1200x630) |
