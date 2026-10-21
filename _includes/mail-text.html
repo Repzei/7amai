@@ -1,0 +1,32 @@
+{%- comment -%}
+Gør kramdowns færdige HTML (include.html) til ren tekst til mailens tekstudgave.
+Links bliver "tekst (url)", og mærkerne i en historie får kolon eller " · " i stedet for tags.
+{%- endcomment -%}
+{%- capture mt_nl %}
+{% endcapture -%}
+{%- assign mt_parts = include.html | split: '<a href="' -%}
+{%- capture mt -%}
+{{- mt_parts[0] -}}
+{%- for p in mt_parts offset:1 -%}
+  {%- assign mt_url = p | split: '"' | first -%}
+  {%- assign mt_after = p | remove_first: mt_url | remove_first: '">' -%}
+  {%- assign mt_text = mt_after | split: '</a>' | first -%}
+  {{- mt_text }} ({{ mt_url }}){{ mt_after | remove_first: mt_text | remove_first: '</a>' -}}
+{%- endfor -%}
+{%- endcapture -%}
+{%- assign mt_parts = mt | split: '<p class="short"><span>' -%}
+{%- capture mt -%}
+{{- mt_parts[0] -}}
+{%- for p in mt_parts offset:1 -%}{{- p | replace_first: '</span>', ': ' -}}{%- endfor -%}
+{%- endcapture -%}
+{%- assign mt_parts = mt | split: '<h4 ' -%}
+{%- capture mt -%}
+{{- mt_parts[0] -}}
+{%- for p in mt_parts offset:1 -%}{{- '<h4 ' | append: p | replace_first: '</span> ', ': ' -}}{%- endfor -%}
+{%- endcapture -%}
+{%- assign mt_h3 = mt_nl | append: '<h3 ' -%}
+{%- assign mt_h2 = mt_nl | append: '<h2 ' -%}
+{%- assign mt = mt | replace: '</span><span class="track">', ' · ' | replace: '</b><span>', ' ' | replace: '</b><p>', ': ' -%}
+{%- assign mt = mt | replace: '<h3 ', mt_h3 | replace: '<h2 ', mt_h2 | replace: '<li>', '- ' -%}
+{%- assign mt = mt | strip_html | replace: '&nbsp;', ' ' | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' | replace: '&amp;', '&' -%}
+{{ mt | strip }}

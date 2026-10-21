@@ -1,0 +1,43 @@
+{%- comment -%}
+Tekstudgaven af mailen (mail/en.txt og mail/da.txt). Samme udgave som _layouts/email.html.
+{%- endcomment -%}
+{%- assign lang = page.lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- if lang == 'da' -%}{%- assign post = site.da | sort: 'date' | last -%}{%- else -%}{%- assign post = site.posts.first -%}{%- endif -%}
+{%- assign issue_url = post.url | absolute_url -%}
+{%- assign other_url = post.other_lang_url | absolute_url -%}
+{%- if post.reviewed -%}{%- assign disclosure = t.disclosure_reviewed -%}{%- elsif post.checked -%}{%- assign disclosure = t.disclosure_checked -%}{%- else -%}{%- assign disclosure = t.disclosure_ai -%}{%- endif -%}
+7am AI · {{ post.date | date: t.date_format }} · 07:00
+{{ post.today.size }} {{ t.mail_count }} · {{ post.minutes }} {{ t.mail_min }}
+
+{{ post.title }}
+{{ post.summary }}
+
+{{ disclosure }}
+{% if post.today %}
+{{ t.today_title }}
+{% for d in post.today %}{{ forloop.index }}. {{ d.t }}{% if d.why %} {{ d.why }}{% endif %}
+{% endfor %}{% endif %}
+{% include mail-text.html html=post.content %}
+{%- if post.explained %}
+  {%- assign ex_pool = site.explained | where: "lang", lang -%}
+  {%- assign ex_main = ex_pool | where: "slug", post.explained.main | first -%}
+  {%- if ex_main %}
+
+
+{{ t.explained_title }} · {{ ex_main.minutes | default: 1 | plus: 1 }} min
+
+{{ ex_main.title }}
+
+{% assign ex_html = ex_main.content %}{% include mail-text.html html=ex_html %}
+{% if post.explained.more and post.explained.more.size > 0 %}
+{{ t.mail_explained_more }}:
+{% for slug in post.explained.more %}{% assign e = ex_pool | where: "slug", slug | first %}{% if e %}- {{ e.title }} {{ e.url | absolute_url }}?ref=mail
+{% endif %}{% endfor %}{% endif %}
+  {%- endif %}
+{%- endif %}
+
+{{ t.mail_read }}: {{ issue_url }}?ref=mail
+{{ t.mail_other }}: {{ other_url }}?ref=mail
+
+7am AI · {{ t.tagline }} · {{ t.home | absolute_url }}?ref=mail

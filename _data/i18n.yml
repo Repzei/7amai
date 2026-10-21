@@ -42,6 +42,12 @@ en:
   explained_read_more: "Learn more"
   explained_all: "All explainers"
   disclosure_explained: "Written by AI and checked against our editorial standards. Not reviewed by a human editor."
+  mail_count: "top stories"
+  mail_min: "min read"
+  mail_read: "Read it on 7amai.com"
+  mail_other: "Dansk udgave"
+  mail_archive: "archive"
+  mail_explained_more: "Two more from today, on 7amai.com"
 da:
   home: /da/
   feed: /feed/da.xml
@@ -86,3 +92,10 @@ da:
   explained_read_more: "Læs mere"
   explained_all: "Alle forklaringer"
   disclosure_explained: "Skrevet af AI og tjekket mod vores redaktionelle kriterier. Ikke gennemgået af en redaktør."
+  mail_count: "hovedhistorier"
+  mail_min: "min læsetid"
+  mail_read: "Læs den på 7amai.com"
+  mail_other: "English edition"
+  mail_archive: "arkiv"
+  mail_explained_more: "To mere fra i dag, på 7amai.com"
+  months: [januar, februar, marts, april, maj, juni, juli, august, september, oktober, november, december]

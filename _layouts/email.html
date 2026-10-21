@@ -1,0 +1,161 @@
+{%- comment -%}
+Den endelige mail, bygget af Jekyll ud fra den nyeste udgave (samme kilde som hjemmesiden).
+Sider: mail/en/index.html og mail/da/index.html. Send-routinen henter dem (trin A2) og sender
+dem uændret. Historierne tages fra kramdowns færdige HTML: teksten deles ved hver <h3>, så hver
+historie kan få mærke, læsetid, nøgletal og overskrift øverst som i den gamle skabelon, og
+resten får inline styles i _includes/mail-style.html.
+Metadata til routinen: 7amai-date (udgavens dato) og 7amai-revision (den commit, Pages byggede).
+{%- endcomment -%}
+{%- assign lang = page.lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- if lang == 'da' -%}{%- assign post = site.da | sort: 'date' | last -%}{%- else -%}{%- assign post = site.posts.first -%}{%- endif -%}
+{%- assign issue_url = post.url | absolute_url -%}
+{%- assign other_url = post.other_lang_url | absolute_url -%}
+{%- assign home_url = t.home | absolute_url -%}
+{%- if lang == 'da' -%}{%- assign mi = post.date | date: '%-m' | minus: 1 -%}{%- capture subject_date %}{{ post.date | date: '%-d' }}. {{ t.months[mi] }}{% endcapture -%}{%- else -%}{%- assign subject_date = post.date | date: '%b %-d' -%}{%- endif -%}
+{%- if post.reviewed -%}{%- assign disclosure = t.disclosure_reviewed -%}{%- elsif post.checked -%}{%- assign disclosure = t.disclosure_checked -%}{%- else -%}{%- assign disclosure = t.disclosure_ai -%}{%- endif -%}
+{%- capture sep %}<div style="height:1px;line-height:1px;font-size:0;background:#D3DCEA;margin:4px 0;">&nbsp;</div>{% endcapture -%}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light only" />
+<meta name="supported-color-schemes" content="light" />
+<meta name="robots" content="noindex" />
+<meta name="7amai-date" content="{{ post.date | date: '%Y-%m-%d' }}" />
+<meta name="7amai-revision" content="{{ site.github.build_revision }}" />
+<title>7am AI · {{ subject_date }}: {{ post.title | escape }}</title>
+</head>
+<body style="margin:0;padding:0;background:#EEF3FA;">
+<div style="display:none;max-height:0;overflow:hidden;">{{ post.summary | escape }}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EEF3FA;">
+<tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border-radius:16px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#0E1A33;">
+<tr><td style="padding:22px 24px 0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td style="vertical-align:middle;"><a href="{{ home_url }}?ref=mail" style="text-decoration:none;color:#0E1A33;"><img src="https://7amai.com/assets/logo-mail.png" width="40" height="40" alt="" style="display:inline-block;vertical-align:middle;border:0;border-radius:9px;"><span style="font-size:19px;font-weight:800;letter-spacing:-0.3px;vertical-align:middle;margin-left:8px;">7am AI</span></a></td>
+    <td align="right" style="vertical-align:middle;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;">{{ post.date | date: t.date_format }} · <span style="color:#B4500A;">07:00</span></td>
+  </tr></table>
+</td></tr>
+<tr><td style="padding:14px 24px 0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td style="height:3px;line-height:3px;font-size:0;background:#0E1A33;">&nbsp;</td>
+    <td width="18" style="width:18px;height:3px;line-height:3px;font-size:0;background:#FF8A2A;">&nbsp;</td>
+  </tr></table>
+</td></tr>
+<tr><td style="padding:18px 24px 6px;">
+  <div style="font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;">{{ post.today.size }} {{ t.mail_count }} · {{ post.minutes }} {{ t.mail_min }}</div>
+  <h1 style="font-size:24px;line-height:1.15;font-weight:800;letter-spacing:-0.4px;margin:8px 0 8px;color:#0E1A33;">{{ post.title | escape }}</h1>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.5;color:#55627A;margin:0 0 12px;">{{ post.summary | escape }}</p>
+  <p style="display:inline-block;font-size:12px;line-height:1.4;font-weight:600;color:#55627A;margin:0;padding:5px 12px;border:1px solid #D3DCEA;border-radius:999px;">{{ disclosure }}</p>
+</td></tr>
+<tr><td style="padding:10px 24px 4px;">
+{%- if post.today %}
+  <div style="border:2px solid #0E1A33;border-radius:14px;padding:14px 16px;margin:6px 0 16px;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#B4500A;margin:0 0 8px;">{{ t.today_title }}</div>
+    <ol style="margin:0;padding-left:20px;">
+    {%- for d in post.today %}
+      <li style="font-size:15px;line-height:1.45;font-weight:700;color:#0E1A33;margin:0 0 6px;">{{ d.t | escape }}{% if d.why %} <span style="font-weight:400;color:#55627A;">{{ d.why | escape }}</span>{% endif %}</li>
+    {%- endfor %}
+    </ol>
+  </div>
+{%- endif %}
+{%- assign chunks = post.content | split: '<h3' -%}
+{%- assign pre = chunks[0] | strip -%}
+{%- if pre != '' %}{% include mail-style.html html=pre %}{% endif -%}
+{%- assign after_section = true -%}
+{%- for chunk in chunks offset:1 -%}
+  {%- assign head = chunk | split: '</h3>' | first -%}
+  {%- assign rest = chunk | remove_first: head | remove_first: '</h3>' -%}
+  {%- assign head_parts = head | split: '"' -%}
+  {%- assign anchor = head_parts[1] -%}
+  {%- assign title = head | split: '">' | last -%}
+  {%- assign sig = '' -%}{%- assign sig_label = '' -%}{%- assign item_min = '' -%}
+  {%- if rest contains '<p class="item-meta">' -%}
+    {%- assign meta_parts = rest | split: '<p class="item-meta">' -%}
+    {%- assign meta = meta_parts[1] | split: '</p>' | first -%}
+    {%- assign meta_full = '<p class="item-meta">' | append: meta | append: '</p>' -%}
+    {%- assign rest = rest | remove_first: meta_full -%}
+    {%- assign sig_parts = meta | split: 'signal-' -%}
+    {%- assign sig = sig_parts[1] | split: '"' | first -%}
+    {%- assign sig_label = meta | split: '</span>' | first | split: '>' | last -%}
+    {%- assign item_min = meta | split: '<span class="track">' | last | remove: '</span>' -%}
+  {%- endif -%}
+  {%- assign num = '' -%}{%- assign num_label = '' -%}
+  {%- if rest contains '<div class="number">' -%}
+    {%- assign num_parts = rest | split: '<div class="number">' -%}
+    {%- assign num_html = num_parts[1] | split: '</div>' | first -%}
+    {%- assign num_full = '<div class="number">' | append: num_html | append: '</div>' -%}
+    {%- assign rest = rest | remove_first: num_full -%}
+    {%- assign num = num_html | split: '</b>' | first | remove: '<b>' -%}
+    {%- assign num_label = num_html | split: '<span>' | last | remove: '</span>' -%}
+  {%- endif -%}
+  {%- assign item_part = rest | split: '<h2' | first -%}
+  {%- assign tail = rest | remove_first: item_part | strip -%}
+  {%- assign src_parts = item_part | split: '<p class="sources">' -%}
+  {%- assign text_part = src_parts[0] -%}
+  {%- assign src = src_parts[1] | strip -%}
+  {%- case sig -%}
+    {%- when 'big' -%}{%- assign sig_style = 'background:#FFC447;color:#0E1A33;padding:3px 9px;' -%}
+    {%- when 'worth' -%}{%- assign sig_style = 'border:1.5px solid #FF8A2A;color:#B4500A;padding:1.5px 7.5px;' -%}
+    {%- else -%}{%- assign sig_style = 'border:1.5px solid #D3DCEA;color:#55627A;padding:1.5px 7.5px;' -%}
+  {%- endcase %}
+{% unless after_section %}{{ sep }}
+{% endunless -%}
+<div style="padding:14px 0;">
+  {%- if sig_label != '' %}
+  <span style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;border-radius:999px;{{ sig_style }}">{{ sig_label }}</span>
+  <span style="font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;margin-left:6px;">{{ item_min }}</span>
+  {%- endif %}
+  {%- if num != '' %}
+  <div style="font-size:40px;line-height:1;font-weight:800;letter-spacing:-1px;color:#0E1A33;margin:10px 0 0;">{{ num }}<span style="display:block;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:#55627A;font-weight:700;margin-top:4px;">{{ num_label }}</span></div>
+  {%- endif %}
+  <a href="{{ issue_url }}?ref=mail#{{ anchor }}" style="display:block;font-size:{% if forloop.first %}21px{% else %}17px{% endif %};line-height:1.25;font-weight:800;color:#0E1A33;text-decoration:none;margin:8px 0 6px;">{{ title }}</a>
+  {% include mail-style.html html=text_part %}
+  {%- if src != '' %}
+  <p style="font-size:11px;font-weight:700;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;color:#55627A;margin:8px 0 0;">{{ src | replace: '<a href=', '<a style="color:#55627A;" href=' | replace: '<span class="tag tag-official">', '<span style="font-weight:800;color:#B4500A;">' | replace: '<span class="tag tag-reported">', '<span style="font-weight:800;color:#55627A;">' | replace: '<span class="tag tag-unconfirmed">', '<span style="font-weight:800;color:#55627A;">' }}
+  {%- endif %}
+</div>
+  {%- if tail != '' %}
+{{ sep }}
+{% include mail-style.html html=tail %}
+    {%- assign after_section = true -%}
+  {%- else -%}
+    {%- assign after_section = false -%}
+  {%- endif -%}
+{%- endfor %}
+{%- if post.explained %}
+  {%- assign ex_pool = site.explained | where: "lang", lang -%}
+  {%- assign ex_main = ex_pool | where: "slug", post.explained.main | first -%}
+  {%- if ex_main %}
+  <div style="margin:24px 0 0;border-top:1.5px dashed #D3DCEA;padding-top:16px;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#B4500A;margin:0 0 6px;">{{ t.explained_title }} · {{ ex_main.minutes | default: 1 | plus: 1 }} min</div>
+    <div style="font-size:20px;line-height:1.2;font-weight:800;color:#0E1A33;margin:0 0 8px;">{{ ex_main.title }}</div>
+    {%- assign ex_html = ex_main.content %}
+    {% include mail-style.html html=ex_html %}
+    {%- if post.explained.more and post.explained.more.size > 0 %}
+    <div style="margin:14px 0 0;padding:12px 14px;background:#EEF3FA;border-radius:12px;">
+      <div style="font-size:13px;font-weight:800;color:#55627A;margin:0 0 6px;">{{ t.mail_explained_more }}</div>
+      {%- for slug in post.explained.more %}
+      {%- assign e = ex_pool | where: "slug", slug | first -%}
+      {%- if e %}
+      <a href="{{ e.url | absolute_url }}?ref=mail" style="display:block;font-size:15px;font-weight:700;color:#0E1A33;margin:4px 0;text-decoration:none;"><span style="color:#B4500A;">&rarr;</span> {{ e.title }}</a>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+  {%- endif %}
+{%- endif %}
+</td></tr>
+<tr><td style="padding:14px 24px 26px;">
+  <a href="{{ issue_url }}?ref=mail" style="display:inline-block;background:#FF8A2A;color:#0E1A33;text-decoration:none;font-weight:800;font-size:15px;padding:12px 22px;border-radius:999px;">{{ t.mail_read }}</a>
+  <span style="font-size:13px;margin-left:12px;"><a href="{{ other_url }}?ref=mail" style="color:#55627A;">{{ t.mail_other }}</a></span>
+</td></tr>
+</table>
+<p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:#55627A;margin:16px 0 0;">7am AI · {{ t.tagline }} · <a href="{{ home_url }}?ref=mail" style="color:#55627A;">{{ t.mail_archive }}</a></p>
+</td></tr>
+</table>
+</body>
+</html>
