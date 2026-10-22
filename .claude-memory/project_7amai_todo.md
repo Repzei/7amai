@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-10-22T21:55:40.140Z
+  modified: 2026-10-22T22:21:36.758Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-21)
@@ -19,6 +19,14 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
   - SEO-baseline (Search Console 21/10, 3 mdr.): første eksponeringer 19/10: 5 eksponeringer, 0 klik, gns. position 5,6; forespørgslen "7amai" 2 eksponeringer. Google 21/10 (dansk søgning "7amai"): 7amai.com er det første organiske resultat, men med /da/explained/ (gammel beskrivelse), fordi forsiden endnu ikke er genindekseret. 22/10: Google viste stadig forsidens GAMLE titel/beskrivelse ("The AI news that matters...") i almindelig søgning, mens et nyere kort viste den nye; siden selv er rigtig. Jesper anmodede om indeksering af https://7amai.com/ 22/10. NB: navnet kolliderer med dashcam-mærket "70mai" (shopping-annoncer + AI-oversigt om 70mai), så brug altid "7am AI" med mellemrum i opslag og profiler.
 - Routines kører alle 7 dage: **udkast kl. 05:30** (PR, ingen udkast-mail) og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Mailen bygges af Jekyll (se MAIL BYGGES AF JEKYLL). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
+
+## FORSLAG TIL NYHEDSBREV + HJEMMESIDE (2026-10-23, Jesper: "skriv dem i to-do"; ikke bygget)
+Tjekket mod STRATEGI 8-9 (henvisningsprogram fase 1, emnesider/"Shipped or not?" fase 2 er allerede planlagt) og mod koden 23/10 (ingen af disse findes). Anbefalet rækkefølge A, B, C. Byg i en 7am AI-session; opdatér roadmap.json + dashboard i samme ændring.
+- [ ] **A1 "Fik du den videresendt?"-linje** nederst i mailen (EN + DA) med tilmeldingslink (`?ref=forward`). Billigste vækstmekanisme for nyhedsbreve.
+- [ ] **A2 "Del"-link ved hver historie** på siden (deep link til `#anker`), passer til Bluesky-opslagene, der allerede linker til den enkelte historie.
+- [ ] **B1 "Sådan arbejder vi"-side** (EN + DA): hvordan historier vælges, Official/Reported/Unconfirmed, AI skriver + redaktørkontrol + AI-mærkning. Gør "you can trust" synligt; hjælper EU AI Act-gennemsigtighed og SEO.
+- [ ] **B2 Offentlig rettelses-side**: samlet oversigt over Corrections (findes i dag kun som blok i den enkelte mail/udgave).
+- [ ] **C Henvisningsprogram tidligere end fase 1** (fx "henvis 3, få et eksklusivt Explained-tema"). Vent til der er flere læsere.
 
 ## MAIL BYGGES AF JEKYLL (2026-10-21, commits aa30106, ab56172; dashboard version b07a796b)
 Fejl i mailen 21/10: afsnittene under "1 of 2"/"2 of 2" manglede, fordi send-agenten byggede mail-HTML i hånden fra byggeklodser og læste afsnittet lige under `#### <span>1 of 2</span>` som en del af overskriften. Siden (kramdown) var rigtig. Jesper valgte den holdbare løsning: Jekyll bygger mailen fra samme kilde som siden.
