@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-10-22T22:21:36.758Z
+  modified: 2026-10-22T22:22:45.941Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-21)
@@ -26,7 +26,16 @@ Tjekket mod STRATEGI 8-9 (henvisningsprogram fase 1, emnesider/"Shipped or not?"
 - [ ] **A2 "Del"-link ved hver historie** på siden (deep link til `#anker`), passer til Bluesky-opslagene, der allerede linker til den enkelte historie.
 - [ ] **B1 "Sådan arbejder vi"-side** (EN + DA): hvordan historier vælges, Official/Reported/Unconfirmed, AI skriver + redaktørkontrol + AI-mærkning. Gør "you can trust" synligt; hjælper EU AI Act-gennemsigtighed og SEO.
 - [ ] **B2 Offentlig rettelses-side**: samlet oversigt over Corrections (findes i dag kun som blok i den enkelte mail/udgave).
-- [ ] **C Henvisningsprogram tidligere end fase 1** (fx "henvis 3, få et eksklusivt Explained-tema"). Vent til der er flere læsere.
+- [ ] **C Henvisningsprogram tidligere end fase 1**
+
+## LÆSERTEST AF UDGAVEN 22/10 (2026-10-23, 3 Sonnet-agenter: begynder m. ordblindhed / travl leder / udvikler-ekspert, EN + DA; påstande tjekket mod teksten)
+Fælles: "Today in 60 seconds" værdsat af alle (lederen kunne stoppe dér). PHP-historien ramte alle. Dansk er naturligt og på niveau med engelsk. Tillid høj (kilder, mærker, ærlige forbehold).
+Forslag (ikke bygget; ændringer i STYLE.md/INSTRUCTIONS/layout i en 7am AI-session):
+- [ ] **1. Udviklerstof samlet nederst** ("For developers"/"Til udviklere") eller tydeligt spor-mærke: 4 af 6 historier var Build-spor; begynder og leder læste reelt 2 af 6. Hænger sammen med spor/fravalg i STRATEGI fase 1.
+- [ ] **2. Fagord-regel:** første gang = engelsk fagterm + kort forklaring i halv sætning (fx "weights (de tal, modellen består af)"), på begge sprog. Begynderen manglede forklaringer; eksperten ville have de engelske termer frem for "udrulninger", "serveringsmotor", "vægte", "pakkebutik".
+- [ ] **3. Præcision i redaktørkontrollen** (verificeret i teksten): "work on each word" -> "per token (word piece)"; temperature-afsnittet i Claude API-historien er selvmodsigende (fejl ved alle værdier vs. "mister effekten" på ældre modeller); mærke-konsistens (wiz.io = Official ved PHP men Reported ved LiteLLM; arxiv-preprint = Official); "70% of all websites" tilskrevet Wiz (W3Techs-tal, andel af sites med kendt serversprog) bør have rigtig kilde/forbehold; dansk "1 billion parametre" er korrekt men misforstås: skriv "1.000 milliarder".
+- [ ] **4. "Hvem skal vide det?"-linje** til ikke-teknikere (fx "Send til jeres IT/webbureau: ..."), og et klart "Gælder det mig?" i lead-historien.
+- [ ] **5. Analogier:** behold (begynder og leder: "det bedste i udgaven"), men højst én sætning og altid enklere end nyheden (bilknappen og "specialister i møde" var sværere end nyheden). Eksperten fandt dem irriterende. (fx "henvis 3, få et eksklusivt Explained-tema"). Vent til der er flere læsere.
 
 ## MAIL BYGGES AF JEKYLL (2026-10-21, commits aa30106, ab56172; dashboard version b07a796b)
 Fejl i mailen 21/10: afsnittene under "1 of 2"/"2 of 2" manglede, fordi send-agenten byggede mail-HTML i hånden fra byggeklodser og læste afsnittet lige under `#### <span>1 of 2</span>` som en del af overskriften. Siden (kramdown) var rigtig. Jesper valgte den holdbare løsning: Jekyll bygger mailen fra samme kilde som siden.
