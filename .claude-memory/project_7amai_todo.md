@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-10-21T21:52:12.397Z
+  modified: 2026-10-22T21:55:40.140Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-21)
@@ -16,7 +16,7 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 ## Status
 - Live på https://7amai.com (EN) og /da/ (DA). **Synlig for Google fra 2026-10-13** (noindex fjernet, undtagen velkomstsiderne; sitemap via jekyll-sitemap, OG-billede assets/og.png, canonical + hreflang).
   - [ ] Search Console 21/10 viste stadig "Ekskluderet af noindex" for 4 forside-URL'er (http/https, www/uden). Seneste crawl var 10.-12/10, altså FØR noindex blev fjernet; validering startet 19/10. Tjekket live 21/10: ingen noindex (meta eller X-Robots-Tag), http og www giver 301 til https://7amai.com/, canonical er rigtig. Ingen fejl. Tjek ca. 2/11, at valideringen er bestået; ellers "Anmod om indeksering" på https://7amai.com/.
-  - SEO-baseline (Search Console 21/10, 3 mdr.): første eksponeringer 19/10: 5 eksponeringer, 0 klik, gns. position 5,6; forespørgslen "7amai" 2 eksponeringer. Google 21/10 (dansk søgning "7amai"): 7amai.com er det første organiske resultat, men med /da/explained/ (gammel beskrivelse), fordi forsiden endnu ikke er genindekseret. NB: navnet kolliderer med dashcam-mærket "70mai" (shopping-annoncer + AI-oversigt om 70mai), så brug altid "7am AI" med mellemrum i opslag og profiler.
+  - SEO-baseline (Search Console 21/10, 3 mdr.): første eksponeringer 19/10: 5 eksponeringer, 0 klik, gns. position 5,6; forespørgslen "7amai" 2 eksponeringer. Google 21/10 (dansk søgning "7amai"): 7amai.com er det første organiske resultat, men med /da/explained/ (gammel beskrivelse), fordi forsiden endnu ikke er genindekseret. 22/10: Google viste stadig forsidens GAMLE titel/beskrivelse ("The AI news that matters...") i almindelig søgning, mens et nyere kort viste den nye; siden selv er rigtig. Jesper anmodede om indeksering af https://7amai.com/ 22/10. NB: navnet kolliderer med dashcam-mærket "70mai" (shopping-annoncer + AI-oversigt om 70mai), så brug altid "7am AI" med mellemrum i opslag og profiler.
 - Routines kører alle 7 dage: **udkast kl. 05:30** (PR, ingen udkast-mail) og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Mailen bygges af Jekyll (se MAIL BYGGES AF JEKYLL). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
