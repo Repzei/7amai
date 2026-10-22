@@ -3,7 +3,7 @@ title: "AI hjalp med at finde to alvorlige huller i PHP, og rettelsen er ude"
 summary: "PHP, som de fleste hjemmesider kører på, har lukket to alvorlige huller, som AI-modeller hjalp med at finde. Desuden: angribere jagter AI-nøgler, en ny version af Claudes API og Europas mangel på regnekraft."
 date: 2026-10-22 07:00:00 +0200
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "coordinated-disclosure", from: 1, more: ["mixture-of-experts", "open-weight"] }
 today:
@@ -29,11 +29,11 @@ items:
 
 WordPress, Drupal og Joomla kører på PHP, og dermed en stor del af nettet. Et hul i selve PHP er derfor et hul i millioner af sider på én gang.
 
-Den 21. oktober udsendte PHP rettelser til to fejl, der lod en angriber køre sin egen kode på en server uden at logge ind. De får 9,2 ud af 10 for alvor. Sikkerhedsfirmaet Wiz siger, at næsten alle PHP-versioner helt tilbage til 5.4 er ramt.
+Den 21. oktober udsendte PHP rettelser til to fejl, der lod en angriber køre sin egen kode på en server uden at logge ind. De får op til 9,2 ud af 10 for alvor. Sikkerhedsfirmaet Wiz siger, at næsten alle PHP-versioner helt tilbage til 5.4 er ramt.
 
-AI stod for meget af arbejdet. Calif fandt en af fejlene med OpenAIs GPT-5.6 Sol som del af OpenAIs program Patch the Planet. Wiz brugte Gemini 4 Argon og GPT-5.6 Sol og viste angreb, der virkede mod WordPress, Drupal og Joomla.
+AI hjalp med meget af arbejdet. Calif fandt en af fejlene med OpenAIs GPT-5.6 Sol som del af OpenAIs program Patch the Planet. Wiz brugte Gemini 4 Argon og GPT-5.6 Sol og viste angreb, der virkede mod WordPress, Drupal og Joomla.
 
-Udgivelsen gik ikke som planlagt. Fejlenes ID-numre slap ud på nettet, og Calif kom ved en fejl til at lægge en video af et virkende angreb ud. Derfor rykkede PHP udgivelsen en dag frem. Den amerikanske efterretningstjeneste NSA rådede til at lukke sider, der ikke kan opdateres. Der var ikke meldt om angreb, da rettelserne kom.
+Udgivelsen gik ikke som planlagt. Fejlenes ID-numre slap ud på nettet, og Calif kom ved en fejl til at lægge en video af et virkende angreb ud. Derfor rykkede PHP udgivelsen en dag frem. Den amerikanske efterretningstjeneste NSA rådede til at lukke sider, der ikke kan opdateres, skriver TechCrunch. Der var ikke meldt om angreb, da rettelserne kom.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>Før var det langsomt og svært at tilpasse et angreb til hver PHP-version. "Med AI er det ikke længere en barriere," skriver Wiz. AI er som en låsesmed, der arbejder for begge sider, så tiden fra rettelse til første angreb bliver kortere.</p></div>
 
@@ -50,12 +50,12 @@ Kilde: [thephp.foundation](https://thephp.foundation/blog/2026/10/21/todays-php-
 En API-nøgle til AI virker som et firmakreditkort. Den, der har den, kan løbe en regning op eller komme ind til dine data. To angreb den 21. oktober gik efter netop de nøgler.
 
 #### <span>1 af 2</span> En forgiftet LiteLLM-opdatering
-LiteLLM sidder mellem apps og AI-modeller, så det har ofte nøglerne til mange AI-udbydere. Den 21. oktober dukkede version 1.107.0 op på PyPI, Pythons pakkebutik, med skjult kode. Den kørte, hver gang Python startede, også hvis LiteLLM aldrig blev brugt. Den samlede SSH-nøgler, adgangskoder til clouden og de AI-nøgler, der lå i LiteLLMs database. PyPI fjernede versionen omkring to timer senere.
+LiteLLM sidder mellem apps og AI-modeller, så det har ofte nøglerne til mange AI-udbydere. Den 21. oktober dukkede version 1.107.0 op på PyPI, Pythons pakkebutik, med skjult kode. Den kørte, hver gang Python startede, også hvis LiteLLM aldrig blev brugt. Den samlede SSH-nøgler, adgangskoder til clouden og de AI-nøgler, der lå i LiteLLMs database. PyPI fjernede versionen inden for to timer.
 
 #### <span>2 af 2</span> Railways kundehemmeligheder kan være ude
-Railway, en platform til at hoste apps, siger, at nogen kan have læst de indstillinger, hvor kunderne gemmer deres hemmeligheder. For nogle fik angriberen indholdet i klar tekst, fx API-nøgler og adgangskoder til databaser. Railway mener, det er del af "en række angreb" rettet mod AI-udbydere. Firmaet har sat alle udrulninger på pause og advaret udbyderne. Railway kobler ikke sit brud til LiteLLM.
+Railway, en platform til at hoste apps, siger, at nogen kan have læst de indstillinger, hvor kunderne gemmer deres hemmeligheder. For nogle hemmeligheder kan angriberen have fået indholdet i klar tekst, fx API-nøgler og adgangskoder til databaser. Railway mener, det er del af "en række angreb" mod platforme som Railway, med AI-udbydere som det egentlige mål. Firmaet har sat alle udrulninger på pause og advaret udbyderne. Railway kobler ikke sit brud til LiteLLM.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>En stjålet AI-nøgle betaler sig med det samme, fordi ejeren betaler for hvert kald. Wiz så angribere afprøve stjålne adgangsoplysninger omkring 4,5 timer efter tyveriet. Tiden til at skifte en nøgle er derfor nu, ikke når regningen kommer.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>En stjålet AI-nøgle betaler sig med det samme, fordi ejeren betaler for hvert kald. Wiz så angribere afprøve stjålne adgangsoplysninger omkring 4,5 timer efter tyveriet. Angriberne handler altså inden for timer, ikke dage.</p></div>
 
 <p class="todo"><b>Gør dette:</b> Har du installeret LiteLLM 1.107.0 eller bruger du Railway, så skift alle nøgler, som maskinen eller projektet kunne nå. Lås LiteLLM til 1.106.2.</p>
 
@@ -73,7 +73,7 @@ To ændringer kan bide. For det første giver temperature, top_p eller top_k nu 
 
 Intet ændrer sig, før du opgraderer, og et kald kan blive på den gamle version.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>Claude 4.7 og nyere modeller ser allerede bort fra de indstillinger. Den nye version er derfor som en bilproducent, der fjerner en knap, som ikke længere styrer noget. Gammel kode, der stadig drejer på den, får nu en tydelig fejl.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>Claude 4.7 og nyere modeller accepterer allerede kun standardværdierne. Den nye version er derfor som en bilproducent, der fjerner en knap, som allerede sad fast i én stilling. Gammel kode, der stadig drejer på den, får nu en tydelig fejl.</p></div>
 
 <p class="todo"><b>Gør dette:</b> Søg din kode igennem for temperature, top_p og top_k, før du opgraderer SDK'en, og tjek alle gateways, der læser X-Api-Key.</p>
 
@@ -91,7 +91,7 @@ Man skal bruge regnekraft for at træne og køre AI, og det meste af den står i
 Europa har omkring 5 procent af verdens AI-regnekraft mod 75 procent i USA, skriver nyhedsbureauet AP. NVIDIAs topchef Jensen Huang sagde, at firmaet har investeret 10 milliarder dollar i europæiske startups og partnere det seneste år.
 
 #### <span>2 af 2</span> Mistral Large 4 er trænet i Europa
-Det franske AI-firma Mistral siger, at det trænede Mistral Large 4 på 3.800 NVIDIA-chips i sine egne europæiske datacentre. Modellen har omkring 1 billion parametre, og 49 milliarder af dem arbejder på hvert ord. Den er i offentlig preview nu, og Mistral vil frigive vægtene i slutningen af oktober. Licensen er ikke oplyst endnu.
+Det franske AI-firma Mistral siger, at det trænede Mistral Large 4 på 3.800 NVIDIA-chips i sine egne europæiske datacentre. Modellen har omkring 1 billion parametre, og 49 milliarder af dem arbejder på hvert ord. Den er i offentlig preview nu, og Mistral vil frigive vægtene i slutningen af oktober. Mistrals indlæg nævner ikke licensen.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>Vægte, man kan hente, er som at eje opskriften i stedet for at bestille takeaway. En europæisk virksomhed kan køre modellen på sine egne servere, så dens data aldrig skal over i en amerikansk cloud.</p></div>
 
@@ -103,7 +103,7 @@ Kilde: [abcnews.com (AP)](https://abcnews.com/Technology/wireStory/nvidia-ceo-en
 ### Flint er en gratis kodemodel, der er lavet til at køre på din egen computer {#recursive-flint}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1 min</span></p>
 
-<p class="short"><span>Kort fortalt</span>Startuppen Recursive har udgivet Flint, en åben kodemodel til agenter. Den fylder 23 GB i Ollama, og kun en lille del af den arbejder på hvert ord.</p>
+<p class="short"><span>Kort fortalt</span>AI-laboratoriet Recursive har udgivet Flint, en åben kodemodel til agenter. Den fylder 23 GB i Ollama, og kun en lille del af den arbejder på hvert ord.</p>
 
 Kodeagenter læser og skriver meget, så det løber op, når de kører gennem et betalt API. En model på din egen maskine koster intet pr. opgave, og din kode bliver hos dig.
 

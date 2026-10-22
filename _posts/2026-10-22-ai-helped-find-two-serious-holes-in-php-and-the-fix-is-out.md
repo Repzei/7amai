@@ -3,7 +3,7 @@ title: "AI helped find two serious holes in PHP, and the fix is out"
 summary: "PHP, which runs most websites, patched two severe flaws that AI models helped find. Also: attackers chase AI keys, a new Claude API version, and Europe's compute gap."
 date: 2026-10-22 07:00:00 +0200
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "coordinated-disclosure", from: 1, more: ["mixture-of-experts", "open-weight"] }
 today:
@@ -29,11 +29,11 @@ items:
 
 PHP runs WordPress, Drupal and Joomla, and with them a large part of the web. So a hole in PHP itself is a hole in millions of sites at once.
 
-On 21 October, PHP released fixes for two flaws that let an attacker run their own code on a server without logging in. They score 9.2 out of 10 for severity. Security firm Wiz says nearly every PHP version back to 5.4 is affected.
+On 21 October, PHP released fixes for two flaws that let an attacker run their own code on a server without logging in. They score up to 9.2 out of 10 for severity. Security firm Wiz says nearly every PHP version back to 5.4 is affected.
 
-AI did much of the finding. Calif found one flaw with OpenAI's GPT-5.6 Sol, as part of OpenAI's Patch the Planet program. Wiz used Gemini 4 Argon and GPT-5.6 Sol, and showed working attacks on WordPress, Drupal and Joomla.
+AI helped with much of the finding. Calif found one flaw with OpenAI's GPT-5.6 Sol, as part of OpenAI's Patch the Planet program. Wiz used Gemini 4 Argon and GPT-5.6 Sol, and showed working attacks on WordPress, Drupal and Joomla.
 
-The release did not go to plan. The flaw IDs leaked online, and Calif published a video of a working attack by mistake. So PHP moved the release forward by a day. The US NSA advised taking sites offline if they cannot be patched. No attacks had been reported when the fixes came out.
+The release did not go to plan. The flaw IDs leaked online, and Calif published a video of a working attack by mistake. So PHP moved the release forward by a day. The US NSA advised taking sites offline if they cannot be patched, TechCrunch reports. No attacks had been reported when the fixes came out.
 
 <div class="why"><b>Why it matters</b><p>Fitting an attack to each PHP version used to be slow, hard work. "With AI this is no longer a barrier," Wiz writes. AI is like a locksmith who works for both sides, so the time between a fix and the first attack is shrinking.</p></div>
 
@@ -50,12 +50,12 @@ Source: [thephp.foundation](https://thephp.foundation/blog/2026/10/21/todays-php
 An AI API key works like a company credit card. Whoever holds it can run up a bill or reach your data. Two attacks on 21 October went after exactly those keys.
 
 #### <span>1 of 2</span> A poisoned LiteLLM update
-LiteLLM sits between apps and AI models, so it often holds the keys to many AI providers. On 21 October, version 1.107.0 appeared on PyPI, Python's package store, with hidden code. It ran every time Python started, even if LiteLLM was never used. It collected SSH keys, cloud passwords and the AI keys stored in LiteLLM's database. PyPI pulled the release about two hours later.
+LiteLLM sits between apps and AI models, so it often holds the keys to many AI providers. On 21 October, version 1.107.0 appeared on PyPI, Python's package store, with hidden code. It ran every time Python started, even if LiteLLM was never used. It collected SSH keys, cloud passwords and the AI keys stored in LiteLLM's database. PyPI pulled the release within two hours.
 
 #### <span>2 of 2</span> Railway's customer secrets may be out
-Railway, a platform for hosting apps, says someone may have read the settings where customers keep their secrets. For some, the attacker got the decrypted content, such as API keys and database passwords. Railway thinks this is part of "a series of attacks" aimed at AI providers. It has paused all deployments and warned those providers. Railway does not link its breach to LiteLLM.
+Railway, a platform for hosting apps, says someone may have read the settings where customers keep their secrets. For some secrets, the attacker may have got the decrypted values, such as API keys and database passwords. Railway thinks this is part of "a series of attacks" on platforms like itself, with AI providers as the end target. It has paused all deployments and warned those providers. Railway does not link its breach to LiteLLM.
 
-<div class="why"><b>Why it matters</b><p>A stolen AI key pays off at once, because the owner pays for every call. Wiz saw attackers testing stolen credentials about 4.5 hours after the theft. So the time to rotate a key is now, not after the bill arrives.</p></div>
+<div class="why"><b>Why it matters</b><p>A stolen AI key pays off at once, because the owner pays for every call. Wiz saw attackers testing stolen credentials about 4.5 hours after the theft. So attackers move within hours, not days.</p></div>
 
 <p class="todo"><b>Do this:</b> If you installed LiteLLM 1.107.0 or use Railway, rotate every key that machine or project could reach. Pin LiteLLM to 1.106.2.</p>
 
@@ -73,7 +73,7 @@ Two changes can bite. First, sending temperature, top_p or top_k now returns an 
 
 Nothing changes until you upgrade, and a request can stay on the old version.
 
-<div class="why"><b>Why it matters</b><p>Claude 4.7 and later models already ignore these settings. So the new version is like a car maker removing a dial that no longer turns anything. Old code that still reaches for it now gets a clear error instead.</p></div>
+<div class="why"><b>Why it matters</b><p>Claude 4.7 and later models already accept only the default values. So the new version is like a car maker removing a dial that was already locked in one position. Old code that still reaches for it now gets a clear error instead.</p></div>
 
 <p class="todo"><b>Do this:</b> Before you upgrade the SDK, search your code for temperature, top_p and top_k, and check any gateway that reads X-Api-Key.</p>
 
@@ -91,7 +91,7 @@ To train and run AI you need computing power, and most of it sits in the US. Tha
 Europe has about 5% of the world's AI computing capacity, against 75% in the US, AP reports. Nvidia's CEO Jensen Huang said the company invested $10 billion in European startups and partners in the past year.
 
 #### <span>2 of 2</span> Mistral Large 4 trained in Europe
-French lab Mistral says it trained Mistral Large 4 on 3,800 Nvidia chips in its own European data centers. The model has about 1 trillion parameters, and 49 billion of them work on each word. It is in public preview now, and Mistral plans to release the weights at the end of October. Mistral has not named the license yet.
+French lab Mistral says it trained Mistral Large 4 on 3,800 Nvidia chips in its own European data centers. The model has about 1 trillion parameters, and 49 billion of them work on each word. It is in public preview now, and Mistral plans to release the weights at the end of October. Mistral's post does not name a license.
 
 <div class="why"><b>Why it matters</b><p>Downloadable weights are like owning the recipe instead of ordering takeaway. A European company can run the model on its own servers, so its data never has to leave for a US cloud.</p></div>
 
@@ -103,7 +103,7 @@ Source: [abcnews.com (AP)](https://abcnews.com/Technology/wireStory/nvidia-ceo-e
 ### Flint is a free coding model built to run on your own computer {#recursive-flint}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1 min</span></p>
 
-<p class="short"><span>The short version</span>Startup Recursive released Flint, an open coding model for agents. It is a 23 GB download in Ollama, and only a small part of it works on each word.</p>
+<p class="short"><span>The short version</span>AI lab Recursive released Flint, an open coding model for agents. It is a 23 GB download in Ollama, and only a small part of it works on each word.</p>
 
 Coding agents read and write a lot, so running them through a paid API adds up. A model on your own machine costs nothing per task, and your code stays private.
 
