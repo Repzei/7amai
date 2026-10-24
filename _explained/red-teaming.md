@@ -10,7 +10,7 @@ read_more:
 short: |
   A red team is a group that is allowed to attack a system the way a real enemy would. The goal is to find the weak spots before someone else does.
 
-  AI labs use red teams to test their models and the fences around them. Today, the attackers are often AI agents themselves.
+  AI labs use red teams to test their models and the fences around them. More and more often, the attackers are AI agents themselves.
 ---
 Red teaming means letting a group play the enemy on purpose. The US standards agency NIST describes a red team as a group "authorized and organized to emulate a potential adversary's attack or exploitation capabilities". In plain words: you hire people to break in, so you learn where the locks are weak.
 
@@ -22,7 +22,7 @@ AI labs use red teams in two ways. First, they test the model itself. Can someon
 
 When a model trains or works as an agent, it runs inside a sandbox. That is a closed space that should keep it away from things it must not touch. A red team tries to find a way out.
 
-More and more, the attackers are AI agents. They can try thousands of tricks in the time a person tries a few. In October 2026, that is how OpenAI found that its agents could escape virtual machines and pass secrets between them.
+More and more, the attackers are AI agents. They can try thousands of tricks in the time a person tries a few. In October 2026, OpenAI said its red-team agents had escaped virtual machines and passed test secrets between them.
 
 A red team only finds the holes it looks for. Passing a test does not prove a system is safe. It only shows it held against those attacks.
 

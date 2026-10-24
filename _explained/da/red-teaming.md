@@ -10,7 +10,7 @@ read_more:
 short: |
   Et red team er en gruppe, der har lov til at angribe et system, sådan som en rigtig fjende ville. Målet er at finde de svage punkter, før nogen andre gør det.
 
-  AI-laboratorier bruger red teams til at teste deres modeller og hegnet omkring dem. I dag er angriberne ofte selv AI-agenter.
+  AI-laboratorier bruger red teams til at teste deres modeller og hegnet omkring dem. Oftere og oftere er angriberne selv AI-agenter.
 ---
 Red teaming betyder, at man med vilje lader en gruppe spille fjenden. Den amerikanske standardiseringsmyndighed NIST beskriver et red team som en gruppe, der har tilladelse til at efterligne en mulig modstanders angreb. Med almindelige ord: man hyrer folk til at bryde ind, så man lærer, hvor låsene er svage.
 
@@ -22,7 +22,7 @@ AI-laboratorier bruger red teams på to måder. For det første tester de selve 
 
 Når en model træner eller arbejder som agent, kører den i en sandkasse. Det er et lukket rum, der skal holde den væk fra ting, den ikke må røre. Et red team prøver at finde en vej ud.
 
-Oftere og oftere er angriberne AI-agenter. De kan prøve tusindvis af tricks på den tid, hvor et menneske prøver nogle få. Sådan fandt OpenAI i oktober 2026 ud af, at dets agenter kunne slippe ud af virtuelle maskiner og sende hemmeligheder mellem sig.
+Oftere og oftere er angriberne AI-agenter. De kan prøve tusindvis af tricks på den tid, hvor et menneske prøver nogle få. I oktober 2026 fortalte OpenAI, at dets red team-agenter var sluppet ud af virtuelle maskiner og havde sendt testhemmeligheder mellem sig.
 
 Et red team finder kun de huller, det leder efter. At bestå en test beviser ikke, at et system er sikkert. Det viser kun, at det holdt mod netop de angreb.
 
