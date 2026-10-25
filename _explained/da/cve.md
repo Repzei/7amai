@@ -6,7 +6,7 @@ date: 2026-10-25
 minutes: 2
 other_lang_url: /explained/cve/
 read_more:
-  - { label: "CVE-programmet (cve.org)", url: "https://www.cve.org/" }
+  - { label: "CVE-programmet: forside og formål (cve.mitre.org)", url: "https://cve.mitre.org/" }
   - { label: "FIRST: CVSS v4.0 User Guide", url: "https://www.first.org/cvss/v4.0/user-guide" }
 short: |
   En CVE er et fælles ID for et kendt sikkerhedshul, fx CVE-2026-111497. Den gør det muligt for alle at tale om den samme fejl uden forvirring.
@@ -23,4 +23,4 @@ En CVE siger, hvad der er i stykker, ikke hvor slemt det er. Det er opgaven for 
 
 Scoren har en grænse, og det siger FIRST selv. Den måler, hvor alvorligt et hul er generelt, ikke risikoen for netop dig. Et kritisk hul i en funktion, du aldrig bruger, betyder mindre end et middelalvorligt hul i din login-side.
 
-**Hvad betyder det for dig:** når en sikkerhedsmeddelelse nævner en CVE, kan du søge på ID'et og straks se, om dine værktøjer er ramt. Brug så scoren til at vælge, hvad du skal opdatere først, sammen med det, du faktisk kører.
+**Hvad betyder det for dig:** når en sikkerhedsmeddelelse nævner en CVE, kan du søge på ID'et og straks se, om dine værktøjer er ramt. Brug så scoren og din viden om, hvad du selv kører, til at vælge, hvad der skal opdateres først.

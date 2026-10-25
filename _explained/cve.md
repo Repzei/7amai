@@ -6,7 +6,7 @@ date: 2026-10-25
 minutes: 2
 other_lang_url: /da/explained/cve/
 read_more:
-  - { label: "CVE Program (cve.org)", url: "https://www.cve.org/" }
+  - { label: "CVE Program: home page and mission (cve.mitre.org)", url: "https://cve.mitre.org/" }
   - { label: "FIRST: CVSS v4.0 User Guide", url: "https://www.first.org/cvss/v4.0/user-guide" }
 short: |
   A CVE is a shared ID for a known security hole, like CVE-2026-111497. It lets everyone talk about the same flaw without confusion.
