@@ -22,4 +22,4 @@ Der er to slags. Ved direkte prompt injection prøver den, der skriver, selv at 
 
 Ifølge OWASP er det uklart, om nogen metode kan forhindre det helt. Det, der hjælper, er at begrænse skaden. Giv AI'en kun den adgang, den har brug for, og hold indhold, du ikke stoler på, tydeligt adskilt. Og spørg et menneske før risikable handlinger som betalinger, mails eller installation af software.
 
-**Hvad betyder det for dig:** Når en AI kan handle for dig, kan alt, hvad den læser, prøve at give den ordrer. Lad godkendelsesspørgsmålene være slået til, og vær varsom med, hvilke filer og sider du lader en agent læse.
+**Hvad betyder det for dig:** Når en AI kan handle for dig, kan alt, hvad den læser, prøve at give den ordrer. Derfor betyder den mappe eller side, du sender en agent hen til, lige så meget som det, du beder den om.
