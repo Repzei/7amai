@@ -14,13 +14,13 @@ today:
   - { t: "Mathematicians, with Terence Tao's backing, start a public hub to fix and cite OpenAI's AI-made math papers.", why: "Anyone who wonders how to check results made by AI." }
 other_lang_url: /da/2026/10/26/
 items:
-  - { n: 1, anchor: "agents-md-downloads", signal: worth, tracks: [build, general], min: 2, source: reported, number: "1,300+", number_label: "Claude Code sessions started from Downloads at one firm's customers" }
-  - { n: 2, anchor: "ai-price-war", signal: worth, tracks: [build], min: 1.5, source: reported, number: "52%", number_label: "of Rippling's coding work now runs on OpenAI, up from 16%" }
-  - { n: 3, anchor: "musk-gpus-grok-calls", signal: quick, tracks: [general], min: 1, source: reported, number: "$40B", number_label: "of debt for GPUs, Musk says" }
-  - { n: 4, anchor: "block-dessa", signal: worth, tracks: [general, europe], min: 1, source: official }
-  - { n: 5, anchor: "oai-math-revised", signal: quick, tracks: [general], min: 1, source: official }
-  - { n: 6, anchor: "nanbeige-4-3-33b", signal: worth, tracks: [build, europe], min: 1, source: official }
-  - { n: 7, anchor: "collection-date-rag", signal: worth, tracks: [build], min: 1, source: official }
+  - { n: 1, anchor: "agents-md-downloads", signal: worth, tracks: [build, general], min: 2, source: reported, number: "1,300+", number_label: "Claude Code sessions started from Downloads at one firm's customers", topic: security, why: "Downloads is a place where any website can leave a note, and the agent cannot tell the difference.", do: "Start agents only inside the project folder, never in Downloads.", steps: { title: "How the attack works", list: ["A web page can drop an AGENTS.md file in Downloads", "You start your coding agent in Downloads", "The agent reads the file and follows its instructions"] } }
+  - { n: 2, anchor: "ai-price-war", signal: worth, tracks: [build, general], min: 1.5, source: reported, number: "52%", number_label: "of Rippling's coding work now runs on OpenAI, up from 16%", topic: price, why: "When customers can switch in a day, price is the main weapon left.", bars: { title: "Share of Rippling's coding work on OpenAI", max: 100, rows: [{ l: "Before", v: 16, t: "16%" }, { l: "Now", v: 52, t: "52%", hl: true }] } }
+  - { n: 3, anchor: "musk-gpus-grok-calls", signal: quick, tracks: [general], min: 1, source: reported, number: "$40B", number_label: "of debt for GPUs, Musk says", topic: money, why: "If Musk is right, money for AI is moving to the few firms with other income." }
+  - { n: 4, anchor: "block-dessa", signal: worth, tracks: [general, europe], min: 1, source: official, topic: voice, why: "A voice AI on your own laptop keeps your conversation on your own machine." }
+  - { n: 5, anchor: "oai-math-revised", signal: quick, tracks: [general], min: 1, source: official, topic: research, why: "A proof is only useful when other people can follow and check it.", steps: { title: "How the hub works", list: ["OpenAI's models help find math results", "Mathematicians review and correct the write-ups", "Fixes and sources gather in one open place"] } }
+  - { n: 6, anchor: "nanbeige-4-3-33b", signal: worth, tracks: [build, europe], min: 1, source: official, topic: open, why: "A free model for agent work on your own hardware, so your code never has to leave the building." }
+  - { n: 7, anchor: "collection-date-rag", signal: worth, tracks: [build], min: 1, source: official, topic: research, why: "A wrong date on a page can steer the answer, and someone could plant one on purpose." }
 ---
 
 ### 1. A planted file in your Downloads folder can hijack your coding agent {#agents-md-downloads}
@@ -45,7 +45,7 @@ Source: [bleepingcomputer.com](https://www.bleepingcomputer.com/news/security/ai
 {: .sources}
 
 ### 2. OpenAI is reportedly buying coding work away from Anthropic {#ai-price-war}
-<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">1½ min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">General</span><span class="track">1½ min</span></p>
 <div class="number"><b>52%</b><span>of Rippling's coding work now runs on OpenAI, up from 16%</span></div>
 
 <p class="short"><span>The short version</span>OpenAI is offering large discounts to win Anthropic's biggest coding customers, and it seems to work. For buyers, AI keeps getting cheaper.</p>

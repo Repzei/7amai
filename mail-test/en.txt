@@ -1,0 +1,5 @@
+---
+layout: email-visual-text
+lang: en
+sitemap: false
+---

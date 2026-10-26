@@ -48,6 +48,12 @@ en:
   mail_other: "Dansk udgave"
   mail_archive: "archive"
   mail_explained_more: "Two more from today, on 7amai.com"
+  mail_skim: "min in this email"
+  mail_full: "min for the full issue"
+  mail_story: "Read the full story"
+  mail_dev: "For developers"
+  mail_issue: "Read the whole issue on 7amai.com"
+  topics: { security: "Security", price: "Prices", money: "Money", chips: "Chips and compute", voice: "Voice AI", research: "Research", model: "Models", code: "Code", agent: "Agents", law: "Rules and law", open: "Open source", local: "Local AI", business: "Business", image: "Images and video", news: "News" }
 da:
   home: /da/
   feed: /feed/da.xml
@@ -98,4 +104,10 @@ da:
   mail_other: "English edition"
   mail_archive: "arkiv"
   mail_explained_more: "To mere fra i dag, på 7amai.com"
+  mail_skim: "min i mailen"
+  mail_full: "min for hele udgaven"
+  mail_story: "Læs hele historien"
+  mail_dev: "Til udviklere"
+  mail_issue: "Læs hele udgaven på 7amai.com"
+  topics: { security: "Sikkerhed", price: "Priser", money: "Penge", chips: "Chips og regnekraft", voice: "Stemme-AI", research: "Forskning", model: "Modeller", code: "Kode", agent: "Agenter", law: "Regler og lov", open: "Open source", local: "Lokal AI", business: "Forretning", image: "Billeder og video", news: "Nyheder" }
   months: [januar, februar, marts, april, maj, juni, juli, august, september, oktober, november, december]

@@ -14,13 +14,13 @@ today:
   - { t: "Matematikere med opbakning fra Terence Tao starter et åbent sted, hvor OpenAIs AI-lavede matematik kan rettes og få kilder.", why: "Alle, der undrer sig over, hvordan man tjekker resultater fra AI." }
 other_lang_url: /2026/10/26/
 items:
-  - { n: 1, anchor: "agents-md-downloads", signal: worth, tracks: [build, general], min: 1.5, source: reported, number: "1.300+", number_label: "Claude Code-sessioner startet fra Overførsler hos ét firmas kunder" }
-  - { n: 2, anchor: "ai-price-war", signal: worth, tracks: [build], min: 1.5, source: reported, number: "52 %", number_label: "af Ripplings kodearbejde kører nu på OpenAI, op fra 16 %" }
-  - { n: 3, anchor: "musk-gpus-grok-calls", signal: quick, tracks: [general], min: 1.5, source: reported, number: "40 mia. $", number_label: "i lån til GPU'er, siger Musk" }
-  - { n: 4, anchor: "block-dessa", signal: worth, tracks: [general, europe], min: 1, source: official }
-  - { n: 5, anchor: "oai-math-revised", signal: quick, tracks: [general], min: 1, source: official }
-  - { n: 6, anchor: "nanbeige-4-3-33b", signal: worth, tracks: [build, europe], min: 1, source: official }
-  - { n: 7, anchor: "collection-date-rag", signal: worth, tracks: [build], min: 1, source: official }
+  - { n: 1, anchor: "agents-md-downloads", signal: worth, tracks: [build, general], min: 1.5, source: reported, number: "1.300+", number_label: "Claude Code-sessioner startet fra Overførsler hos ét firmas kunder", topic: security, why: "Overførsler er et bord, hvor enhver hjemmeside kan lægge en seddel, og agenten kan ikke se forskel.", do: "Start kun agenter inde i projektmappen, aldrig i Overførsler.", steps: { title: "Sådan virker angrebet", list: ["En hjemmeside kan lægge en AGENTS.md-fil i Overførsler", "Du starter din kodeagent i Overførsler", "Agenten læser filen og følger instruktionerne"] } }
+  - { n: 2, anchor: "ai-price-war", signal: worth, tracks: [build, general], min: 1.5, source: reported, number: "52 %", number_label: "af Ripplings kodearbejde kører nu på OpenAI, op fra 16 %", topic: price, why: "Når kunderne kan skifte på en dag, er prisen det sidste våben.", bars: { title: "Andel af Ripplings kodearbejde på OpenAI", max: 100, rows: [{ l: "Før", v: 16, t: "16 %" }, { l: "Nu", v: 52, t: "52 %", hl: true }] } }
+  - { n: 3, anchor: "musk-gpus-grok-calls", signal: quick, tracks: [general], min: 1.5, source: reported, number: "40 mia. $", number_label: "i lån til GPU'er, siger Musk", topic: money, why: "Hvis Musk har ret, flytter pengene til AI til de få firmaer, der tjener penge på andet." }
+  - { n: 4, anchor: "block-dessa", signal: worth, tracks: [general, europe], min: 1, source: official, topic: voice, why: "En stemme-AI på din egen computer holder samtalen på din egen maskine." }
+  - { n: 5, anchor: "oai-math-revised", signal: quick, tracks: [general], min: 1, source: official, topic: research, why: "Et bevis er kun nyttigt, når andre kan følge og tjekke det.", steps: { title: "Sådan virker det", list: ["OpenAIs modeller hjælper med at finde matematiske resultater", "Matematikere gennemgår og retter teksterne", "Rettelser og kilder samles ét åbent sted"] } }
+  - { n: 6, anchor: "nanbeige-4-3-33b", signal: worth, tracks: [build, europe], min: 1, source: official, topic: open, why: "En gratis model til agentarbejde på din egen hardware, så din kode aldrig behøver forlade huset." }
+  - { n: 7, anchor: "collection-date-rag", signal: worth, tracks: [build], min: 1, source: official, topic: research, why: "En forkert dato på en side kan styre svaret, og nogen kan plante en med vilje." }
 ---
 
 ### 1. En plantet fil i din Overførsler-mappe kan kapre din kodeagent {#agents-md-downloads}
@@ -45,7 +45,7 @@ Kilde: [bleepingcomputer.com](https://www.bleepingcomputer.com/news/security/ai-
 {: .sources}
 
 ### 2. OpenAI køber efter sigende kodearbejdet væk fra Anthropic {#ai-price-war}
-<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">1½ min</span></p>
+<p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">1½ min</span></p>
 <div class="number"><b>52 %</b><span>af Ripplings kodearbejde kører nu på OpenAI, op fra 16 %</span></div>
 
 <p class="short"><span>Kort fortalt</span>OpenAI giver store rabatter for at vinde Anthropics største kodekunder, og det ser ud til at virke. For køberne bliver AI ved med at blive billigere.</p>

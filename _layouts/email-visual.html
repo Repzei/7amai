@@ -1,0 +1,209 @@
+{%- comment -%}
+Den endelige mail, bygget af Jekyll ud fra den nyeste udgave (samme kilde som hjemmesiden).
+Sider: mail/en/index.html og mail/da/index.html. Send-routinen henter dem (trin A2) og sender
+dem uændret.
+Visuel mail (Jesper 26/10, variant B): kort pr. historie med ikon, nøgletal/grafik, "Kort fortalt",
+en kort "Derfor" og en knap til historien på siden. Den lange tekst bliver på siden. Historier med
+Build-spor uden General samles i "Til udviklere" nederst. Grafikken tegnes af mail-graphics.html.
+Kun tabeller og inline styles (ingen flexbox/grid), fordi Outlook og Gmail ikke forstår resten.
+Teksten deles ved hver <h3>; ankeret finder historiens linje i `items:` (topic, why, do, grafik).
+Metadata til routinen: 7amai-date (udgavens dato) og 7amai-revision (den commit, Pages byggede).
+{%- endcomment -%}
+{%- assign lang = page.lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- if lang == 'da' -%}{%- assign post = site.da | sort: 'date' | last -%}{%- else -%}{%- assign post = site.posts.first -%}{%- endif -%}
+{%- assign issue_url = post.url | absolute_url -%}
+{%- assign other_url = post.other_lang_url | absolute_url -%}
+{%- assign home_url = t.home | absolute_url -%}
+{%- assign icon_base = '/assets/mail-icons/' | absolute_url -%}
+{%- if lang == 'da' -%}{%- assign mi = post.date | date: '%-m' | minus: 1 -%}{%- capture subject_date %}{{ post.date | date: '%-d' }}. {{ t.months[mi] }}{% endcapture -%}{%- else -%}{%- assign subject_date = post.date | date: '%b %-d' -%}{%- endif -%}
+{%- if post.reviewed -%}{%- assign disclosure = t.disclosure_reviewed -%}{%- elsif post.checked -%}{%- assign disclosure = t.disclosure_checked -%}{%- else -%}{%- assign disclosure = t.disclosure_ai -%}{%- endif -%}
+{%- capture ff %}font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;{% endcapture -%}
+{%- assign chunks = post.content | split: '<h3' -%}
+{%- assign pre = chunks[0] | strip -%}
+{%- assign dev_html = '' -%}{%- assign extra_html = '' -%}
+{%- if pre != '' -%}{%- capture extra_html %}{% include mail-style.html html=pre %}{% endcapture -%}{%- endif -%}
+{%- capture cards -%}
+{%- for chunk in chunks offset:1 -%}
+  {%- assign head = chunk | split: '</h3>' | first -%}
+  {%- assign rest = chunk | remove_first: head | remove_first: '</h3>' -%}
+  {%- assign head_parts = head | split: '"' -%}
+  {%- assign anchor = head_parts[1] -%}
+  {%- assign title = head | split: '">' | last -%}
+  {%- assign item = post.items | where: "anchor", anchor | first -%}
+  {%- if item -%}
+    {%- assign num_prefix = item.n | append: '. ' -%}
+    {%- assign title_start = title | slice: 0, num_prefix.size -%}
+    {%- if title_start == num_prefix -%}{%- assign title = title | remove_first: num_prefix -%}{%- endif -%}
+  {%- endif -%}
+  {%- assign item_min = '' -%}
+  {%- if rest contains '<p class="item-meta">' -%}
+    {%- assign parts = rest | split: '<p class="item-meta">' -%}
+    {%- assign meta = parts[1] | split: '</p>' | first -%}
+    {%- assign item_min = meta | split: '<span class="track">' | last | remove: '</span>' -%}
+  {%- endif -%}
+  {%- assign num = '' -%}{%- assign num_label = '' -%}
+  {%- if rest contains '<div class="number">' -%}
+    {%- assign parts = rest | split: '<div class="number">' -%}
+    {%- assign num_html = parts[1] | split: '</div>' | first -%}
+    {%- assign num = num_html | split: '</b>' | first | remove: '<b>' -%}
+    {%- assign num_label = num_html | split: '<span>' | last | remove: '</span>' -%}
+  {%- endif -%}
+  {%- assign short_label = '' -%}{%- assign short_text = '' -%}
+  {%- if rest contains '<p class="short"><span>' -%}
+    {%- assign parts = rest | split: '<p class="short"><span>' -%}
+    {%- assign short_html = parts[1] | split: '</p>' | first -%}
+    {%- assign short_label = short_html | split: '</span>' | first -%}
+    {%- assign short_text = short_html | remove_first: short_label | remove_first: '</span>' | strip -%}
+  {%- endif -%}
+  {%- assign why_label = '' -%}{%- assign why_text = '' -%}
+  {%- if rest contains '<div class="why"><b>' -%}
+    {%- assign parts = rest | split: '<div class="why"><b>' -%}
+    {%- assign why_html = parts[1] | split: '</p></div>' | first -%}
+    {%- assign why_label = why_html | split: '</b>' | first -%}
+    {%- assign why_text = why_html | split: '<p>' | last -%}
+  {%- endif -%}
+  {%- if item.why -%}{%- assign why_text = item.why -%}{%- endif -%}
+  {%- assign todo_label = '' -%}{%- assign todo_text = '' -%}
+  {%- if rest contains '<p class="todo"><b>' -%}
+    {%- assign parts = rest | split: '<p class="todo"><b>' -%}
+    {%- assign todo_html = parts[1] | split: '</p>' | first -%}
+    {%- assign todo_label = todo_html | split: '</b>' | first -%}
+    {%- assign todo_text = todo_html | remove_first: todo_label | remove_first: '</b>' | strip -%}
+    {%- if item.do -%}{%- assign todo_text = item.do -%}{%- endif -%}
+  {%- endif -%}
+  {%- assign before_h2 = rest | split: '<h2' | first -%}
+  {%- assign tail = rest | remove_first: before_h2 | strip -%}
+  {%- if tail != '' -%}
+    {%- assign tail_text = tail | strip_html | strip -%}
+    {%- assign tail_head = tail | split: '</h2>' | first | split: '>' | last | strip -%}
+    {%- if tail_text != tail_head -%}{%- capture tail_html %}{% include mail-style.html html=tail %}{% endcapture -%}{%- assign extra_html = extra_html | append: tail_html -%}{%- endif -%}
+  {%- endif -%}
+  {%- assign story_url = issue_url | append: '?ref=mail#' | append: anchor -%}
+  {%- assign is_dev = false -%}
+  {%- if item.tracks contains 'build' -%}{%- unless item.tracks contains 'general' -%}{%- assign is_dev = true -%}{%- endunless -%}{%- endif -%}
+  {%- if is_dev -%}
+    {%- capture dev_line %}
+<p style="margin:14px 0 0;{{ ff }}font-size:17px;line-height:1.5;color:#0E1A33;"><a href="{{ story_url }}" style="color:#0E1A33;font-weight:800;text-decoration:none;">{{ title }}</a><br><span style="font-size:16px;color:#55627A;">{{ why_text | default: short_text }}</span></p>
+    {%- endcapture -%}
+    {%- assign dev_html = dev_html | append: dev_line -%}
+  {%- else -%}
+    {%- assign topic = item.topic | default: 'news' -%}
+    {%- assign topic_label = t.topics[topic] | default: t.topics.news %}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;background:#FFFFFF;border-radius:16px;"><tr><td style="padding:20px;{{ ff }}color:#0E1A33;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td width="40" valign="middle" style="width:40px;"><img src="{{ icon_base }}{{ topic }}.png" width="40" height="40" alt="" style="display:block;border:0;width:40px;height:40px;"></td>
+    <td valign="middle" style="padding:0 0 0 12px;{{ ff }}font-size:15px;line-height:1.3;font-weight:700;color:#B4500A;">{% if item.n %}{{ item.n }} · {% endif %}{{ topic_label }}{% if item_min != '' %} · {{ item_min }}{% endif %}</td>
+  </tr></table>
+  <h2 style="margin:14px 0 0;{{ ff }}font-size:22px;line-height:1.3;font-weight:800;color:#0E1A33;">{{ title }}</h2>
+  {%- include mail-graphics.html item=item num=num num_label=num_label ff=ff -%}
+  {%- if short_text != '' %}
+  <p style="margin:16px 0 0;{{ ff }}font-size:17px;line-height:1.6;color:#0E1A33;"><b>{{ short_label }}:</b> {{ short_text }}</p>
+  {%- endif -%}
+  {%- if why_text != '' %}
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0 0;background:#EAF2EC;border-radius:12px;"><tr><td style="padding:12px 14px;{{ ff }}">
+    <p style="margin:0;font-size:15px;line-height:1.4;font-weight:800;color:#1F6B3E;">{{ why_label | default: t.mail_story }}</p>
+    <p style="margin:4px 0 0;font-size:17px;line-height:1.6;color:#0E1A33;">{{ why_text }}</p>
+  </td></tr></table>
+  {%- endif -%}
+  {%- if todo_text != '' %}
+  <p style="margin:16px 0 0;{{ ff }}font-size:17px;line-height:1.6;color:#0E1A33;"><b style="color:#B4500A;">{{ todo_label }}</b> {{ todo_text }}</p>
+  {%- endif %}
+  <table role="presentation" cellpadding="0" cellspacing="0" style="margin:18px 0 0;"><tr><td style="background:#0E1A33;border-radius:12px;mso-padding-alt:13px 20px;"><a href="{{ story_url }}" style="display:inline-block;padding:13px 20px;{{ ff }}font-size:17px;line-height:1.2;font-weight:800;color:#FFFFFF;text-decoration:none;">{{ t.mail_story }}</a></td></tr></table>
+</td></tr></table>
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- capture today_box -%}
+{%- if post.today %}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;background:#FFFFFF;border:2px solid #0E1A33;border-radius:16px;"><tr><td style="padding:16px 18px 18px;{{ ff }}">
+  <h2 style="margin:0;{{ ff }}font-size:15px;line-height:1.3;font-weight:800;color:#B4500A;">{{ t.today_title }}</h2>
+  {%- for d in post.today %}
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:12px 0 0;"><tr>
+    <td width="28" valign="top" style="width:28px;padding:1px 0 0;"><table role="presentation" cellpadding="0" cellspacing="0"><tr><td width="26" height="26" align="center" valign="middle" style="width:26px;height:26px;border-radius:13px;background:#0E1A33;{{ ff }}font-size:14px;line-height:26px;font-weight:800;color:#FFFFFF;">{{ forloop.index }}</td></tr></table></td>
+    <td valign="top" style="padding:0 0 0 10px;{{ ff }}font-size:17px;line-height:1.6;color:#0E1A33;">{{ d.t | escape }}</td>
+  </tr></table>
+  {%- endfor %}
+</td></tr></table>
+{%- endif -%}
+{%- endcapture -%}
+{%- capture dev_box -%}
+{%- if dev_html != '' %}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;border:1px solid #C3CEDF;border-radius:16px;"><tr><td style="padding:18px 20px 20px;{{ ff }}">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td width="40" valign="middle" style="width:40px;"><img src="{{ icon_base }}code.png" width="40" height="40" alt="" style="display:block;border:0;width:40px;height:40px;"></td>
+    <td valign="middle" style="padding:0 0 0 12px;"><h2 style="margin:0;{{ ff }}font-size:18px;line-height:1.3;font-weight:800;color:#0E1A33;">{{ t.mail_dev }}</h2></td>
+  </tr></table>
+  {{ dev_html }}
+</td></tr></table>
+{%- endif -%}
+{%- endcapture -%}
+{%- capture explained_box -%}
+{%- if post.explained -%}
+  {%- assign ex_pool = site.explained | where: "lang", lang -%}
+  {%- assign ex_main = ex_pool | where: "slug", post.explained.main | first -%}
+  {%- if ex_main %}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;background:#FFFFFF;border-radius:16px;"><tr><td style="padding:18px 20px 20px;{{ ff }}">
+  <h2 style="margin:0;{{ ff }}font-size:15px;line-height:1.3;font-weight:800;color:#B4500A;">{{ t.explained_name }} · {{ t.explained_count }}</h2>
+  <p style="margin:12px 0 0;{{ ff }}font-size:17px;line-height:1.5;"><a href="{{ ex_main.url | absolute_url }}?ref=mail" style="color:#0E1A33;font-weight:800;text-decoration:none;">{{ ex_main.title }}</a><br><span style="font-size:16px;color:#55627A;">{{ ex_main.summary }}</span></p>
+    {%- for slug in post.explained.more -%}
+      {%- assign e = ex_pool | where: "slug", slug | first -%}
+      {%- if e %}
+  <p style="margin:10px 0 0;{{ ff }}font-size:17px;line-height:1.5;"><a href="{{ e.url | absolute_url }}?ref=mail" style="color:#0E1A33;font-weight:800;text-decoration:none;">{{ e.title }}</a></p>
+      {%- endif -%}
+    {%- endfor %}
+</td></tr></table>
+  {%- endif -%}
+{%- endif -%}
+{%- endcapture -%}
+{%- assign mail_words = today_box | append: cards | append: dev_box | strip_html | number_of_words -%}
+{%- assign mail_min = mail_words | plus: 199 | divided_by: 200 -%}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="x-apple-disable-message-reformatting" />
+<meta name="color-scheme" content="light only" />
+<meta name="supported-color-schemes" content="light" />
+<meta name="robots" content="noindex" />
+<meta name="7amai-date" content="{{ post.date | date: '%Y-%m-%d' }}" />
+<meta name="7amai-revision" content="{{ site.github.build_revision }}" />
+<title>7am AI · {{ subject_date }}: {{ post.title | escape }}</title>
+</head>
+<body style="margin:0;padding:0;background:#EEF3FA;">
+<div style="display:none;max-height:0;overflow:hidden;">{{ post.summary | escape }}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EEF3FA;">
+<tr><td align="center" style="padding:16px 12px 28px;">
+<!--[if mso]><table role="presentation" width="600" align="center" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;{{ ff }}color:#0E1A33;">
+<tr><td style="padding:4px 4px 16px;{{ ff }}">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td valign="middle"><a href="{{ home_url }}?ref=mail" style="text-decoration:none;color:#0E1A33;"><img src="{{ '/assets/logo-mail.png' | absolute_url }}" width="40" height="40" alt="" style="display:inline-block;vertical-align:middle;border:0;border-radius:9px;"><span style="{{ ff }}font-size:20px;font-weight:800;vertical-align:middle;margin-left:10px;">7am AI</span></a></td>
+    <td align="right" valign="middle" style="{{ ff }}font-size:15px;font-weight:700;color:#55627A;">{{ post.date | date: t.date_format }} · <span style="color:#B4500A;">07:00</span></td>
+  </tr></table>
+  <p style="margin:14px 0 0;{{ ff }}font-size:16px;line-height:1.5;color:#55627A;">{{ post.today.size }} {{ t.mail_count }} · {{ mail_min }} {{ t.mail_skim }} · {{ post.minutes }} {{ t.mail_full }}</p>
+  <p style="margin:8px 0 0;{{ ff }}font-size:14px;line-height:1.45;color:#55627A;">{{ disclosure }}</p>
+</td></tr>
+<tr><td>
+{{ today_box }}
+{{ cards }}
+{{ dev_box }}
+{%- if extra_html != '' %}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;background:#FFFFFF;border-radius:16px;"><tr><td style="padding:4px 20px 14px;">
+{{ extra_html }}
+</td></tr></table>
+{%- endif %}
+{{ explained_box }}
+</td></tr>
+<tr><td style="padding:4px 4px 0;{{ ff }}">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#FF8A2A;border-radius:999px;mso-padding-alt:13px 22px;"><a href="{{ issue_url }}?ref=mail" style="display:inline-block;padding:13px 22px;{{ ff }}font-size:17px;line-height:1.2;font-weight:800;color:#0E1A33;text-decoration:none;">{{ t.mail_issue }}</a></td></tr></table>
+  <p style="margin:14px 0 0;{{ ff }}font-size:15px;line-height:1.5;color:#55627A;"><a href="{{ other_url }}?ref=mail" style="color:#55627A;">{{ t.mail_other }}</a> · <a href="{{ home_url }}?ref=mail" style="color:#55627A;">{{ t.mail_archive }}</a></p>
+  <p style="margin:6px 0 0;{{ ff }}font-size:15px;line-height:1.5;color:#55627A;">7am AI · {{ t.tagline }}</p>
+</td></tr>
+</table>
+<!--[if mso]></td></tr></table><![endif]-->
+</td></tr>
+</table>
+</body>
+</html>
