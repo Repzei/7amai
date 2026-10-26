@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-10-26T20:54:48.732Z
+  modified: 2026-10-26T21:02:19.982Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-21)
@@ -29,7 +29,9 @@ Tjekket mod STRATEGI 8-9 (henvisningsprogram fase 1, emnesider/"Shipped or not?"
 - [ ] **C Henvisningsprogram tidligere end fase 1**
 
 ## VISUEL MAIL (Jesper 2026-10-26: mere visuel, mindre skrift, nemmere for læsere med læsevanskeligheder; ikke besluttet)
-Mockup (dansk udgave 26/10, 390 px): https://claude.ai/artifact/JKJGVy9GyEMEWXP7GGVcn7 , "I dag" vs **A skimbar** (kort pr. historie: ikon, overskrift, nøgletal, kort fortalt, kort "derfor", knap "Læs hele historien"; lang tekst flyttes til siden; sans-serif 17 px, linjeafstand 1,6; udviklerstof samlet nederst) vs **B med grafik** (som A + små grafikker i HTML med ægte tekst: trin-flow, søjler kun med tal fra historien, tal-fliser). Tweak "bodySize" 15-20 px. Principper: aldrig tekst i billeder (oplæsning og billedblokering), grafik kun med tal der står i historien. Min anbefaling: A først, B på udvalgte historier, C lydudgave overvejes separat. Afventer Jespers valg; bygges i en 7am AI-session (mail-layout + STYLE.md: kortere tekster i mailen).
+Mockup (dansk udgave 26/10, 390 px): https://claude.ai/artifact/JKJGVy9GyEMEWXP7GGVcn7 , "I dag" vs **A skimbar** (kort pr. historie: ikon, overskrift, nøgletal, kort fortalt, kort "derfor", knap "Læs hele historien"; lang tekst flyttes til siden; sans-serif 17 px, linjeafstand 1,6; udviklerstof samlet nederst) vs **B med grafik** (som A + små grafikker i HTML med ægte tekst: trin-flow, søjler kun med tal fra historien, tal-fliser). Tweak "bodySize" 15-20 px. Principper: aldrig tekst i billeder (oplæsning og billedblokering), grafik kun med tal der står i historien.
+- [x] **BESLUTTET 2026-10-26 (Jesper): B ("b er bedst det er det der skal laves, det meget bedre").**
+- [ ] Byg B i en 7am AI-session: mail-layout (kort pr. historie, ikon, nøgletal, kort fortalt, kort derfor, knap til hele historien, udviklerstof samlet nederst, sans-serif 17 px), datafelter i front matter til grafikken (fx søjler/trin/talfliser, kun tal fra historien), STYLE.md/INSTRUCTIONS (korte "derfor"-tekster til mailen), test i Gmail/Outlook/Apple Mail (lys + mørk), dashboard/roadmap opdateres i samme ændring. Lang tekst bliver på siden.
 
 ## LÆSERTEST AF UDGAVEN 22/10 (2026-10-23, 3 Sonnet-agenter: begynder m. ordblindhed / travl leder / udvikler-ekspert, EN + DA; påstande tjekket mod teksten)
 Fælles: "Today in 60 seconds" værdsat af alle (lederen kunne stoppe dér). PHP-historien ramte alle. Dansk er naturligt og på niveau med engelsk. Tillid høj (kilder, mærker, ærlige forbehold).
