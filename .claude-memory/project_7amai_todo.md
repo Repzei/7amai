@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-10-22T22:22:45.941Z
+  modified: 2026-10-26T20:54:48.732Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-21)
@@ -27,6 +27,9 @@ Tjekket mod STRATEGI 8-9 (henvisningsprogram fase 1, emnesider/"Shipped or not?"
 - [ ] **B1 "Sådan arbejder vi"-side** (EN + DA): hvordan historier vælges, Official/Reported/Unconfirmed, AI skriver + redaktørkontrol + AI-mærkning. Gør "you can trust" synligt; hjælper EU AI Act-gennemsigtighed og SEO.
 - [ ] **B2 Offentlig rettelses-side**: samlet oversigt over Corrections (findes i dag kun som blok i den enkelte mail/udgave).
 - [ ] **C Henvisningsprogram tidligere end fase 1**
+
+## VISUEL MAIL (Jesper 2026-10-26: mere visuel, mindre skrift, nemmere for læsere med læsevanskeligheder; ikke besluttet)
+Mockup (dansk udgave 26/10, 390 px): https://claude.ai/artifact/JKJGVy9GyEMEWXP7GGVcn7 , "I dag" vs **A skimbar** (kort pr. historie: ikon, overskrift, nøgletal, kort fortalt, kort "derfor", knap "Læs hele historien"; lang tekst flyttes til siden; sans-serif 17 px, linjeafstand 1,6; udviklerstof samlet nederst) vs **B med grafik** (som A + små grafikker i HTML med ægte tekst: trin-flow, søjler kun med tal fra historien, tal-fliser). Tweak "bodySize" 15-20 px. Principper: aldrig tekst i billeder (oplæsning og billedblokering), grafik kun med tal der står i historien. Min anbefaling: A først, B på udvalgte historier, C lydudgave overvejes separat. Afventer Jespers valg; bygges i en 7am AI-session (mail-layout + STYLE.md: kortere tekster i mailen).
 
 ## LÆSERTEST AF UDGAVEN 22/10 (2026-10-23, 3 Sonnet-agenter: begynder m. ordblindhed / travl leder / udvikler-ekspert, EN + DA; påstande tjekket mod teksten)
 Fælles: "Today in 60 seconds" værdsat af alle (lederen kunne stoppe dér). PHP-historien ramte alle. Dansk er naturligt og på niveau med engelsk. Tillid høj (kilder, mærker, ærlige forbehold).
