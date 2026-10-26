@@ -95,7 +95,11 @@ prøve det i dag? Sæt den vigtigste først.
 Hver historie får:
 - **Signal:** `big` (Big deal), `worth` (Worth knowing) eller `quick` (Quick hit). Højst 2 `big`.
 - **Spor** (mindst ét): `build` (udviklere/produkt), `general` (AI for alle), `europe`
-  (EU-regulering, europæiske modeller/priser, lokal AI og privatliv).
+  (EU-regulering, europæiske modeller/priser, lokal AI og privatliv). Historier med `build` uden
+  `general` står i mailens "For developers" nederst; giv `general`, når det også betyder noget for
+  folk, der ikke koder (STYLE.md "Mailen").
+- **Mailen:** `topic`, en kort `why`, evt. `do` og evt. grafik (`bars`, `tiles`, `steps`) i
+  historiens linje i `items`, efter STYLE.md "Mailen". Hvert tal i dem skal stå i historien.
 - Sørg for, at hvert spor får mindst én historie, hvis der findes en reel kandidat.
 - **Saml det, der hører sammen:** flere nyheder fra samme firma eller om samme emne bliver ÉN
   historie med nummererede dele (STYLE.md "Saml historier"). Den tæller som én historie.
@@ -149,11 +153,13 @@ checked: false   # sættes til true i U6, når redaktørkontrollen er gennemfør
 minutes: <kernens læsetid, 6-7, mindst 5>
 explained: { main: "<slug>", from: <nr. på historien>, more: ["<slug>", "<slug>"] }
 today:   # "Today in 60 seconds": én linje pr. hovedhistorie, samme rækkefølge (STYLE.md)
-  - { t: "<Nyheden i én sætning, højst ca. 20 ord>", why: "<Hvem det betyder noget for, kort>" }
+  - { t: "<Nyheden i én sætning, højst ca. 15 ord>", why: "<Hvem det betyder noget for, kort>" }
 other_lang_url: /da/<åååå>/<mm>/<dd>/
 items:
-  - { n: 1, anchor: "<anker>", signal: big, tracks: [build, europe], min: 1.5, source: official, number: "52B", number_label: "active parameters" }
+  - { n: 1, anchor: "<anker>", signal: big, tracks: [build, general], min: 1.5, source: official, number: "52%", number_label: "of Rippling's coding work now runs on OpenAI, up from 16%", topic: price, why: "<mailens Derfor, højst ca. 20 ord>", bars: { title: "Share of Rippling's coding work on OpenAI", max: 100, rows: [{ l: "Before", v: 16, t: "16%" }, { l: "Now", v: 52, t: "52%", hl: true }] } }
+  - { n: 2, anchor: "<anker>", signal: worth, tracks: [general], min: 1, source: reported, topic: security, why: "<...>", do: "<kort Gør dette, kun hvis historien har en>", steps: { title: "How the attack works", list: ["<trin 1>", "<trin 2>", "<trin 3>"] } }
   # ... én linje pr. historie, samme rækkefølge som nedenfor. `number` og `number_label` kun når der er et ægte nøgletal.
+  # topic + why altid; do, bars, tiles og steps kun efter STYLE.md "Mailen" (hvert tal står i historien).
 ---
 
 ### 1. <Overskrift der siger hvad der skete> {#<anker>}
@@ -238,6 +244,8 @@ i front matter (slugs = filnavne i `_explained/` uden `.md`). Brug samme slugs i
 Fil: `_da/<dato>-<samme-slug>.md`. Samme indhold, struktur, ankre og `items` som den engelske,
 skrevet som naturligt dansk (ikke ordret oversat), med æ, ø og å. Front matter:
 `other_lang_url: /<åååå>/<mm>/<dd>/`, `reviewed: false` (den danske er altid AI-mærket), `checked: false` (sættes i U6).
+I `items` er `anchor`, `topic`, `tracks` og søjlernes `v` de samme; `why`, `do`, `number_label`,
+grafikkens titler, `l`, `t`, `n` og trin skrives på dansk med danske talformater ("16 %", "1.300").
 Labels på dansk: "Stor nyhed" / "Værd at vide" / "Kort nyt", spor "Build" / "Generelt" /
 "Europa", sektioner "Open source og lokal AI" / "Dagens forskningsartikel", "Kort fortalt",
 "Derfor er det vigtigt", "Prøv det:" / "Gør dette:", dele `#### <span>1 af 3</span>`, `today:` på
@@ -277,8 +285,11 @@ Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils
    og er ikke valgfrit, heller ikke på en stille dag, eller fordi kilden blev læst under research.
 2. Ret, nedgradér eller fjern ud fra svarene, og gå derefter de 10 kriterier igennem én for én.
    Kør `python3 .agent/readability.py _posts/<fil> _da/<fil>` og på hver ny fil i `_explained/`
-   (begge sprog), og ret, til alle melder OK. Tjek også, at slugs i `explained:` findes som filer
-   på begge sprog.
+   (begge sprog), og ret, til alle melder OK. Scriptet tjekker også mailens felter (`topic`,
+   `why` og at hvert tal i nøgletal, grafik, `why` og `do` står i historiens tekst): ret eller fjern
+   grafikken, ret aldrig historien for at få et tal til at passe. Se også selv efter, at trin og
+   søjler siger det samme som historien og kilden (EDITORIAL kriterie 3). Tjek også, at slugs i
+   `explained:` findes som filer på begge sprog.
 3. Opdatér `minutes`, `min`, `items` og nummereringen, hvis noget er fjernet.
 4. Sæt `checked: true` i front matter i BEGGE filer, når alle kilder er genåbnet og alle 10
    kriterier er tjekket.
@@ -321,7 +332,9 @@ på `main` efter merge som sandheden.
 Du skriver IKKE mailen. Jekyll bygger den på GitHub Pages ud fra filerne på `main`, samme kilde
 som hjemmesiden: `/mail/en/` og `/mail/da/` (HTML) og `/mail/en.txt` og `/mail/da.txt` (tekst),
 lavet af `_layouts/email.html` og `_layouts/email-text.html`. Siden viser altid den nyeste udgave
-og har mærkningen (Reviewed/kontrolleret/AI) fra front matter. Skal mailens udseende eller
+og har mærkningen (Reviewed/kontrolleret/AI) fra front matter. Mailen er visuel: ét kort pr.
+historie (emne-ikon, nøgletal/grafik, "Kort fortalt", kort "Derfor", knap til historien på siden),
+udviklerstof samlet nederst; data fra `items` (STYLE.md "Mailen"), grafik i `_includes/mail-graphics.html`. Skal mailens udseende eller
 tekster ændres, så ret i de to layouts, `_includes/mail-style.html`, `_includes/mail-text.html`
 eller `_data/i18n.yml` (`mail_*`), aldrig i den hentede fil.
 

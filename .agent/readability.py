@@ -7,6 +7,7 @@ Brug:
 
 Filer: udgaver (_posts/, _da/) og biblioteksfiler (_explained/, _explained/da/).
 Måler kun brødtekst (ikke front matter, meta-linjer, kildelinjer eller HTML).
+Tjekker også mailens felter i `items:` (topic, why, grafik): hvert tal skal stå i historien.
 
 Læsetid er et løfte til læseren, så den regnes forsigtigt: 200 ord pr. minut (lidt under
 gennemsnittet for faglitteratur, fordi teksten har tal og fagudtryk, og mange læser på deres
@@ -92,6 +93,51 @@ def stories(core):
     return out
 
 
+ITEM_LINE = re.compile(r'(?m)^  - \{.*\}[ \t]*$')
+NOT_FACTS = re.compile(r'\b(?:n|min|max)\s*:\s*[\d.]+|anchor:\s*"[^"]*"')
+NUMBER = re.compile(r'\d+(?:[.,]\d+)*')
+MAX_MAIL_WHY = 25
+
+
+def topics():
+    """Emnerne i mailen (ikonerne i assets/mail-icons), som de står i _data/i18n.yml."""
+    import os
+    i18n = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '_data', 'i18n.yml')
+    m = re.search(r'topics:\s*\{(.*?)\}', open(i18n, encoding='utf-8').read())
+    return set(re.findall(r'(\w+):', m.group(1))) if m else set()
+
+
+def check_mail(front, core):
+    """Mailens felter i items: topic og why findes, og hvert tal i nøgletal, grafik (tiles, bars,
+    steps), why og do står i historiens egen tekst. Grafik må aldrig vise et tal, læseren ikke
+    kan finde i historien (STYLE.md "Mailen")."""
+    problems = []
+    texts = {}
+    for anchor, part in stories(core):
+        h, p = clean(part)
+        texts[anchor] = ' '.join(h + p)
+    known = topics()
+    for line in ITEM_LINE.findall(front):
+        a = re.search(r'anchor:\s*"([^"]+)"', line)
+        if not a or a.group(1) not in texts:
+            continue
+        anchor, story = a.group(1), texts[a.group(1)]
+        topic = re.search(r'\btopic:\s*"?(\w+)', line)
+        if not topic:
+            problems.append(f'#{anchor}: mangler topic (mailens ikon)')
+        elif known and topic.group(1) not in known:
+            problems.append(f'#{anchor}: ukendt topic "{topic.group(1)}" (brug et af: {", ".join(sorted(known))})')
+        why = re.search(r'\bwhy:\s*"([^"]*)"', line)
+        if not why:
+            problems.append(f'#{anchor}: mangler why (mailens korte "Derfor")')
+        elif len(words(why.group(1))) > MAX_MAIL_WHY:
+            problems.append(f'#{anchor}: why har {len(words(why.group(1)))} ord (højst {MAX_MAIL_WHY})')
+        for n in sorted(set(NUMBER.findall(NOT_FACTS.sub('', line)))):
+            if not re.search(r'(?<![\d.,])' + re.escape(n) + r'(?!\d)', story):
+                problems.append(f'#{anchor}: tallet {n} i items (nøgletal, grafik, why eller do) står ikke i historiens tekst')
+    return problems
+
+
 def analyse(path, fix):
     text = open(path, encoding='utf-8').read()
     norm = path.replace('\\', '/')
@@ -145,6 +191,8 @@ def analyse(path, fix):
                 fixes.append(f'#{anchor}: {label(m)}')
             else:
                 problems.append(f'læsetid for #{anchor} skal være {label(m)} (står: {shown}, items: {item_min.group(1) if item_min else "mangler"}; kør med --fix)')
+
+        problems += check_mail(new_front, new_core)
 
     if fix and fixes:
         rebuilt = new_front + new_core + (('\n***\n' + after) if after else '')

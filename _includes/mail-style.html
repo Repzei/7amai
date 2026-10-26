@@ -1,18 +1,17 @@
 {%- comment -%}
 Giver kramdowns færdige HTML (include.html) mailens inline styles. Bruges af _layouts/email.html
-på historiernes tekst, på afsnit efter en ## (sektionslabel, Corrections, Jesper's pick) og på
-Explained. Rækkefølgen betyder noget: de specifikke mønstre skal erstattes før <p>, <span> og </b>.
+på afsnit efter en ## med indhold (Corrections, Jesper's pick) og tekst før første historie. Rækkefølgen betyder noget: de specifikke mønstre skal erstattes før <p>, <span> og </b>.
 {%- endcomment -%}
 {%- capture ms_short %}<p style="font-size:16px;line-height:1.45;font-weight:700;color:#0E1A33;margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid #D3DCEA;"><span style="display:block;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#B4500A;">{% endcapture -%}
 {%- capture ms_why %}<div style="background:#EAF2EC;border-radius:10px;padding:10px 14px;margin:6px 0 10px;"><div style="font-size:11px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;color:#1F6B3E;margin:0 0 4px;">{% endcapture -%}
-{%- capture ms_why_p %}</div><p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;margin:0;color:#0E1A33;">{% endcapture -%}
+{%- capture ms_why_p %}</div><p style="font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-height:1.6;margin:0;color:#0E1A33;">{% endcapture -%}
 {%- capture ms_todo %}<p style="font-size:14px;font-weight:700;margin:0 0 10px;color:#0E1A33;"><span style="color:#B4500A;">{% endcapture -%}
 {%- capture ms_h4 %}<div style="font-size:15px;font-weight:800;color:#0E1A33;border-top:1px solid #D3DCEA;padding-top:10px;margin:12px 0 4px;" {% endcapture -%}
 {%- capture ms_h4_span %}<span style="font-size:10px;letter-spacing:0.6px;text-transform:uppercase;color:#55627A;margin-right:6px;">{% endcapture -%}
 {%- capture ms_h2 %}<div style="font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#55627A;margin:22px 0 2px;" {% endcapture -%}
 {%- capture ms_quote %}<div style="background:#FFF4EA;border-left:3px solid #FF8A2A;padding:10px 12px 2px;margin:0 0 10px;">{% endcapture -%}
-{%- capture ms_p %}<p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;margin:0 0 8px;color:#0E1A33;">{% endcapture -%}
-{%- capture ms_li %}<li style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;margin:0 0 4px;color:#0E1A33;">{% endcapture -%}
+{%- capture ms_p %}<p style="font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-height:1.6;margin:0 0 8px;color:#0E1A33;">{% endcapture -%}
+{%- capture ms_li %}<li style="font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-height:1.6;margin:0 0 4px;color:#0E1A33;">{% endcapture -%}
 {%- capture ms_code %}<code style="font-family:Menlo,Consolas,monospace;font-size:13px;background:#EEF3FA;padding:1px 5px;border-radius:4px;">{% endcapture -%}
 {%- assign ms = include.html | replace: '<p class="short"><span>', ms_short -%}
 {%- assign ms = ms | replace: '<div class="why"><b>', ms_why | replace: '</b><p>', ms_why_p -%}

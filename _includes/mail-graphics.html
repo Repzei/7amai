@@ -3,7 +3,7 @@ Grafik i en historie i mailen, tegnet i HTML-tabeller med ægte tekst (aldrig te
 oplæsning skal kunne læse den, og mange mailprogrammer blokerer billeder). Data kommer fra
 historiens linje i `items:` (STYLE.md "Grafik i mailen"): nøgletal (`number`), `tiles`,
 `bars` og `steps`. Alle tal står i historien selv; readability.py tjekker det.
-Parametre: item, num, num_label, ff (skrifttype-stil).
+Bruges af _layouts/email.html. Parametre: item, num, num_label, ff (skrifttype-stil).
 {%- endcomment -%}
 {%- assign g = include.item -%}
 {%- assign ff = include.ff -%}

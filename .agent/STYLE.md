@@ -81,8 +81,49 @@ ny. Fælles "Kort fortalt" øverst, hver del 1-2 korte afsnit, ét fælles "Derf
 
 ## Dagen på 60 sekunder (`today:` i front matter)
 Én linje pr. hovedhistorie (også samlede historier), i samme rækkefølge: `t` er nyheden i én
-sætning (højst ca. 20 ord), `why` er en kort halv sætning om, hvem det betyder noget for. Læseren
-skal kunne få hele dagen ud af boksen alene. Ingen nye fakta, kun det, der står i historierne.
+sætning (højst ca. 15 ord; mailen viser den alene, uden `why`), `why` er en kort halv sætning om,
+hvem det betyder noget for (vises kun på siden). Læseren skal kunne få hele dagen ud af boksen
+alene. Ingen nye fakta, kun det, der står i historierne.
+
+## Mailen (kort pr. historie, Jesper 26. okt. 2026)
+Mailen viser ikke brødteksten. Hver historie bliver et kort: emne-ikon, nummer · emne · minutter,
+overskrift, nøgletal eller grafik, "Kort fortalt", en kort "Derfor", evt. "Gør dette" og en knap
+til hele historien på siden. Mange læsere læser langsomt, er ordblinde, bruger oplæsning eller
+gider ikke lange tekster, så mailen skal kunne læses på 2-3 minutter. Brødteksten skrives som før;
+mailen henter "Kort fortalt", overskrift og nøgletal derfra. Disse felter skrives i historiens
+linje i `items:` (alle historier, også Open source og Paper):
+- `topic` (skal med): ét af `security`, `price`, `money`, `chips`, `voice`, `research`, `model`,
+  `code`, `agent`, `law`, `open`, `local`, `business`, `image`, `news` (ikonerne i
+  `assets/mail-icons/`, navnene i `_data/i18n.yml`). Vælg det, læseren genkender emnet på.
+- `why` (skal med): mailens "Derfor", én sætning på højst ca. 20 ord (readability.py stopper ved 25).
+  Kernen af "Derfor er det vigtigt" i almindeligt sprog, uden sammenligningen, hvis den kræver
+  forklaring. Ingen nye fakta.
+- `do` (kun når historien har "Gør dette"/"Prøv det"): samme handling i én kort sætning.
+- **Sporet bestemmer, hvor historien står.** Historier med `build` og uden `general` samles nederst
+  i "Til udviklere"/"For developers" med overskrift og `why` som én linje. Giv derfor også
+  `general`, når nyheden betyder noget for folk, der ikke koder (priser og firmaer, der køber AI,
+  sikkerhed for alle, der bruger en agent, nye ting man kan prøve uden at kode).
+
+### Grafik i mailen (valgfri)
+Layoutet tegner grafikken i HTML med ægte tekst. Aldrig billeder med tekst: oplæsning skal kunne
+læse den, og mange mailprogrammer blokerer billeder. Højst to grafikker pr. historie, oftest én,
+og ingen grafik er bedre end en tvunget.
+**Hård regel: hvert tal i grafikken står ordret i historiens tekst** (samme tal, skrevet som på
+sproget). Aldrig udregnet, afrundet eller omsat: står der "halvdelen", må en søjle ikke vise 50 %.
+`readability.py` melder fejl, hvis et tal i `items` ikke står i historien. Er der ingen tal, så
+ingen søjler eller fliser.
+- `bars` (søjler: før/nu eller en sammenligning), kun med mindst to tal med samme enhed og måling:
+  `bars: { title: "Andel af Ripplings kodearbejde på OpenAI", max: 100, rows: [{ l: "Før", v: 16, t: "16 %" }, { l: "Nu", v: 52, t: "52 %", hl: true }] }`.
+  `v` = tallet uden enhed, `t` = sådan det skrives på sproget, `max: 100` ved procenter (ellers
+  måles mod det største tal), `hl: true` på den søjle, der er nyheden. 2-4 rækker, `l` højst ca.
+  12 tegn. Når der er søjler, vises nøgletallet ikke for sig (søjlerne bærer tallene).
+- `tiles` (talfliser), når historien har flere vigtige tal ud over nøgletallet:
+  `tiles: [{ n: "80,9", t: "point på Terminal-Bench, mod 73,0 for Qwen" }]`. Nøgletallet
+  (`number`) vises selv som første flise, så gentag det ikke. Højst 2 fliser.
+- `steps` (trin-flow), når historien forklarer en proces i rækkefølge (et angreb, hvordan noget
+  virker): `steps: { title: "Sådan virker angrebet", list: ["...", "...", "..."] }`. 2-4 trin,
+  hvert højst ca. 10 ord, kun det historien fortæller.
+Eksempel: udgaven 26. oktober 2026 (`_posts/2026-10-26-*.md` og `_da/2026-10-26-*.md`).
 
 ## Dansk udgave
 - Naturligt dansk, som en dygtig dansk journalist ville skrive det. Ikke en oversættelse ord for ord.
@@ -103,3 +144,4 @@ skal kunne få hele dagen ud af boksen alene. Ingen nye fakta, kun det, der stå
 ## Tjek før du er færdig
 Kør `python3 .agent/readability.py --fix` på begge udgaver (U6). Læs derefter hver historie højt i
 tankerne: Har den én tråd? Giver "Derfor er det vigtigt" et aha? Står der noget, kilden ikke siger?
+Og mailen: forstår man historien alene ud fra kortet (overskrift, tal, "Kort fortalt", `why`)?

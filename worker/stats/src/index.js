@@ -340,7 +340,7 @@ footer { margin-top:24px; }
       <li><div class="t">05:45</div><div class="b"><strong>Redaktørkontrol</strong><span>Alle kilder åbnes igen, 10 kriterier tjekkes, og readability.py måler sætningslængde og skriver de ærlige læsetider (200 ord/min, rundet op). Rapporten kommer øverst i PR'en.</span><div class="chips"><span class="chip">EDITORIAL.md</span><span class="chip">readability.py</span></div></div></li>
       <li class="key"><div class="t">05:50</div><div class="b"><strong>Pull request på GitHub</strong><span>Udgaven lægges på branchen issue/&lt;dato&gt;. Ingen mail til Jesper. En hook (guard.mjs) holder øje med hvert skridt og blokerer, hvis en regel brydes.</span><div class="chips"><span class="chip">GitHub</span><span class="chip">guard.mjs</span></div></div></li>
       <li><div class="t">før 07:00</div><div class="b"><strong>Valgfrit: Jesper godkender</strong><span>Merger Jesper PR'en før kl. 7 (fx i GitHub-appen), står der "Reviewed by Jesper". Ellers står der det ærlige mærke "checked against our editorial standards".</span><div class="chips"><span class="chip">EU AI Act art. 50</span></div></div></li>
-      <li class="key"><div class="t">07:16</div><div class="b"><strong>Afsendelsen</strong><span>En anden agent (Sonnet 5.5) merger PR'en, så GitHub Pages bygger 7amai.com på et par minutter. Jekyll bygger også mailen på begge sprog (/mail/en/ og /mail/da/) fra samme filer som siden, så agenten skriver ikke selv mailen. fetch-mail.sh venter, til Pages har bygget den nyeste commit, henter mailen og tjekker den. Så sendes den via broadcast.mjs til tilmeldings-workeren, som beder Resend sende den til alle i segmentet (med afmeldingslink). Dagen skrives i sent.log.</span><div class="chips"><span class="chip">GitHub Pages</span><span class="chip">fetch-mail.sh</span><span class="chip">Cloudflare worker</span><span class="chip">Resend</span></div></div></li>
+      <li class="key"><div class="t">07:16</div><div class="b"><strong>Afsendelsen</strong><span>En anden agent (Sonnet 5.5) merger PR'en, så GitHub Pages bygger 7amai.com på et par minutter. Jekyll bygger også mailen på begge sprog (/mail/en/ og /mail/da/) fra samme filer som siden, så agenten skriver ikke selv mailen. Mailen er visuel: ét kort pr. historie med ikon, nøgletal eller lille grafik (kun tal fra historien), kort fortalt og en knap til hele historien på siden; udviklerstof samlet nederst. fetch-mail.sh venter, til Pages har bygget den nyeste commit, henter mailen og tjekker den. Så sendes den via broadcast.mjs til tilmeldings-workeren, som beder Resend sende den til alle i segmentet (med afmeldingslink). Dagen skrives i sent.log.</span><div class="chips"><span class="chip">GitHub Pages</span><span class="chip">fetch-mail.sh</span><span class="chip">Cloudflare worker</span><span class="chip">Resend</span></div></div></li>
       <li><div class="t">hele dagen</div><div class="b"><strong>Læserne</strong><span>Folk læser mailen og siden. Siden sender anonyme tal (side, kilde, læsetid, scroll) til /hit, som gemmer dem i databasen D1 i EU. Det er dem, fanen "Tal" viser. Nye læsere tilmelder sig via formularen.</span><div class="chips"><span class="chip">beacon</span><span class="chip">D1</span><span class="chip">dette dashboard</span></div></div></li>
     </ol>
 
@@ -354,7 +354,7 @@ footer { margin-top:24px; }
       <div class="card"><div class="role">Kode, historik og hjemmeside</div><h3>GitHub</h3><ul>
         <li>Repo <a href="https://github.com/Repzei/7amai" rel="noreferrer">Repzei/7amai</a> (offentligt)</li>
         <li>Én PR pr. udgave, branchen slettes automatisk ved merge</li>
-        <li>GitHub Pages bygger og hoster 7amai.com og mailen (Jekyll, _layouts/email.html)</li>
+        <li>GitHub Pages bygger og hoster 7amai.com og mailen (Jekyll, _layouts/email.html; kort, ikoner og grafik i HTML)</li>
         <li>.agent/: vejledning, stil, kriterier, kilder, scripts</li></ul></div>
       <div class="card"><div class="role">Domæne, mail og små servere</div><h3>Cloudflare</h3><ul>
         <li>DNS for 7amai.com (alle records "DNS only")</li>
@@ -403,6 +403,7 @@ footer { margin-top:24px; }
         <li>"Reviewed by Jesper" kun ved Jespers merge før 07:00</li>
         <li>Agenten må ikke merge før 07:00</li>
         <li>Ingen mail med em dash eller {{-rester</li>
+        <li>Tal i mailens grafik skal stå i historien (readability.py i redaktørkontrollen)</li>
         <li>Mail kun via send-mail.mjs og broadcast.mjs</li>
         <li>GitHub-connectoren må ikke skrive filer</li></ul></div>
       <div class="card"><h3>Kvalitet</h3><ul>

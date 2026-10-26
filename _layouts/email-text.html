@@ -1,5 +1,6 @@
 {%- comment -%}
-Tekstudgaven af mailen (mail/en.txt og mail/da.txt). Samme udgave som _layouts/email.html.
+Tekstudgaven af mailen (mail/en.txt og mail/da.txt). Samme opbygning som _layouts/email.html:
+kort pr. historie med grafikkens tal som tekst, "Til udviklere" samlet nederst.
 {%- endcomment -%}
 {%- assign lang = page.lang -%}
 {%- assign t = site.data.i18n[lang] -%}
@@ -7,37 +8,148 @@ Tekstudgaven af mailen (mail/en.txt og mail/da.txt). Samme udgave som _layouts/e
 {%- assign issue_url = post.url | absolute_url -%}
 {%- assign other_url = post.other_lang_url | absolute_url -%}
 {%- if post.reviewed -%}{%- assign disclosure = t.disclosure_reviewed -%}{%- elsif post.checked -%}{%- assign disclosure = t.disclosure_checked -%}{%- else -%}{%- assign disclosure = t.disclosure_ai -%}{%- endif -%}
-7am AI · {{ post.date | date: t.date_format }} · 07:00
-{{ post.today.size }} {{ t.mail_count }} · {{ post.minutes }} {{ t.mail_min }}
+{%- capture nl %}
+{% endcapture -%}
+{%- assign chunks = post.content | split: '<h3' -%}
+{%- assign dev_txt = '' -%}{%- assign extra_html = '' -%}
+{%- capture cards -%}
+{%- for chunk in chunks offset:1 -%}
+  {%- assign head = chunk | split: '</h3>' | first -%}
+  {%- assign rest = chunk | remove_first: head | remove_first: '</h3>' -%}
+  {%- assign head_parts = head | split: '"' -%}
+  {%- assign anchor = head_parts[1] -%}
+  {%- assign title = head | split: '">' | last | strip_html  | replace: '&amp;', '&' | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' -%}
+  {%- assign item = post.items | where: "anchor", anchor | first -%}
+  {%- if item -%}
+    {%- assign num_prefix = item.n | append: '. ' -%}
+    {%- assign title_start = title | slice: 0, num_prefix.size -%}
+    {%- if title_start == num_prefix -%}{%- assign title = title | remove_first: num_prefix -%}{%- endif -%}
+  {%- endif -%}
+  {%- assign item_min = '' -%}
+  {%- if rest contains '<p class="item-meta">' -%}
+    {%- assign parts = rest | split: '<p class="item-meta">' -%}
+    {%- assign meta = parts[1] | split: '</p>' | first -%}
+    {%- assign item_min = meta | split: '<span class="track">' | last | remove: '</span>' -%}
+  {%- endif -%}
+  {%- assign num = '' -%}{%- assign num_label = '' -%}
+  {%- if rest contains '<div class="number">' -%}
+    {%- assign parts = rest | split: '<div class="number">' -%}
+    {%- assign num_html = parts[1] | split: '</div>' | first -%}
+    {%- assign num = num_html | split: '</b>' | first | remove: '<b>' -%}
+    {%- assign num_label = num_html | split: '<span>' | last | remove: '</span>' -%}
+  {%- endif -%}
+  {%- assign short_label = '' -%}{%- assign short_text = '' -%}
+  {%- if rest contains '<p class="short"><span>' -%}
+    {%- assign parts = rest | split: '<p class="short"><span>' -%}
+    {%- assign short_html = parts[1] | split: '</p>' | first -%}
+    {%- assign short_label = short_html | split: '</span>' | first -%}
+    {%- assign short_text = short_html | remove_first: short_label | remove_first: '</span>' | strip_html | strip  | replace: '&amp;', '&' | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' -%}
+  {%- endif -%}
+  {%- assign why_label = '' -%}{%- assign why_text = '' -%}
+  {%- if rest contains '<div class="why"><b>' -%}
+    {%- assign parts = rest | split: '<div class="why"><b>' -%}
+    {%- assign why_html = parts[1] | split: '</p></div>' | first -%}
+    {%- assign why_label = why_html | split: '</b>' | first -%}
+    {%- assign why_text = why_html | split: '<p>' | last | strip_html  | replace: '&amp;', '&' | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' -%}
+  {%- endif -%}
+  {%- if item.why -%}{%- assign why_text = item.why -%}{%- endif -%}
+  {%- assign todo_label = '' -%}{%- assign todo_text = '' -%}
+  {%- if rest contains '<p class="todo"><b>' -%}
+    {%- assign parts = rest | split: '<p class="todo"><b>' -%}
+    {%- assign todo_html = parts[1] | split: '</p>' | first -%}
+    {%- assign todo_label = todo_html | split: '</b>' | first -%}
+    {%- assign todo_text = todo_html | remove_first: todo_label | remove_first: '</b>' | strip_html | strip  | replace: '&amp;', '&' | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' -%}
+    {%- if item.do -%}{%- assign todo_text = item.do -%}{%- endif -%}
+  {%- endif -%}
+  {%- assign before_h2 = rest | split: '<h2' | first -%}
+  {%- assign tail = rest | remove_first: before_h2 | strip -%}
+  {%- if tail != '' -%}
+    {%- assign tail_text = tail | strip_html | strip -%}
+    {%- assign tail_head = tail | split: '</h2>' | first | split: '>' | last | strip -%}
+    {%- if tail_text != tail_head -%}{%- assign extra_html = extra_html | append: tail -%}{%- endif -%}
+  {%- endif -%}
+  {%- assign story_url = issue_url | append: '?ref=mail#' | append: anchor -%}
+  {%- assign is_dev = false -%}
+  {%- if item.tracks contains 'build' -%}{%- unless item.tracks contains 'general' -%}{%- assign is_dev = true -%}{%- endunless -%}{%- endif -%}
+  {%- if is_dev -%}
+    {%- capture dev_line %}
+- {{ title }}
+  {{ why_text | default: short_text }}
+  {{ story_url }}
+{% endcapture -%}
+    {%- assign dev_txt = dev_txt | append: dev_line -%}
+  {%- else -%}
+    {%- assign topic = item.topic | default: 'news' %}
 
-{{ post.title }}
-{{ post.summary }}
+
+{% if item.n %}{{ item.n }} · {% endif %}{{ t.topics[topic] | default: t.topics.news }}{% if item_min != '' %} · {{ item_min }}{% endif %}
+{{ title }}
+{% if num != '' %}
+{{ num }}: {{ num_label }}
+{%- endif -%}
+{%- for tile in item.tiles %}
+{{ tile.n }}: {{ tile.t }}
+{%- endfor -%}
+{%- if item.steps.list %}
+{% if item.steps.title %}{{ item.steps.title }}:{% endif %}
+{%- for s in item.steps.list %}
+{{ forloop.index }}. {{ s }}
+{%- endfor -%}
+{%- endif -%}
+{%- if item.bars.rows %}
+{% if item.bars.title %}{{ item.bars.title }}:{% endif %}
+{%- for r in item.bars.rows %}
+{{ r.l }}: {{ r.t | default: r.v }}
+{%- endfor -%}
+{%- endif %}
+{% if short_text != '' %}
+{{ short_label }}: {{ short_text }}
+{% endif -%}
+{%- if why_text != '' %}
+{{ why_label }}: {{ why_text }}
+{% endif -%}
+{%- if todo_text != '' %}
+{{ todo_label }} {{ todo_text }}
+{% endif %}
+{{ t.mail_story }}: {{ story_url }}
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+7am AI · {{ post.date | date: t.date_format }} · 07:00
+{{ post.today.size }} {{ t.mail_count }} · {{ post.minutes }} {{ t.mail_full }}
 
 {{ disclosure }}
 {% if post.today %}
 {{ t.today_title }}
-{% for d in post.today %}{{ forloop.index }}. {{ d.t }}{% if d.why %} {{ d.why }}{% endif %}
+{% for d in post.today %}{{ forloop.index }}. {{ d.t }}
 {% endfor %}{% endif %}
-{% include mail-text.html html=post.content %}
+{{- cards }}
+{%- if dev_txt != '' %}
+
+
+
+{{ t.mail_dev }}
+{{ dev_txt }}
+{%- endif %}
+{%- if extra_html != '' %}
+
+
+{% include mail-text.html html=extra_html %}
+{%- endif %}
 {%- if post.explained %}
   {%- assign ex_pool = site.explained | where: "lang", lang -%}
   {%- assign ex_main = ex_pool | where: "slug", post.explained.main | first -%}
   {%- if ex_main %}
 
 
-{{ t.explained_title }} · {{ ex_main.minutes | default: 1 | plus: 1 }} min
-
-{{ ex_main.title }}
-
-{% assign ex_html = ex_main.content %}{% include mail-text.html html=ex_html %}
-{% if post.explained.more and post.explained.more.size > 0 %}
-{{ t.mail_explained_more }}:
+{{ t.explained_name }} · {{ t.explained_count }}
+- {{ ex_main.title }} {{ ex_main.url | absolute_url }}?ref=mail
 {% for slug in post.explained.more %}{% assign e = ex_pool | where: "slug", slug | first %}{% if e %}- {{ e.title }} {{ e.url | absolute_url }}?ref=mail
-{% endif %}{% endfor %}{% endif %}
+{% endif %}{% endfor %}
   {%- endif %}
 {%- endif %}
 
-{{ t.mail_read }}: {{ issue_url }}?ref=mail
+{{ t.mail_issue }}: {{ issue_url }}?ref=mail
 {{ t.mail_other }}: {{ other_url }}?ref=mail
 
 7am AI · {{ t.tagline }} · {{ t.home | absolute_url }}?ref=mail

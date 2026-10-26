@@ -28,7 +28,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `CNAME` | `7amai.com` (styres af GitHub Pages-indstillingen) |
 | `.agent/INSTRUCTIONS.md` | Agentens fulde proces. Ret her for at ændre indhold eller format |
 | `.agent/SOURCES.md` | Kildeliste |
-| `_layouts/email.html`, `_layouts/email-text.html`, `mail/` | Den endelige mail, bygget af Jekyll fra nyeste udgave (samme kilde som siden): `/mail/en/`, `/mail/da/`, `/mail/en.txt`, `/mail/da.txt`. Styles i `_includes/mail-style.html`, tekstudgave i `_includes/mail-text.html`, labels `mail_*` i i18n. noindex, ikke i sitemap/feed |
+| `_layouts/email.html`, `_layouts/email-text.html`, `mail/` | Den endelige mail, bygget af Jekyll fra nyeste udgave (samme kilde som siden): `/mail/en/`, `/mail/da/`, `/mail/en.txt`, `/mail/da.txt`. Visuel (Jesper 26/10): ét kort pr. historie (emne-ikon, nøgletal/grafik, "Kort fortalt", kort "Derfor", knap til siden), Build uden General samlet i "For developers". Data fra `items` (`topic`, `why`, `do`, `bars`, `tiles`, `steps`; STYLE.md "Mailen"). Grafik i `_includes/mail-graphics.html` (kun tabeller, ægte tekst), ikoner `assets/mail-icons/<topic>.png`, labels `mail_*` + `topics` i i18n. Kun tabeller og inline styles. noindex, ikke i sitemap/feed |
 | `.agent/fetch-mail.sh` | Henter mailen til routinen (trin A2): venter til Pages har bygget nyeste commit på main og dagens dato, tjekker `{{`/dash, skriver /tmp-filer og emner |
 | `.agent/send-mail.mjs` | Mail til redaktøren (udkast + fallback) via Resend |
 | `.agent/broadcast.mjs` | Udgaven til alle tilmeldte (segment en/da) via workerens /broadcast |
@@ -42,7 +42,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `.agent/roadmap.json` | Køreplanen (faser + status) som dashboardet viser live. Opdateres sammen med to-do'en, når noget bliver færdigt eller planen ændres |
 | `.agent/EDITORIAL.md` | Jespers 10 redaktionelle kriterier (redaktørkontrol, trin U6) |
 | `.agent/STYLE.md` | Stilguide: enkelt, let at læse og forstå (10 regler, før/efter-eksempel, dansk) |
-| `.agent/readability.py` | Læsbarhedstjek uden pakker: sætningslængde (gns. højst 16, ingen over 25), kernens læsetid (5-7 min). Køres i U6 |
+| `.agent/readability.py` | Læsbarhedstjek uden pakker: sætningslængde (gns. højst 16, ingen over 25), kernens læsetid (5-7 min), og mailens felter i `items` (topic, why, og hvert tal i nøgletal/grafik står i historien). Køres i U6 |
 | `STRATEGI.md` | Mission, identitet "The 7", spor, redaktionel model, faser. Læs før større ændringer |
 
 ## Ufravigelige regler
