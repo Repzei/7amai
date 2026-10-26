@@ -8,7 +8,7 @@ metadata:
   modified: 2026-10-26T21:02:19.982Z
 ---
 
-# 7am AI: to-do (START HER, opdateret 2026-10-21)
+# 7am AI: to-do (START HER, opdateret 2026-10-26)
 
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
@@ -28,15 +28,18 @@ Tjekket mod STRATEGI 8-9 (henvisningsprogram fase 1, emnesider/"Shipped or not?"
 - [ ] **B2 Offentlig rettelses-side**: samlet oversigt over Corrections (findes i dag kun som blok i den enkelte mail/udgave).
 - [ ] **C Henvisningsprogram tidligere end fase 1**
 
-## VISUEL MAIL (Jesper 2026-10-26: mere visuel, mindre skrift, nemmere for læsere med læsevanskeligheder; ikke besluttet)
+## VISUEL MAIL (Jesper 2026-10-26: mere visuel, mindre skrift, nemmere for læsere med læsevanskeligheder) BYGGET OG LIVE 26/10 (commit dc48b37)
 Mockup (dansk udgave 26/10, 390 px): https://claude.ai/artifact/JKJGVy9GyEMEWXP7GGVcn7 , "I dag" vs **A skimbar** (kort pr. historie: ikon, overskrift, nøgletal, kort fortalt, kort "derfor", knap "Læs hele historien"; lang tekst flyttes til siden; sans-serif 17 px, linjeafstand 1,6; udviklerstof samlet nederst) vs **B med grafik** (som A + små grafikker i HTML med ægte tekst: trin-flow, søjler kun med tal fra historien, tal-fliser). Tweak "bodySize" 15-20 px. Principper: aldrig tekst i billeder (oplæsning og billedblokering), grafik kun med tal der står i historien.
 - [x] **BESLUTTET 2026-10-26 (Jesper): B ("b er bedst det er det der skal laves, det meget bedre").**
-- [ ] Byg B i en 7am AI-session: mail-layout (kort pr. historie, ikon, nøgletal, kort fortalt, kort derfor, knap til hele historien, udviklerstof samlet nederst, sans-serif 17 px), datafelter i front matter til grafikken (fx søjler/trin/talfliser, kun tal fra historien), STYLE.md/INSTRUCTIONS (korte "derfor"-tekster til mailen), test i Gmail/Outlook/Apple Mail (lys + mørk), dashboard/roadmap opdateres i samme ændring. Lang tekst bliver på siden.
+- [x] **B bygget og live 2026-10-26** (testside /mail-test/ godkendt af Jesper: "ja, godkendt"; skift i dc48b37). `_layouts/email.html` = ét kort pr. historie (ikon `assets/mail-icons/<topic>.png`, "n · emne · min", overskrift, nøgletal/grafik, Kort fortalt, kort Derfor, evt. Gør dette, knap til `#anker?ref=mail`); "Dagen på 60 sekunder" øverst uden why; Build uden General -> "Til udviklere" nederst (overskrift + why); Explained kun som 3 links; Arial 17 px/1,6, ingen kursiv, ingen VERSALER; kun tabeller + inline styles; mail-tid regnes af Liquid (ord i mailen / 200). Grafik i `_includes/mail-graphics.html` fra items: `bars` {title, max, rows [{l, v, t, hl}]}, `tiles` [{n, t}] (nøgletallet = første flise), `steps` {title, list}. Agentfelter: `topic` + `why` (højst ca. 20 ord) altid, `do` valgfri. readability.py melder fejl, hvis topic/why mangler eller et tal i items ikke står i historiens tekst (EDITORIAL kriterie 3). STYLE.md "Mailen", INSTRUCTIONS U3/U4/U5/U6/A2. fetch-mail.sh mod /mail/ for 26/10: exit 0. Dashboard deployet (version 5b8f0cc7), roadmap.json opdateret.
+- Test: 375 px uden vandret scroll (EN, DA, tekst), lint (ingen flex/grid/SVG/kursiv/dash/`{{`), Gmail-mørk simuleret med farveinversion. IKKE testet i rigtige Outlook- og Apple Mail-programmer (ikke tilgængelige lokalt).
+- Valg: 26/10-udgavens historie 2 (prisen) fik også General (ellers "Til udviklere"); søjle for Claude Code udeladt, fordi teksten siger "halvdelen", ikke 50 %.
+- [ ] **TJEK 27/10 efter 07:16:** første udgave hvor agenten selv udfylder felterne. PR: har alle items topic + why, readability OK, giver grafikken mening (højst 2 pr. historie, tal ordret fra teksten)? Mailen i indbakken (telefon, lys + mørk): kort, ikoner, knapper. Hvis agenten ikke giver `general` til ting for ikke-udviklere, så stram STYLE.md "Mailen".
 
 ## LÆSERTEST AF UDGAVEN 22/10 (2026-10-23, 3 Sonnet-agenter: begynder m. ordblindhed / travl leder / udvikler-ekspert, EN + DA; påstande tjekket mod teksten)
 Fælles: "Today in 60 seconds" værdsat af alle (lederen kunne stoppe dér). PHP-historien ramte alle. Dansk er naturligt og på niveau med engelsk. Tillid høj (kilder, mærker, ærlige forbehold).
 Forslag (ikke bygget; ændringer i STYLE.md/INSTRUCTIONS/layout i en 7am AI-session):
-- [ ] **1. Udviklerstof samlet nederst** ("For developers"/"Til udviklere") eller tydeligt spor-mærke: 4 af 6 historier var Build-spor; begynder og leder læste reelt 2 af 6. Hænger sammen med spor/fravalg i STRATEGI fase 1.
+- [x] **1. Udviklerstof samlet nederst i MAILEN (26/10, visuel mail).** Siden er uændret. Oprindeligt: ("For developers"/"Til udviklere") eller tydeligt spor-mærke: 4 af 6 historier var Build-spor; begynder og leder læste reelt 2 af 6. Hænger sammen med spor/fravalg i STRATEGI fase 1.
 - [ ] **2. Fagord-regel:** første gang = engelsk fagterm + kort forklaring i halv sætning (fx "weights (de tal, modellen består af)"), på begge sprog. Begynderen manglede forklaringer; eksperten ville have de engelske termer frem for "udrulninger", "serveringsmotor", "vægte", "pakkebutik".
 - [ ] **3. Præcision i redaktørkontrollen** (verificeret i teksten): "work on each word" -> "per token (word piece)"; temperature-afsnittet i Claude API-historien er selvmodsigende (fejl ved alle værdier vs. "mister effekten" på ældre modeller); mærke-konsistens (wiz.io = Official ved PHP men Reported ved LiteLLM; arxiv-preprint = Official); "70% of all websites" tilskrevet Wiz (W3Techs-tal, andel af sites med kendt serversprog) bør have rigtig kilde/forbehold; dansk "1 billion parametre" er korrekt men misforstås: skriv "1.000 milliarder".
 - [ ] **4. "Hvem skal vide det?"-linje** til ikke-teknikere (fx "Send til jeres IT/webbureau: ..."), og et klart "Gælder det mig?" i lead-historien.

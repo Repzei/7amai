@@ -32,6 +32,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `.agent/fetch-mail.sh` | Henter mailen til routinen (trin A2): venter til Pages har bygget nyeste commit på main og dagens dato, tjekker `{{`/dash, skriver /tmp-filer og emner |
 | `.agent/send-mail.mjs` | Mail til redaktøren (udkast + fallback) via Resend |
 | `.agent/broadcast.mjs` | Udgaven til alle tilmeldte (segment en/da) via workerens /broadcast |
+| `.agent/mail-icons.py` | Tegner mailens emne-ikoner `assets/mail-icons/<topic>.png` (PNG, fordi Gmail ikke viser SVG; headless Edge + Pillow) |
 | `.agent/og-source.html` | Kilde til delingsbilledet assets/og.png (render: headless Edge 1200x630) |
 | `.agent/sent.log` | Datoer der er sendt (idempotens) |
 | `.claude-memory/` | Kopi af Claude-memory for projektet + `restore-memory.ps1` |

@@ -4,38 +4,31 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  originSessionId: e46f3b18-5cc3-4f90-9572-4af7f0591899
-  modified: 2026-10-18T18:33:56.320Z
+  modified: 2026-10-26T21:38:00.237Z
+  originSessionId: 74ccaa7e-94f3-47d4-b0bd-70dc0155df30
 ---
 
-# 7am AI: handoff (sessioner 13.-21. okt. 2026)
+# 7am AI: handoff (seneste: 26. okt. 2026, visuel mail)
 
-Detaljer står i [[project-7amai-todo]]; dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
+Detaljer står i [[project-7amai-todo]] (afsnit VISUEL MAIL); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
 
-## Lavet og hvorfor
-- **21/10: mailen bygges af Jekyll** (`/mail/en/`, `/mail/da/`), så mail og side kommer fra samme fil; routinen henter den med `.agent/fetch-mail.sh` og sender den. Årsag: AI-bygget mail mistede afsnit under "1 of 2". Detaljer: to-do "MAIL BYGGES AF JEKYLL".
-- **Infrastruktur:** DNS flyttet til Cloudflare (DNSSEC fjernet først, `rsend` CNAME tilføjet), privacy@7amai.com via Email Routing, broadcast til alle tilmeldte (workerens /broadcast), privat dashboard (7amai-stats, Basic Auth) med anonyme besøgstal (D1 i EU, ingen cookies), siden synlig for Google.
-- **Kvalitet:** redaktørkontrol med 10 kriterier (kilder genåbnes), hårde regler som hook (guard.mjs, også GitHub-connectoren), research med 4 parallelle specialister på Opus 5.5, stilguide + readability.py.
-- **Format:** kerne 5-7 min ved 200 ord/min (scriptet skriver tiderne, rundet op), Explained-bibliotek (3 begreber pr. udgave) i stedet for bonus, og fra 19/10 historiestil: "Dagen på 60 sekunder", "Kort fortalt", én tråd, "Derfor er det vigtigt", samlede historier, højst 5.
-- **Overblik til Jesper:** dashboardets fane "Sådan virker det" (flowdiagrammer, tjenester, hemmeligheder, live-status) + køreplan fra `.agent/roadmap.json`.
+## Lavet og hvorfor (26/10)
+- **Visuel mail (variant B) live, commit dc48b37.** Jesper er ordblind og læser langsomt på engelsk; mailen skal kunne læses på 2-3 min. Ét kort pr. historie (ikon, nøgletal eller lille grafik, Kort fortalt, kort Derfor, knap til historien på siden), udviklerstof (Build uden General) samlet nederst, lang tekst kun på siden.
+- **Grafik kun med tal fra historien:** felter `bars`/`tiles`/`steps` i `items`, tegnet som HTML-tabeller med ægte tekst (aldrig tekst i billeder). `readability.py` stopper udgaven, hvis et tal i items ikke står ordret i historiens tekst.
+- **Agentens vejledning:** STYLE.md "Mailen", INSTRUCTIONS (U3-U6, A2), EDITORIAL kriterie 3. Dashboardets systemfane + roadmap.json opdateret og deployet.
+- Tidligere (13.-21/10): mailen bygges af Jekyll, broadcast, dashboard, redaktørkontrol + guard-hook, historiestil, Explained, ærlig læsetid.
 
 ## Valg Jesper traf
+- 26/10: variant B ("b er bedst det er det der skal laves"), testmailen godkendt ("ja, godkendt").
 - Godkendelse er valgfri (merge før 07:00 = "Reviewed by Jesper"); ingen udkast-mail; udkast kl. 05:30.
-- Automatisk godkendelse med Jespers navn blev afvist som ulovligt/vildledende (EU AI Act art. 50); i stedet ærligt mærke "checked against our editorial standards".
-- Kvalitet frem for forbrug: Opus 5.5 + 4 research-specialister til udkastet.
-- Bonus (On the radar/Try it today) droppet: "rodet"; Explained valgt efter mockup.
-- Ærlig læsetid: hellere for høj end for lav (Jesper læser langsomt på engelsk og er ordblind).
-- Marketing: fuldt automatisk, AI-mærket, kun Bluesky/Threads først, 7am AI før Gainfully, delt i delmål D1-D7 ([[marketing-todo]]).
-- Agenter: Haiku 5.5 (high på tester/db-tjekker, medium på soeger/logger), oversaetter Sonnet, reviewer Opus.
+- Ærligt AI-mærke, aldrig auto-"Reviewed" (EU AI Act art. 50). AI-mærket står øverst i mailen (ikke i bunden som i mockuppen).
 
 ## Faldgruber
-- Lange sessioner brænder tokens af (hele samtalen sendes hver gang): tjek `get_usage`, del i delmål, foreslå /clear ([[token-pacing]]).
-- Min egen stilguide skabte hakkende fakta-lister; mål korthed, men kræv tråd og bindeord.
-- Faktatjek også egne eksempler (overdrivelser som "most of the internet" sneg sig ind i en mockup).
+- Test Liquid ved at pushe en ulinket side (noindex, sitemap false) ved siden af den rigtige; skift først efter Jespers ja. Ingen Ruby lokalt.
+- Gmail viser ikke SVG: emne-ikonerne er PNG, tegnet af `.agent/mail-icons.py` (headless Edge + Pillow). Nyt emne: script + i18n `topics` + STYLE.md "Mailen".
+- Python-heredocs i bash: `\\b` i almindelige strenge bliver til backspace; skriv scripts til fil eller brug raw strings.
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
-0. Tjek afsendelsen 22/10 (første med Jekyll-mailen): fetch-mail.sh exit 0, broadcast en + da, mailen ser ud som https://7amai.com/mail/en/.
-1. [x] Udgaven 19/10 tjekket: historiestilen virker på side og i mail (små ting noteret til STYLE-forfiningen ca. 21/10).
-2. 19/10: one-liner "Daily AI news you can trust. 7 minutes at 7am." låst og live (se to-do ONE-LINER). Worker deployet.
-3. Marketing (eget projekt, `Projekter/marketing`): D1 + D2 færdige 19/10 (repo, RULES.md, skill `marketing`, 7am AI-profil med EN + DA). Dansk er nu en hovedindgang (STRATEGI 3). D3 + D4 færdige 20/10: daglig marketing-routine lægger opslag i kø fra 21/10. NÆSTE: tjek 21/10-kørslen, start fra `project_marketing_todo.md`. Besluttet: separate danske konti (Jesper 19/10).
+1. Tjek udgaven 27/10 (første hvor agenten selv udfylder topic/why/grafik): PR, readability, mailen på telefonen i lys og mørk.
+2. Resten af læsertestens forslag (fagord-regel, præcision, "Hvem skal vide det?", analogier) og forslag A1/A2/B1/B2 i to-do'en.
