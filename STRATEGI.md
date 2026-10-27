@@ -118,9 +118,10 @@ Regler, så sporene ikke skræmmer nogen væk:
 - **Engelsk er hovedudgaven** ("bedst i verden" kræver engelsk).
 - **Dansk udgave** laves automatisk ud fra den engelske. Den må ikke koste Jesper tid.
 - **Dansk er en hovedindgang (Jesper 19. okt. 2026):** næsten ingen daglige, kildebelagte
-  AI-nyhedsbreve findes på dansk. Marketing har derfor en separat dansk konto på Threads
-  med opslag fra den danske udgave (dansk Bluesky fravalgt 23. okt. 2026: for få danske brugere,
-  og de læser engelsk; danske læsere nås desuden manuelt på LinkedIn og Facebook). Påstå aldrig "den eneste" eller "den første" (ikke dokumenteret).
+  AI-nyhedsbreve findes på dansk. Automatisk marketing har dog ingen danske kanaler: dansk
+  Bluesky blev fravalgt 23. okt. og dansk Threads 27. okt. 2026 efter publikumsanalyser (for få
+  eller ingen data om danske brugere, og de læser engelsk). Danske læsere nås manuelt på
+  LinkedIn og Facebook. Påstå aldrig "den eneste" eller "den første" (ikke dokumenteret).
 - Begge udgaver mærkes efter samme regel (se afsnit 4). En AI-oversættelse tæller også
   som AI-genereret tekst.
 
