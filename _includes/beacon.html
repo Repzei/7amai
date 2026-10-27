@@ -11,9 +11,11 @@
 
   var params = new URLSearchParams(location.search);
   var src = "direct";
-  if (params.get("ref") === "mail") {
-    src = "mail";
-    // Fjernes fra adresselinjen, så et delt link ikke tæller som et besøg fra mailen.
+  var ref = params.get("ref");
+  // ?ref= fra mailen og vores opslag. Bluesky- og Threads-apperne sender ofte ingen referrer.
+  if (["mail", "bluesky", "threads"].indexOf(ref) >= 0) {
+    src = ref;
+    // Fjernes fra adresselinjen, så et delt link ikke tæller som et besøg fra samme kilde igen.
     params.delete("ref");
     var q = params.toString();
     history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash);
@@ -22,7 +24,9 @@
     try { host = new URL(document.referrer).hostname; } catch (e) {}
     if (host === location.hostname) src = "internal";
     else if (/(^|\.)(google|bing|duckduckgo|ecosia|yahoo|brave|qwant|startpage)\.[a-z.]+$/.test(host)) src = "search";
-    else if (/(^|\.)(linkedin\.com|lnkd\.in|x\.com|t\.co|twitter\.com|facebook\.com|reddit\.com|bsky\.app|threads\.net|news\.ycombinator\.com)$/.test(host)) src = "social";
+    else if (/(^|\.)bsky\.app$/.test(host)) src = "bluesky";
+    else if (/(^|\.)threads\.(net|com)$/.test(host)) src = "threads";
+    else if (/(^|\.)(linkedin\.com|lnkd\.in|x\.com|t\.co|twitter\.com|facebook\.com|reddit\.com|news\.ycombinator\.com)$/.test(host)) src = "social";
     else src = "other";
   }
 

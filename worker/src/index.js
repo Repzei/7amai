@@ -41,7 +41,7 @@ export default {
 
 // Anonym besøgsstatistik: kun tal, intet om personen (ingen IP, user agent eller klokkeslæt gemmes).
 // Siden sender med sendBeacon som text/plain, så browseren ikke laver en CORS-preflight.
-const HIT_SOURCES = new Set(["mail", "search", "social", "other", "direct", "internal"]);
+const HIT_SOURCES = new Set(["mail", "bluesky", "threads", "search", "social", "other", "direct", "internal"]);
 async function hit(request, env, cors) {
   const done = (status) => new Response(null, { status, headers: cors });
   if (request.headers.get("Origin") !== env.SITE) return done(403);

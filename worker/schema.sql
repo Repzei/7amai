@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS visits (
   day TEXT NOT NULL,        -- YYYY-MM-DD, dansk tid
   path TEXT NOT NULL,       -- fx /2026/10/13/ eller /da/
   lang TEXT NOT NULL,       -- en | da
-  src TEXT NOT NULL,        -- mail | search | social | other | direct
+  src TEXT NOT NULL,        -- mail | bluesky | threads | search | social | other | direct | internal
   seconds INTEGER NOT NULL, -- aktiv tid med siden synlig, 0-1800
   scroll INTEGER NOT NULL   -- længst scrollet, 0-100 %
 );
