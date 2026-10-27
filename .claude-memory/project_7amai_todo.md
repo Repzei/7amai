@@ -28,6 +28,12 @@ Tjekket mod STRATEGI 8-9 (henvisningsprogram fase 1, emnesider/"Shipped or not?"
 - [ ] **B2 Offentlig rettelses-side**: samlet oversigt over Corrections (findes i dag kun som blok i den enkelte mail/udgave).
 - [ ] **C Henvisningsprogram tidligere end fase 1**
 
+## DELINGSBILLEDE PR. UDGAVE (og:image, 2026-10-27, commit 74580c9; Jesper valgte B med A som reserve via marketing)
+- [x] `.agent/og-image.py` (Pillow, skrifter i `.agent/fonts/`, OFL) tegner `assets/og/<dato>.png` + `assets/og/da/<dato>.png`, 1200x630, ca. 50 KB. B: lead-historiens nøgletal i sol-orange + forklaring (Newsreader) + overskrift; A (intet nøgletal): overskrift stort + sol på stregen. Kun udgavens egne data. Top: "7am AI" + "TUE 27 OCT · 7 MIN"/"TIR 27 OKT · 7 MIN".
+- [x] `default.html`: udgavesiden bruger sit eget billede + alt-tekst (nøgletal, forklaring, titel), når filen findes, ellers og.png. Live tjekket for 27/10 EN + DA; A testet lokalt på 15/10 (EN + DA).
+- [x] Udkast-routinen: INSTRUCTIONS U6 punkt 5 (pip install pillow hvis den mangler; fejler det, fortsæt uden) + U7 committer billederne. Systemfanen deployet (b7e62430), roadmap.json opdateret.
+- [ ] **TJEK 28/10:** har PR'en `assets/og/2026-10-28.png` (+ da), og står "delingsbillede OK" i agentens slutlinje? Hvis Pillow ikke kan installeres i skyen: overvej at lægge `pip install pillow` i miljøets setup-script. Marketing: link-kortet i næste Bluesky-opslag skal vise dagens billede.
+
 ## BLUESKY/THREADS SOM KILDER I BESØGSTALLENE (2026-10-27, commit 4cc58b5; Jesper godkendte)
 - [x] Beacon: `?ref=bluesky`/`?ref=threads` giver egen kilde og fjernes fra adresselinjen (som `?ref=mail`); referrer bsky.app -> bluesky, threads.net/.com -> threads (før: "social"). Marketing-opslagene linker med `?ref=bluesky` (marketing e437c50), Threads kommer senere.
 - [x] Worker HIT_SOURCES + bluesky/threads (deployet, version 46b5479b), dashboard viser "Bluesky"/"Threads", "social" hedder nu "Andre sociale medier" (version fe6e8f05). Privatlivspolitik EN/DA nævner dem (opdateret 27/10).

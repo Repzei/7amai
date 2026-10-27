@@ -8,7 +8,7 @@ metadata:
   originSessionId: 74ccaa7e-94f3-47d4-b0bd-70dc0155df30
 ---
 
-# 7am AI: handoff (seneste: 26. okt. 2026, visuel mail)
+# 7am AI: handoff (seneste: 27. okt. 2026, besøgskilder + delingsbillede; før det 26/10 visuel mail)
 
 Detaljer står i [[project-7amai-todo]] (afsnit VISUEL MAIL); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
 
@@ -17,6 +17,10 @@ Detaljer står i [[project-7amai-todo]] (afsnit VISUEL MAIL); dette er overblikk
 - **Grafik kun med tal fra historien:** felter `bars`/`tiles`/`steps` i `items`, tegnet som HTML-tabeller med ægte tekst (aldrig tekst i billeder). `readability.py` stopper udgaven, hvis et tal i items ikke står ordret i historiens tekst.
 - **Agentens vejledning:** STYLE.md "Mailen", INSTRUCTIONS (U3-U6, A2), EDITORIAL kriterie 3. Dashboardets systemfane + roadmap.json opdateret og deployet.
 - Tidligere (13.-21/10): mailen bygges af Jekyll, broadcast, dashboard, redaktørkontrol + guard-hook, historiestil, Explained, ærlig læsetid.
+
+## Lavet 27/10
+- Bluesky/Threads som egne kilder i besøgstallene (4cc58b5, workers deployet).
+- Delingsbillede pr. udgave (74580c9): `.agent/og-image.py` i udkast-routinen, B med nøgletal, A som reserve. Tjek 28/10, at routinen kunne køre det (Pillow i skyen).
 
 ## Valg Jesper traf
 - 26/10: variant B ("b er bedst det er det der skal laves"), testmailen godkendt ("ja, godkendt").
@@ -30,5 +34,5 @@ Detaljer står i [[project-7amai-todo]] (afsnit VISUEL MAIL); dette er overblikk
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
-1. Tjek udgaven 27/10 (første hvor agenten selv udfylder topic/why/grafik): PR, readability, mailen på telefonen i lys og mørk.
+1. Tjek udgaven 28/10: delingsbilledet i PR'en (og "delingsbillede OK"), mailens kort/grafik, Bluesky-link-kortet.
 2. Resten af læsertestens forslag (fagord-regel, præcision, "Hvem skal vide det?", analogier) og forslag A1/A2/B1/B2 i to-do'en.
