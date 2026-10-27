@@ -8,7 +8,7 @@ metadata:
   modified: 2026-10-26T21:02:19.982Z
 ---
 
-# 7am AI: to-do (START HER, opdateret 2026-10-26)
+# 7am AI: to-do (START HER, opdateret 2026-10-27)
 
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
@@ -27,6 +27,12 @@ Tjekket mod STRATEGI 8-9 (henvisningsprogram fase 1, emnesider/"Shipped or not?"
 - [ ] **B1 "Sådan arbejder vi"-side** (EN + DA): hvordan historier vælges, Official/Reported/Unconfirmed, AI skriver + redaktørkontrol + AI-mærkning. Gør "you can trust" synligt; hjælper EU AI Act-gennemsigtighed og SEO.
 - [ ] **B2 Offentlig rettelses-side**: samlet oversigt over Corrections (findes i dag kun som blok i den enkelte mail/udgave).
 - [ ] **C Henvisningsprogram tidligere end fase 1**
+
+## BLUESKY/THREADS SOM KILDER I BESØGSTALLENE (2026-10-27, commit 4cc58b5; Jesper godkendte)
+- [x] Beacon: `?ref=bluesky`/`?ref=threads` giver egen kilde og fjernes fra adresselinjen (som `?ref=mail`); referrer bsky.app -> bluesky, threads.net/.com -> threads (før: "social"). Marketing-opslagene linker med `?ref=bluesky` (marketing e437c50), Threads kommer senere.
+- [x] Worker HIT_SOURCES + bluesky/threads (deployet, version 46b5479b), dashboard viser "Bluesky"/"Threads", "social" hedder nu "Andre sociale medier" (version fe6e8f05). Privatlivspolitik EN/DA nævner dem (opdateret 27/10).
+- Testet: 9 tilfælde i en simuleret browser OK; live: /2026/10/27/?ref=bluesky -> ref fjernet, række src=bluesky gemt i D1 (id 52, min test, slettet igen).
+- [ ] Om 1-2 uger: hvor mange besøg kommer fra Bluesky i dashboardet? Bruges som mål for, om marketing virker.
 
 ## VISUEL MAIL (Jesper 2026-10-26: mere visuel, mindre skrift, nemmere for læsere med læsevanskeligheder) BYGGET OG LIVE 26/10 (commit dc48b37)
 Mockup (dansk udgave 26/10, 390 px): https://claude.ai/artifact/JKJGVy9GyEMEWXP7GGVcn7 , "I dag" vs **A skimbar** (kort pr. historie: ikon, overskrift, nøgletal, kort fortalt, kort "derfor", knap "Læs hele historien"; lang tekst flyttes til siden; sans-serif 17 px, linjeafstand 1,6; udviklerstof samlet nederst) vs **B med grafik** (som A + små grafikker i HTML med ægte tekst: trin-flow, søjler kun med tal fra historien, tal-fliser). Tweak "bodySize" 15-20 px. Principper: aldrig tekst i billeder (oplæsning og billedblokering), grafik kun med tal der står i historien.
