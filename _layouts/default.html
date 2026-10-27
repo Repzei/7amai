@@ -28,10 +28,21 @@
   <meta property="og:description" content="{{ page_desc }}" />
   <meta property="og:url" content="{{ canonical }}" />
   <meta property="og:locale" content="{% if lang == 'da' %}da_DK{% else %}en_US{% endif %}" />
-  <meta property="og:image" content="{{ '/assets/og.png' | absolute_url }}" />
+  {%- comment -%} Udgavens eget delingsbillede (.agent/og-image.py), når det findes; ellers og.png. {%- endcomment -%}
+  {%- assign og_image = '/assets/og.png' -%}{%- capture og_alt %}7am AI: {{ t.tagline }}{% endcapture -%}
+  {%- if page.collection == 'posts' or page.collection == 'da' -%}
+    {%- capture og_path %}/assets/og/{% if lang == 'da' %}da/{% endif %}{{ page.date | date: '%Y-%m-%d' }}.png{% endcapture -%}
+    {%- assign og_file = site.static_files | where: "path", og_path | first -%}
+    {%- if og_file -%}
+      {%- assign og_image = og_path -%}
+      {%- assign og_lead = page.items | where: "n", 1 | first -%}
+      {%- capture og_alt %}7am AI: {% if og_lead.number %}{{ og_lead.number }} {{ og_lead.number_label }}. {% endif %}{{ page.title }}{% endcapture -%}
+    {%- endif -%}
+  {%- endif %}
+  <meta property="og:image" content="{{ og_image | absolute_url }}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="7am AI: {{ t.tagline }}" />
+  <meta property="og:image:alt" content="{{ og_alt | escape }}" />
   {%- if page.date %}
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
   {%- endif %}

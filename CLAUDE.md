@@ -33,6 +33,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `.agent/send-mail.mjs` | Mail til redaktøren (udkast + fallback) via Resend |
 | `.agent/broadcast.mjs` | Udgaven til alle tilmeldte (segment en/da) via workerens /broadcast |
 | `.agent/mail-icons.py` | Tegner mailens emne-ikoner `assets/mail-icons/<topic>.png` (PNG, fordi Gmail ikke viser SVG; headless Edge + Pillow) |
+| `.agent/og-image.py`, `.agent/fonts/` | Delingsbillede pr. udgave (1200x630 PNG, Pillow, skrifter OFL): `assets/og/<dato>.png` og `assets/og/da/<dato>.png`, lavet i udkast-routinen (U6 punkt 5). B = lead-historiens nøgletal stort, A (intet nøgletal) = overskrift + sol. `default.html` bruger det på udgavesiden, når filen findes, ellers `assets/og.png` |
 | `.agent/og-source.html` | Kilde til delingsbilledet assets/og.png (render: headless Edge 1200x630) |
 | `.agent/sent.log` | Datoer der er sendt (idempotens) |
 | `.claude-memory/` | Kopi af Claude-memory for projektet + `restore-memory.ps1` |
