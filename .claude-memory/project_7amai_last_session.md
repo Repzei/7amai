@@ -4,7 +4,7 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-10-29T21:39:24.219Z
+  modified: 2026-10-29T22:03:42.109Z
   originSessionId: 7c954deb-6af0-4771-b27f-2ea083bcde67
 ---
 
@@ -16,8 +16,11 @@ Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE og MARKEDSPOS
 - **Markedsanalyse** (artifact https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE): de store sælger "lær AI på jobbet" (kurser, værktøjer, prompts), ingen viser kildesikkerhed eller rettelser. Jesper valgte "tillid, man kan se" + de gratis dele af dansk (B) og Build (C), og "Shipped or not?" rykket frem fra fase 2. Skrevet i STRATEGI 7.1 + roadmap.json (f314ee3).
 - **Skridt 1 live (f9927f5):** videresend-linje øverst i mailen (`?ref=forward#signup`), opfordring til at videresende nederst, Del-knap pr. historie (`_includes/share.html`, `?ref=share`), tilmeldingsformular nederst på udgaven + link til den øverst. Nye kilder forward/share i beacon, worker, dashboard og privatlivspolitik EN/DA. Workers deployet af Jesper (627ed080 / 0347f738).
 
+- **Skridt 2 live (90e34cd):** "How we work" / "Sådan arbejder vi" (/how-we-work/, /da/metode/) med tal for de 7 seneste udgaver, proces, kildemærker, AI-mærkning og rettelsesliste, alt regnet af Jekyll (`_includes/trust-stats.html`). Linket fra sidefoden og legenden i hver udgave.
+
 ## Valg Jesper traf
 - 29/10: kombineret plan besluttet; "Shipped or not?" nu som skridt 4; testsiderne godkendt, men bad om en ekstra gennemgang først (gav: videresend-linje øverst i stedet for nederst, link til tilmelding øverst på udgaven, aria-label på Del).
+- 29/10: privacy@ som fejl-adresse for nu; rettelser@ + svar på brief@ tages i en anden session; INGEN link til GitHub ("så åben skal det heller ikke være").
 - Valgt fra: kilde pr. tilmeldt (ville knytte spor til mailadressen, strider mod privatlivspolitikken).
 
 ## Faldgruber
@@ -29,5 +32,5 @@ Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE og MARKEDSPOS
 
 ## Hvor vi starter næste gang
 1. Tjek mailen 30/10: videresend-linjen øverst og opfordringen nederst (EN + DA), Del-knappen på en rigtig telefon.
-2. Skridt 2: "Sådan arbejder vi" + åben rettelsesliste med ugens tal (EN + DA, Liquid, 0 tokens).
+2. Skridt 3: emnesider fra items `topic` (EN + DA; start med sikkerhed, EU AI Act, åbne modeller), "Set i udgaverne" på Explained, danske søgeord i /da/-titler. Evt. først 2b (rettelser@ + brief@-svar).
 3. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console og vælg næste skridt.
