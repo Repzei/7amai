@@ -184,6 +184,9 @@ Metadata til routinen: 7amai-date (udgavens dato) og 7amai-revision (den commit,
   </tr></table>
   <p style="margin:14px 0 0;{{ ff }}font-size:16px;line-height:1.5;color:#55627A;">{{ post.today.size }} {{ t.mail_count }} · {{ mail_min }} {{ t.mail_skim }} · {{ post.minutes }} {{ t.mail_full }}</p>
   <p style="margin:8px 0 0;{{ ff }}font-size:14px;line-height:1.45;color:#55627A;">{{ disclosure }}</p>
+  {%- if page.forward_box %}
+  <p style="margin:8px 0 0;{{ ff }}font-size:14px;line-height:1.45;color:#55627A;">{{ t.mail_forward }} <a href="{{ home_url }}?ref=forward#signup" style="color:#B4500A;font-weight:800;">{{ t.mail_forward_cta }}</a></p>
+  {%- endif %}
 </td></tr>
 <tr><td>
 {{ today_box }}
@@ -197,7 +200,7 @@ Metadata til routinen: 7amai-date (udgavens dato) og 7amai-revision (den commit,
 {{ explained_box }}
 {%- if page.forward_box %}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;background:#FFFFFF;border-radius:16px;"><tr><td style="padding:16px 20px;{{ ff }}font-size:17px;line-height:1.5;color:#0E1A33;">
-  <b>{{ t.mail_forward }}</b><br><a href="{{ home_url }}?ref=forward#signup" style="color:#B4500A;font-weight:800;">{{ t.mail_forward_cta }}</a>
+  <b>{{ t.mail_pass_on }}</b><br><span style="color:#55627A;">{{ t.mail_pass_on_note }}</span>
 </td></tr></table>
 {%- endif %}
 </td></tr>

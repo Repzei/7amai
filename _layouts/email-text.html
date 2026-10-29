@@ -149,7 +149,8 @@ kort pr. historie med grafikkens tal som tekst, "Til udviklere" samlet nederst.
   {%- endif %}
 {%- endif %}
 
-{% if page.forward_box %}{{ t.mail_forward }} {{ t.mail_forward_cta }}: {{ t.home | absolute_url }}?ref=forward#signup
+{% if page.forward_box %}{{ t.mail_pass_on }} {{ t.mail_pass_on_note }}
+{{ t.mail_forward }} {{ t.mail_forward_cta }}: {{ t.home | absolute_url }}?ref=forward#signup
 
 {% endif %}{{ t.mail_issue }}: {{ issue_url }}?ref=mail
 {{ t.mail_other }}: {{ other_url }}?ref=mail
