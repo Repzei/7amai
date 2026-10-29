@@ -1,6 +1,0 @@
----
-layout: email-text
-lang: da
-sitemap: false
-forward_box: true
----

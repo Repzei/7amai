@@ -113,11 +113,11 @@
     {
       "name": "Næste: Tillid, man kan se",
       "goal": "Gøre \"you can trust\" synligt og efterprøveligt på siden (besluttet 29. okt.)",
-      "status": "next",
+      "status": "doing",
       "items": [
         {
-          "t": "Videresend-linje i mailen og del-link ved hver historie",
-          "s": "next"
+          "t": "Videresend-linje i mailen, del-knap ved hver historie og tilmelding på udgavesiden",
+          "s": "done"
         },
         {
           "t": "\"Sådan arbejder vi\"-side + åben rettelsesliste med ugens tal (EN + DA)",
