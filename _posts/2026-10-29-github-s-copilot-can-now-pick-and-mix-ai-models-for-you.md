@@ -3,15 +3,15 @@ title: "GitHub's Copilot can now pick and mix AI models for you"
 summary: "GitHub's Copilot Fusion chooses the models for each coding task, as agents start four in ten pull requests. Also: Google's Gemini 4 Carbon goes to security teams first, big tech's AI money, Claude's spending reports, and Britain's deal for data centres."
 date: 2026-10-29 07:00:00 +0100
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "model-routing", from: 1, more: ["ai-agent", "benchmark"] }
 today:
   - { t: "GitHub's Copilot Fusion picks and mixes AI models for each coding task.", why: "Developers and anyone paying for coding agents." }
   - { t: "Google's Gemini 4 Carbon tops a key ranking, but only cyber defenders get it.", why: "Anyone following the race between the big AI labs." }
-  - { t: "Microsoft took in $10B from OpenAI in a quarter, and Google takes AI ads abroad.", why: "Anyone wondering whether AI makes money." }
+  - { t: "Microsoft took in $10B from OpenAI, and Google takes AI ads abroad.", why: "Anyone wondering whether AI makes money." }
   - { t: "Claude Enterprise now shows what each team's AI spending buys.", why: "Managers and finance teams paying the AI bill." }
-  - { t: "Britain offers faster power to data centres that keep AI data at home.", why: "Anyone following where Europe's AI will run." }
+  - { t: "Britain offers faster grid access to data centres that invest locally.", why: "Anyone following where Europe's AI will run." }
 other_lang_url: /da/2026/10/29/
 items:
   - { n: 1, anchor: "copilot-fusion", signal: big, tracks: [build, general], min: 1.5, source: official, topic: code, why: "Developers stop picking models, and the price of a finished task becomes what counts.", bars: { title: "Pull requests that began with an agent's draft", max: 100, rows: [{ l: "March", v: 17, t: "17%" }, { l: "September", v: 40, t: "40%", hl: true }] } }
@@ -30,10 +30,10 @@ items:
 
 On Wednesday, GitHub said over 40% of pull requests began with an agent's first draft in September, up from 17% in March. A pull request is a proposed change to a project's code.
 
-So which model should a team pay for? At its Universe conference, GitHub's answer was: stop choosing.
+That leaves every team choosing which model to pay for. At its Universe conference, GitHub's answer was to stop choosing.
 
 #### <span>1 of 2</span> Copilot Fusion
-In Copilot, you can now pick "Copilot Fusion" instead of one model. You set the effort to Standard, High or Max, and Copilot decides which models do the work. Often a cheap model drafts, and a stronger one steps in only if a check fails.
+In Copilot, you can now pick "Copilot Fusion" instead of one model. You set the effort to Standard, High or Max, and Copilot decides which models do the work. Sometimes a cheap model drafts, and a stronger one steps in only if a check fails.
 
 Artificial Analysis, an independent test group, put Fusion Max about two points behind Claude Code with Opus 5.5 at Max. But Fusion cost about half as much per task, VentureBeat reports. It works on every Copilot plan.
 
@@ -42,7 +42,7 @@ The catch: you still pay each model's normal rate, and a benchmark is not your c
 #### <span>2 of 2</span> Copilot comes with GitHub Enterprise
 GitHub Enterprise now includes Copilot for every licensed user, first for customers who buy through a sales team. Instead of fixed AI credits per seat, the company pays for use from one shared budget. If it runs out, code completion still works.
 
-<div class="why"><b>Why it matters</b><p>It is like a phone plan that moves from a fixed bundle to paying per call, while the phone picks the cheapest network. Developers stop picking models, and the price of a finished task becomes what counts.</p></div>
+<div class="why"><b>Why it matters</b><p>It is like a phone plan that moves from a fixed bundle to paying per call. Meanwhile, the phone picks a good enough network for each call. Developers stop picking models, and the price of a finished task becomes what counts.</p></div>
 
 Source: [github.blog](https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion) · <span class="tag tag-official">Official</span> · [github.blog](https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot) · <span class="tag tag-official">Official</span> · [github.blog](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/) · <span class="tag tag-official">Official</span> · [venturebeat.com](https://venturebeat.com/orchestration/github-copilot-fusion-mixes-models-to-achieve-near-opus-5-5-coding-performance-at-half-the-per-task-cost) · <span class="tag tag-reported">Reported</span>
 {: .sources}
@@ -64,16 +64,16 @@ Google also opened a preview that lets developers put their apps inside Gemini a
 
 <div class="why"><b>Why it matters</b><p>The assistant is becoming the place where work happens. For an app, being found inside Gemini may soon matter as much as ranking high in Google search once did.</p></div>
 
-Source: [blog.google](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/) · <span class="tag tag-official">Official</span> · [artificialanalysis.ai](https://artificialanalysis.ai/models/gemini-4-carbon) · <span class="tag tag-reported">Reported</span> · [blog.google](https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place/) · <span class="tag tag-official">Official</span> · [techcrunch.com](https://techcrunch.com/2026/10/28/as-ai-agents-reshape-the-web-google-opens-gemini-and-search-to-more-apps/) · <span class="tag tag-reported">Reported</span>
+Source: [blog.google](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/) · <span class="tag tag-official">Official</span> · [artificialanalysis.ai](https://artificialanalysis.ai/models/gemini-4-carbon) · <span class="tag tag-official">Official</span> · [blog.google](https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place/) · <span class="tag tag-official">Official</span> · [techcrunch.com](https://techcrunch.com/2026/10/28/as-ai-agents-reshape-the-web-google-opens-gemini-and-search-to-more-apps/) · <span class="tag tag-reported">Reported</span>
 {: .sources}
 
-### 3. Microsoft took in $10B from OpenAI in a quarter, and Google takes AI ads abroad {#big-tech-ai-money}
+### 3. Microsoft took in $10B from OpenAI, and Google takes AI ads abroad {#big-tech-ai-money}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1 min</span></p>
 <div class="number"><b>$10B</b><span>Microsoft's revenue from OpenAI in one quarter</span></div>
 
 <p class="short"><span>The short version</span>New results show how much money now flows through AI. Microsoft took in $10B from OpenAI in three months, and Google is bringing ads in AI search beyond the US.</p>
 
-When will AI start to pay? Microsoft took in $10B from its deals with OpenAI in the quarter to September, TechCrunch reports from Microsoft's filing. Google Cloud, which rents out computing power for AI, grew its revenue 103% from a year ago.
+Microsoft took in $10B from its deals with OpenAI in the quarter to September, TechCrunch reports from Microsoft's filing. Google Cloud, which rents out computing power for AI, grew its revenue 103% from a year ago.
 
 Search, Google's old money machine, grew only 12%, slower than earlier this year. Meanwhile, Google is taking ads in AI Mode, its chat-style search, to other countries for the first time.
 
@@ -90,7 +90,7 @@ Source: [techcrunch.com](https://techcrunch.com/2026/10/28/microsoft-recorded-10
 
 <p class="short"><span>The short version</span>Claude Enterprise now reports what each team gets done with Claude and what it costs. Teams can also share one monthly budget.</p>
 
-AI bills are growing faster than planned. Spending on coding tools built on Anthropic's models grew 10x this year, says Jellyfish, which tracks how engineers work. That is still only about 2% of total engineering costs, TechCrunch reports.
+Spending on coding tools built on Anthropic's models grew 10x this year, says Jellyfish, which tracks how engineers work, faster than most finance chiefs planned. It is still only about 2% of engineering costs, TechCrunch reports.
 
 On Wednesday, Anthropic added new tools to Claude Enterprise. Smart reports read a sample of a team's chats and show what the work cost and where it got stuck. With a shared monthly budget, heavy users run out less often while colleagues leave theirs unused.
 
@@ -101,16 +101,16 @@ The catch: this is the seller's own report on what its product is worth.
 Source: [claude.com](https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets) · <span class="tag tag-official">Official</span> · [techcrunch.com](https://techcrunch.com/2026/10/28/anthropic-just-launched-tools-to-show-companies-what-their-ai-spending-is-buying/) · <span class="tag tag-reported">Reported</span>
 {: .sources}
 
-### 5. Britain offers faster power to data centres that keep AI data at home {#uk-data-centre-covenant}
+### 5. Britain offers faster grid access to data centres that invest locally {#uk-data-centre-covenant}
 <p class="item-meta"><span class="signal signal-quick">Quick hit</span><span class="track">Europe</span><span class="track">General</span><span class="track">1 min</span></p>
 
 <p class="short"><span>The short version</span>Britain's budget offers AI data centres a faster grid connection if they invest locally and protect water. The aim is to keep sensitive data in the country.</p>
 
 AI data centres need a lot of power. In Essex, grid delays pushed the power for one planned data centre into the 2030s, and Microsoft dropped its plans for it, Reuters reports.
 
-In Wednesday's budget, finance minister John Healey offered a deal called the British Data Centre Covenant. Operators that invest locally, create jobs and protect water supplies get priority on the grid.
+In Wednesday's budget, finance minister John Healey offered a deal called the British Data Centre Covenant. Operators that invest locally, create jobs and protect water supplies get priority on the grid, and may build their own power on site.
 
-The catch: Britain estimates it needs to triple its AI-ready capacity by 2030, and a faster queue does not build new power lines.
+The catch: Britain estimates it needs to triple its AI-ready capacity by 2030, and the deal itself adds no new capacity.
 
 <div class="why"><b>Why it matters</b><p>"When our armed forces use AI to keep us safe, we want that data here," Healey said. Like keeping a country's gold in its own vault, more governments want their AI to run on their own soil.</p></div>
 
@@ -130,7 +130,7 @@ Meeting notes often go to a cloud service to be typed out. Two releases let you 
 #### <span>1 of 2</span> Nemotron 3.5 Transcribe
 NVIDIA's new model is free, also for commercial use. It handles hour-long recordings and can tell speakers apart. NVIDIA says it ranks first among open models on a common English test.
 
-The catch: for now it needs a large data-centre GPU, and smaller versions for PCs have not shipped yet. It also only works on finished recordings.
+The catch: for now it is built for big graphics cards, and lighter versions for PCs are still coming. It also only works on finished recordings.
 
 #### <span>2 of 2</span> llama.cpp 0.8.0
 llama.cpp's built-in server now does live voice chat and text to speech. It follows the same protocol as OpenAI's realtime voice service, so tools written for that should be easy to point at your own computer.
@@ -142,7 +142,7 @@ Source: [huggingface.co](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Trans
 
 ## Paper of the day
 
-### A cheap classifier can tell why sources disagree, almost like a big model {#rag-conflict-typing}
+### Cheap models can tell why sources disagree, almost like big ones {#rag-conflict-typing}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">1 min</span></p>
 
 <p class="short"><span>The short version</span>When an AI's sources disagree, it needs to know why. Researchers show that cheap "decision models" can usually tell, and pass only the hardest cases to a big model.</p>

@@ -22,4 +22,4 @@ There are a few common ways to do it. A simple router guesses from the question 
 
 It works. In a 2024 study, researchers at LMSYS sent most questions to a cheaper model. On one test, they kept 95% of GPT-4's quality and cut costs by over 85%. The catch is that a router can be wrong. If it sends a hard question to a weak model, the answer gets worse, and you may not notice.
 
-**Why it matters to you:** more and more AI tools now choose the model for you, often behind an "auto" setting. That can make the same work much cheaper. But it also means you do not always know which model gave you the answer.
+**Why it matters to you:** more and more AI tools now choose the model for you, often behind an "auto" setting or an effort level. That can make the same work much cheaper. But it also means you do not always know which model gave you the answer.
