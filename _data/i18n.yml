@@ -22,6 +22,8 @@ en:
   signup_err: "Something went wrong. Please try again in a minute."
   privacy_label: "Privacy"
   privacy_url: /privacy/
+  how_label: "How we work"
+  how_url: /how-we-work/
   legend: "How sure are we?"
   legend_official: "Official: from the company, regulator or authors"
   legend_reported: "Reported: from a named outlet"
@@ -87,6 +89,8 @@ da:
   signup_err: "Noget gik galt. Prøv igen om et minut."
   privacy_label: "Privatlivspolitik"
   privacy_url: /da/privacy/
+  how_label: "Sådan arbejder vi"
+  how_url: /da/metode/
   legend: "Hvor sikre er vi?"
   legend_official: "Officiel: fra firmaet, myndigheden eller forfatterne"
   legend_reported: "Rapporteret: fra et navngivet medie"
