@@ -425,7 +425,7 @@ footer { margin-top:24px; }
 <script>
 (function () {
   var app = document.getElementById("app");
-  var SRC = { mail: "Mailen", bluesky: "Bluesky", threads: "Threads", search: "Søgning", social: "Andre sociale medier", direct: "Direkte", internal: "Intern klik", other: "Andre sider" };
+  var SRC = { mail: "Mailen", bluesky: "Bluesky", threads: "Threads", forward: "Videresendt mail", share: "Delte links", search: "Søgning", social: "Andre sociale medier", direct: "Direkte", internal: "Intern klik", other: "Andre sider" };
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function pct(x) { return x == null ? "-" : Math.round(x * 100) + " %"; }
   function dur(s) { if (s == null) return "-"; var m = Math.floor(s / 60), r = s % 60; return m ? m + " min " + r + " s" : r + " s"; }

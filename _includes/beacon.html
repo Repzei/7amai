@@ -12,8 +12,9 @@
   var params = new URLSearchParams(location.search);
   var src = "direct";
   var ref = params.get("ref");
-  // ?ref= fra mailen og vores opslag. Bluesky- og Threads-apperne sender ofte ingen referrer.
-  if (["mail", "bluesky", "threads"].indexOf(ref) >= 0) {
+  // ?ref= fra mailen, vores opslag, videresendte mails og del-knappen. Bluesky- og Threads-apperne
+  // og beskedapper sender ofte ingen referrer.
+  if (["mail", "bluesky", "threads", "forward", "share"].indexOf(ref) >= 0) {
     src = ref;
     // Fjernes fra adresselinjen, så et delt link ikke tæller som et besøg fra samme kilde igen.
     params.delete("ref");

@@ -195,6 +195,11 @@ Metadata til routinen: 7amai-date (udgavens dato) og 7amai-revision (den commit,
 </td></tr></table>
 {%- endif %}
 {{ explained_box }}
+{%- if page.forward_box %}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;background:#FFFFFF;border-radius:16px;"><tr><td style="padding:16px 20px;{{ ff }}font-size:17px;line-height:1.5;color:#0E1A33;">
+  <b>{{ t.mail_forward }}</b><br><a href="{{ home_url }}?ref=forward#signup" style="color:#B4500A;font-weight:800;">{{ t.mail_forward_cta }}</a>
+</td></tr></table>
+{%- endif %}
 </td></tr>
 <tr><td style="padding:4px 4px 0;{{ ff }}">
   <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#FF8A2A;border-radius:12px;mso-padding-alt:13px 22px;"><a href="{{ issue_url }}?ref=mail" style="display:inline-block;padding:13px 22px;{{ ff }}font-size:17px;line-height:1.2;font-weight:800;color:#0E1A33;text-decoration:none;">{{ t.mail_issue }}</a></td></tr></table>

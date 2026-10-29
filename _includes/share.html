@@ -1,0 +1,39 @@
+{%- assign t = site.data.i18n[page.lang] -%}
+<script>
+(function () {
+  // Del-knap ved hver historie. Linket får ?ref=share, så besøgsstatistikken kan tælle besøg fra
+  // delte links (beacon fjerner mærket igen). Telefoner får systemets del-menu, resten kopierer.
+  var L = { share: {{ t.share | jsonify }}, copied: {{ t.share_copied | jsonify }}, fallback: {{ t.share_fallback | jsonify }} };
+  var icon = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v9M4.5 4.5 8 1l3.5 3.5M3 8v6h10V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var heads = document.querySelectorAll(".issue-body h3[id]");
+  Array.prototype.forEach.call(heads, function (h) {
+    var meta = h.nextElementSibling;
+    if (!meta || !meta.classList.contains("item-meta")) return;
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "share-btn";
+    btn.innerHTML = icon + "<span>" + L.share + "</span>";
+    var label = btn.querySelector("span");
+    var url = location.origin + location.pathname + "?ref=share#" + h.id;
+    function say(text) {
+      label.textContent = text;
+      setTimeout(function () { label.textContent = L.share; }, 2500);
+    }
+    btn.addEventListener("click", function () {
+      var title = h.textContent.replace(/^\d+\.\s*/, "");
+      if (navigator.share) {
+        navigator.share({ title: title, url: url }).catch(function () {});
+      } else if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () { say(L.copied); }, function () {
+          history.replaceState(null, "", location.pathname + "#" + h.id);
+          say(L.fallback);
+        });
+      } else {
+        history.replaceState(null, "", location.pathname + "#" + h.id);
+        say(L.fallback);
+      }
+    });
+    meta.appendChild(btn);
+  });
+})();
+</script>

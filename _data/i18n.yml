@@ -53,6 +53,11 @@ en:
   mail_story: "Read the full story"
   mail_dev: "For developers"
   mail_issue: "Read the whole issue on 7amai.com"
+  mail_forward: "Did someone forward this to you?"
+  mail_forward_cta: "Get 7am AI free at 7am every day"
+  share: "Share"
+  share_copied: "Link copied"
+  share_fallback: "Link is in the address bar"
   topics: { security: "Security", price: "Prices", money: "Money", chips: "Chips and compute", voice: "Voice AI", research: "Research", model: "Models", code: "Code", agent: "Agents", law: "Rules and law", open: "Open source", local: "Local AI", business: "Business", image: "Images and video", news: "News" }
 da:
   home: /da/
@@ -109,5 +114,10 @@ da:
   mail_story: "Læs hele historien"
   mail_dev: "Til udviklere"
   mail_issue: "Læs hele udgaven på 7amai.com"
+  mail_forward: "Har du fået den videresendt?"
+  mail_forward_cta: "Få 7am AI gratis kl. 7 hver dag"
+  share: "Del"
+  share_copied: "Link kopieret"
+  share_fallback: "Linket står i adresselinjen"
   topics: { security: "Sikkerhed", price: "Priser", money: "Penge", chips: "Chips og regnekraft", voice: "Stemme-AI", research: "Forskning", model: "Modeller", code: "Kode", agent: "Agenter", law: "Regler og lov", open: "Open source", local: "Lokal AI", business: "Forretning", image: "Billeder og video", news: "Nyheder" }
   months: [januar, februar, marts, april, maj, juni, juli, august, september, oktober, november, december]
