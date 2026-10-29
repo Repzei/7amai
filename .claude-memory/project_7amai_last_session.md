@@ -4,35 +4,30 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-10-26T21:38:00.237Z
-  originSessionId: 74ccaa7e-94f3-47d4-b0bd-70dc0155df30
+  modified: 2026-10-29T21:39:24.219Z
+  originSessionId: 7c954deb-6af0-4771-b27f-2ea083bcde67
 ---
 
-# 7am AI: handoff (seneste: 27. okt. 2026, besøgskilder + delingsbillede; før det 26/10 visuel mail)
+# 7am AI: handoff (seneste: 29. okt. 2026, markedsposition + skridt 1; før det 27/10 besøgskilder + delingsbillede)
 
-Detaljer står i [[project-7amai-todo]] (afsnit VISUEL MAIL); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
+Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE og MARKEDSPOSITION-ANALYSE); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
 
-## Lavet og hvorfor (26/10)
-- **Visuel mail (variant B) live, commit dc48b37.** Jesper er ordblind og læser langsomt på engelsk; mailen skal kunne læses på 2-3 min. Ét kort pr. historie (ikon, nøgletal eller lille grafik, Kort fortalt, kort Derfor, knap til historien på siden), udviklerstof (Build uden General) samlet nederst, lang tekst kun på siden.
-- **Grafik kun med tal fra historien:** felter `bars`/`tiles`/`steps` i `items`, tegnet som HTML-tabeller med ægte tekst (aldrig tekst i billeder). `readability.py` stopper udgaven, hvis et tal i items ikke står ordret i historiens tekst.
-- **Agentens vejledning:** STYLE.md "Mailen", INSTRUCTIONS (U3-U6, A2), EDITORIAL kriterie 3. Dashboardets systemfane + roadmap.json opdateret og deployet.
-- Tidligere (13.-21/10): mailen bygges af Jekyll, broadcast, dashboard, redaktørkontrol + guard-hook, historiestil, Explained, ærlig læsetid.
-
-## Lavet 27/10
-- Bluesky/Threads som egne kilder i besøgstallene (4cc58b5, workers deployet).
-- Delingsbillede pr. udgave (74580c9): `.agent/og-image.py` i udkast-routinen, B med nøgletal, A som reserve. Tjek 28/10, at routinen kunne køre det (Pillow i skyen).
+## Lavet og hvorfor (28.-29/10)
+- **Markedsanalyse** (artifact https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE): de store sælger "lær AI på jobbet" (kurser, værktøjer, prompts), ingen viser kildesikkerhed eller rettelser. Jesper valgte "tillid, man kan se" + de gratis dele af dansk (B) og Build (C), og "Shipped or not?" rykket frem fra fase 2. Skrevet i STRATEGI 7.1 + roadmap.json (f314ee3).
+- **Skridt 1 live (f9927f5):** videresend-linje øverst i mailen (`?ref=forward#signup`), opfordring til at videresende nederst, Del-knap pr. historie (`_includes/share.html`, `?ref=share`), tilmeldingsformular nederst på udgaven + link til den øverst. Nye kilder forward/share i beacon, worker, dashboard og privatlivspolitik EN/DA. Workers deployet af Jesper (627ed080 / 0347f738).
 
 ## Valg Jesper traf
-- 26/10: variant B ("b er bedst det er det der skal laves"), testmailen godkendt ("ja, godkendt").
-- Godkendelse er valgfri (merge før 07:00 = "Reviewed by Jesper"); ingen udkast-mail; udkast kl. 05:30.
-- Ærligt AI-mærke, aldrig auto-"Reviewed" (EU AI Act art. 50). AI-mærket står øverst i mailen (ikke i bunden som i mockuppen).
+- 29/10: kombineret plan besluttet; "Shipped or not?" nu som skridt 4; testsiderne godkendt, men bad om en ekstra gennemgang først (gav: videresend-linje øverst i stedet for nederst, link til tilmelding øverst på udgaven, aria-label på Del).
+- Valgt fra: kilde pr. tilmeldt (ville knytte spor til mailadressen, strider mod privatlivspolitikken).
 
 ## Faldgruber
-- Test Liquid ved at pushe en ulinket side (noindex, sitemap false) ved siden af den rigtige; skift først efter Jespers ja. Ingen Ruby lokalt.
-- Gmail viser ikke SVG: emne-ikonerne er PNG, tegnet af `.agent/mail-icons.py` (headless Edge + Pillow). Nyt emne: script + i18n `topics` + STYLE.md "Mailen".
-- Python-heredocs i bash: `\\b` i almindelige strenge bliver til backspace; skriv scripts til fil eller brug raw strings.
+- **Jespers terminal er Windows PowerShell 5.1:** ingen `&&`, brug `;`. Giv kommandoer som `Set-Location ...; npx.cmd wrangler deploy`.
+- **`wrangler deploy` blokeres af auto-mode** (produktion): Jesper kører det selv. Læsning/sletning af egne testrækker i D1 med `wrangler d1 execute` virker.
+- Test nye ting bag et flag i front matter (`forward_box`, `share_preview`) + ulinkede testsider (noindex, sitemap false); fjern flag og slet testsider efter Jespers ja.
+- En Edit-hook kan åbne en lokal fil i browser-panelet; brug så `tabs_create` til web-tests.
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
-1. Tjek udgaven 28/10: delingsbilledet i PR'en (og "delingsbillede OK"), mailens kort/grafik, Bluesky-link-kortet.
-2. Resten af læsertestens forslag (fagord-regel, præcision, "Hvem skal vide det?", analogier) og forslag A1/A2/B1/B2 i to-do'en.
+1. Tjek mailen 30/10: videresend-linjen øverst og opfordringen nederst (EN + DA), Del-knappen på en rigtig telefon.
+2. Skridt 2: "Sådan arbejder vi" + åben rettelsesliste med ugens tal (EN + DA, Liquid, 0 tokens).
+3. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console og vælg næste skridt.

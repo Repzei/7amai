@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-10-26T21:02:19.982Z
+  modified: 2026-10-29T21:39:11.043Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-27)
@@ -20,10 +20,27 @@ Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 - Routines kører alle 7 dage: **udkast kl. 05:30** (PR, ingen udkast-mail) og **afsendelse kl. 7** (merget PR = "Reviewed by Jesper", ellers AI-mærket). Mailen bygges af Jekyll (se MAIL BYGGES AF JEKYLL). Første rigtige udgave: mandag 12. okt.
 - Hele godkendelsesflowet testet 2026-10-09 med testudgave 10. okt. (PR #1).
 
+## TILLID, MAN KAN SE: BESLUTTET 2026-10-29 (Jesper valgte kombineret plan + "Shipped or not?" nu som skridt 4)
+Skrevet i STRATEGI 7.1 + 8 + 9 + låste beslutninger, roadmap.json (ny fase "Næste: Tillid, man kan se"; Shipped/emnesider fjernet fra fase 2). Ikke bygget endnu. Byg i denne rækkefølge, ét skridt pr. commit:
+- [x] 1. LIVE 29/10 (commit f9927f5, Jesper: "yes slå det til"): mailen har "Har du fået den videresendt? Tilmeld dig gratis" ØVERST (under AI-mærket, `?ref=forward#signup`) og "Kender du en, der burde læse den? Videresend mailen" NEDERST; udgaverne har Del-knap pr. historie, "Få den i indbakken kl. 7 hver dag ↓" øverst og tilmeldingsformular nederst. Flag og testsider fjernet; live /mail/ tjekket (ingen `{{`/dash). Første mail med det: 30/10. Måles som "Videresendt mail"/"Delte links" på dashboardet. Ikke valgt: kilde pr. tilmeldt (ville knytte spor til mailadressen). Historik: Videresend-linje i mailen (`?ref=forward`) + del-link pr. historie (= A1 + A2 nedenfor). 29/10 BYGGET BAG FLAG (commit 11d9756): testsider /mail-test/en|da/ (+ .txt, flag `forward_box`) og /share-test/ + /share-test/da/ (flag `share_preview`: Del-knap i item-meta via `_includes/share.html`, navigator.share/clipboard, `?ref=share`; tilmeldingsformular nederst på udgaven, som manglede). Testet 375 px EN+DA, ingen vandret scroll, live /mail/ uændret. Beacon + privatlivspolitik EN/DA kender forward/share. MANGLER: (a) Jesper godkender testsiderne, (b) [x] worker + worker/stats deployet af Jesper 29/10 (versioner 627ed080 / 0347f738); testbesøg src=share gemt som række 55 og slettet igen. NB: Jespers terminal er PowerShell 5.1, ingen `&&` (brug `;`), (c) go-live: fjern flagene (`forward_box` i email/email-text, `share_preview` i issue.html), slet mail-test/ + share-test/, opdatér dashboardets systemfane + CLAUDE.md-tabellen + roadmap.json
+- [ ] 2. "Sådan arbejder vi" + åben rettelsesliste med ugens tal, EN + DA, Liquid (= B1 + B2 nedenfor)
+- [ ] 3. Emnesider fra items `topic` (findes fra 26/10) EN + DA, start med sikkerhed, EU AI Act, åbne modeller; "Set i udgaverne" på Explained; danske søgeord i /da/-titler
+- [ ] 4. "Shipped or not?": `_data`-liste vedligeholdt af udkast-routinen, kun Official-kilder, dato + kilde pr. status (Leveret/Delvist/Ikke endnu/Forsinket). Opdatér INSTRUCTIONS/EDITORIAL + dashboardets systemfane
+- [ ] 5. Ca. 25/11: mål (Bluesky, ?ref=forward, Search Console) og vælg næste skridt med Jesper
+
+## MARKEDSPOSITION-ANALYSE (2026-10-28, bestilt af Jesper i marketing-sessionen; BESLUTTET 29/10, se ovenfor)
+Artifact: https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE (kilder hentet 28/10).
+- Marked (egne forsider 28/10): The Rundown 2.000.000+ (AI University-abonnement, podcast, værktøjer), Superhuman 1-2 mio. (130 værktøjer, 1.000+ prompts, 50 tutorials), TLDR AI 1.100.000 (kun hverdage, ingen betalingsmur), The Neuron 700.000+ (Academy, podcast), Ben's Bites 117.000. AlphaSignal: emnesider + rettelsespolitik; AINews (latent.space): hverdage, semantisk søgning. Dansk: intet dagligt fundet (Version2 AITech 2x/uge, AI Portalen månedligt, AI Trainer hver 2. uge).
+- Indsigt: de store sælger "lær AI på jobbet" (kurser/værktøjer/prompts = kræver mennesker); ingen viser kildesikkerhed eller åben rettelsesliste. Google-trafik til nyheder -33 % i 2025 (Chartbeat); tillid til AI-chatbots som nyhedskilde 20 % (Reuters DNR 2026). 7 dage er en fordel (TLDR/AINews kun hverdage). Sponsorværdi ved 1-10k: ca. $100-500 pr. plads (Dupple, sælgertal).
+- Tre retninger: **A Tillid man kan se (ANBEFALET)**, B Den danske indgang (dansk SEO, EU AI Act-side, LinkedIn = Jespers tid), C Byggerens morgenbrief (Build, sikkerhedsside, spor-fravalg, Pagefind-søgning ved 60+ udgaver; tættest marked).
+- Fravalg: værktøjskatalog, prompt-bibliotek, kurser/akademi, podcast nu, Discord, betalt niveau, ugebrev/weekendformat, flere nyhedsbreve, "verified"/"den eneste".
+- Jesper 28/10: "enig i a men også b og c". Svar: ja, men A som rygrad og kun de dele af B/C, der kommer gratis med (dansk SEO, EU AI Act-emneside, sikkerheds-emneside, spor-fravalg i fase 1); vent med LinkedIn-rutine, Pagefind og danske sponsorer. A+B+C = løftet (tillid) x sprog (EN/DA) x spor (Build/General/Europe), som STRATEGI allerede er bygget op om. Endelig plan + "Shipped or not?" afventer Jespers bekræftelse. 28/10 aften: "Shipped or not?" forklaret for Jesper (eksempel: Mistral Large 4 åbne vægte lovet i okt., udgave 10/10); Jesper løb tør for tokens, FORTSÆT HER når hans limit er nulstillet: (1) bekræft kombineret plan som besluttet, (2) Shipped or not nu (skridt 4) eller fase 2.
+- [ ] Anbefalede skridt (afventer Jesper): (1) A1+A2 videresend/del-links; (2) "Sådan arbejder vi" + åben rettelsesliste med ugens tal (B1+B2, Liquid, 0 tokens); (3) emnesider fra items `topic` (findes fra 26/10) + "Set i udgaverne" på Explained; (4) Jesper beslutter om "Shipped or not?" rykkes frem fra fase 2 (kun Official-kilder); (5) ca. 25/11: mål (Bluesky, ?ref=forward, Search Console) og vælg mere B eller C.
+
 ## FORSLAG TIL NYHEDSBREV + HJEMMESIDE (2026-10-23, Jesper: "skriv dem i to-do"; ikke bygget)
 Tjekket mod STRATEGI 8-9 (henvisningsprogram fase 1, emnesider/"Shipped or not?" fase 2 er allerede planlagt) og mod koden 23/10 (ingen af disse findes). Anbefalet rækkefølge A, B, C. Byg i en 7am AI-session; opdatér roadmap.json + dashboard i samme ændring.
-- [ ] **A1 "Fik du den videresendt?"-linje** nederst i mailen (EN + DA) med tilmeldingslink (`?ref=forward`). Billigste vækstmekanisme for nyhedsbreve.
-- [ ] **A2 "Del"-link ved hver historie** på siden (deep link til `#anker`), passer til Bluesky-opslagene, der allerede linker til den enkelte historie.
+- [x] (live 29/10, se TILLID ovenfor) **A1 "Fik du den videresendt?"-linje** nederst i mailen (EN + DA) med tilmeldingslink (`?ref=forward`). Billigste vækstmekanisme for nyhedsbreve.
+- [x] (live 29/10) **A2 "Del"-link ved hver historie** på siden (deep link til `#anker`), passer til Bluesky-opslagene, der allerede linker til den enkelte historie.
 - [ ] **B1 "Sådan arbejder vi"-side** (EN + DA): hvordan historier vælges, Official/Reported/Unconfirmed, AI skriver + redaktørkontrol + AI-mærkning. Gør "you can trust" synligt; hjælper EU AI Act-gennemsigtighed og SEO.
 - [ ] **B2 Offentlig rettelses-side**: samlet oversigt over Corrections (findes i dag kun som blok i den enkelte mail/udgave).
 - [ ] **C Henvisningsprogram tidligere end fase 1**
