@@ -4,6 +4,8 @@ lang: en
 url: https://7amai.com
 baseurl: ""
 signup_endpoint: "https://7amai-signup.jesperkhl.workers.dev"
+# Adressen til fejl og rettelser på "How we work"-siden (Cloudflare Email Routing -> Jesper).
+contact_email: "privacy@7amai.com"
 timezone: Europe/Copenhagen
 # Udgaven dateres 07:00 men bygges foer; uden dette ville Jekyll skjule den som "fremtidig".
 future: true

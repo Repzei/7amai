@@ -1,0 +1,58 @@
+---
+layout: default
+lang: en
+title: How we work
+description: "How 7am AI is made: AI writes it, an editorial check reopens every source, every source is labelled by how sure we are, and every mistake is listed."
+permalink: /how-we-work/
+other_lang_url: /da/metode/
+noindex: true
+sitemap: false
+---
+{%- assign t = site.data.i18n.en -%}
+<article class="issue legal how">
+  <p class="issue-date">7am AI · 7 days · 7 minutes</p>
+  <h1>How we work</h1>
+  <p class="issue-lead">7am AI is written by AI. That is why we show how each issue is made, how sure we are of every source, and what we got wrong.</p>
+  <div class="issue-body">
+    <h3 id="numbers">The last 7 issues</h3>
+    {% include trust-stats.html lang="en" part="stats" l_issues="issues" l_stories="stories" l_sources="sources linked" l_official="of sources are official" l_unconfirmed="unconfirmed sources" l_corrections="issues with a correction" l_period="Counted automatically from the published issues," %}
+
+    <h3 id="process">How an issue is made</h3>
+    <ol class="steps">
+      <li><b>05:30, research.</b> Four AI research agents search a fixed list of sources and the wider news at the same time. Together they find at least 15 candidate stories, each with a source they have opened.</li>
+      <li><b>Writing.</b> Claude picks up to five main stories, plus one on open source and local AI and one research paper. Every story says what happened, why it matters, and links to its sources.</li>
+      <li><b>Editorial check.</b> A separate check opens every source again and tests each story against our 10 editorial criteria: every claim and number is in the source, the source labels fit, no filler, no hype, an honest reading time. It corrects, downgrades or removes. It never adds stories.</li>
+      <li><b>07:00, sent.</b> If Jesper approves the issue before 07:00, it says "Reviewed by Jesper". Otherwise it goes out with the AI label. The Danish edition is written by AI from the English one, checked against the same criteria, and always carries the AI label.</li>
+    </ol>
+
+    <h3 id="labels">How sure are we?</h3>
+    <p>Every source has a label next to it:</p>
+    <ul>
+      <li><span class="tag tag-official">Official</span> From the company, regulator or authors themselves: a blog post, release notes, documentation, a law or a research paper.</li>
+      <li><span class="tag tag-reported">Reported</span> From a named news outlet, such as Reuters or The Verge.</li>
+      <li><span class="tag tag-unconfirmed">Unconfirmed</span> A rumour or a leak. We use it rarely, and the story says so in words too.</li>
+    </ul>
+    <p>A story can only be a <b>Big deal</b> if it has at least one official source. A number is only shown if it is in the source. We never calculate, round or guess one.</p>
+
+    <h3 id="ai-label">Why we label AI</h3>
+    <p>Under article 50 of the EU AI Act, AI-written text about matters of public interest must be labelled, unless a human editor has reviewed it and takes responsibility. Our editorial check is automatic, so it never counts as human review. Every issue carries one of these labels:</p>
+    <ul>
+      <li>{{ t.disclosure_ai }}</li>
+      <li>{{ t.disclosure_checked }}</li>
+      <li>{{ t.disclosure_reviewed }}</li>
+    </ul>
+
+    <h3 id="never">What we never do</h3>
+    <ul>
+      <li>Invent news, numbers or quotes.</li>
+      <li>Repeat a company's own superlatives, or use words like "game changer" and "revolutionary".</li>
+      <li>Add filler. Every story must be new since the last issue and worth your time.</li>
+      <li>Hide paid content. There are no sponsors yet. If that changes, sponsored content will always be clearly marked.</li>
+    </ul>
+
+    <h3 id="corrections">Corrections</h3>
+    <p>When an issue gets something wrong, the next issue corrects it under "Corrections", and it is listed here.</p>
+    {% include trust-stats.html lang="en" part="list" l_empty="No corrections yet. When we get something wrong, it is listed here with the date and what changed." %}
+    <p>Found a mistake? Email <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.</p>
+  </div>
+</article>

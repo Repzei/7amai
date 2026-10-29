@@ -90,6 +90,19 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 .share-btn { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 3px 11px; font-family: var(--font-news); font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.3; cursor: pointer; }
 .share-btn:hover, .share-btn:focus-visible { border-color: var(--sun); outline: none; }
 .share-btn svg { width: 12px; height: 12px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 6px 0 0; }
+.stat { display: grid; gap: 2px; align-content: start; background: var(--sky); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.stat b { font-family: var(--font-news); font-size: 28px; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-family: var(--font-news); font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--mist); }
+.stat-sun b { color: var(--sun-ink); }
+.stats-note { font-family: var(--font-news); font-size: 13px; color: var(--mist); }
+.how .steps { padding-left: 1.2em; display: grid; gap: 10px; }
+.how li .tag { margin-right: 6px; }
+.corr-list { list-style: none; padding: 0; display: grid; gap: 14px; }
+.corr-list li { border-left: 3px solid var(--sun); padding-left: 14px; }
+.corr-date { font-family: var(--font-news); font-size: 13px; font-weight: 800; color: var(--sun-ink); }
+.corr-body p { margin: 4px 0 0; }
+.corr-empty { color: var(--mist); }
 .issue-sub { margin: 10px 0 0; font-family: var(--font-news); font-size: 14px; font-weight: 800; }
 .issue-sub a { color: var(--sun-ink); text-decoration: none; border-bottom: 1px solid var(--line); }
 .issue-sub a:hover, .issue-sub a:focus-visible { border-bottom-color: var(--sun); }

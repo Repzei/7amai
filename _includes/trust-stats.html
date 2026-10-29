@@ -1,0 +1,52 @@
+{%- comment -%}
+Ugens tal og rettelseslisten på "How we work"-siden. Alt regnes af Jekyll ud fra udgaverne
+(kildemærkernes CSS-klasser, items og overskriften "Corrections"/"Rettelser"), så siden koster
+ingen tokens og altid passer med det, der er udgivet.
+{%- endcomment -%}
+{%- if include.lang == 'da' -%}
+  {%- assign all = site.da | sort: 'date' | reverse -%}
+  {%- assign marker = 'id="rettelser"' -%}
+{%- else -%}
+  {%- assign all = site.posts -%}
+  {%- assign marker = 'id="corrections"' -%}
+{%- endif -%}
+{%- assign recent = all | slice: 0, 7 -%}
+{%- assign n_off = 0 -%}{%- assign n_rep = 0 -%}{%- assign n_unc = 0 -%}{%- assign n_items = 0 -%}{%- assign n_corr = 0 -%}
+{%- for p in recent -%}
+  {%- assign c = p.content | split: 'class="tag tag-official"' | size | minus: 1 -%}{%- assign n_off = n_off | plus: c -%}
+  {%- assign c = p.content | split: 'class="tag tag-reported"' | size | minus: 1 -%}{%- assign n_rep = n_rep | plus: c -%}
+  {%- assign c = p.content | split: 'class="tag tag-unconfirmed"' | size | minus: 1 -%}{%- assign n_unc = n_unc | plus: c -%}
+  {%- if p.items -%}{%- assign n_items = n_items | plus: p.items.size -%}{%- endif -%}
+  {%- if p.content contains marker -%}{%- assign n_corr = n_corr | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- assign n_src = n_off | plus: n_rep | plus: n_unc -%}
+{%- if n_src > 0 -%}{%- assign pct_off = n_off | times: 100 | divided_by: n_src -%}{%- else -%}{%- assign pct_off = 0 -%}{%- endif -%}
+{%- if include.part == 'stats' -%}
+<div class="stats" role="list">
+  <div class="stat" role="listitem"><b>{{ recent.size }}</b><span>{{ include.l_issues }}</span></div>
+  <div class="stat" role="listitem"><b>{{ n_items }}</b><span>{{ include.l_stories }}</span></div>
+  <div class="stat" role="listitem"><b>{{ n_src }}</b><span>{{ include.l_sources }}</span></div>
+  <div class="stat stat-sun" role="listitem"><b>{{ pct_off }}%</b><span>{{ include.l_official }}</span></div>
+  <div class="stat" role="listitem"><b>{{ n_unc }}</b><span>{{ include.l_unconfirmed }}</span></div>
+  <div class="stat" role="listitem"><b>{{ n_corr }}</b><span>{{ include.l_corrections }}</span></div>
+</div>
+<p class="stats-note">{{ include.l_period }} {{ recent.last.date | date: '%d.%m' }}-{{ recent.first.date | date: '%d.%m.%Y' }}.</p>
+{%- endif -%}
+{%- if include.part == 'list' -%}
+{%- assign found = 0 -%}
+{%- capture corr_list -%}
+{%- for p in all -%}
+  {%- if p.content contains marker -%}
+    {%- assign found = found | plus: 1 -%}
+    {%- assign after = p.content | split: marker | last -%}
+    {%- assign body = after | split: '</h2>' | shift | join: '</h2>' | split: '<h2' | first | split: '<hr' | first | strip -%}
+    <li><a class="corr-date" href="{{ p.url | relative_url }}#{{ marker | remove: 'id="' | remove: '"' }}">{{ p.date | date: '%d.%m.%Y' }}</a><div class="corr-body">{{ body }}</div></li>
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if found > 0 -%}
+<ol class="corr-list">{{ corr_list }}</ol>
+{%- else -%}
+<p class="corr-empty">{{ include.l_empty }}</p>
+{%- endif -%}
+{%- endif -%}

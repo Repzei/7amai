@@ -1,0 +1,57 @@
+---
+layout: default
+lang: da
+title: Sådan arbejder vi
+description: "Sådan bliver 7am AI til: AI skriver, en redaktionel kontrol åbner hver kilde igen, hver kilde er mærket efter, hvor sikre vi er, og hver fejl står på listen."
+permalink: /da/metode/
+other_lang_url: /how-we-work/
+noindex: true
+sitemap: false
+---
+{%- assign t = site.data.i18n.da -%}
+<article class="issue legal how">
+  <p class="issue-date">Kl. 7 · 7 dage · 7 minutter</p>
+  <h1>Sådan arbejder vi</h1>
+  <p class="issue-lead">7am AI er skrevet af AI. Derfor viser vi, hvordan hver udgave bliver til, hvor sikre vi er på hver kilde, og hvad vi har taget fejl af.</p>
+  <div class="issue-body">
+    <h3 id="tal">De seneste 7 udgaver</h3>
+    {% include trust-stats.html lang="da" part="stats" l_issues="udgaver" l_stories="historier" l_sources="kilder linket" l_official="af kilderne er officielle" l_unconfirmed="ubekræftede kilder" l_corrections="udgaver med en rettelse" l_period="Talt automatisk fra de udgivne udgaver," %}
+
+    <h3 id="proces">Sådan bliver en udgave til</h3>
+    <ol class="steps">
+      <li><b>05:30, research.</b> Fire AI-researchere søger samtidig i en fast liste af kilder og i de bredere nyheder. Sammen finder de mindst 15 mulige historier, hver med en kilde, de selv har åbnet.</li>
+      <li><b>Skrivning.</b> Claude vælger op til fem hovedhistorier plus én om open source og lokal AI og én forskningsartikel. Hver historie fortæller, hvad der skete, hvorfor det er vigtigt, og linker til sine kilder.</li>
+      <li><b>Redaktionel kontrol.</b> En separat kontrol åbner hver kilde igen og tjekker hver historie mod vores 10 redaktionelle kriterier: hver påstand og hvert tal står i kilden, kildemærkerne passer, intet fyld, ingen hype, ærlig læsetid. Den retter, nedgraderer eller fjerner. Den tilføjer aldrig historier.</li>
+      <li><b>07:00, sendt.</b> Godkender Jesper udgaven før kl. 7, står der "Reviewed by Jesper" på den engelske udgave. Ellers sendes den med AI-mærket. Den danske udgave skrives af AI ud fra den engelske, tjekkes mod de samme kriterier og er altid AI-mærket.</li>
+    </ol>
+
+    <h3 id="maerker">Hvor sikre er vi?</h3>
+    <p>Hver kilde har et mærke ved siden af sig:</p>
+    <ul>
+      <li><span class="tag tag-official">Officiel</span> Fra firmaet, myndigheden eller forfatterne selv: et blogindlæg, release notes, dokumentation, en lov eller en forskningsartikel.</li>
+      <li><span class="tag tag-reported">Rapporteret</span> Fra et navngivet medie, fx Reuters eller The Verge.</li>
+      <li><span class="tag tag-unconfirmed">Ubekræftet</span> Et rygte eller et læk. Vi bruger det sjældent, og historien siger det også med ord.</li>
+    </ul>
+    <p>En historie kan kun være en <b>Stor nyhed</b>, hvis den har mindst én officiel kilde. Et tal vises kun, hvis det står i kilden. Vi regner, afrunder eller gætter aldrig et tal.</p>
+
+    <h3 id="ai-maerke">Derfor mærker vi AI</h3>
+    <p>Efter artikel 50 i EU's AI-forordning skal AI-skrevet tekst om emner af offentlig interesse mærkes, medmindre en menneskelig redaktør har gennemgået den og tager ansvaret. Vores redaktionelle kontrol er automatisk, så den tæller aldrig som menneskelig gennemgang. Den danske udgave bærer altid et af disse mærker:</p>
+    <ul>
+      <li>{{ t.disclosure_ai }}</li>
+      <li>{{ t.disclosure_checked }}</li>
+    </ul>
+
+    <h3 id="aldrig">Det gør vi aldrig</h3>
+    <ul>
+      <li>Finder på nyheder, tal eller citater.</li>
+      <li>Gentager et firmas egne superlativer eller bruger ord som "game changer" og "revolutionerende".</li>
+      <li>Fylder ud. Hver historie skal være ny siden sidste udgave og værd at bruge tid på.</li>
+      <li>Skjuler betalt indhold. Der er ingen sponsorer endnu. Kommer der nogen, er sponsoreret indhold altid tydeligt mærket.</li>
+    </ul>
+
+    <h3 id="rettelser">Rettelser</h3>
+    <p>Tager en udgave fejl, retter næste udgave det under "Rettelser", og det står her.</p>
+    {% include trust-stats.html lang="da" part="list" l_empty="Ingen rettelser endnu. Tager vi fejl, står det her med dato og hvad der blev rettet." %}
+    <p>Har du fundet en fejl? Skriv til <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.</p>
+  </div>
+</article>
