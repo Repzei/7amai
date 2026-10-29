@@ -176,13 +176,33 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 
 `noindex` fjernet 2026-10-13 (Jespers beslutning): siden er synlig for Google, med sitemap, delekort og hreflang.
 
+### 7.1 Markedsposition: tillid, man kan se (besluttet 29. okt. 2026, Jesper)
+
+Analyse 28. okt. (https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE): de store (The Rundown,
+Superhuman, The Neuron) vinder på størrelse og sælger "lær AI på jobbet" (kurser, værktøjer,
+prompts), som kræver mennesker. Ingen af dem viser kildesikkerhed eller en åben rettelsesliste.
+7am AI vinder ved at gøre løftet "you can trust" synligt og efterprøveligt på siden.
+
+- **Rygrad (A):** "Sådan arbejder vi"-side, åben rettelsesliste med ugens tal (kilder, andel
+  Official, rettelser), emnesider ud fra udgavernes `topic`-felt, "Set i udgaverne" på Explained
+  og **"Shipped or not?" rykket frem fra fase 2** (kun Official-kilder, dato på hver status).
+- **Med fra dansk (B):** danske søgeord på /da/, emnesiden "EU AI Act" på begge sprog.
+- **Med fra Build (C):** emnesiden "AI-sikkerhed" med status på rettelser, spor-fravalg i fase 1.
+- **Venter:** fast LinkedIn-rutine (Jespers tid), søgning (ved ca. 60+ udgaver), danske
+  sponsorer (fase 3).
+- **Laves ikke:** værktøjskatalog, prompt-bibliotek, kurser/akademi, community, betalt niveau,
+  ugebrev eller flere nyhedsbreve.
+
+Rækkefølge: (1) videresend- og del-links, (2) "Sådan arbejder vi" + rettelsesliste, (3)
+emnesider + danske søgeord, (4) "Shipped or not?", (5) mål og justér ca. 25. nov.
+
 ## 8. Features
 
 **Ja:**
 1. Formatet kl. 7 / 7 dage / ca. 7 minutter (+ Explained) med signal-mærker og "So what" (fase 0)
 2. Valgfrie spor (fase 0: mærkning, fase 1: fravalg i mailen)
 3. Henvisningsprogram (fase 1)
-4. "Shipped or not?" og emnesider (fase 2)
+4. "Shipped or not?" og emnesider (rykket frem fra fase 2 den 29. okt. 2026, se 7.1)
 
 **Nej, droppet efter kritik:**
 - Pristracker for modeller: Artificial Analysis og OpenRouter gør det bedre.
@@ -195,7 +215,7 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 |---|---|---|
 | **0: Fundament** (2-4 uger) | Kvaliteten er så god, at Jesper selv læser den hver dag | Formatet (kl. 7, 7 dage, ca. 7 min + Explained), engelsk + dansk, godkend-flow, mærkning, nyt design, tilmelding (dobbelt opt-in, afmelding, privatlivspolitik) |
 | **1: Blød lancering** | 0 til 500 læsere | Jespers netværk, LinkedIn, danske udviklerfællesskaber. Agenten laver ét delbart opslag om dagens bedste historie. Henvisningsprogram. |
-| **2: Vækst** | 500 til 5.000 | Emnesider + "Shipped or not?" (SEO), gensidige anbefalinger med andre nyhedsbreve, lancering på Product Hunt og Hacker News |
+| **2: Vækst** | 500 til 5.000 | (Emnesider + "Shipped or not?" bygges allerede nu, se 7.1), gensidige anbefalinger med andre nyhedsbreve, lancering på Product Hunt og Hacker News |
 | **3: Indtægt** | 5.000+ | Én sponsorplads om dagen, målrettet pr. spor. Mediekit. |
 
 ## 10. Mål for "bedst" (forslag, justeres efter fase 1)
@@ -224,3 +244,4 @@ Daglige opsummeringer ranker dårligt hos Google. Den reelle SEO-værdi ligger h
 - Kilder mærkes Official / Reported / Unconfirmed; ingen Big deal uden Official-kilde
 - "7am, wherever you are": udsendelse i læserens tidszone fra fase 1
 - Kontrast mindst 4,5:1 i begge temaer
+- Markedsposition "tillid, man kan se" med "Shipped or not?" og emnesider nu (Jesper 29. okt. 2026, afsnit 7.1)

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21",
+  "updated": "2026-10-29",
   "note": "Køreplanen på dashboardet (fanen 'Sådan virker det') læses live herfra. Status: done, doing, next, later, jesper (Jespers eget trin). Opdateres sammen med 7am AI's to-do.",
   "phases": [
     {
@@ -111,6 +111,34 @@
       ]
     },
     {
+      "name": "Næste: Tillid, man kan se",
+      "goal": "Gøre \"you can trust\" synligt og efterprøveligt på siden (besluttet 29. okt.)",
+      "status": "next",
+      "items": [
+        {
+          "t": "Videresend-linje i mailen og del-link ved hver historie",
+          "s": "next"
+        },
+        {
+          "t": "\"Sådan arbejder vi\"-side + åben rettelsesliste med ugens tal (EN + DA)",
+          "s": "next"
+        },
+        {
+          "t": "Emnesider fra historiernes emne (bl.a. AI-sikkerhed, EU AI Act, åbne modeller) + danske søgeord på /da/",
+          "s": "next"
+        },
+        {
+          "t": "\"Shipped or not?\": hvad AI-firmaer lovede, og om det kom (kun officielle kilder)",
+          "s": "next"
+        },
+        {
+          "t": "Mål og vælg næste skridt",
+          "s": "later",
+          "note": "ca. 25. nov."
+        }
+      ]
+    },
+    {
       "name": "Snart: bedre for læserne",
       "goal": "Lære af læserne og sikre driften",
       "status": "next",
@@ -161,10 +189,6 @@
       "goal": "500 til 5.000 læsere",
       "status": "later",
       "items": [
-        {
-          "t": "Emnesider og \"Shipped or not?\" (hvad AI-firmaer lovede, og om det kom)",
-          "s": "later"
-        },
         {
           "t": "Gensidige anbefalinger med andre nyhedsbreve",
           "s": "later"
