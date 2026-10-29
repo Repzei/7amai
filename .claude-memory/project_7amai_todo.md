@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-10-29T22:08:21.033Z
+  modified: 2026-10-29T22:45:28.149Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-27)
@@ -26,7 +26,9 @@ Skrevet i STRATEGI 7.1 + 8 + 9 + låste beslutninger, roadmap.json (ny fase "Næ
 - [x] 2. LIVE 29/10 (commit 90e34cd): /how-we-work/ + /da/metode/ synlige for Google (i sitemap), link i sidefoden og fra "How sure are we?"/"Hvor sikre er vi?" i hver udgave (#labels/#maerker). Jespers valg: privacy@7amai.com som fejl-adresse "for nu"; INTET link til GitHub/PR'er ("så åben skal det heller ikke være"). TJEK første gang en udgave har `## Corrections`/`## Rettelser`, at listen på siden ser rigtig ud.
 - [ ] 2b. (anden session, Jesper 29/10: "giver god mening") Egen fejl-adresse rettelser@7amai.com (Jesper opretter regel i Cloudflare Email Routing, så `contact_email` i _config.yml ændres) + svar på mailen: brief@7amai.com har ingen videresendelse, så læsersvar forsvinder (regel i Email Routing eller reply-to).
 - Historik skridt 2: "Sådan arbejder vi" + åben rettelsesliste med ugens tal, EN + DA, Liquid (= B1 + B2 nedenfor). 29/10 TESTSIDE (b7ff5c4, noindex + ulinket): /how-we-work/ og /da/metode/, `_includes/trust-stats.html` (part=stats|list; tæller tag-klasser, items og `id="corrections"`/`id="rettelser"` i de 7 seneste udgaver; tal tjekket mod grep: 92 kilder, 56 official = 60 %, 49 historier). Rettelseslisten er IKKE testet med en rigtig rettelse (ingen findes endnu). `site.contact_email` = privacy@7amai.com. MANGLER: Jespers ja; go-live = fjern noindex/sitemap false, link i sidefoden (default.html) + fra "How sure are we?" i udgaven til #labels/#maerker
-- [ ] 3. Emnesider fra items `topic` (findes fra 26/10) EN + DA, start med sikkerhed, EU AI Act, åbne modeller; "Set i udgaverne" på Explained; danske søgeord i /da/-titler
+- [ ] 3a. 29/10 TESTSIDER (b8e6307, noindex + ulinket): /topics/ + /da/emner/ (oversigt med ikon + antal) og 15 emnesider pr. sprog (/topics/<key>/, /da/emner/<dansk slug>/ fra `_data/topic_slugs.yml`), layout `topic.html` (titel fra historiens h3 via ankeret, why, dato, tilmelding nederst), `_includes/topic-count.html`. default.html: emneside med under 3 historier får automatisk noindex (tyndt indhold). Kun udgaver fra 26/10 har `topic` (28 historier, 14 emner; 4 emner har 3+). Testet 375 px. GODKENDT af Jesper 29/10 ("det ser godt ud"), men IKKE live endnu (stoppet for dagen ved 72 % af 5-timers vinduet). NÆSTE: go-live = fjern `noindex: true`/`sitemap: false` fra de 32 filer, link "Topics"/"Emner" i head-nav (default.html), tjek at tynde sider stadig får noindex, CLAUDE.md + roadmap. Overvej: emne-label i item-meta på udgaven som link til emnesiden.
+- [ ] 3b. (efter nulstilling) "Set i udgaverne" på Explained + danske søgeord i /da/-titler.
+- Oprindeligt punkt 3: Emnesider fra items `topic` (findes fra 26/10) EN + DA, start med sikkerhed, EU AI Act, åbne modeller; "Set i udgaverne" på Explained; danske søgeord i /da/-titler
 - [ ] 4. "Shipped or not?": `_data`-liste vedligeholdt af udkast-routinen, kun Official-kilder, dato + kilde pr. status (Leveret/Delvist/Ikke endnu/Forsinket). Opdatér INSTRUCTIONS/EDITORIAL + dashboardets systemfane
 - [ ] 5. Ca. 25/11: mål (Bluesky, ?ref=forward, Search Console) og vælg næste skridt med Jesper
 

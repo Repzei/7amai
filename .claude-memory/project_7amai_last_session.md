@@ -4,11 +4,11 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-10-29T22:03:42.109Z
+  modified: 2026-10-29T22:45:35.623Z
   originSessionId: 7c954deb-6af0-4771-b27f-2ea083bcde67
 ---
 
-# 7am AI: handoff (seneste: 29. okt. 2026, markedsposition + skridt 1; før det 27/10 besøgskilder + delingsbillede)
+# 7am AI: handoff (seneste: 29. okt. 2026, markedsposition + skridt 1-2 live, 3a godkendt; før det 27/10 besøgskilder + delingsbillede)
 
 Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE og MARKEDSPOSITION-ANALYSE); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
 
@@ -17,6 +17,8 @@ Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE og MARKEDSPOS
 - **Skridt 1 live (f9927f5):** videresend-linje øverst i mailen (`?ref=forward#signup`), opfordring til at videresende nederst, Del-knap pr. historie (`_includes/share.html`, `?ref=share`), tilmeldingsformular nederst på udgaven + link til den øverst. Nye kilder forward/share i beacon, worker, dashboard og privatlivspolitik EN/DA. Workers deployet af Jesper (627ed080 / 0347f738).
 
 - **Skridt 2 live (90e34cd):** "How we work" / "Sådan arbejder vi" (/how-we-work/, /da/metode/) med tal for de 7 seneste udgaver, proces, kildemærker, AI-mærkning og rettelsesliste, alt regnet af Jekyll (`_includes/trust-stats.html`). Linket fra sidefoden og legenden i hver udgave.
+
+- **Skridt 3a bygget, godkendt, IKKE live (b8e6307):** emnesider /topics/ + /da/emner/ (15 emner pr. sprog fra items `topic`), skjulte (noindex + ulinket). Emner under 3 historier får automatisk noindex efter go-live.
 
 ## Valg Jesper traf
 - 29/10: kombineret plan besluttet; "Shipped or not?" nu som skridt 4; testsiderne godkendt, men bad om en ekstra gennemgang først (gav: videresend-linje øverst i stedet for nederst, link til tilmelding øverst på udgaven, aria-label på Del).
@@ -32,5 +34,6 @@ Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE og MARKEDSPOS
 
 ## Hvor vi starter næste gang
 1. Tjek mailen 30/10: videresend-linjen øverst og opfordringen nederst (EN + DA), Del-knappen på en rigtig telefon.
-2. Skridt 3: emnesider fra items `topic` (EN + DA; start med sikkerhed, EU AI Act, åbne modeller), "Set i udgaverne" på Explained, danske søgeord i /da/-titler. Evt. først 2b (rettelser@ + brief@-svar).
+2. Emnesider LIVE (3a, godkendt): fjern `noindex: true` + `sitemap: false` fra topics/** og da/emner/** (32 filer), link "Topics"/"Emner" i head-nav i default.html, tjek at emner under 3 historier stadig har noindex og ikke bør stå i sitemap, opdatér CLAUDE.md-tabellen + roadmap.json.
+3. 3b: "Set i udgaverne" på Explained + danske søgeord i /da/-titler. Evt. 2b (rettelser@ + brief@-svar, Jesper opretter reglerne i Cloudflare først).
 3. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console og vælg næste skridt.
