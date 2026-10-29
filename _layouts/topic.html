@@ -1,0 +1,38 @@
+---
+layout: default
+---
+{%- comment -%}
+Emneside: alle historier med `topic: <page.topic>` i udgavernes `items`, nyeste først. Titlen hentes
+fra historiens <h3> via ankeret. Koster ingen tokens; vokser af sig selv. Under 3 historier er
+siden noindex (se topic-count.html), så Google ikke ser tynde sider.
+{%- endcomment -%}
+{%- assign t = site.data.i18n[page.lang] -%}
+{%- include topic-count.html -%}
+<article class="issue topic-page">
+  <p class="issue-date"><a href="{{ t.topics_url | relative_url }}">{{ t.topics_label }}</a> · {{ topic_count }} {{ t.topic_stories }}</p>
+  <h1>{{ t.topics[page.topic] }}</h1>
+  <p class="issue-lead">{{ t.topic_lead }}</p>
+  {%- if topic_count > 0 %}
+  <ol class="topic-list">
+    {%- for p in topic_docs -%}
+      {%- for it in p.items -%}
+        {%- if it.topic == page.topic -%}
+          {%- assign marker = 'id="' | append: it.anchor | append: '">' -%}
+          {%- assign h = p.content | split: marker | last | split: '</h3>' | first | strip_html | strip -%}
+          {%- assign parts = h | split: '. ' -%}
+          {%- assign lead_no = parts[0] | plus: 0 -%}
+          {%- if parts.size > 1 and lead_no > 0 -%}{%- assign h = parts | shift | join: '. ' -%}{%- endif %}
+    <li>
+      <time datetime="{{ p.date | date: '%Y-%m-%d' }}">{{ p.date | date: t.date_format }}</time>
+      <a class="topic-title" href="{{ p.url | relative_url }}#{{ it.anchor }}">{{ h }}</a>
+      {%- if it.why %}<p>{{ it.why }}</p>{% endif %}
+    </li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor %}
+  </ol>
+  {%- else %}
+  <p class="corr-empty">{{ t.topic_empty }}</p>
+  {%- endif %}
+  <section class="issue-signup">{% include signup.html lang=page.lang %}</section>
+</article>

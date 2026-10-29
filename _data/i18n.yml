@@ -24,6 +24,12 @@ en:
   privacy_url: /privacy/
   how_label: "How we work"
   how_url: /how-we-work/
+  topics_label: "Topics"
+  topics_url: /topics/
+  topic_stories: "stories"
+  topic_lead: "Every 7am AI story on this topic, newest first. Each links to its sources, labelled by how sure we are."
+  topic_empty: "No stories on this topic yet."
+  topics_lead: "Every story since 26 October, sorted by topic. The pages grow with each issue."
   legend: "How sure are we?"
   legend_official: "Official: from the company, regulator or authors"
   legend_reported: "Reported: from a named outlet"
@@ -91,6 +97,12 @@ da:
   privacy_url: /da/privacy/
   how_label: "Sådan arbejder vi"
   how_url: /da/metode/
+  topics_label: "Emner"
+  topics_url: /da/emner/
+  topic_stories: "historier"
+  topic_lead: "Alle 7am AI's historier om emnet, nyeste først. Hver linker til sine kilder, mærket efter hvor sikre vi er."
+  topic_empty: "Ingen historier om emnet endnu."
+  topics_lead: "Alle historier siden 26. oktober, sorteret efter emne. Siderne vokser med hver udgave."
   legend: "Hvor sikre er vi?"
   legend_official: "Officiel: fra firmaet, myndigheden eller forfatterne"
   legend_reported: "Rapporteret: fra et navngivet medie"

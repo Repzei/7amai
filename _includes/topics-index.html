@@ -1,0 +1,18 @@
+{%- comment -%}Oversigt over emner med antal historier (kun emner med mindst én). Bruges af /topics/ og /da/emner/.{%- endcomment -%}
+{%- assign t = site.data.i18n[page.lang] -%}
+{%- if page.lang == 'da' -%}{%- assign docs = site.da -%}{%- else -%}{%- assign docs = site.posts -%}{%- endif -%}
+<article class="issue topic-page">
+  <p class="issue-date">7am AI</p>
+  <h1>{{ t.topics_label }}</h1>
+  <p class="issue-lead">{{ t.topics_lead }}</p>
+  <ul class="topic-index">
+  {%- for pair in t.topics -%}
+    {%- assign key = pair[0] -%}{%- assign n = 0 -%}
+    {%- for p in docs -%}{%- for it in p.items -%}{%- if it.topic == key -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+    {%- if n > 0 -%}
+      {%- if page.lang == 'da' -%}{%- assign s = site.data.topic_slugs[key] -%}{%- else -%}{%- assign s = key -%}{%- endif %}
+    <li><a href="{{ t.topics_url | append: s | append: '/' | relative_url }}"><img src="{{ '/assets/mail-icons/' | append: key | append: '.png' | relative_url }}" width="28" height="28" alt=""><span>{{ pair[1] }}</span><b>{{ n }}</b></a></li>
+    {%- endif -%}
+  {%- endfor %}
+  </ul>
+</article>

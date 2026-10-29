@@ -1,0 +1,4 @@
+{%- comment -%}Sætter topic_docs og topic_count for page.topic (bruges af topic-layoutet og af default.html til noindex).{%- endcomment -%}
+{%- if page.lang == 'da' -%}{%- assign topic_docs = site.da | sort: 'date' | reverse -%}{%- else -%}{%- assign topic_docs = site.posts -%}{%- endif -%}
+{%- assign topic_count = 0 -%}
+{%- for p in topic_docs -%}{%- for it in p.items -%}{%- if it.topic == page.topic -%}{%- assign topic_count = topic_count | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- endfor -%}

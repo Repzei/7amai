@@ -5,7 +5,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {%- if page.noindex %}
+  {%- assign thin = false -%}
+  {%- if page.topic -%}{%- include topic-count.html -%}{%- if topic_count < 3 -%}{%- assign thin = true -%}{%- endif -%}{%- endif -%}
+  {%- if page.noindex or thin %}
   <meta name="robots" content="noindex" />
   {%- endif %}
   {%- assign is_home = false -%}{%- if page.url == t.home -%}{%- assign is_home = true -%}{%- endif -%}
