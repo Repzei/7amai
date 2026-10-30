@@ -7,10 +7,11 @@ minutes: 2
 other_lang_url: /explained/reinforcement-learning/
 read_more:
   - { label: "Hugging Face Deep RL Course: What is reinforcement learning? (engelsk)", url: "https://huggingface.co/learn/deep-rl-course/unit1/what-is-rl" }
+  - { label: "Hugging Face: Illustrating reinforcement learning from human feedback (engelsk)", url: "https://huggingface.co/blog/rlhf" }
 short: |
   Reinforcement learning er en måde at træne AI på ved at prøve sig frem. Modellen prøver noget, får en belønning, når det går godt, og en straf, når det går skidt, og lærer langsomt at gøre mere af det, der giver belønning.
 
-  AI-laboratorierne bruger det nu til at gøre sprogmodeller bedre til opgaver med et klart rigtigt svar, som kode der består sine tests.
+  AI-laboratorierne bruger det oven på den almindelige træning for at få sprogmodeller til at give bedre svar.
 ---
 Reinforcement learning er en måde at træne en AI på ved at prøve sig frem. Den, der lærer, kaldes ofte agenten. Den prøver en handling og får en belønning, hvis resultatet er godt, og en straf, hvis det er dårligt. Efter mange runder lærer den at gøre mere af det, der giver belønning.
 
@@ -18,8 +19,8 @@ Reinforcement learning er en måde at træne en AI på ved at prøve sig frem. D
 
 Det er eksemplet, Hugging Face bruger i sit kursus, og det viser de tre dele. Der er en, der lærer, en verden, den handler i, og en score, der fortæller, hvordan det gik. Ingen viser den det rigtige træk. Den skal finde det ved at prøve.
 
-Sprogmodeller lærer først ved at læse enorme mængder tekst. Det lærer dem at skrive, men ikke at løse svære opgaver godt. Derfor lægger laboratorierne reinforcement learning ovenpå. Modellen prøver en opgave mange gange, fx at skrive kode. Et tjek giver hvert forsøg en score, fx ved at køre kodens tests. Så bliver modellen skubbet i retning af de forsøg, der scorede godt.
+Sprogmodeller lærer først ved at læse enorme mængder tekst. Det lærer dem at skrive, men ikke at løse svære opgaver godt. Derfor lægger laboratorierne reinforcement learning ovenpå. Modellen svarer på mange opgaver, og et tjek giver hvert svar en score. Ofte er tjekket en særskilt model, der er trænet i, hvilke svar mennesker foretrækker. Så bliver modellen skubbet i retning af de svar, der scorede godt.
 
-Det virker bedst, når det er let at skelne et godt resultat fra et dårligt. Kode, der består tests, og matematik med et kendt svar passer godt. Det er sværere med smag eller tone, hvor mennesker skal bedømme svaret. Fangsten er, at en model kan lære at behage den, der giver point, i stedet for at løse opgaven. Er en test svag, kan modellen finde en genvej, der består testen, men ikke virker i virkeligheden.
+Fangsten er, at en model kan lære at behage den, der giver point, i stedet for at løse opgaven. Forskerne kalder det reward hacking. Uden grænser kan en model finde svar, der får høj score, men er ubrugelige, så laboratorierne holder den tæt på det, den lærte først.
 
-**Hvad betyder det for dig:** Når et laboratorium siger, at en model blev bedre efter "mere RL", er det det, de mener. Modellen har øvet sig på den slags opgaver, du bruger den til, fx kode, og er blevet belønnet, når den ramte rigtigt. Derfor bliver modeller nu meget bedre fra version til version uden at vokse i størrelse.
+**Hvad betyder det for dig:** Når et laboratorium siger, at en model blev bedre efter "mere RL", er det det, de mener. Modellen har øvet sig på den slags opgaver, du bruger den til, fx kode, og er blevet belønnet, når den ramte rigtigt.
