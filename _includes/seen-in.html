@@ -27,7 +27,7 @@ Ingen udgaver = intet vises.
   <ol class="topic-list">{{ seen_items }}
   </ol>
   {%- if seen_count > seen_max %}{%- assign seen_rest = seen_count | minus: seen_max | append: "" %}
-  <p class="seen-more"><a href="{{ t.home | relative_url }}">{{ t.seen_in_more | replace: "{n}", seen_rest }}</a></p>
+  <p class="seen-more"><a href="{{ t.home | relative_url }}">{{ t.seen_in_more | replace: "%n", seen_rest }}</a></p>
   {%- endif %}
 </section>
 {%- endif -%}
