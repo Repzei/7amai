@@ -216,6 +216,7 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 .seen-in { margin-top: 36px; }
 .seen-in h2 { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); margin: 0; }
 .seen-in .topic-list { margin-top: 6px; }
+.seen-more { margin: 14px 0 0; font-family: var(--font-news); font-size: 14px; font-weight: 600; }
 
 /* Historie-stil fra 19. okt.: dagen på 60 sekunder, kort fortalt, derfor er det vigtigt, samlede historier. */
 :root { --calm: #EAF2EC; --calm-ink: #1F6B3E; }
