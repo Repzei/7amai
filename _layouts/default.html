@@ -12,8 +12,13 @@
   {%- endif %}
   {%- assign is_home = false -%}{%- if page.url == t.home -%}{%- assign is_home = true -%}{%- endif -%}
   {%- assign page_title = page.title | default: site.title -%}
-  {%- assign page_desc = page.summary | default: t.tagline | strip_html | strip_newlines -%}
+  {%- assign page_desc = page.summary | default: page.description | default: t.tagline | strip_html | strip_newlines -%}
+  {%- if page.collection == 'posts' or page.collection == 'da' -%}
+    {%- if lang == 'da' -%}{%- assign mi = page.date | date: '%-m' | minus: 1 -%}{%- capture desc_date %}{{ page.date | date: '%-d' }}. {{ t.months[mi] }} {{ page.date | date: '%Y' }}{% endcapture -%}{%- else -%}{%- assign desc_date = page.date | date: '%b %-d, %Y' -%}{%- endif -%}
+    {%- assign page_desc = t.desc_prefix | append: ' ' | append: desc_date | append: ': ' | append: page_desc -%}
+  {%- endif -%}
   {%- if is_home -%}{%- assign page_title = t.home_title | append: ' · ' | append: site.title -%}{%- assign page_desc = t.home_desc -%}{%- endif -%}
+  {%- assign page_desc = page_desc | escape -%}
   {%- assign canonical = page.url | replace: 'index.html', '' | absolute_url -%}
   <title>{% if is_home %}{{ page_title }}{% elsif page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ page_desc }}" />

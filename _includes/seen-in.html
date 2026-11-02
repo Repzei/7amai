@@ -4,7 +4,7 @@
 Ingen udgaver = intet vises.
 {%- endcomment -%}
 {%- assign t = site.data.i18n[page.lang] -%}
-{%- assign seen_slug = include.slug | default: page.slug -%}
+{%- assign seen_slug = page.slug -%}
 {%- assign seen_max = 10 -%}
 {%- if page.lang == 'da' -%}{%- assign seen_docs = site.da | sort: "date" | reverse -%}{%- else -%}{%- assign seen_docs = site.posts -%}{%- endif -%}
 {%- assign seen_count = 0 -%}
