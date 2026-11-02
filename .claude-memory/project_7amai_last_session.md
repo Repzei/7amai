@@ -4,36 +4,33 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-10-29T22:45:35.623Z
+  modified: 2026-11-02T15:56:23.494Z
   originSessionId: 7c954deb-6af0-4771-b27f-2ea083bcde67
 ---
 
-# 7am AI: handoff (seneste: 29. okt. 2026, markedsposition + skridt 1-2 live, 3a godkendt; før det 27/10 besøgskilder + delingsbillede)
+# 7am AI: handoff (seneste: 2. nov. 2026, skridt 3a + 3b live; før det 29/10 markedsposition + skridt 1-2)
 
 Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE og MARKEDSPOSITION-ANALYSE); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
 
-## Lavet og hvorfor (28.-29/10)
-- **Markedsanalyse** (artifact https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE): de store sælger "lær AI på jobbet" (kurser, værktøjer, prompts), ingen viser kildesikkerhed eller rettelser. Jesper valgte "tillid, man kan se" + de gratis dele af dansk (B) og Build (C), og "Shipped or not?" rykket frem fra fase 2. Skrevet i STRATEGI 7.1 + roadmap.json (f314ee3).
-- **Skridt 1 live (f9927f5):** videresend-linje øverst i mailen (`?ref=forward#signup`), opfordring til at videresende nederst, Del-knap pr. historie (`_includes/share.html`, `?ref=share`), tilmeldingsformular nederst på udgaven + link til den øverst. Nye kilder forward/share i beacon, worker, dashboard og privatlivspolitik EN/DA. Workers deployet af Jesper (627ed080 / 0347f738).
-
-- **Skridt 2 live (90e34cd):** "How we work" / "Sådan arbejder vi" (/how-we-work/, /da/metode/) med tal for de 7 seneste udgaver, proces, kildemærker, AI-mærkning og rettelsesliste, alt regnet af Jekyll (`_includes/trust-stats.html`). Linket fra sidefoden og legenden i hver udgave.
-
-- **Skridt 3a bygget, godkendt, IKKE live (b8e6307):** emnesider /topics/ + /da/emner/ (15 emner pr. sprog fra items `topic`), skjulte (noindex + ulinket). Emner under 3 historier får automatisk noindex efter go-live.
+## Lavet og hvorfor
+- **28.-29/10:** markedsanalyse (artifact https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE) -> "tillid, man kan se" (STRATEGI 7.1). Skridt 1 live (f9927f5: videresend-linje i mailen, Del-knap, tilmelding på udgaven) og skridt 2 live (90e34cd: /how-we-work/ + /da/metode/ med tal og rettelsesliste).
+- **2/11 skridt 3a live (908fdcf, 7a49500):** emnesider /topics/ + /da/emner/, "Topics"/"Emner" i menuen; emner under 3 historier har noindex.
+- **2/11 skridt 3b live (428fd74):** "Seen in the news"/"Set i udgaverne" på hver Explained-side (`_includes/seen-in.html`, højst 10 + "og N til i arkivet"); danske søgeord på /da/, /da/explained/ ("AI-begreber forklaret på dansk"), /da/emner/ ("AI-nyheder efter emne"); udgavernes beskrivelse starter med "AI-nyheder 2. november 2026:" / "AI news Nov 2, 2026:". Rettet undervejs: meta description ignorerede `description:` (34 sider viste taglinen), og:title knækkede ved citationstegn.
 
 ## Valg Jesper traf
-- 29/10: kombineret plan besluttet; "Shipped or not?" nu som skridt 4; testsiderne godkendt, men bad om en ekstra gennemgang først (gav: videresend-linje øverst i stedet for nederst, link til tilmelding øverst på udgaven, aria-label på Del).
-- 29/10: privacy@ som fejl-adresse for nu; rettelser@ + svar på brief@ tages i en anden session; INGEN link til GitHub ("så åben skal det heller ikke være").
-- Valgt fra: kilde pr. tilmeldt (ville knytte spor til mailadressen, strider mod privatlivspolitikken).
+- 29/10: kombineret plan; "Shipped or not?" nu som skridt 4; privacy@ som fejl-adresse for nu; INGEN link til GitHub.
+- 2/11: "ja, gå live med begge, også engelsk dato" (datoen foran beskrivelsen også på EN).
+- Valgt fra: kilde pr. tilmeldt (privatliv). Titlen på /da/ er den låste one-liner og ændres ikke for SEO.
 
 ## Faldgruber
-- **Jespers terminal er Windows PowerShell 5.1:** ingen `&&`, brug `;`. Giv kommandoer som `Set-Location ...; npx.cmd wrangler deploy`.
-- **`wrangler deploy` blokeres af auto-mode** (produktion): Jesper kører det selv. Læsning/sletning af egne testrækker i D1 med `wrangler d1 execute` virker.
-- Test nye ting bag et flag i front matter (`forward_box`, `share_preview`) + ulinkede testsider (noindex, sitemap false); fjern flag og slet testsider efter Jespers ja.
+- **Jespers terminal er Windows PowerShell 5.1:** ingen `&&`, brug `;`.
+- **`wrangler deploy` blokeres af auto-mode** (produktion): Jesper kører det selv.
+- Test nye ting bag et flag i front matter + ulinkede testsider (noindex, sitemap false); fjern flag og slet testsider efter Jespers ja.
+- **Ingen `{` `}` i Liquid-strenge** (fejlet Pages-build 2/11, se [[feedback-7amai-lessons]] 15). Tjek `gh run list --limit 1` efter hvert push.
 - En Edit-hook kan åbne en lokal fil i browser-panelet; brug så `tabs_create` til web-tests.
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
-1. Tjek mailen 30/10: videresend-linjen øverst og opfordringen nederst (EN + DA), Del-knappen på en rigtig telefon.
-2. Emnesider LIVE (3a, godkendt): fjern `noindex: true` + `sitemap: false` fra topics/** og da/emner/** (32 filer), link "Topics"/"Emner" i head-nav i default.html, tjek at emner under 3 historier stadig har noindex og ikke bør stå i sitemap, opdatér CLAUDE.md-tabellen + roadmap.json.
-3. 3b: "Set i udgaverne" på Explained + danske søgeord i /da/-titler. Evt. 2b (rettelser@ + brief@-svar, Jesper opretter reglerne i Cloudflare først).
-3. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console og vælg næste skridt.
+1. **Skridt 4 "Shipped or not?"** (`_data`-liste vedligeholdt af udkast-routinen, kun Official-kilder, dato + kilde pr. status). Godt første eksempel: 30/10-udgaven "Mistral lets anyone download Large 4", fordi 10/10 lovede åbne vægte i oktober (= Leveret). Også Kimi K3.1 Pro: åbne vægte lovet til 4/11 (udgave 24/10).
+2. Evt. 2b (rettelser@ + brief@-svar; Jesper opretter reglerne i Cloudflare først).
+3. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console (også danske forespørgsler efter 3b) og vælg næste skridt.

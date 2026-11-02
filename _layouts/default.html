@@ -31,7 +31,7 @@
   {%- endif %}
   <meta property="og:site_name" content="{{ site.title }}" />
   <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}" />
-  <meta property="og:title" content="{{ page_title }}" />
+  <meta property="og:title" content="{{ page_title | escape }}" />
   <meta property="og:description" content="{{ page_desc }}" />
   <meta property="og:url" content="{{ canonical }}" />
   <meta property="og:locale" content="{% if lang == 'da' %}da_DK{% else %}en_US{% endif %}" />

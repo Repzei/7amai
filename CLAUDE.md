@@ -22,7 +22,8 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `_da/<dato>-<slug>.md` | Dansk udgave, `/da/...` (altid AI-mærket) |
 | `_data/i18n.yml` | Tekster pr. sprog (tagline, AI-mærkning m.m.) |
 | `index.html`, `da/index.html` | Forside/arkiv pr. sprog |
-| `_layouts/default.html`, `_layouts/issue.html` | Sideskabeloner. default: canonical, hreflang, OG/Twitter-kort (assets/og.png), `noindex` kun hvis siden har `noindex: true` (velkomstsiderne) |
+| `_layouts/default.html`, `_layouts/issue.html` | Sideskabeloner. default: canonical, hreflang, OG/Twitter-kort (assets/og.png), `noindex` kun hvis siden har `noindex: true` (velkomstsiderne). Meta description = `summary`, ellers `description`, ellers taglinen; på udgaver med "AI news Nov 2, 2026: " / "AI-nyheder 2. november 2026: " foran (`desc_prefix` i i18n, 2/11) |
+| `_layouts/explained.html`, `_explained/`, `_includes/seen-in.html` | Explained-bibliotekets sider. "Seen in the news" / "Set i udgaverne" (2/11): udgaver, hvis `explained.main` eller `more` er begrebets slug, nyeste først, højst 10 + "og N til i arkivet". Ingen udgaver = intet vises. Danske søgeord i titler/beskrivelser på /da/, /da/explained/, /da/emner/ (2/11); one-lineren i titlen er låst |
 | `assets/style.css` | Al styling, lys/mørk via `prefers-color-scheme` |
 | `_config.yml` | `url`, `future: true` (påkrævet), permalink, `exclude` |
 | `CNAME` | `7amai.com` (styres af GitHub Pages-indstillingen) |
