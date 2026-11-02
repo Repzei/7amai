@@ -13,6 +13,7 @@ layout: default
     <p class="sources">{{ t.explained_read_more }}: {% for r in page.read_more %}<a href="{{ r.url }}">{{ r.label }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
     {%- endif %}
   </div>
+  {%- if page.seen_preview %}{% include seen-in.html slug=page.seen_slug %}{% endif %}
   <nav class="issue-nav">
     <a href="{{ t.explained_url | relative_url }}">&larr; {{ t.explained_all }}</a>
     <a href="{{ t.home | relative_url }}">{{ t.all_issues }}</a>

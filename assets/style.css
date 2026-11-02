@@ -213,6 +213,9 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 .terms .d { grid-column: 1; color: var(--mist); font-size: 15px; }
 .terms .w { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-family: var(--font-news); font-size: 12px; font-weight: 700; color: var(--mist); font-variant-numeric: tabular-nums; }
 .explained-entry .issue-body { border-top: 0; }
+.seen-in { margin-top: 36px; }
+.seen-in h2 { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); margin: 0; }
+.seen-in .topic-list { margin-top: 6px; }
 
 /* Historie-stil fra 19. okt.: dagen på 60 sekunder, kort fortalt, derfor er det vigtigt, samlede historier. */
 :root { --calm: #EAF2EC; --calm-ink: #1F6B3E; }

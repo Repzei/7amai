@@ -1,0 +1,25 @@
+{%- comment -%}
+"Seen in the news" / "Set i udgaverne" på en Explained-side: de udgaver, hvis `explained.main` eller
+`explained.more` er begrebets slug, nyeste først. Ingen udgaver = intet vises.
+{%- endcomment -%}
+{%- assign t = site.data.i18n[page.lang] -%}
+{%- assign seen_slug = include.slug | default: page.slug -%}
+{%- if page.lang == 'da' -%}{%- assign seen_docs = site.da | sort: "date" | reverse -%}{%- else -%}{%- assign seen_docs = site.posts -%}{%- endif -%}
+{%- capture seen_items -%}
+  {%- for p in seen_docs -%}
+    {%- if p.explained.main == seen_slug or p.explained.more contains seen_slug %}
+    <li>
+      <time datetime="{{ p.date | date: '%Y-%m-%d' }}">{{ p.date | date: t.date_format }}</time>
+      <a class="topic-title" href="{{ p.url | relative_url }}{% if p.explained.main == seen_slug %}#explained-{{ seen_slug }}{% endif %}">{{ p.title }}</a>
+    </li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign seen_items = seen_items | strip -%}
+{%- if seen_items != "" %}
+<section class="seen-in">
+  <h2>{{ t.seen_in_title }}</h2>
+  <ol class="topic-list">{{ seen_items }}
+  </ol>
+</section>
+{%- endif -%}

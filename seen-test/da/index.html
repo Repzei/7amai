@@ -1,0 +1,13 @@
+---
+layout: explained
+lang: da
+title: "Test: Set i udgaverne (ikke offentlig)"
+summary: "Testside til listen Set i udgaverne på Forklaret-siderne, med begrebet open weight."
+minutes: 2
+noindex: true
+sitemap: false
+seen_preview: true
+seen_slug: open-weight
+---
+{%- assign e = site.explained | where: "lang", "da" | where: "slug", "open-weight" | first -%}
+{{ e.content }}
