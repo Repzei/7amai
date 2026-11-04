@@ -32,6 +32,7 @@ en:
   topic_empty: "No stories on this topic yet."
   topics_lead: "Every story since 26 October, sorted by topic. The pages grow with each issue."
   shipped_label: "Shipped or not?"
+  shipped_url: /shipped/
   shipped_lead: "AI companies announce dates. Here we check whether they keep them, using only the companies' own sources."
   shipped_status: { delivered: "Delivered", partial: "Partly delivered", not_yet: "Not yet", late: "Late" }
   shipped_promised: "Promised"
@@ -117,6 +118,7 @@ da:
   topic_empty: "Ingen historier om emnet endnu."
   topics_lead: "Alle historier siden 26. oktober, sorteret efter emne. Siderne vokser med hver udgave."
   shipped_label: "Leveret eller ej?"
+  shipped_url: /da/leveret/
   shipped_lead: "AI-firmaer melder datoer ud. Her tjekker vi, om de holder dem, kun ud fra firmaernes egne kilder."
   shipped_status: { delivered: "Leveret", partial: "Delvist leveret", not_yet: "Ikke endnu", late: "Forsinket" }
   shipped_promised: "Lovet"
