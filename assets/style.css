@@ -217,6 +217,22 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 .seen-in h2 { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); margin: 0; }
 .seen-in .topic-list { margin-top: 6px; }
 .seen-more { margin: 14px 0 0; font-family: var(--font-news); font-size: 14px; font-weight: 600; }
+.promise-list { list-style: none; padding: 0; margin: 18px 0 0; }
+.promise { padding-block: 18px; border-bottom: 1px solid var(--line); scroll-margin-top: 70px; }
+.promise p { margin: 0; }
+.promise-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; font-family: var(--font-news); font-size: 14px; color: var(--mist); }
+.status { border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.3; }
+.status-delivered { background: var(--calm); color: var(--calm-ink); }
+.status-partial { background: var(--tint); color: var(--sun-ink); }
+.status-not_yet { background: var(--sky); color: var(--mist); border: 1px solid var(--line); }
+.status-late { background: var(--sun); color: var(--on-sun); }
+.promise .promise-text { margin-top: 6px; font-family: var(--font-news); font-size: 19px; font-weight: 800; line-height: 1.3; color: var(--ink); }
+.promise .promise-note { margin-top: 6px; font-size: 16px; color: var(--mist); }
+.promise .promise-meta { margin-top: 8px; font-family: var(--font-news); font-size: 13px; line-height: 1.5; color: var(--mist); }
+.promise-meta a { color: var(--mist); }
+.promise-meta a:hover { color: var(--sun-ink); }
+.promise-rules { margin-top: 20px; font-size: 15px; color: var(--mist); }
+.promise-rules a { color: var(--mist); }
 
 /* Historie-stil fra 19. okt.: dagen på 60 sekunder, kort fortalt, derfor er det vigtigt, samlede historier. */
 :root { --calm: #EAF2EC; --calm-ink: #1F6B3E; }

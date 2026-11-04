@@ -1,0 +1,32 @@
+{%- comment -%}"Shipped or not?": listen fra _data/promises.yml, nyeste status først. Bruges af /shipped/ og /da/leveret/.{%- endcomment -%}
+{%- assign t = site.data.i18n[page.lang] -%}
+{%- assign promises = site.data.promises | sort: 'status_on' | reverse -%}
+<article class="issue promises-page">
+  <p class="issue-date">7am AI</p>
+  <h1>{{ t.shipped_label }}</h1>
+  <p class="issue-lead">{{ t.shipped_lead }}</p>
+  <ul class="promise-list">
+  {%- for p in promises %}
+    <li id="{{ p.id }}" class="promise">
+      <p class="promise-head"><b>{{ p.company }}</b><span class="status status-{{ p.status }}">{{ t.shipped_status[p.status] }}</span></p>
+      <p class="promise-text">{{ p.promise[page.lang] }}</p>
+      {%- if p.note %}
+      <p class="promise-note">{{ p.note[page.lang] }}</p>
+      {%- endif %}
+      {%- assign promised_host = p.promised_source | split: '/' | slice: 2 | first | remove: 'www.' -%}
+      {%- assign status_host = p.status_source | split: '/' | slice: 2 | first | remove: 'www.' %}
+      <p class="promise-meta">{{ t.shipped_promised }} <time datetime="{{ p.promised_on | date: '%Y-%m-%d' }}">{{ p.promised_on | date: t.date_format }}</time>, {{ t.shipped_due }} <time datetime="{{ p.deadline | date: '%Y-%m-%d' }}">{{ p.deadline | date: t.date_format }}</time> · <a href="{{ p.promised_source }}" rel="noopener">{{ promised_host }}</a> · <span class="tag tag-official">{{ t.shipped_official }}</span></p>
+      <p class="promise-meta">{{ t.shipped_confirmed }} <time datetime="{{ p.status_on | date: '%Y-%m-%d' }}">{{ p.status_on | date: t.date_format }}</time> · <a href="{{ p.status_source }}" rel="noopener">{{ status_host }}</a> · <span class="tag tag-official">{{ t.shipped_official }}</span></p>
+      {%- if p.issues %}
+      <p class="promise-meta">{{ t.shipped_issues }}:
+        {%- for i in p.issues %}
+        {%- assign issue_path = i.date | date: '%Y/%m/%d' | prepend: t.home | append: '/#' | append: i.anchor %}
+        <a href="{{ issue_path | relative_url }}">{{ i.date | date: t.date_format }}</a>{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      </p>
+      {%- endif %}
+    </li>
+  {%- endfor %}
+  </ul>
+  <p class="promise-rules">{{ t.shipped_rules }} <a href="{{ t.how_url | relative_url }}">{{ t.how_label }}</a></p>
+</article>
