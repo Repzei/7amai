@@ -15,8 +15,8 @@
       {%- endif %}
       {%- assign promised_host = p.promised_source | split: '/' | slice: 2 | first | remove: 'www.' -%}
       {%- assign status_host = p.status_source | split: '/' | slice: 2 | first | remove: 'www.' %}
-      <p class="promise-meta">{{ t.shipped_promised }} <time datetime="{{ p.promised_on | date: '%Y-%m-%d' }}">{{ p.promised_on | date: t.date_format }}</time>, {{ t.shipped_due }} <time datetime="{{ p.deadline | date: '%Y-%m-%d' }}">{{ p.deadline | date: t.date_format }}</time> · <a href="{{ p.promised_source }}" rel="noopener">{{ promised_host }}</a> · <span class="tag tag-official">{{ t.shipped_official }}</span></p>
-      <p class="promise-meta">{{ t.shipped_confirmed }} <time datetime="{{ p.status_on | date: '%Y-%m-%d' }}">{{ p.status_on | date: t.date_format }}</time> · <a href="{{ p.status_source }}" rel="noopener">{{ status_host }}</a> · <span class="tag tag-official">{{ t.shipped_official }}</span></p>
+      <p class="promise-meta">{{ t.shipped_promised }} <time datetime="{{ p.promised_on | date: '%Y-%m-%d' }}">{{ p.promised_on | date: t.date_format }}</time>, {{ t.shipped_due }} <time datetime="{{ p.deadline | date: '%Y-%m-%d' }}">{{ p.deadline | date: t.date_format }}</time> · <a href="{{ p.promised_source }}" rel="noopener">{{ promised_host }}</a> <span class="tag tag-official">{{ t.shipped_official }}</span></p>
+      <p class="promise-meta">{{ t.shipped_confirmed }} <time datetime="{{ p.status_on | date: '%Y-%m-%d' }}">{{ p.status_on | date: t.date_format }}</time> · <a href="{{ p.status_source }}" rel="noopener">{{ status_host }}</a> <span class="tag tag-official">{{ t.shipped_official }}</span></p>
       {%- if p.issues %}
       <p class="promise-meta">{{ t.shipped_issues }}:
         {%- for i in p.issues %}

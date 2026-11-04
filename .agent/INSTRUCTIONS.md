@@ -277,12 +277,31 @@ det for dig:**).>
 Eksempler: `_explained/open-weight.md` og `_explained/da/open-weight.md`. Ret aldrig eksisterende
 biblioteksfiler uden grund; finder du en fejl i en, så ret den og nævn det i rapporten.
 
+### U5c. "Shipped or not?" (`_data/promises.yml`)
+Listen over, hvad AI-firmaer har lovet med en dato, og om det kom. Felterne står øverst i filen.
+Kun Official-kilder, du selv har åbnet, både for løftet og for status. Et medie, der skriver, at
+noget er leveret, ændrer ikke status, før firmaets egen side, kode eller modelside viser det.
+1. **Nye løfter:** indeholder en af dagens historier et løfte, hvor firmaet selv nævner en dato
+   eller frist, så tilføj en linje øverst med begge sprog og `status: not_yet` (`status_on` = i dag),
+   og dagens udgave under `issues`. Løfter uden dato ("snart", "i de kommende måneder") kommer ikke på listen.
+2. **Åbne løfter:** åbn igen hvert løftes kilder med status `not_yet`, `partial` eller `late`, og tjek
+   firmaets modelside eller repo, hvis det er sådan noget, løftet handler om. Ret status,
+   `status_on` og `status_source`, hvis det viser noget nyt:
+   `delivered` = det lovede findes, `partial` = kun en del af det lovede findes,
+   `late` = fristen er passeret, og det lovede findes ikke, `not_yet` = fristen er ikke passeret.
+   Ændrer intet sig, så lad linjen stå uændret (`status_on` flyttes ikke).
+   Leveres noget efter fristen, bliver status `delivered`, og `note` siger, at det kom efter fristen.
+3. Handler en af dagens historier om et løfte på listen, så tilføj dagens udgave under `issues`.
+   `delivered`-linjer ændres ikke ellers, medmindre firmaet selv trækker det lovede tilbage.
+Ingen ændringer er det normale på en stille dag. Skriv aldrig en linje for at have noget at vise.
+
 ### U6. Redaktørkontrol (obligatorisk, spring den ALDRIG over)
 Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils fremgangsmåde
 (ret / nedgradér / fjern, tilføj aldrig nye historier). Gør det i denne rækkefølge:
 1. For HVER kilde-URL i udgaven: kald WebFetch på den igen nu, med en prompt der beder kilden
    bekræfte de konkrete påstande, tal, navne og datoer, historien bruger. Det tager 1-2 minutter
    og er ikke valgfrit, heller ikke på en stille dag, eller fordi kilden blev læst under research.
+   Det samme gælder kilderne i hver linje, du har tilføjet eller ændret i `_data/promises.yml`.
 2. Ret, nedgradér eller fjern ud fra svarene, og gå derefter de 10 kriterier igennem én for én.
    Kør `python3 .agent/readability.py _posts/<fil> _da/<fil>` og på hver ny fil i `_explained/`
    (begge sprog), og ret, til alle melder OK. Scriptet tjekker også mailens felter (`topic`,
@@ -304,14 +323,14 @@ hvilken i rapporten. "Åbnet under research", "stille dag" eller "for få histor
 grund. Gem rapporten til PR-beskrivelsen.
 
 ### U7. Pull request
-1. `git checkout -b issue/<dato>`, commit begge filer + nye filer i `_explained/` + delingsbillederne i `assets/og/` (`Udkast <dato>`), `git push -u origin issue/<dato>`.
+1. `git checkout -b issue/<dato>`, commit begge filer + nye filer i `_explained/` + delingsbillederne i `assets/og/` + `_data/promises.yml`, hvis den er ændret (`Udkast <dato>`), `git push -u origin issue/<dato>`.
 2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<redaktørkontrollens rapport, derefter overskrifterne som liste + kilder, til sidst kandidatlisten fra U2 (mindst 15)>" -q .html_url`.
    Notér PR-URL'en.
 
 ### U8. Ingen udkast-mail
 Der sendes ingen udkast-mail. PR'en er nok: redaktøren kan godkende den, hvis han er oppe.
 
-Afslut med én linje: PR-URL, titel, antal historier, kernens læsetid, dagens tre begreber (nye/genbrugte), antal kandidater, kilder genåbnet x/y, readability OK/ikke OK og delingsbillede OK/ikke OK.
+Afslut med én linje: PR-URL, titel, antal historier, kernens læsetid, dagens tre begreber (nye/genbrugte), antal kandidater, kilder genåbnet x/y, readability OK/ikke OK, delingsbillede OK/ikke OK og Shipped: n nye, m ændrede.
 
 ---
 

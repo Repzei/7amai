@@ -14,6 +14,7 @@ ikke-godkendt udgave får `checked: true` og mærket "checked against our editor
   kilden, står ikke i udgaven.
 - Tilføj aldrig nye historier i kontrollen. Ret, nedgradér eller fjern.
 - Rettes den engelske udgave, rettes den danske tilsvarende (og omvendt).
+- `_data/promises.yml` ("Shipped or not?", INSTRUCTIONS U5c): kriterie 1, 2, 8 og 9 gælder også hver tilføjet eller ændret linje, og alle kilder dér skal være Official. Består en linje ikke, så fjern ændringen.
 
 ## Kriterierne
 | # | Kriterie | Består ikke: gør dette |
@@ -36,4 +37,5 @@ Skriv resultatet øverst i PR-beskrivelsen, så Jesper kan se det på et øjebli
 Redaktørkontrol: 10/10 kriterier tjekket, <n> historier, kilder genåbnet i kontrollen: <x>/<y>.
 Rettet: <kort liste, fx "#2 Big deal -> Worth knowing (ingen Official-kilde)"> eller "intet".
 Fjernet: <historie + kriterie> eller "intet".
+Shipped or not: <nye og ændrede linjer med status og kilde> eller "ingen ændringer".
 ```
