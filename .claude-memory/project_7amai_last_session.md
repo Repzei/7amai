@@ -4,7 +4,7 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-11-04T17:59:55.974Z
+  modified: 2026-11-04T20:40:41.586Z
   originSessionId: 7843c4d5-d2f3-4d82-b945-17d4e6156cee
 ---
 
@@ -25,13 +25,12 @@ Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE); dette er ov
 - **Sessionen kan ikke flyttes til 7amai** med change_directory (hook: mappen under `.claude` kan ikke slås op). Start 7am AI-sessioner direkte i `C:/Users/havnd/.claude/projects/MitProjekt/7amai`, ellers gælder repoets hooks ikke. Stien `MitProjekt/7amai` direkte under brugermappen findes ikke.
 - `gh run watch` kan hænge over 5 min; vent i baggrunden med en curl-løkke mod den ændrede side.
 - **Jespers terminal er Windows PowerShell 5.1:** ingen `&&`, brug `;`.
-- **`wrangler deploy` blokeres af auto-mode** (produktion): Jesper kører det selv.
+- **`wrangler deploy` blokeres af auto-mode** (produktion): Jesper kører det selv. Giv altid den fulde `cd`-sti til workerens mappe (`C:\Users\havnd\.claude\projects\MitProjekt\7amai\worker\stats`), ellers fejler det med "Could not detect a directory containing static files".
 - Test nye ting på ulinkede testsider (noindex, sitemap false), og fjern det efter Jespers ja.
 - **Ingen `{` `}` i Liquid-strenge** (se [[feedback-7amai-lessons]] 15). Tjek `gh run list --limit 1` efter hvert push.
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
 1. **Tjek 5/11:** "Shipped: n nye, m ændrede" i udkastets slutlinje og "Shipped or not" i PR-rapporten. Ingen ændringer er det normale på en stille dag.
-2. **Jesper:** `npx.cmd wrangler deploy` fra `worker/stats` (systemfanen).
-3. Evt. 2b (rettelser@ + brief@-svar; Jesper opretter reglerne i Cloudflare først).
-4. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console (også danske forespørgsler) og vælg næste skridt.
+2. Evt. 2b (rettelser@ + brief@-svar; Jesper opretter reglerne i Cloudflare først).
+3. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console (også danske forespørgsler) og vælg næste skridt.
