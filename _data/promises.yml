@@ -1,0 +1,44 @@
+# "Shipped or not?": what AI companies promised with a date, and whether it came.
+# Only Official sources (the company's own site, repo or model page), for both the promise and the status.
+#
+# status: delivered | partial | not_yet | late
+# deadline: last day the company itself named
+# status_on: the day the official source shows this status. If the source does not
+#   show when it happened, use the day we checked it (never a guess).
+# note: optional, one short sentence, only facts from the two sources.
+# issues: our own editions about it, as date + story anchor (the same anchor is used on both languages).
+
+- id: kimi-k3-1-pro-weights
+  company: Moonshot
+  promise:
+    en: "Release the full weights of Kimi K3.1 Pro by 4 November."
+    da: "Frigive alle vægte til Kimi K3.1 Pro senest 4. november."
+  promised_on: 2026-10-23
+  promised_source: https://www.kimi.ai/blog/kimi-k3-1-pro
+  deadline: 2026-11-04
+  status: delivered
+  status_on: 2026-11-04
+  status_source: https://huggingface.co/moonshotai/Kimi-K3.1-Pro
+  note:
+    en: "Released under its own Kimi K3.1 Pro License."
+    da: "Frigivet under sin egen Kimi K3.1 Pro License."
+  issues:
+    - { date: 2026-10-24, anchor: kimi-k3-1-pro }
+
+- id: mistral-large-4-weights
+  company: Mistral
+  promise:
+    en: "Release the weights of Mistral Large 4 by the end of October."
+    da: "Frigive vægtene til Mistral Large 4 inden udgangen af oktober."
+  promised_on: 2026-10-06
+  promised_source: https://mistral.ai/news/mistral-large-4/
+  deadline: 2026-10-31
+  status: delivered
+  status_on: 2026-10-29
+  status_source: https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B
+  note:
+    en: "Firms that sell it as a hosted service need a separate licence from Mistral."
+    da: "Firmaer, der sælger den som hostet tjeneste, skal have en særskilt licens fra Mistral."
+  issues:
+    - { date: 2026-10-10, anchor: mistral-large-4 }
+    - { date: 2026-10-30, anchor: mistral-large-4 }
