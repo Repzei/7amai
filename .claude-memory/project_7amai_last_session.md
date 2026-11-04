@@ -4,33 +4,34 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-11-02T15:56:23.494Z
-  originSessionId: 7c954deb-6af0-4771-b27f-2ea083bcde67
+  modified: 2026-11-04T17:59:55.974Z
+  originSessionId: 7843c4d5-d2f3-4d82-b945-17d4e6156cee
 ---
 
-# 7am AI: handoff (seneste: 2. nov. 2026, skridt 3a + 3b live; før det 29/10 markedsposition + skridt 1-2)
+# 7am AI: handoff (seneste: 4. nov. 2026, skridt 4 "Shipped or not?" live)
 
-Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE og MARKEDSPOSITION-ANALYSE); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
+Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
 
 ## Lavet og hvorfor
-- **28.-29/10:** markedsanalyse (artifact https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE) -> "tillid, man kan se" (STRATEGI 7.1). Skridt 1 live (f9927f5: videresend-linje i mailen, Del-knap, tilmelding på udgaven) og skridt 2 live (90e34cd: /how-we-work/ + /da/metode/ med tal og rettelsesliste).
-- **2/11 skridt 3a live (908fdcf, 7a49500):** emnesider /topics/ + /da/emner/, "Topics"/"Emner" i menuen; emner under 3 historier har noindex.
-- **2/11 skridt 3b live (428fd74):** "Seen in the news"/"Set i udgaverne" på hver Explained-side (`_includes/seen-in.html`, højst 10 + "og N til i arkivet"); danske søgeord på /da/, /da/explained/ ("AI-begreber forklaret på dansk"), /da/emner/ ("AI-nyheder efter emne"); udgavernes beskrivelse starter med "AI-nyheder 2. november 2026:" / "AI news Nov 2, 2026:". Rettet undervejs: meta description ignorerede `description:` (34 sider viste taglinen), og:title knækkede ved citationstegn.
+- **4/11 skridt 4 live (bc81503, e50d333, ce47033, b899fe2):** /shipped/ "Shipped or not?" + /da/leveret/ "Leveret eller ej?" fra `_data/promises.yml`: daterede løfter fra AI-firmaer og om de kom, kun Official-kilder. Første to: Moonshot Kimi K3.1 Pro og Mistral Large 4 (begge leveret).
+- Udkast-routinen vedligeholder listen fra 5/11 (INSTRUCTIONS U5c, kontrol i U6, med i PR'en, slutlinje "Shipped: n nye, m ændrede").
 
 ## Valg Jesper traf
-- 29/10: kombineret plan; "Shipped or not?" nu som skridt 4; privacy@ som fejl-adresse for nu; INGEN link til GitHub.
-- 2/11: "ja, gå live med begge, også engelsk dato" (datoen foran beskrivelsen også på EN).
-- Valgt fra: kilde pr. tilmeldt (privatliv). Titlen på /da/ er den låste one-liner og ændres ikke for SEO.
+- 2/11: routinen vedligeholder listen. 4/11: navnet "Shipped or not?" / "Leveret eller ej?"; "ja gå live med den".
+- Mit valg, sagt til Jesper: link i sidefoden og på How we work, ikke i menuen, fordi den er fuld ved 375 px.
+- "Bekræftet"-datoen er den dag, firmaets egen kilde viser status, ellers tjekdagen. Kimi står 4/11, fordi filerne er dateret 2/11, men det kan ikke ses, hvornår repoet blev offentligt.
 
 ## Faldgruber
+- **Sessionen kan ikke flyttes til 7amai** med change_directory (hook: mappen under `.claude` kan ikke slås op). Start 7am AI-sessioner direkte i `C:/Users/havnd/.claude/projects/MitProjekt/7amai`, ellers gælder repoets hooks ikke. Stien `MitProjekt/7amai` direkte under brugermappen findes ikke.
+- `gh run watch` kan hænge over 5 min; vent i baggrunden med en curl-løkke mod den ændrede side.
 - **Jespers terminal er Windows PowerShell 5.1:** ingen `&&`, brug `;`.
 - **`wrangler deploy` blokeres af auto-mode** (produktion): Jesper kører det selv.
-- Test nye ting bag et flag i front matter + ulinkede testsider (noindex, sitemap false); fjern flag og slet testsider efter Jespers ja.
-- **Ingen `{` `}` i Liquid-strenge** (fejlet Pages-build 2/11, se [[feedback-7amai-lessons]] 15). Tjek `gh run list --limit 1` efter hvert push.
-- En Edit-hook kan åbne en lokal fil i browser-panelet; brug så `tabs_create` til web-tests.
+- Test nye ting på ulinkede testsider (noindex, sitemap false), og fjern det efter Jespers ja.
+- **Ingen `{` `}` i Liquid-strenge** (se [[feedback-7amai-lessons]] 15). Tjek `gh run list --limit 1` efter hvert push.
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
-1. **Skridt 4 "Shipped or not?"** (`_data`-liste vedligeholdt af udkast-routinen, kun Official-kilder, dato + kilde pr. status). Godt første eksempel: 30/10-udgaven "Mistral lets anyone download Large 4", fordi 10/10 lovede åbne vægte i oktober (= Leveret). Også Kimi K3.1 Pro: åbne vægte lovet til 4/11 (udgave 24/10).
-2. Evt. 2b (rettelser@ + brief@-svar; Jesper opretter reglerne i Cloudflare først).
-3. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console (også danske forespørgsler efter 3b) og vælg næste skridt.
+1. **Tjek 5/11:** "Shipped: n nye, m ændrede" i udkastets slutlinje og "Shipped or not" i PR-rapporten. Ingen ændringer er det normale på en stille dag.
+2. **Jesper:** `npx.cmd wrangler deploy` fra `worker/stats` (systemfanen).
+3. Evt. 2b (rettelser@ + brief@-svar; Jesper opretter reglerne i Cloudflare først).
+4. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console (også danske forespørgsler) og vælg næste skridt.
