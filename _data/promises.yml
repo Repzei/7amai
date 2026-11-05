@@ -24,6 +24,7 @@
     da: "Frigivet under sin egen Kimi K3.1 Pro License."
   issues:
     - { date: 2026-10-24, anchor: kimi-k3-1-pro }
+    - { date: 2026-11-05, anchor: kimi-k3-1-pro-weights }
 
 - id: mistral-large-4-weights
   company: Mistral
