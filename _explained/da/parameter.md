@@ -16,7 +16,7 @@ En parameter er et af de tal inde i en AI-model, som modellen lærer under træn
 
 Når træningen starter, er tallene tilfældige. Så læser modellen enorme mængder tekst og gætter det næste ord igen og igen. Hver gang den gætter forkert, skubber træningen tallene lidt, så næste gæt bliver bedre. Efter milliarder af den slags skub rummer tallene mønstre i sprog, fakta og færdigheder.
 
-> **Tænk på det sådan her:** et mixerbord i et studie har mange små knapper. Én knap alene gør ikke meget. Men står de alle helt rigtigt, lyder sangen godt. Parametrene er knapperne, og træningen er lydteknikeren, der drejer dem millioner af gange, til det lyder rigtigt.
+> **Tænk på det sådan her:** et mixerbord i et studie har mange små knapper. Én knap alene gør ikke meget. Men står de alle helt rigtigt, lyder sangen godt. Parametrene er knapperne, og træningen er lydteknikeren, der drejer dem milliarder af gange, til det lyder rigtigt.
 
 Derfor angiver man en models størrelse som et antal. "8B" betyder 8 mia. parametre, og "2,8T" betyder 2,8 billioner. Den fil, du henter til en åben model, er for det meste disse tal.
 

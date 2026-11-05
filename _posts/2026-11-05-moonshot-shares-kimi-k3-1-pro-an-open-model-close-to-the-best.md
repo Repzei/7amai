@@ -3,20 +3,20 @@ title: "Moonshot shares Kimi K3.1 Pro, an open model close to the best"
 summary: "Anyone can now download Kimi K3.1 Pro, which comes close to Claude Opus 5.5 on a coding test, in Moonshot's own results. Also: OpenAI's AI built 948 Linux attacks, Meta and OpenAI buy coding-agent tools, Siri AI opens to apps, and almost no one books an Uber through an agent."
 date: 2026-11-05 07:00:00 +0100
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "parameter", from: 1, more: ["mixture-of-experts", "context-window"] }
 today:
   - { t: "Moonshot put Kimi K3.1 Pro online for anyone to download, close to Opus 5.5 at coding.", why: "Companies that want a top model on their own servers." }
   - { t: "OpenAI says its AI built 948 attacks on Linux, each with a draft fix.", why: "Anyone who runs Linux servers or uses an Android phone." }
-  - { t: "Meta buys Conductor and OpenAI buys Pierre, two tools that coding agents work in.", why: "Developers who use Conductor, and anyone who follows who owns the AI tools." }
+  - { t: "Meta buys Conductor and OpenAI agrees to buy Pierre, two tools that coding agents work in.", why: "Developers who use Conductor, and anyone who follows who owns the AI tools." }
   - { t: "Any app can now plug into Siri AI in a test version, but not in the EU yet.", why: "App makers, and Apple users in Europe." }
   - { t: "AI agents booked just four Uber rides in Uber's busiest week of October.", why: "Anyone wondering when agents will run errands for us." }
 other_lang_url: /da/2026/11/05/
 items:
   - { n: 1, anchor: "kimi-k3-1-pro-weights", signal: big, tracks: [build, general, europe], min: 1.5, source: official, topic: open, why: "A company that must keep its data at home can now run something close to the top models on its own servers.", number: "65.7", number_label: "points on a coding test in Moonshot's own results, against 66.4 for Claude Opus 5.5", tiles: [{ n: "58.2", t: "for GPT-6 Astra on the same list" }] }
   - { n: 2, anchor: "openai-linux-root", signal: worth, tracks: [general, build], min: 1, source: reported, number: "948", number_label: "attacks on Linux that OpenAI says its AI built, each with a draft fix", topic: security, why: "When finding flaws gets this cheap, the race is about who fixes them first.", do: "Install Linux and Android updates when they arrive." }
-  - { n: 3, anchor: "coding-agent-tools", signal: worth, tracks: [build, general], min: 1.5, source: official, topic: business, why: "The tools around your coding agent may soon belong to the same few firms that make the models.", do: "Conductor users: move or export your cloud workspaces before 20 November." }
+  - { n: 3, anchor: "coding-agent-tools", signal: worth, tracks: [build, general], min: 1.5, source: official, topic: business, why: "The tools around your coding agent may soon belong to the same few firms that make the models.", do: "Conductor users: move or export your cloud workspaces before 13 November." }
   - { n: 4, anchor: "siri-ai-apps", signal: worth, tracks: [build, general, europe], min: 1, source: official, topic: voice, why: "Every app can become something Siri knows how to use, but Europeans wait outside for now." }
   - { n: 5, anchor: "uber-agent-rides", signal: quick, tracks: [general], min: 1, source: reported, number: "4", number_label: "Uber rides booked by AI agents in its busiest week of October", topic: agent, why: "An agent only helps when it is easier than the app, and booking a ride is already fast.", tiles: [{ n: "320M", t: "trips and orders on Uber in the same week" }] }
   - { n: 6, anchor: "drama-3-llama-cpp", signal: worth, tracks: [build, europe], min: 1, source: official, number: "16", number_label: "voices Drama 3 can use in one text, offline in llama.cpp", topic: voice, why: "Scripts and stories can be read aloud in many voices without the text leaving your machine." }
@@ -31,17 +31,17 @@ items:
 
 The best AI models are usually rented, not owned. You send your data to OpenAI, Anthropic or Google and pay for every word. Open models run on your own machines, but they have trailed the best closed ones.
 
-Moonshot, a Chinese AI lab, launched Kimi K3.1 Pro in October and promised the weights by 4 November. The files went up on Hugging Face on 2 November, two days early.
+When Moonshot, a Chinese AI lab, launched Kimi K3.1 Pro, it promised the weights by 4 November. The files went up on Hugging Face on 2 November, two days early.
 
 The model has 2.8T parameters, the numbers it learned in training. But it uses only a small part of them for each word, which keeps it cheaper to run.
 
 On Terminal-Bench 4.0, a coding test, Kimi scores 65.7. Claude Opus 5.5 scores 66.4 and GPT-6 Astra 58.2.
 
-The catch: Moonshot reported the scores itself, and nobody has checked them yet. The files take up about 1.56 TB, so this is a model for data centres, not laptops.
+The catch: Kimi's score comes from Moonshot's own run, and nobody has checked it yet. The files take up about 1.56 TB, so this is a model for data centres, not laptops.
 
 The license is Moonshot's own. Firms that sell the model as a hosted service, with more than $20M in revenue a year, need a separate deal.
 
-<div class="why"><b>Why it matters</b><p>It is like being able to buy the car instead of only renting it. You need a big garage, but nobody can change the terms on you. A company that must keep its data at home can now run something close to the top models on its own servers.</p></div>
+<div class="why"><b>Why it matters</b><p>It is like being able to buy the car instead of only renting it. A company that must keep its data at home can now run something close to the top models on its own servers.</p></div>
 
 Source: [huggingface.co](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) · <span class="tag tag-official">Official</span> · [huggingface.co](https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE) · <span class="tag tag-official">Official</span> · [kimi.ai](https://www.kimi.ai/blog/kimi-k3-1-pro) · <span class="tag tag-official">Official</span>
 {: .sources}
@@ -54,7 +54,7 @@ Source: [huggingface.co](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) · <sp
 
 Linux runs countless servers, and it is the core of every Android phone.
 
-This week, OpenAI described one run of an AI system built on a security model. It looked at 2,308 possible flaws. For 948 of them, it wrote an attack that turns an ordinary user into root, the owner of the whole machine.
+This week, OpenAI described one run of its security research system, which uses AI agents. It looked at 2,308 possible flaws. For 948 of them, it wrote an attack that turns an ordinary user into root, the owner of the whole machine.
 
 Each attack came with a suggested fix, and the run cost about $1.2M. Engineers at the security firm Trail of Bits review every finding before it goes to Linux.
 
@@ -70,18 +70,18 @@ Source: [startupfortune.com](https://startupfortune.com/openais-ai-pipeline-turn
 ### 3. Meta and OpenAI buy the tools that coding agents work in {#coding-agent-tools}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">General</span><span class="track">1½ min</span></p>
 
-<p class="short"><span>The short version</span>Meta is buying Conductor, which runs many coding agents at once, and OpenAI is buying Pierre, which stores their code. Conductor's cloud closes on 20 November.</p>
+<p class="short"><span>The short version</span>Meta is buying Conductor, which runs many coding agents at once, and OpenAI has agreed to buy Pierre, which stores their code. Conductor's cloud closes on 20 November.</p>
 
-A coding agent needs a place to work and a place to keep its code. This week, two big AI labs bought firms that make exactly that.
+A coding agent needs a place to work and a place to keep its code. This week, two big AI labs moved to buy firms that make exactly that.
 
 #### <span>1 of 2</span> Meta buys Conductor
 Conductor lets a developer run several agents from Anthropic and OpenAI side by side. On 4 November, its founder said Conductor is joining Meta, and Meta confirmed the deal to TechCrunch.
 
-For users, the clock is ticking. The cloud service shuts on 20 November, and then its data is deleted. The app on your Mac gets new models and fixes until early 2027.
+For users, the clock is ticking. The cloud service turns read-only on 13 November and shuts on 20 November, and then its data is deleted. The app on your Mac gets new models and fixes until early 2027.
 
-<p class="todo"><b>Do this:</b> Conductor users: move cloud workspaces with "Transfer to local", or export everything under Settings, Account, before 20 November.</p>
+<p class="todo"><b>Do this:</b> Conductor users: move cloud workspaces with "Transfer to local", or export everything under Settings, Account, before 13 November.</p>
 
-#### <span>2 of 2</span> OpenAI buys Pierre
+#### <span>2 of 2</span> OpenAI agrees to buy Pierre
 Pierre makes Code Storage, a Git service that other apps can build in. Its code already runs inside Codex, OpenAI's coding agent, Axios reported. No price was given.
 
 <div class="why"><b>Why it matters</b><p>The labs no longer just sell the engine. They want the garage and the workshop too. So the tools around your coding agent may soon belong to the same few firms that make the models.</p></div>
@@ -102,7 +102,7 @@ Customers get Siri AI "in a few months", and apps that use it can enter the App 
 
 The catch: Siri AI is not available in the EU on iPhone, iPad and Apple Watch for now. Apple says it is working with the EU on a way forward.
 
-<div class="why"><b>Why it matters</b><p>Now every app can become something Siri knows how to use. But Europeans wait outside for now, so the new Siri reaches us later.</p></div>
+<div class="why"><b>Why it matters</b><p>Now every app can become something Siri knows how to use. But Europeans wait outside for now.</p></div>
 
 Source: [developer.apple.com](https://developer.apple.com/news/?id=gdk2umrf) · <span class="tag tag-official">Official</span>
 {: .sources}
@@ -158,7 +158,7 @@ Many AI apps stuff documents found by a search into the prompt. A common worry i
 
 One researcher tested that on five small open models. With a lot of neutral filler, the models still found the right fact 97% to 100% of the time. But when the filler looked like the evidence, they got only 16% to 33% right.
 
-A single passage with a rival answer for the same fact did the most harm. The models' attention got pulled away from the real evidence, and that explained the drop far better than length.
+A single passage with a rival answer for the same fact did great harm on its own. The models' attention got pulled away from the real evidence, and that explained the drop far better than length.
 
 The catch: it is a preprint by one author, and the models are small, with 3B parameters at most.
 

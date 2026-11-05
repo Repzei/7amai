@@ -16,7 +16,7 @@ A parameter is one of the numbers inside an AI model that the model learns durin
 
 At the start of training, the numbers are random. The model then reads huge amounts of text and guesses the next word again and again. Each time it guesses wrong, training nudges the numbers a little, so the next guess is better. After billions of such nudges, the numbers hold patterns of language, facts and skills.
 
-> **Think of it like this:** a mixing desk in a studio has many small knobs. One knob alone does little. But set all of them just right, and the song sounds good. Parameters are the knobs, and training is the sound engineer turning them, millions of times, until the result sounds right.
+> **Think of it like this:** a mixing desk in a studio has many small knobs. One knob alone does little. But set all of them just right, and the song sounds good. Parameters are the knobs, and training is the sound engineer turning them, billions of times, until the result sounds right.
 
 That is why model sizes are given as a count. "8B" means 8 billion parameters, and "2.8T" means 2.8 trillion. The file you download for an open model is mostly these numbers.
 
