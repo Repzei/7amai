@@ -358,7 +358,7 @@ footer { margin-top:24px; }
         <li>.agent/: vejledning, stil, kriterier, kilder, scripts</li></ul></div>
       <div class="card"><div class="role">Domæne, mail og små servere</div><h3>Cloudflare</h3><ul>
         <li>DNS for 7amai.com (alle records "DNS only")</li>
-        <li>Email Routing: privacy@7amai.com til Jespers Gmail</li>
+        <li>Email Routing: privacy@, rettelser@ og brief@7amai.com til Jespers Gmail</li>
         <li>Worker <b>7amai-signup</b>: /subscribe, /confirm, /broadcast, /hit</li>
         <li>Worker <b>7amai-stats</b>: dette dashboard (adgangskode)</li>
         <li>D1-database <b>7amai-stats</b> i EU: anonyme besøg</li></ul></div>
