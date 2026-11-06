@@ -4,17 +4,18 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-11-04T20:40:41.586Z
+  modified: 2026-11-06T12:19:38.459Z
   originSessionId: 7843c4d5-d2f3-4d82-b945-17d4e6156cee
 ---
 
-# 7am AI: handoff (seneste: 4. nov. 2026, skridt 4 "Shipped or not?" live)
+# 7am AI: handoff (seneste: 6. nov. 2026, skridt 4 "Shipped or not?" live og routinen tjekket)
 
 Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
 
 ## Lavet og hvorfor
 - **4/11 skridt 4 live (bc81503, e50d333, ce47033, b899fe2):** /shipped/ "Shipped or not?" + /da/leveret/ "Leveret eller ej?" fra `_data/promises.yml`: daterede løfter fra AI-firmaer og om de kom, kun Official-kilder. Første to: Moonshot Kimi K3.1 Pro og Mistral Large 4 (begge leveret).
-- Udkast-routinen vedligeholder listen fra 5/11 (INSTRUCTIONS U5c, kontrol i U6, med i PR'en, slutlinje "Shipped: n nye, m ændrede").
+- Udkast-routinen vedligeholder listen fra 5/11 (INSTRUCTIONS U5c, kontrol i U6, med i PR'en, slutlinje "Shipped: n nye, m ændrede"). Tjekket 6/11: den virker; #27 tilføjede selv Thinking Machines Inkling 2 Small (`not_yet`, frist 15/11).
+- **6/11 (63ce820):** ingen "Bekræftet"-linje ved `not_yet`, fordi den kunne læses som bekræftet levering.
 
 ## Valg Jesper traf
 - 2/11: routinen vedligeholder listen. 4/11: navnet "Shipped or not?" / "Leveret eller ej?"; "ja gå live med den".
@@ -31,6 +32,7 @@ Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE); dette er ov
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
-1. **Tjek 5/11:** "Shipped: n nye, m ændrede" i udkastets slutlinje og "Shipped or not" i PR-rapporten. Ingen ændringer er det normale på en stille dag.
-2. Evt. 2b (rettelser@ + brief@-svar; Jesper opretter reglerne i Cloudflare først).
-3. Ca. 10/11: Bluesky-besøg; ca. 25/11: mål forward/share/Search Console (også danske forespørgsler) og vælg næste skridt.
+1. Evt. 2b (rettelser@ + brief@-svar; Jesper opretter reglerne i Cloudflare først).
+2. Ca. 10/11: Bluesky-besøg.
+3. **Ca. 16/11:** Inkling 2 Small-fristen (15/11) er passeret: står den som `delivered` med Official-kilde eller `late`? Første rigtige statusskift.
+4. Ca. 25/11: mål forward/share/Search Console (også danske forespørgsler) og vælg næste skridt.

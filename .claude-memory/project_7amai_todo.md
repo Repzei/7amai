@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-11-04T20:40:37.773Z
+  modified: 2026-11-06T12:19:30.870Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-27)
@@ -34,7 +34,8 @@ Skrevet i STRATEGI 7.1 + 8 + 9 + låste beslutninger, roadmap.json (ny fase "Næ
   - Plan i delmål, hvert committet for sig: (D1) `_data/promises.yml`: firma, løfte EN/DA, lovet-dato + Official-kilde, frist, status (delivered/partial/not_yet/late) + statusdato + Official-kilde, links til udgaverne. Første data med hånden: Mistral Large 4 åbne vægte (lovet i udgave 10/10, leveret 30/10) og Kimi K3.1 Pro åbne vægte (lovet til 4/11 i udgave 24/10; tjek status). (D2) side /shipped/ + dansk side (navn og slug aftales med Jesper) som ulinket testside, 375 px EN+DA. (D3) INSTRUCTIONS (nyt trin i udkastet) + EDITORIAL + dashboardets systemfane (Jesper kører `npx.cmd wrangler deploy` fra worker/stats) + roadmap. (D4) Jespers ja -> link i menu/sidefod/how-we-work, sitemap, CLAUDE.md, memory.
   - [x] D1 (4/11): `_data/promises.yml` med Kimi K3.1 Pro (leveret, set offentligt 4/11; filerne er dateret 2/11, men hvornår repoet blev offentligt kan ikke ses, så datoen er tjekdagen) og Mistral Large 4 (leveret 29/10 ifølge Hugging Face-historikken, IKKE 30/10, som er udgavens dato). Vi har ikke skrevet om Kimi-leveringen i en udgave.
   - [x] D2 (4/11, e50d333): ulinkede testsider /shipped/ "Shipped or not?" + /da/leveret/ "Leveret eller ej?" (Jespers valg af navn; noindex, sitemap false), `_includes/promises-list.html`, `shipped_*` i i18n, CSS. Testet 375 px EN+DA uden vandret scroll.
-  - [x] D3 (4/11, ce47033): INSTRUCTIONS U5c + U6 + U7, EDITORIAL, systemfanen, roadmap ("doing"). Virker fra udkastet 5/11 05:30. Systemfanen deployet af Jesper 4/11. TJEK 5/11: står "Shipped: n nye, m ændrede" i slutlinjen og "Shipped or not" i rapporten?
+  - [x] D3 (4/11, ce47033): INSTRUCTIONS U5c + U6 + U7, EDITORIAL, systemfanen, roadmap ("doing"). Virker fra udkastet 5/11 05:30. Systemfanen deployet af Jesper 4/11. TJEKKET 6/11: routinen virker. PR #26 (5/11) og #27 (6/11) har "Shipped or not" i rapporten; #27 tilføjede første linje af sig selv (Thinking Machines, Inkling 2 Small, `not_yet`, frist 15/11, kilden bekræfter "next week"). Slutlinjen "Shipped: n nye, m ændrede" ligger i routinens egen kørsel og er ikke set, kun rapporten. Rettet 6/11 (63ce820): ingen "Bekræftet"-linje ved `not_yet`, fordi den kunne læses som bekræftet levering, og `status_on` flyttes med vilje ikke, når intet ændrer sig (derfor ikke "Sidst tjekket").
+  - [ ] TJEK ca. 16/11: første rigtige statusskift. Fristen for Inkling 2 Small er 15/11, så routinen skal have sat `delivered` (med Official-kilde) eller `late`. Farven for `late` er stadig kun testet kunstigt.
   - [x] D4 LIVE 4/11 (b899fe2, Jesper: "ja gå live med den"): /shipped/ + /da/leveret/ uden noindex og i sitemap, link i sidefoden på alle sider + eget afsnit på /how-we-work/#shipped og /da/metode/#leveret. IKKE i menuen: den er fuld ved 375 px. Tjekket live i 375 px: ingen vandret scroll, alle 4 statusfarver i lys + mørk (delvist/forsinket/ikke endnu kun testet ved at ændre siden i browseren, ingen rigtige data endnu).
 - [ ] 5. Ca. 25/11: mål (Bluesky, ?ref=forward, Search Console) og vælg næste skridt med Jesper
 
