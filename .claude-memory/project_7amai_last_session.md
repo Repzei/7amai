@@ -4,7 +4,7 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-11-06T12:57:29.020Z
+  modified: 2026-11-06T12:59:16.982Z
   originSessionId: 7843c4d5-d2f3-4d82-b945-17d4e6156cee
 ---
 
@@ -17,7 +17,7 @@ Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE); dette er ov
 - Udkast-routinen vedligeholder listen fra 5/11 (INSTRUCTIONS U5c, kontrol i U6, med i PR'en, slutlinje "Shipped: n nye, m ændrede"). Tjekket 6/11: den virker; #27 tilføjede selv Thinking Machines Inkling 2 Small (`not_yet`, frist 15/11).
 - **6/11 (63ce820):** ingen "Bekræftet"-linje ved `not_yet`, fordi den kunne læses som bekræftet levering.
 
-- **6/11 2b live (754d6b1):** rettelser@ er fejl-adresse på How we work, brief@ videresendes, så svar på nyhedsbrevet når frem. Privatlivspolitikken EN/DA dækker nu mails til os.
+- **6/11 2b live (754d6b1):** rettelser@ er fejl-adresse på How we work, brief@ videresendes, så svar på nyhedsbrevet når frem. Privatlivspolitikken EN/DA dækker nu mails til os. Testmail og deploy af systemfanen gjort af Jesper.
 
 ## Valg Jesper traf
 - 6/11: mails fra læsere gemmes "så længe det er nødvendigt", ikke en fast frist.
@@ -35,7 +35,6 @@ Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE); dette er ov
 - Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
 
 ## Hvor vi starter næste gang
-1. **Jesper:** testmail til rettelser@ og brief@ fra en anden adresse end Gmailen, og `npx.cmd wrangler deploy` fra `worker/stats` (systemfanen). Se to-do'en, "Jesper skal selv".
-2. Ca. 10/11: Bluesky-besøg.
-3. **Ca. 16/11:** Inkling 2 Small-fristen (15/11) er passeret: står den som `delivered` med Official-kilde eller `late`? Første rigtige statusskift.
-4. Ca. 25/11: mål forward/share/Search Console (også danske forespørgsler) og vælg næste skridt.
+1. Ca. 10/11: Bluesky-besøg.
+2. **Ca. 16/11:** Inkling 2 Small-fristen (15/11) er passeret: står den som `delivered` med Official-kilde eller `late`? Første rigtige statusskift.
+3. Ca. 25/11: mål forward/share/Search Console (også danske forespørgsler) og vælg næste skridt.
