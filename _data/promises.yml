@@ -8,6 +8,23 @@
 # note: optional, one short sentence, only facts from the two sources.
 # issues: our own editions about it, as date + story anchor (the same anchor is used on both languages).
 
+- id: inkling-2-small-weights
+  company: Thinking Machines
+  promise:
+    en: "Release the full weights of Inkling 2 Small under Apache 2.0 next week, after outside safety testing."
+    da: "Frigive alle vægte til Inkling 2 Small under Apache 2.0 i næste uge, efter sikkerhedstests udefra."
+  promised_on: 2026-11-05
+  promised_source: https://thinkingmachines.ai/news/inkling-2-small/
+  deadline: 2026-11-15
+  status: not_yet
+  status_on: 2026-11-06
+  status_source: https://thinkingmachines.ai/news/inkling-2-small/
+  note:
+    en: "Promised for \"next week\", after outside safety testing and red-teaming."
+    da: "Lovet til \"næste uge\", efter sikkerhedstests og red-teaming udefra."
+  issues:
+    - { date: 2026-11-06, anchor: ripple-65b-inkling-2 }
+
 - id: kimi-k3-1-pro-weights
   company: Moonshot
   promise:
