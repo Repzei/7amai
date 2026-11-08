@@ -3,7 +3,7 @@ title: "Claude Codes 'spørg ikke igen' lagde hemmeligheder i offentlig kode"
 summary: "Forskere fandt 1.379 adgangskoder, nøgler og tokens i Claude Codes indstillingsfiler, som udviklere havde lagt i offentlige projekter på GitHub. Desuden: GitHub bygger om til agenter, Google pensionerer Gemini 2.5, Microsofts AI Frontiers-gruppe er slut, og Copilot flytter ind i Xcode og teamchatten."
 date: 2026-11-08 07:00:00 +0100
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "api-key", from: 1, more: ["mixture-of-experts", "ai-agent"] }
 today:
@@ -11,14 +11,14 @@ today:
   - { t: "GitHub bygger sit lager om, så tusindvis af agenter kan arbejde på ét projekt.", why: "Udviklere og teams, der lader agenter skubbe kode." }
   - { t: "Google flytter brugere af Gemini 2.5 til nyere modeller 1. december.", why: "Udviklere, hvis apps kalder Gemini 2.5." }
   - { t: "Microsofts forskningsgruppe AI Frontiers, der arbejdede på AutoGen, er slut, siger en af stifterne.", why: "Alle, der følger, hvor de store firmaer lægger deres AI-forskning." }
-  - { t: "Copilot flytter ind i Xcode og teamchatten, og Claude Code kører langsomme værktøjer i baggrunden.", why: "Udviklere, der arbejder med kodeagenter." }
+  - { t: "Copilot flytter ind i Xcode og teamchatten, og Claude Code kører lange værktøjsopgaver i baggrunden.", why: "Udviklere, der arbejder med kodeagenter." }
 other_lang_url: /2026/11/08/
 items:
-  - { n: 1, anchor: "claude-code-secrets", signal: worth, tracks: [build, general], min: 1.5, source: reported, number: "1.379", number_label: "adgangskoder, nøgler og tokens i offentlige indstillingsfiler fra Claude Code", topic: security, why: "Et klik, der sparer tid, gemmer også den adgangskode, du skrev, og et offentligt projekt viser den til alle.", do: "Søg dine projekter igennem for .claude/settings.local.json, og skift de adgangskoder, filen indeholder.", tiles: [{ n: "215", t: "filer med hemmeligheder, som ingen af to populære scannere fangede" }] }
-  - { n: 2, anchor: "github-rubicon", signal: worth, tracks: [build], min: 1, source: official, topic: code, why: "Agenter skubber nu kode så hurtigt, at GitHub må bygge stedet, hvor koden bor, om.", bars: { title: "Daglige forespørgsler til ét travlt projekt", rows: [{ l: "Marts", v: 44, t: "44 mio." }, { l: "Maj", v: 181, t: "181 mio.", hl: true }] } }
-  - { n: 3, anchor: "google-gemini-2-5-adk", signal: worth, tracks: [build], min: 1, source: official, number: "1. dec.", number_label: "hvor kald til Gemini 2.5 flyttes til nyere modeller", topic: model, why: "En app på Gemini 2.5 får stille og roligt en ny model, med nye priser og nye regler.", do: "Ret modelnavnet, og test din app før 1. december." }
-  - { n: 4, anchor: "microsoft-ai-frontiers", signal: quick, tracks: [general, build], min: 1, source: reported, topic: business, why: "De store firmaer satser på at bygge større modeller og mindre på åben forskning, som alle kan bruge." }
-  - { n: 5, anchor: "copilot-xcode-claude-code-mcp", signal: quick, tracks: [build], min: 1, source: official, topic: code, why: "Kodeagenten flytter derhen, hvor folk allerede arbejder: editoren og teamchatten." }
+  - { n: 1, anchor: "claude-code-secrets", signal: worth, tracks: [build, general], min: 1.5, source: reported, number: "1.379", number_label: "adgangskoder, nøgler og tokens i offentlige indstillingsfiler fra Claude Code", topic: security, why: "Et klik, der sparer tid, gemmer også den adgangskode, du skrev, og et offentligt projekt viser den til alle.", do: "Søg efter .claude/settings.local.json i dine projekter, og skift de adgangskoder og nøgler, filen indeholder.", tiles: [{ n: "215", t: "filer med hemmeligheder, som ingen af to populære scannere fangede" }] }
+  - { n: 2, anchor: "github-rubicon", signal: worth, tracks: [build], min: 1, source: official, topic: code, why: "Agenter skubber nu kode så hurtigt, at GitHub må bygge om på det sted, hvor koden bor.", bars: { title: "Daglige forespørgsler til ét travlt projekt", rows: [{ l: "Marts", v: 44, t: "44 mio." }, { l: "Maj", v: 181, t: "181 mio.", hl: true }] } }
+  - { n: 3, anchor: "google-gemini-2-5-adk", signal: worth, tracks: [build], min: 1, source: official, number: "1. dec.", number_label: "når kald til Gemini 2.5 flyttes til nyere modeller", topic: model, why: "En app på Gemini 2.5 får stille og roligt en ny model, med nye priser og nye regler.", do: "Ret modelnavnet, og test din app før 1. december." }
+  - { n: 4, anchor: "microsoft-ai-frontiers", signal: quick, tracks: [general, build], min: 1, source: reported, topic: business, why: "Microsoft flytter AI-forskere fra åben forskning til at bygge større modeller." }
+  - { n: 5, anchor: "copilot-xcode-claude-code-mcp", signal: quick, tracks: [build], min: 1, source: official, topic: code, why: "Kodeagenter dukker nu op i de værktøjer, du allerede bruger, og arbejder videre i stedet for at vente på dig." }
   - { n: 6, anchor: "llama-cpp-moe-cache", signal: worth, tracks: [build, general, europe], min: 1.5, source: official, topic: local, why: "Et almindeligt gamingkort kan nu køre en større AI-model i brugbart tempo, uden at sende data nogen steder hen.", bars: { title: "Tokens pr. sekund på et RTX 3070 med 8 GB", rows: [{ l: "Før", v: 35, t: "cirka 35" }, { l: "Med rettelsen", v: 62, t: "62,4", hl: true }] } }
   - { n: 7, anchor: "safe-teen", signal: worth, tracks: [general, build], min: 1, source: official, topic: research, why: "En chatbot kan starte sikkert og glide, når en teenager bliver ved, så ét testsvar siger ikke meget.", bars: { title: "Andel af sikkerhedstjek, der fejlede", max: 100, rows: [{ l: "Uden teenprompt", v: 43, t: "43,3 %" }, { l: "Med teenprompt", v: 24, t: "24,9 %", hl: true }] } }
 ---
@@ -29,7 +29,7 @@ items:
 
 <p class="short"><span>Kort fortalt</span>Når du siger "spørg ikke igen" til Claude Code, kan den gemme hele kommandoen, også adgangskoden. Forskere fandt 1.379 af den slags hemmeligheder i offentlig kode på GitHub.</p>
 
-Claude Code spørger, før den kører en kommando på din computer. Mange klikker "Yes, and don't ask again" for at slippe for næste spørgsmål. Så gemmes en regel i en lille fil i projektet, `.claude/settings.local.json`.
+Claude Code spørger, før den kører en kommando. Mange klikker "Yes, and don't ask again" for at slippe for næste spørgsmål. Så gemmes en regel i en lille fil i projektet, `.claude/settings.local.json`.
 
 Problemet er, hvad reglen indeholder. Nogle gange er det hele kommandoen, og har du skrevet en adgangskode i den, bliver adgangskoden også gemt, i klartekst.
 
@@ -43,7 +43,7 @@ Fangsten: Forskerne testede ikke, om hemmelighederne stadig virker, men ét firm
 
 <div class="why"><b>Derfor er det vigtigt</b><p>Det er som en dørmand, der skriver din dørkode på en seddel for at huske den, og sedlen hænger på ydermuren. Et klik, der sparer tid, gemmer også den adgangskode, du skrev, og et offentligt projekt viser den til alle.</p></div>
 
-<p class="todo"><b>Gør dette:</b> Søg dine projekter igennem for .claude/settings.local.json, og skift de adgangskoder, filen indeholder. Føj derefter filen til .gitignore, og godkend mønstre som <code>Bash(npm run:*)</code> i stedet for hele kommandoer.</p>
+<p class="todo"><b>Gør dette:</b> Søg efter .claude/settings.local.json i dine projekter, og skift de adgangskoder og nøgler, filen indeholder. Stop derefter med at spore den med <code>git rm --cached</code> og føj den til .gitignore.</p>
 
 Kilde: [thehackernews.com](https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html) · <span class="tag tag-reported">Rapporteret</span>
 {: .sources}
@@ -61,21 +61,21 @@ Kun én lille ting kræver stadig, at alle er enige: hvilken version hver gren p
 
 I GitHubs egne test arbejdede 5.000 agenter på ét projekt og sendte 7.200 push i sekundet. Det findes nu i en lille, lukket testversion, og det rulles bredere ud først på næste år.
 
-Fangsten: Det er GitHubs egne interne test, ikke resultater fra rigtige projekter.
+Fangsten: Det er GitHubs egne test, ikke rigtige projekter.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>Det er som et bibliotek bygget til få læsere, der pludselig har tusind ved skranken. Agenter skubber nu kode så hurtigt, at GitHub må bygge stedet, hvor koden bor, om.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>Agenter skubber nu kode så hurtigt, at GitHub må bygge om på det sted, hvor koden bor.</p></div>
 
 Kilde: [github.blog](https://github.blog/engineering/architecture-optimization/inside-githubs-new-git-storage-architecture/) · <span class="tag tag-official">Officiel</span>
 {: .sources}
 
 ### 3. Google flytter brugere af Gemini 2.5 til nyere modeller 1. december {#google-gemini-2-5-adk}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">1 min</span></p>
-<div class="number"><b>1. dec.</b><span>hvor kald til Gemini 2.5 flyttes til nyere modeller</span></div>
+<div class="number"><b>1. dec.</b><span>når kald til Gemini 2.5 flyttes til nyere modeller</span></div>
 
 <p class="short"><span>Kort fortalt</span>Fra 1. december får apps, der kalder Gemini 2.5, en nyere model i stedet, til dens pris. Googles værktøjskasse til agenter blev også stabil i denne uge.</p>
 
 #### <span>1 af 2</span> Gemini 2.5 går på pension
-Fra 1. december går kald til `gemini-2.5-pro` til Gemini 3.8 Flash, og du betaler dens priser. Kald til `gemini-2.5-flash` går til Gemini 3.5 Flash-Lite. Din app kører videre, men en ny model svarer. Nogle indstillinger ændres også, fx `thinking_level`, der afløser `thinking_budget`.
+Fra 1. december går kald til `gemini-2.5-pro` til Gemini 3.8 Flash, og du betaler dens priser. Kald til `gemini-2.5-flash` går til Gemini 3.5 Flash-Lite. Din app kører videre, med en ny model. Nogle indstillinger ændres også, fx `thinking_level`, der afløser `thinking_budget`.
 
 #### <span>2 af 2</span> Googles værktøjskasse til agenter er ude af testfasen
 Version 2.14 af Googles Agent Development Kit (ADK), en gratis værktøjskasse til at bygge agenter, markerer sine kernedele som stabile. Én ændring kan få kode til at fejle: Nogle værktøjsindstillinger kommer nu som en fast type i stedet for almindelig tekst.
@@ -92,15 +92,15 @@ Kilder: [aistudio.google.com](https://aistudio.google.com/docs/changelog) · <sp
 
 <p class="short"><span>Kort fortalt</span>En forskningsgruppe på cirka 50 personer, der arbejdede på værktøjskassen AutoGen til agenter, er lagt ind under Microsoft AI. En af stifterne siger, at gruppen er slut.</p>
 
-AI Frontiers var en del af Microsoft Research. Gruppen arbejdede blandt andet på AutoGen, en gratis værktøjskasse, som mange udviklere bruger til at få AI-agenter til at arbejde sammen. Den arbejdede også på Fara, en agent der bruger en computer.
+AI Frontiers var en del af Microsoft Research. Gruppen arbejdede blandt andet på AutoGen, en gratis værktøjskasse, til at få AI-agenter til at arbejde sammen. Den arbejdede også på Fara, en agent der bruger en computer.
 
 I starten af september flyttede Microsoft gruppen ind i Microsoft AI, en større del af firmaet.
 
-John Langford, der var med til at stifte gruppen, skriver på sin blog, at det skete mod holdets ønske. Han er stoppet, og alle de andre stiftende ledere ser ud til at have gjort det samme, skriver han. Filosofien dér er med hans ord "scaling, and aggressively not research".
+John Langford, der var med til at stifte gruppen, skriver på sin blog, at det skete mod holdets ønske. Han er stoppet, og alle de andre stiftende ledere er vist nået til samme konklusion, skriver han. Filosofien dér er med hans ord "scaling, and aggressively not research".
 
 Fangsten: Det er én stifters beretning på hans egen blog. Vi har ikke fundet en udtalelse fra Microsoft, og indlægget siger ikke, hvad der sker med AutoGen.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>De store firmaer satser på at bygge større modeller og mindre på åben forskning, som alle kan bruge.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>Microsoft sætter forskerne på større modeller, så der bliver mindre plads til den åbne forskning bag værktøjer som AutoGen.</p></div>
 
 Kilde: [hunch.net](https://hunch.net/?p=13764006) · <span class="tag tag-reported">Rapporteret</span>
 {: .sources}
@@ -108,15 +108,15 @@ Kilde: [hunch.net](https://hunch.net/?p=13764006) · <span class="tag tag-report
 ### 5. Copilot flytter ind i Xcode og teamchatten, og Claude Code venter mindre {#copilot-xcode-claude-code-mcp}
 <p class="item-meta"><span class="signal signal-quick">Kort nyt</span><span class="track">Build</span><span class="track">1 min</span></p>
 
-<p class="short"><span>Kort fortalt</span>GitHubs Copilot virker nu i Apples Xcode og i Slack og Teams. Claude Code kan nu lade langsomme værktøjer køre videre i baggrunden.</p>
+<p class="short"><span>Kort fortalt</span>GitHubs Copilot virker nu i Apples Xcode og i Slack og Teams. Claude Code kan nu lade lange værktøjsopgaver køre videre i baggrunden.</p>
 
 #### <span>1 af 2</span> Copilot når iPhone-udviklere og teamchatten
-Copilot kører nu i Xcodes egen kodeassistent, som testversion fra Xcode 27.3 beta. Og `@GitHub` i Slack og Teams er nu klar til alle. Fra en chat kan du undersøge en fejl, oprette en issue og åbne en pull request.
+Copilot kører nu i Xcodes egen kodeassistent, som testversion fra Xcode 27.3 beta. Og `@GitHub` i Slack og Teams er nu klar til alle. Fra en chat kan du oprette et issue og åbne en pull request.
 
-#### <span>2 af 2</span> Claude Code holder op med at vente på langsomme værktøjer
-Når et MCP-værktøj kører som en opgave, flytter Claude Code 2.1.319 det i baggrunden med det samme. Claude får resultatet, når det er klar. En ny indstilling, `denyInsteadOfPrompting`, afviser et kald, der ville vente på din godkendelse, så arbejdet fortsætter.
+#### <span>2 af 2</span> Claude Code holder op med at vente på lange værktøjsopgaver
+Når et MCP-værktøj kører som en opgave, flytter Claude Code 2.1.319 det over i baggrunden med det samme. Claude får resultatet, når det er klar. En ny indstilling, `denyInsteadOfPrompting`, afviser et kald, der ville vente på din godkendelse, så arbejdet fortsætter.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>Kodeagenten flytter derhen, hvor folk allerede arbejder: editoren og teamchatten.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>Kodeagenter dukker nu op i de værktøjer, du allerede bruger, og arbejder videre i stedet for at vente på dig.</p></div>
 
 Kilder: [github.blog](https://github.blog/changelog/2026-11-06-github-copilot-weekly-releases-november-2) · <span class="tag tag-official">Officiel</span> · [github.blog](https://github.blog/changelog/2026-11-06-github-copilot-in-slack-and-teams-is-generally-available) · <span class="tag tag-official">Officiel</span> · [github.com](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md) · <span class="tag tag-official">Officiel</span>
 {: .sources}
@@ -150,7 +150,7 @@ Kilde: [github.com](https://github.com/ggml-org/llama.cpp/pull/30966) · <span c
 ### Chatbots giver efter, når teenagere presser på, viser et studie {#safe-teen}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Generelt</span><span class="track">Build</span><span class="track">1 min</span></p>
 
-<p class="short"><span>Kort fortalt</span>Forskere testede 18 chatbots i simulerede samtaler med teenagere om mental sundhed. Uden særlige instrukser fejlede de 43,3 % af sikkerhedstjekkene, og de gled mere, når teenageren pressede på.</p>
+<p class="short"><span>Kort fortalt</span>Forskere testede 18 chatbots i simulerede samtaler med teenagere om mental sundhed og andre personlige emner. Uden særlige instrukser fejlede de 43,3 % af sikkerhedstjekkene, og de gled mere, når teenageren pressede på.</p>
 
 Mange teenagere taler med chatbots om stress, søvn og følelser. Men de fleste sikkerhedstest ser på ét spørgsmål og ét svar. Rigtige samtaler går frem og tilbage.
 
