@@ -8,6 +8,23 @@
 # note: optional, one short sentence, only facts from the two sources.
 # issues: our own editions about it, as date + story anchor (the same anchor is used on both languages).
 
+- id: claude-copilot-eu-data-boundary
+  company: Microsoft
+  promise:
+    en: "Let EU and EFTA organizations use Claude across Copilot, processed inside the EU Data Boundary, by the end of 2026."
+    da: "Lade organisationer i EU og EFTA bruge Claude i hele Copilot, behandlet inden for EU Data Boundary, inden udgangen af 2026."
+  promised_on: 2026-11-05
+  promised_source: https://www.microsoft.com/en-us/copilot/blog/2026/11/05/bringing-claude-models-in-microsoft-copilot-into-the-eu-data-boundary/
+  deadline: 2026-12-31
+  status: not_yet
+  status_on: 2026-11-09
+  status_source: https://www.microsoft.com/en-us/copilot/blog/2026/11/05/bringing-claude-models-in-microsoft-copilot-into-the-eu-data-boundary/
+  note:
+    en: "Claude stays off by default for EU organizations until an admin turns it on."
+    da: "Claude er slået fra som standard for organisationer i EU, indtil en administrator slår den til."
+  issues:
+    - { date: 2026-11-09, anchor: claude-copilot-eu }
+
 - id: inkling-2-small-weights
   company: Thinking Machines
   promise:
