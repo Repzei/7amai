@@ -1,4 +1,8 @@
-{%- comment -%}Sætter topic_docs og topic_count for page.topic (bruges af topic-layoutet og af default.html til noindex).{%- endcomment -%}
-{%- if page.lang == 'da' -%}{%- assign topic_docs = site.da | sort: 'date' | reverse -%}{%- else -%}{%- assign topic_docs = site.posts -%}{%- endif -%}
+{%- comment -%}Sætter topic_docs og topic_count for et emne (bruges af topic-layoutet, af default.html til noindex og af sitemap.xml, så noindex og sitemap altid følges ad). Standard er page.topic og page.lang; sitemap.xml giver topic= og lang=.{%- endcomment -%}
+{%- assign tc_topic = include.topic | default: page.topic -%}
+{%- assign tc_lang = include.lang | default: page.lang -%}
+{%- if tc_lang == 'da' -%}{%- assign topic_docs = site.da | sort: 'date' | reverse -%}{%- else -%}{%- assign topic_docs = site.posts -%}{%- endif -%}
 {%- assign topic_count = 0 -%}
-{%- for p in topic_docs -%}{%- for it in p.items -%}{%- if it.topic == page.topic -%}{%- assign topic_count = topic_count | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+{%- for p in topic_docs -%}{%- for it in p.items -%}{%- if it.topic == tc_topic -%}{%- assign topic_count = topic_count | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+{%- comment -%}Tynd side: noindex og ikke i sitemap, til emnet har mindst 3 historier.{%- endcomment -%}
+{%- assign topic_thin = false -%}{%- if topic_count < 3 -%}{%- assign topic_thin = true -%}{%- endif -%}

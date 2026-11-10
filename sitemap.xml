@@ -1,0 +1,39 @@
+---
+layout: null
+sitemap: false
+---
+{%- comment -%}
+Egen kopi af jekyll-sitemap-skabelonen (pluginet springer sin egen over, når denne fil findes).
+Eneste forskel: sider med noindex (front matter `noindex: true` eller tynde emnesider, samme
+betingelse som default.html via topic-count.html) er udeladt, så Google ikke får modstridende signaler.
+{%- endcomment -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- assign collections = site.collections | where_exp: 'collection', 'collection.output != false' -%}
+{%- for collection in collections -%}
+  {%- assign docs = collection.docs | where_exp: 'doc', 'doc.sitemap != false' -%}
+  {%- for doc in docs -%}
+    {%- if doc.noindex -%}{%- continue -%}{%- endif %}
+<url>
+<loc>{{ doc.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
+{%- if doc.last_modified_at or doc.date %}
+<lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
+{%- endif %}
+</url>
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign pages = site.html_pages | where_exp: 'doc', 'doc.sitemap != false' | where_exp: 'doc', 'doc.url != "/404.html"' -%}
+{%- for doc in pages -%}
+  {%- if doc.noindex -%}{%- continue -%}{%- endif -%}
+  {%- if doc.topic -%}
+    {%- include topic-count.html topic=doc.topic lang=doc.lang -%}
+    {%- if topic_thin -%}{%- continue -%}{%- endif -%}
+  {%- endif %}
+<url>
+<loc>{{ doc.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
+{%- if doc.last_modified_at %}
+<lastmod>{{ doc.last_modified_at | date_to_xmlschema }}</lastmod>
+{%- endif %}
+</url>
+{%- endfor %}
+</urlset>
