@@ -13,6 +13,10 @@ metadata:
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 
+## SITEMAP UDEN NOINDEX-SIDER (2026-11-10, commit 01a8577; Search Console-fund via marketing)
+- [x] Eget `sitemap.xml` (kopi af jekyll-sitemap-skabelonen) udelader `noindex: true` og tynde emnesider (`topic_thin` i `_includes/topic-count.html`, samme betingelse som noindex i default.html). Live: 162 -> 160 URL'er (topics/news + da/emner/nyheder væk), ingen lastmod ændret, 0 af 160 sider med noindex.
+- [ ] Ca. 24/11: Search Console "Ekskluderet af noindex" må ikke længere nævne sider fra sitemap'et.
+
 ## Status
 - Live på https://7amai.com (EN) og /da/ (DA). **Synlig for Google fra 2026-10-13** (noindex fjernet, undtagen velkomstsiderne; sitemap via jekyll-sitemap, OG-billede assets/og.png, canonical + hreflang).
   - [ ] Search Console 21/10 viste stadig "Ekskluderet af noindex" for 4 forside-URL'er (http/https, www/uden). Seneste crawl var 10.-12/10, altså FØR noindex blev fjernet; validering startet 19/10. Tjekket live 21/10: ingen noindex (meta eller X-Robots-Tag), http og www giver 301 til https://7amai.com/, canonical er rigtig. Ingen fejl. Tjek ca. 2/11, at valideringen er bestået; ellers "Anmod om indeksering" på https://7amai.com/.
