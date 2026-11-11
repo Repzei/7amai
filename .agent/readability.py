@@ -140,7 +140,7 @@ def check_mail(front, core):
 
 
 # Udgaven skrives af Claude, så Anthropic-historier er en interessekonflikt (INSTRUCTIONS U3).
-ANTHROPIC = re.compile(r'\b(?:anthropic|claude|fable|mythos)\b|\b(?:opus|sonnet|haiku)\s+\d', re.I)
+ANTHROPIC = re.compile(r'\b(?:anthropic|claude|fable|mythos)s?\b|\b(?:opus|sonnet|haiku)\s+\d', re.I)
 MAIN_HEADING = re.compile(r'(?m)^### \d+\.\s*(.*)$')
 LEAD_WINDOW = 7       # udgaver, inkl. dagens
 MAX_ANTHROPIC_LEADS = 2
