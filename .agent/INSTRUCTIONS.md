@@ -78,6 +78,7 @@ hinanden.
 **Trin B. Saml og sorter.** Slå kandidaterne sammen (mindst 15 i alt), fjern dubletter og alt,
 der allerede stod i de seneste 5 udgaver uden ny udvikling. Giv hver kandidat point 1-5 på:
 betydning for læseren, hvor nyt det er, om man kan bruge det i dag, og hvor stærk kilden er.
+Samme skala for alle firmaer (se "Interessekonflikt" i U3).
 
 **Trin C. Kontrollér og grav dybere.** Åbn selv primærkilden for hver kandidat, du vil bruge
 (ikke kun hjælperens resumé). For lead-historien og de 2-3 næste: find konteksten (hvordan var
@@ -91,6 +92,19 @@ Kandidatlisten (titel, point, primærkilde, valgt/ikke valgt) kommer med nederst
 Kriterier, i rækkefølge: ændrer det, hvad læseren kan bygge, hvad det koster, eller hvad han
 skal overholde? Er det reelt nyt (lancering, pris, release, vedtagelse), ikke en mening? Kan man
 prøve det i dag? Sæt den vigtigste først.
+
+**Interessekonflikt: du er Claude, lavet af Anthropic.** Nyheder om Anthropic og Claude kommer
+nemmere frem for dig, og en læser kan ikke se forskel på det og reklame. Derfor:
+- Højst **én hovedhistorie om Anthropic/Claude** pr. udgave. Flere nyheder om dem bliver én
+  historie med dele (som al anden "samme firma"-regel). Claude må gerne nævnes som målestok i
+  andres historier.
+- Anthropic/Claude er **lead højst 2 gange i 7 udgaver** (`ls _posts | tail -6` + dagens). Er
+  grænsen nået, så står historien længere nede, og den stærkeste anden kandidat er lead.
+- Giv dem aldrig ekstra point i trin B for at være "relevante for Claude-brugere". Spørg dig selv:
+  ville historien få samme plads, hvis den handlede om OpenAI eller Google?
+`readability.py` håndhæver de to grænser (overskrifter, hvor Anthropic, Claude, Fable, Mythos
+eller Opus/Sonnet/Haiku + tal står blandt de første 4 ord, og lead-overskriften), så ret, til den
+melder OK.
 
 Hver historie får:
 - **Signal:** `big` (Big deal), `worth` (Worth knowing) eller `quick` (Quick hit). Højst 2 `big`.

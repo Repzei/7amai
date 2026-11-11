@@ -7,7 +7,8 @@ Brug:
 
 Filer: udgaver (_posts/, _da/) og biblioteksfiler (_explained/, _explained/da/).
 Måler kun brødtekst (ikke front matter, meta-linjer, kildelinjer eller HTML).
-Tjekker også mailens felter i `items:` (topic, why, grafik): hvert tal skal stå i historien.
+Tjekker også mailens felter i `items:` (topic, why, grafik): hvert tal skal stå i historien,
+og balancen: højst én hovedhistorie om Anthropic/Claude, og højst 2 Anthropic-leads i 7 udgaver.
 
 Læsetid er et løfte til læseren, så den regnes forsigtigt: 200 ord pr. minut (lidt under
 gennemsnittet for faglitteratur, fordi teksten har tal og fagudtryk, og mange læser på deres
@@ -138,6 +139,42 @@ def check_mail(front, core):
     return problems
 
 
+# Udgaven skrives af Claude, så Anthropic-historier er en interessekonflikt (INSTRUCTIONS U3).
+ANTHROPIC = re.compile(r'\b(?:anthropic|claude|fable|mythos)\b|\b(?:opus|sonnet|haiku)\s+\d', re.I)
+MAIN_HEADING = re.compile(r'(?m)^### \d+\.\s*(.*)$')
+LEAD_WINDOW = 7       # udgaver, inkl. dagens
+MAX_ANTHROPIC_LEADS = 2
+
+
+def main_headings(text):
+    return MAIN_HEADING.findall(split_front(text)[1].partition('\n***\n')[0])
+
+
+def check_balance(path, core):
+    """Højst én hovedhistorie om Anthropic/Claude pr. udgave, og Anthropic/Claude som lead
+    højst 2 gange i 7 udgaver (de 6 forrige i samme mappe + dagens)."""
+    import os
+    problems = []
+    heads = MAIN_HEADING.findall(core)
+    # Emnet står forrest; "Kimi nearly matches Claude Opus" bruger kun Claude som målestok.
+    about = [h for h in heads if ANTHROPIC.search(' '.join(h.split()[:4]))]
+    if len(about) > 1:
+        problems.append(f'{len(about)} hovedhistorier om Anthropic/Claude (højst 1; saml dem i én historie med dele): ' + ' | '.join(h[:50] for h in about))
+    if not heads or not ANTHROPIC.search(heads[0]):
+        return problems
+    folder, name = os.path.split(os.path.abspath(path))
+    day = name[:10]
+    earlier = sorted(f for f in os.listdir(folder) if re.match(r'\d{4}-\d\d-\d\d-', f) and f[:10] < day)
+    leads = 1
+    for f in earlier[-(LEAD_WINDOW - 1):]:
+        prev = main_headings(open(os.path.join(folder, f), encoding='utf-8').read())
+        if prev and ANTHROPIC.search(prev[0]):
+            leads += 1
+    if leads > MAX_ANTHROPIC_LEADS:
+        problems.append(f'lead om Anthropic/Claude {leads} gange i {LEAD_WINDOW} udgaver (højst {MAX_ANTHROPIC_LEADS}): flyt historien ned, og gør den stærkeste anden kandidat til lead')
+    return problems
+
+
 def analyse(path, fix):
     text = open(path, encoding='utf-8').read()
     norm = path.replace('\\', '/')
@@ -193,6 +230,7 @@ def analyse(path, fix):
                 problems.append(f'læsetid for #{anchor} skal være {label(m)} (står: {shown}, items: {item_min.group(1) if item_min else "mangler"}; kør med --fix)')
 
         problems += check_mail(new_front, new_core)
+        problems += check_balance(path, new_core)
 
     if fix and fixes:
         rebuilt = new_front + new_core + (('\n***\n' + after) if after else '')

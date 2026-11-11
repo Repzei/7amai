@@ -3,6 +3,8 @@
 Gennemgå HELE listen hver morgen (U2), og brug derudover WebSearch for de seneste 24 timer.
 Listen er et minimum, ikke en grænse. Primærkilden (firmaets egen blog, release notes,
 lovteksten, selve forskningsartiklen) slår altid en artikel om den.
+Rækkefølgen er ikke en prioritet. At Anthropic og Claude Code står først, gør dem ikke vigtigere
+(INSTRUCTIONS U3, "Interessekonflikt").
 
 ## Modeller og priser
 - Anthropic: https://www.anthropic.com/news og https://docs.anthropic.com/en/release-notes
