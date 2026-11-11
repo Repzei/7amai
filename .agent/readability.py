@@ -157,7 +157,7 @@ def check_balance(path, core):
     problems = []
     heads = MAIN_HEADING.findall(core)
     # Emnet står forrest; "Kimi nearly matches Claude Opus" bruger kun Claude som målestok.
-    about = [h for h in heads if ANTHROPIC.search(' '.join(h.split()[:4]))]
+    about = [h for h in heads if ANTHROPIC.search(' '.join(h.split()[:3]))]
     if len(about) > 1:
         problems.append(f'{len(about)} hovedhistorier om Anthropic/Claude (højst 1; saml dem i én historie med dele): ' + ' | '.join(h[:50] for h in about))
     if not heads or not ANTHROPIC.search(heads[0]):

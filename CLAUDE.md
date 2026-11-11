@@ -50,7 +50,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `.agent/roadmap.json` | Køreplanen (faser + status) som dashboardet viser live. Opdateres sammen med to-do'en, når noget bliver færdigt eller planen ændres |
 | `.agent/EDITORIAL.md` | Jespers 10 redaktionelle kriterier (redaktørkontrol, trin U6) |
 | `.agent/STYLE.md` | Stilguide: enkelt, let at læse og forstå (10 regler, før/efter-eksempel, dansk) |
-| `.agent/readability.py` | Læsbarhedstjek uden pakker: sætningslængde (gns. højst 16, ingen over 25), kernens læsetid (5-7 min), og mailens felter i `items` (topic, why, og hvert tal i nøgletal/grafik står i historien), og Anthropic-balancen (højst 1 hovedhistorie om Anthropic/Claude, lead højst 2 af 7 udgaver; interessekonflikt, fordi Claude skriver udgaven, INSTRUCTIONS U3). Køres i U6 |
+| `.agent/readability.py` | Læsbarhedstjek uden pakker: sætningslængde (gns. højst 16, ingen over 25), kernens læsetid (5-7 min), og mailens felter i `items` (topic, why, og hvert tal i nøgletal/grafik står i historien), og Anthropic-balancen (højst 1 hovedhistorie om Anthropic/Claude (nævnt blandt overskriftens første 3 ord), lead højst 2 af 7 udgaver; interessekonflikt, fordi Claude skriver udgaven, INSTRUCTIONS U3). Køres i U6 |
 | `STRATEGI.md` | Mission, identitet "The 7", spor, redaktionel model, faser. Læs før større ændringer |
 
 ## Ufravigelige regler

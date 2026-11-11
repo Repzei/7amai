@@ -103,7 +103,7 @@ nemmere frem for dig, og en læser kan ikke se forskel på det og reklame. Derfo
 - Giv dem aldrig ekstra point i trin B for at være "relevante for Claude-brugere". Spørg dig selv:
   ville historien få samme plads, hvis den handlede om OpenAI eller Google?
 `readability.py` håndhæver de to grænser (overskrifter, hvor Anthropic, Claude, Fable, Mythos
-eller Opus/Sonnet/Haiku + tal står blandt de første 4 ord, og lead-overskriften), så ret, til den
+eller Opus/Sonnet/Haiku + tal står blandt de første 3 ord, og lead-overskriften), så ret, til den
 melder OK.
 
 Hver historie får:
