@@ -1,0 +1,156 @@
+---
+title: "AWS gives coding agents a free copy of its cloud, built by agents"
+summary: "AWS Emulator lets developers and their agents test against more than 200 AWS services on their own machine, for free, and agents wrote all of its code. Also: Nvidia's board weighs Jensen Huang's future, Google's cheap Decisions API, United blocks AI booking agents and a British chip startup raises $720M."
+date: 2026-11-12 07:00:00 +0100
+reviewed: false
+checked: true
+minutes: 7
+explained: { main: "emulator", from: 1, more: ["ai-agent", "open-weight"] }
+today:
+  - { t: "AWS releases a free local copy of its cloud, and agents wrote all the code.", why: "Developers who build on AWS, and anyone curious how agents write software." }
+  - { t: "Nvidia's board met to decide whether to remove CEO Jensen Huang, Reuters reports.", why: "Anyone who follows the chips that AI runs on." }
+  - { t: "Google's new Decisions API picks between fixed answers for $0.10 per million input tokens.", why: "Developers who sort, route or check things with AI." }
+  - { t: "United Airlines blocks personal AI agents from booking flights for travelers.", why: "Anyone who lets an assistant shop or book for them." }
+  - { t: "British chip startup Fractile raises $720M for its AI chips.", why: "Anyone following Europe's place in AI hardware." }
+other_lang_url: /da/2026/11/12/
+items:
+  - { n: 1, anchor: "aws-emulator", signal: big, tracks: [build, general], min: 1.5, source: official, number: "200+", number_label: "AWS services you can now test against on your own machine", topic: code, why: "When an agent can check its own work against a free copy of the real thing, it can work on its own much longer.", do: "Point your tests at AWS Emulator instead of a paid test account.", steps: { title: "How agents built it", list: ["Agents adjust a test until it passes on real AWS", "Agents build the emulator until it passes", "Security agents review every change before it goes in"] } }
+  - { n: 2, anchor: "nvidia-huang-board", signal: worth, tracks: [general], min: 1, source: reported, number: "8%", number_label: "drop in Nvidia's share price after hours on Wednesday", topic: chips, why: "Nearly every AI service runs on Nvidia chips, so doubt at the top reaches the whole industry." }
+  - { n: 3, anchor: "gemini-decisions-api", signal: worth, tracks: [build], min: 1, source: official, number: "$0.10", number_label: "per million input tokens, and the answers are free", topic: price, why: "Many small checks inside an app do not need a model that writes, only one that chooses.", do: "Test it for free in Google AI Studio." }
+  - { n: 4, anchor: "united-blocks-ai-agents", signal: worth, tracks: [general], min: 1, source: reported, topic: agent, why: "An agent that books for you is only useful if the shops let it in, and some will not." }
+  - { n: 5, anchor: "fractile-720m", signal: worth, tracks: [general, europe], min: 1, source: reported, number: "$720M", number_label: "raised by Fractile, a British maker of AI chips", topic: chips, why: "Britain wants to own a part of the chips that AI runs on, not only buy them." }
+  - { n: 6, anchor: "minimax-h3-image", signal: worth, tracks: [build, europe], min: 1, source: official, topic: image, why: "Open weights do not always mean you may use them: this license shuts out the EU." }
+  - { n: 7, anchor: "check-as-you-go", signal: worth, tracks: [build, general], min: 1, source: official, topic: research, why: "Catching a math error the moment it happens is cheaper than finding it at the end." }
+---
+
+### 1. AWS gives coding agents a free copy of its cloud, built by agents {#aws-emulator}
+<p class="item-meta"><span class="signal signal-big">Big deal</span><span class="track">Build</span><span class="track">General</span><span class="track">1½ min</span></p>
+<div class="number"><b>200+</b><span>AWS services you can now test against on your own machine</span></div>
+
+<p class="short"><span>The short version</span>AWS has released a free copy of its cloud that runs on your own machine, so developers and their agents can test without a bill. Agents wrote all of its code.</p>
+
+Testing code that uses Amazon's cloud has always been awkward. Real test setups cost money and cannot recreate many situations on demand. And an agent that cannot check its work needs a human watching.
+
+On Wednesday, AWS released AWS Emulator. It copies more than 200 AWS services, and runs free and offline.
+
+How it was built is the bigger story. AWS says agents wrote and tested all of the code. First, agents adjust a test until it passes against real AWS. Then they build the emulator until it passes too.
+
+Before any change goes in, security agents try to break it. Simon Willison counted 29,684 changes in the first three weeks.
+
+The catch: it is for building and testing, not for real workloads or security tests. It does not yet match AWS everywhere, and the story of how it was built comes from AWS itself.
+
+<div class="why"><b>Why it matters</b><p>It is like a flight simulator for code: you can crash a hundred times for free. An agent that can check its own work can work alone much longer. AWS used exactly that trick to build the simulator.</p></div>
+
+<p class="todo"><b>Try it:</b> If you build on AWS, point your tests at AWS Emulator instead of a paid test account.</p>
+
+Sources: [allthingsdistributed.com](https://www.allthingsdistributed.com/2026/11/aws-emulator-and-the-engineers-job-when-agents-write-the-code.html) · <span class="tag tag-official">Official</span> · [github.com](https://github.com/aws/aws-emulator) · <span class="tag tag-official">Official</span> · [simonwillison.net](https://simonwillison.net/2026/Nov/11/aws-emulator/) · <span class="tag tag-reported">Reported</span>
+{: .sources}
+
+### 2. Nvidia's board met to decide whether to remove Jensen Huang, reports say {#nvidia-huang-board}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1 min</span></p>
+<div class="number"><b>8%</b><span>drop in Nvidia's share price after hours on Wednesday</span></div>
+
+<p class="short"><span>The short version</span>Nvidia's board is preparing to remove CEO Jensen Huang, the Wall Street Journal reports. The board met late Wednesday, but no decision was public when we wrote this.</p>
+
+On Monday, we wrote that Nvidia's board was looking into claims that Huang was the target of a Chinese spying effort. China denies it. Huang has told staff he was unfaithful to his wife and apologized. The board said it saw no sign that secrets were lost.
+
+Since then, it has moved fast. Reuters cites a source who says the board met late Wednesday to decide. The New York Times reports a second affair, with an Nvidia vice president, which Reuters could not verify. Nvidia's shares fell more than 8% after hours.
+
+The catch: all of this comes from unnamed sources. Nvidia has not commented on the meeting, and Huang is still CEO for now. The company reports its quarterly results on 17 November.
+
+<div class="why"><b>Why it matters</b><p>Nvidia makes the chips that nearly every AI service runs on. So a sudden change at the top would shake the whole industry, not just one company.</p></div>
+
+Sources: [finance.yahoo.com (Reuters)](https://finance.yahoo.com/news/nvidia-preparing-oust-ceo-jensen-223546395.html) · <span class="tag tag-reported">Reported</span> · [cbsnews.com](https://www.cbsnews.com/news/nvidia-board-ceo-jensen-huang-china/) · <span class="tag tag-reported">Reported</span>
+{: .sources}
+
+### 3. Google's Decisions API picks an answer instead of writing one {#gemini-decisions-api}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">1 min</span></p>
+<div class="number"><b>$0.10</b><span>per million input tokens, and the answers are free</span></div>
+
+<p class="short"><span>The short version</span>Google has launched an API that does not write text. It picks from fixed answers, says how sure it is, and costs $0.10 per million input tokens.</p>
+
+A lot of AI work inside apps is not writing but choosing, like spotting abuse or picking a model for a question. Developers often pay a chat model for words they throw away.
+
+Google's new Gemini Decisions API answers only yes or no, picks from a list, or gives a score. Each answer comes with a confidence between 0 and 1. One request can ask up to 1,000 questions about the same text, image or video.
+
+Output is free, and Google says it is nearly 5 times cheaper than Gemini 3.5 Flash-Lite.
+
+The catch: Google's price comparison is its own, and support in Google Cloud is still "coming soon".
+
+<div class="why"><b>Why it matters</b><p>It is like hiring a referee instead of a commentator. You need a model that decides and says how sure it is. When it is unsure, your code can pass the case to a person.</p></div>
+
+<p class="todo"><b>Try it:</b> Test it for free in Google AI Studio.</p>
+
+Source: [blog.google](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/) · <span class="tag tag-official">Official</span>
+{: .sources}
+
+### 4. United Airlines blocks personal AI agents from booking flights {#united-blocks-ai-agents}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1 min</span></p>
+
+<p class="short"><span>The short version</span>United Airlines will no longer let unauthorized personal AI agents book flights for travelers, either on its own site or through travel agencies.</p>
+
+AI labs sell agents that can shop and book for you. CBS names Meta's Muse and OpenAI's dots as popular examples. But an agent can only book if the shop lets it in.
+
+United is updating its booking rules to block such agents. Sharing your login with an agent can expose private data, it says. An agent might also buy things or spend miles you did not mean to.
+
+The catch: United may also want to keep control. An analyst told CBS that United does not want "yet another" middleman between it and its customers. Southwest does the opposite and shows its flights to ChatGPT users.
+
+<div class="why"><b>Why it matters</b><p>It is like a shop that serves you but not the friend you sent to buy for you. An agent is only as useful as the places that let it in, and the first big companies are now picking sides.</p></div>
+
+Source: [cbsnews.com](https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/) · <span class="tag tag-reported">Reported</span>
+{: .sources}
+
+### 5. British chip startup Fractile raises $720M in the race for AI chips {#fractile-720m}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">Europe</span><span class="track">1 min</span></p>
+<div class="number"><b>$720M</b><span>raised by Fractile, a British maker of AI chips</span></div>
+
+<p class="short"><span>The short version</span>Fractile, a British startup that develops AI chips, has raised $720 million. Britain's state AI fund is among the backers.</p>
+
+Companies now use large AI models for long chains of tasks, and they want it fast. That pushes demand for chips built for running models, not just training them.
+
+Fractile's answer is a chip with ordinary memory stacked directly on top of it. Britain's Sovereign AI Fund backed the round, and the government values Fractile at over £5 billion.
+
+The catch: the first chips and systems ship only next year, the founder says, and there are no speed figures yet.
+
+<div class="why"><b>Why it matters</b><p>Britain says it backs Fractile to get "a greater stake" in the hardware its economy will run on. It is like owning a share of the power plant instead of only paying the power bill.</p></div>
+
+Source: [techcrunch.com](https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/) · <span class="tag tag-reported">Reported</span>
+{: .sources}
+
+## Open source & local AI
+
+### MiniMax shares a new image model, but its license shuts out the EU {#minimax-h3-image}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1 min</span></p>
+
+<p class="short"><span>The short version</span>Chinese lab MiniMax has released the weights of H3-Image, a model that makes and edits 4K images. But its license does not allow use in the EU, the UK, South Korea or the US.</p>
+
+Open image models are popular, because you can run them yourself and keep your pictures private.
+
+H3-Image makes new images and edits up to 16 reference images. MiniMax says it makes a 4K image in under 10 seconds, and it already works in ComfyUI. But the model file alone is 68.65 GB, far more than a normal graphics card can hold.
+
+The real catch is in the license. It is free to use only outside the "Excluded Territories": the EU, the UK, South Korea and the US. Companies with more than $1 million in yearly revenue also need written approval.
+
+<div class="why"><b>Why it matters</b><p>It is like a free book you may not read in your own country. "Open weights" means you can download the file. Only the license says what you may do with it.</p></div>
+
+Sources: [huggingface.co](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) · <span class="tag tag-official">Official</span> · [minimax.io](https://www.minimax.io/blog/minimax-h3-image) · <span class="tag tag-official">Official</span>
+{: .sources}
+
+## Paper of the day
+
+### Checking each math step as it is written makes AI make fewer mistakes {#check-as-you-go}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">General</span><span class="track">1 min</span></p>
+
+<p class="short"><span>The short version</span>Researchers let plain code check each math step while an AI model writes it. When a step is wrong, the model hears it at once and fixes it from there.</p>
+
+AI models often make a small error early in a long calculation, and every later step builds on it. Most checks look only at the final answer, or ask a second AI model.
+
+Rotem Elimelech, Michael Shalyt and Ido Kaminer tried something simpler. A computer algebra program can check many math steps in milliseconds, with no AI. So they check each step as it appears, and the model fixes it from there.
+
+With three open models, wrong answers fell by up to 14.9%. The models used only 6% to 7% more tokens.
+
+The catch: it only works on steps that code can check, and the results come from one math test.
+
+<div class="why"><b>Why it matters</b><p>It is like a teacher who taps your shoulder at the first wrong line, not after the whole exam. Catching a mistake when it happens is cheaper than finding it at the end and starting over.</p></div>
+
+Source: [arxiv.org](https://arxiv.org/abs/2611.13107) · <span class="tag tag-official">Official</span>
+{: .sources}
