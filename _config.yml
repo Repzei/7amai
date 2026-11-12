@@ -24,6 +24,10 @@ collections:
   explained:
     output: true
     permalink: /explained/:name/
+  # MIDLERTIDIG testside til designrunde 2 (12/11). Fjernes ved go-live sammen med card-test/.
+  cardtest:
+    output: true
+    permalink: /card-test/:name/
 feed:
   path: feed.xml
   collections:

@@ -12,8 +12,9 @@
   --gold: #FFC447;
   --on-sun: #0E1A33;
   --tint: #FFF4EA;
-  --font-news: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+  /* Lexend (Jesper 12/11): lavet til læseflow. Mailen bruger Arial, fordi mailprogrammer ikke henter skrifter. */
+  --font-read: Lexend, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-logo: "Schibsted Grotesk", Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,16 +33,16 @@
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; background: var(--sky); color: var(--ink);
-  font-family: var(--font-body); font-size: 18px; line-height: 1.6;
+  font-family: var(--font-read); font-size: 18px; line-height: 1.6;
 }
 a { color: var(--ink); text-underline-offset: 3px; }
 a:hover { color: var(--sun-ink); }
-h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balance; letter-spacing: -0.02em; }
+h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balance; letter-spacing: -0.02em; }
 :focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
 
 .site-head, .site-foot, .wrap { max-width: 720px; margin: 0 auto; padding-inline: 20px; }
 .site-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-block: 22px 14px; border-bottom: 1.5px solid var(--ink); }
-.logo { display: inline-flex; align-items: flex-end; gap: 8px; color: var(--ink); text-decoration: none; font-family: var(--font-news); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; line-height: 1; }
+.logo { display: inline-flex; align-items: flex-end; gap: 8px; color: var(--ink); text-decoration: none; font-family: var(--font-logo); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; line-height: 1; }
 .logo .mark { width: 36px; height: 30px; flex: none; }
 .logo:hover { color: var(--ink); }
 .head-nav { display: flex; gap: 16px; }
@@ -51,11 +52,11 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
   .head-nav { gap: 10px; }
   .head-link { font-size: 13px; }
 }
-.head-link { color: var(--mist); font-family: var(--font-news); font-size: 14px; font-weight: 600; text-decoration: none; }
-.site-foot { padding-block: 40px 56px; color: var(--mist); font-family: var(--font-news); font-size: 13px; border-top: 1px solid var(--line); margin-top: 64px; }
+.head-link { color: var(--mist); font-family: var(--font-read); font-size: 14px; font-weight: 600; text-decoration: none; }
+.site-foot { padding-block: 40px 56px; color: var(--mist); font-family: var(--font-read); font-size: 13px; border-top: 1px solid var(--line); margin-top: 64px; }
 
 .intro { padding-block: 36px 24px; }
-.intro .kicker { font-family: var(--font-news); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); margin: 0 0 10px; }
+.intro .kicker { font-family: var(--font-read); font-size: 13px; font-weight: 800; color: var(--sun-ink); margin: 0 0 10px; }
 .intro h1 { font-weight: 900; font-size: clamp(30px, 6vw, 46px); line-height: 1.02; letter-spacing: -0.035em; margin: 0 0 14px; }
 .intro p { color: var(--mist); margin: 0; max-width: 56ch; }
 
@@ -64,47 +65,47 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 .issue-list li:last-child { border-bottom: 0; }
 .issue-list a { display: grid; gap: 2px; padding-block: 16px; color: var(--ink); text-decoration: none; }
 .issue-list a:hover .issue-title { color: var(--sun-ink); }
-.issue-list time { font-family: var(--font-news); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--mist); font-variant-numeric: tabular-nums; }
-.issue-title { font-family: var(--font-news); font-weight: 800; font-size: 18px; line-height: 1.25; }
+.issue-list time { font-family: var(--font-read); font-size: 12px; font-weight: 700; color: var(--mist); font-variant-numeric: tabular-nums; }
+.issue-title { font-family: var(--font-read); font-weight: 800; font-size: 18px; line-height: 1.25; }
 .issue-summary { color: var(--mist); font-size: 16px; }
 .issue-list .empty { padding-block: 18px; color: var(--mist); }
 
 .issue { background: var(--paper); border-radius: 18px; padding: 24px clamp(18px, 4vw, 34px) 28px; margin-top: 24px; }
-.issue-date { font-family: var(--font-news); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--mist); margin: 0 0 10px; font-variant-numeric: tabular-nums; }
+.issue-date { font-family: var(--font-read); font-size: 12px; font-weight: 700; color: var(--mist); margin: 0 0 10px; font-variant-numeric: tabular-nums; }
 .issue h1 { font-weight: 900; font-size: clamp(27px, 5vw, 38px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 12px; }
 .issue-lead { font-size: 19px; color: var(--mist); margin: 0 0 18px; }
 
-.disclosure { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-news); font-size: 12.5px; font-weight: 600; color: var(--mist); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin: 0 0 22px; }
+.disclosure { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-read); font-size: 12.5px; font-weight: 600; color: var(--mist); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin: 0 0 22px; }
 .disclosure::before { content: ""; width: 10px; height: 5px; border-radius: 10px 10px 0 0; background: var(--mist); flex: none; }
 .disclosure-reviewed { border-color: var(--sun); color: var(--ink); }
 .disclosure-reviewed::before { background: var(--sun); }
 
 .issue-body { border-top: 1.5px solid var(--ink); }
-.issue-body h2 { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mist); margin: 36px 0 4px; }
+.issue-body h2 { font-size: 12px; font-weight: 800; color: var(--mist); margin: 36px 0 4px; }
 .issue-body h3 { font-weight: 800; font-size: 21px; line-height: 1.2; letter-spacing: -0.01em; margin: 26px 0 8px; }
 .issue-body p, .issue-body li { max-width: 65ch; }
 .issue-body ul { padding-left: 20px; }
 .issue-body blockquote { margin: 12px 0; padding: 10px 14px; background: var(--tint); border-left: 3px solid var(--sun); }
 .issue-body blockquote p { margin: 0; }
-.issue-body blockquote strong { font-family: var(--font-news); font-weight: 800; }
-.issue-body .sources { font-family: var(--font-news); font-size: 13px; font-weight: 600; color: var(--mist); }
+.issue-body blockquote strong { font-family: var(--font-read); font-weight: 800; }
+.issue-body .sources { font-family: var(--font-read); font-size: 13px; font-weight: 600; color: var(--mist); }
 .issue-body hr { border: 0; border-top: 1.5px dashed var(--line); margin: 40px 0 0; }
 .issue-body hr + h2 { color: var(--sun-ink); }
 .issue-body code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.85em; background: var(--sky); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
 
 .item-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: -2px 0 10px; }
-.share-btn { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 3px 11px; font-family: var(--font-news); font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.3; cursor: pointer; }
+.share-btn { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 3px 11px; font-family: var(--font-read); font-size: 12px; font-weight: 800; line-height: 1.3; cursor: pointer; }
 .share-btn:hover, .share-btn:focus-visible { border-color: var(--sun); outline: none; }
 .share-btn svg { width: 12px; height: 12px; }
 .topic-page .issue-date a { color: var(--sun-ink); text-decoration: none; }
 .topic-list { list-style: none; padding: 0; margin: 18px 0 0; }
 .topic-list li { display: grid; gap: 2px; padding-block: 14px; border-bottom: 1px solid var(--line); }
-.topic-list time { font-family: var(--font-news); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--mist); }
-.topic-title { font-family: var(--font-news); font-weight: 800; font-size: 18px; line-height: 1.25; color: var(--ink); text-decoration: none; }
+.topic-list time { font-family: var(--font-read); font-size: 12px; font-weight: 700; color: var(--mist); }
+.topic-title { font-family: var(--font-read); font-weight: 800; font-size: 18px; line-height: 1.25; color: var(--ink); text-decoration: none; }
 .topic-title:hover { color: var(--sun-ink); }
 .topic-list p { margin: 2px 0 0; color: var(--mist); font-size: 16px; }
 .topic-index { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-.topic-index a { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); text-decoration: none; font-family: var(--font-news); font-weight: 700; }
+.topic-index a { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); text-decoration: none; font-family: var(--font-read); font-weight: 700; }
 .topic-index a:hover { border-color: var(--sun); }
 .topic-index img { border-radius: 7px; flex: none; }
 .topic-index span { flex: 1; min-width: 0; }
@@ -113,30 +114,30 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 .legend a:hover { color: var(--sun-ink); }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 6px 0 0; }
 .stat { display: grid; gap: 2px; align-content: start; background: var(--sky); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
-.stat b { font-family: var(--font-news); font-size: 28px; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
-.stat span { font-family: var(--font-news); font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--mist); }
+.stat b { font-family: var(--font-read); font-size: 28px; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-family: var(--font-read); font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--mist); }
 .stat-sun b { color: var(--sun-ink); }
-.stats-note { font-family: var(--font-news); font-size: 13px; color: var(--mist); }
+.stats-note { font-family: var(--font-read); font-size: 13px; color: var(--mist); }
 .how .steps { padding-left: 1.2em; display: grid; gap: 10px; }
 .how li .tag { margin-right: 6px; }
 .corr-list { list-style: none; padding: 0; display: grid; gap: 14px; }
 .corr-list li { border-left: 3px solid var(--sun); padding-left: 14px; }
-.corr-date { font-family: var(--font-news); font-size: 13px; font-weight: 800; color: var(--sun-ink); }
+.corr-date { font-family: var(--font-read); font-size: 13px; font-weight: 800; color: var(--sun-ink); }
 .corr-body p { margin: 4px 0 0; }
 .corr-empty { color: var(--mist); }
-.issue-sub { margin: 10px 0 0; font-family: var(--font-news); font-size: 14px; font-weight: 800; }
+.issue-sub { margin: 10px 0 0; font-family: var(--font-read); font-size: 14px; font-weight: 800; }
 .issue-sub a { color: var(--sun-ink); text-decoration: none; border-bottom: 1px solid var(--line); }
 .issue-sub a:hover, .issue-sub a:focus-visible { border-bottom-color: var(--sun); }
 .issue-signup { margin-top: 32px; padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; }
 .issue-signup .signup { margin-top: 0; }
-.signal, .track { font-family: var(--font-news); font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.3; }
+.signal, .track { font-family: var(--font-read); font-size: 11px; font-weight: 800; line-height: 1.3; }
 .signal { padding: 3px 9px; border-radius: 999px; }
 .signal-big { background: var(--gold); color: var(--on-sun); }
 .signal-worth { border: 1.5px solid var(--sun); color: var(--sun-ink); padding: 1.5px 7.5px; }
 .signal-quick { border: 1.5px solid var(--line); color: var(--mist); padding: 1.5px 7.5px; }
 .track { color: var(--mist); }
 
-.issue-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); font-family: var(--font-news); font-size: 14px; font-weight: 600; }
+.issue-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); font-family: var(--font-read); font-size: 14px; font-weight: 600; }
 
 /* Læselinjen: en tynd orange streg helt øverst, der vokser, mens man læser. Ingen sol, ingen tal og intet felt
    over teksten (Jesper 12/11: den bevægende sol forstyrrede læsningen). */
@@ -144,26 +145,26 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 .read-line span { display: block; height: 100%; width: var(--p, 0%); background: var(--sun); border-radius: 0 2px 2px 0; }
 
 /* Kildemærker og nøgletal (bruges af agenten fra trin 4). */
-.tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-news); font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--mist); }
+.tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-read); font-size: 11px; font-weight: 800; color: var(--mist); }
 .tag::before { content: ""; width: 8px; height: 8px; border-radius: 50%; border: 2px solid currentColor; }
 .tag-official { color: var(--sun-ink); }
 .tag-official::before { background: currentColor; }
 .tag-unconfirmed::before { border-style: dashed; }
 .number { display: inline-grid; gap: 2px; margin: 4px 0 8px; }
-.number b { font-family: var(--font-news); font-weight: 900; font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
-.number span { font-family: var(--font-news); font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--mist); }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--font-news); font-size: 12px; color: var(--mist); }
+.number b { font-family: var(--font-read); font-weight: 900; font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.number span { font-family: var(--font-read); font-size: 11px; font-weight: 700; color: var(--mist); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--font-read); font-size: 12px; color: var(--mist); }
 
 /* Tilmelding: primær knap i solorange med natblå tekst (hvid på orange er kun 2,35:1). */
 .signup { display: grid; gap: 8px; margin-top: 22px; max-width: 520px; }
-.signup-label { font-family: var(--font-news); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); }
+.signup-label { font-family: var(--font-read); font-size: 13px; font-weight: 800; color: var(--ink); }
 .signup-row { display: flex; gap: 10px; flex-wrap: wrap; }
-.signup input[type="email"] { flex: 1 1 220px; min-width: 0; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 12px 16px; font: 16px var(--font-body); }
+.signup input[type="email"] { flex: 1 1 220px; min-width: 0; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 12px 16px; font: 16px var(--font-read); }
 .signup input[type="email"]:focus { border-color: var(--sun); outline: none; }
-.signup button { border: 0; background: var(--sun); color: var(--on-sun); border-radius: 999px; padding: 12px 22px; font-family: var(--font-news); font-weight: 800; font-size: 15px; white-space: nowrap; cursor: pointer; }
+.signup button { border: 0; background: var(--sun); color: var(--on-sun); border-radius: 999px; padding: 12px 22px; font-family: var(--font-read); font-weight: 800; font-size: 15px; white-space: nowrap; cursor: pointer; }
 .signup button:disabled { opacity: 0.6; cursor: wait; }
-.signup-note { margin: 0; font-family: var(--font-news); font-size: 12.5px; color: var(--mist); }
-.signup-msg { margin: 0; font-family: var(--font-news); font-size: 14px; font-weight: 700; padding: 8px 12px; border-radius: 10px; }
+.signup-note { margin: 0; font-family: var(--font-read); font-size: 12.5px; color: var(--mist); }
+.signup-msg { margin: 0; font-family: var(--font-read); font-size: 14px; font-weight: 700; padding: 8px 12px; border-radius: 10px; }
 .signup-ok { background: var(--tint); color: var(--ink); border-left: 3px solid var(--sun); }
 .signup-err { background: var(--paper); color: var(--sun-ink); border: 1px solid var(--line); }
 .signup-note a, .site-foot a { color: var(--mist); }
@@ -175,52 +176,52 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 .issue-body hr.bonus { margin-top: 40px; }
 .ex-time { color: var(--sun-ink); white-space: nowrap; }
 .ex-head { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; margin: 18px 0 2px; }
-.ex-head h2 { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); }
-.ex-head span { font-family: var(--font-news); font-size: 12px; font-weight: 700; color: var(--mist); }
+.ex-head h2 { margin: 0; font-size: 12px; font-weight: 800; color: var(--sun-ink); }
+.ex-head span { font-family: var(--font-read); font-size: 12px; font-weight: 700; color: var(--mist); }
 .issue-body .ex-main h3 { font-size: clamp(22px, 3.4vw, 27px); font-weight: 900; margin: 10px 0 6px; }
-.ex-meta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; font-family: var(--font-news); font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mist); margin-bottom: 8px; }
+.ex-meta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; font-family: var(--font-read); font-size: 11px; font-weight: 800; color: var(--mist); margin-bottom: 8px; }
 .ex-meta .pill { border: 1.5px solid var(--sun); color: var(--sun-ink); border-radius: 999px; padding: 1px 8px; }
-.lib-link { font-family: var(--font-news); font-size: 13px; font-weight: 700; margin: 4px 0 14px; }
+.lib-link { font-family: var(--font-read); font-size: 13px; font-weight: 700; margin: 4px 0 14px; }
 .lib-link a { color: var(--sun-ink); }
-.more-title { font-family: var(--font-news); font-size: 13px; font-weight: 800; color: var(--mist); margin: 26px 0 8px; }
+.more-title { font-family: var(--font-read); font-size: 13px; font-weight: 800; color: var(--mist); margin: 26px 0 8px; }
 details.ex-more { border: 1.5px solid var(--line); border-radius: 12px; padding: 0 16px; margin-bottom: 10px; background: var(--paper); }
 details.ex-more[open] { border-color: var(--sun); }
-details.ex-more summary { list-style: none; cursor: pointer; padding: 14px 0; display: flex; justify-content: space-between; gap: 12px; align-items: center; font-family: var(--font-news); font-weight: 800; font-size: 17px; line-height: 1.3; }
+details.ex-more summary { list-style: none; cursor: pointer; padding: 14px 0; display: flex; justify-content: space-between; gap: 12px; align-items: center; font-family: var(--font-read); font-weight: 800; font-size: 17px; line-height: 1.3; }
 details.ex-more summary::-webkit-details-marker { display: none; }
 details.ex-more summary small { display: block; font-weight: 600; font-size: 13px; color: var(--mist); margin-top: 2px; }
 details.ex-more .plus { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: 16px; color: var(--sun-ink); }
 details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun); }
 @media (prefers-reduced-motion: no-preference) { details.ex-more .plus { transition: transform .2s; } }
 .lib { background: var(--paper); border-radius: 18px; padding: 20px clamp(18px, 4vw, 34px); margin-top: 8px; }
-.lib-label { display: block; font-family: var(--font-news); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mist); margin-bottom: 8px; }
-.lib-search { width: 100%; font: 16px var(--font-body); border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 11px 16px; margin-bottom: 14px; }
+.lib-label { display: block; font-family: var(--font-read); font-size: 12px; font-weight: 800; color: var(--mist); margin-bottom: 8px; }
+.lib-search { width: 100%; font: 16px var(--font-read); border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 11px 16px; margin-bottom: 14px; }
 .lib-search:focus { border-color: var(--sun); outline: none; }
 .terms { list-style: none; margin: 0; padding: 0; }
 .terms li { border-top: 1px solid var(--line); }
-.terms li.letter { border-top: 0; font-family: var(--font-news); font-weight: 900; font-size: 13px; letter-spacing: 0.06em; color: var(--sun-ink); padding: 16px 0 4px; }
+.terms li.letter { border-top: 0; font-family: var(--font-read); font-weight: 900; font-size: 13px; letter-spacing: 0.06em; color: var(--sun-ink); padding: 16px 0 4px; }
 .terms li.empty { border-top: 0; color: var(--mist); padding: 12px 0; }
 .terms a { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 14px 0; text-decoration: none; color: var(--ink); }
 .terms a:hover .t { color: var(--sun-ink); }
-.terms .t { font-family: var(--font-news); font-weight: 800; font-size: 17px; }
+.terms .t { font-family: var(--font-read); font-weight: 800; font-size: 17px; }
 .terms .d { grid-column: 1; color: var(--mist); font-size: 15px; }
-.terms .w { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-family: var(--font-news); font-size: 12px; font-weight: 700; color: var(--mist); font-variant-numeric: tabular-nums; }
+.terms .w { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-family: var(--font-read); font-size: 12px; font-weight: 700; color: var(--mist); font-variant-numeric: tabular-nums; }
 .explained-entry .issue-body { border-top: 0; }
 .seen-in { margin-top: 36px; }
-.seen-in h2 { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); margin: 0; }
+.seen-in h2 { font-size: 12px; font-weight: 800; color: var(--sun-ink); margin: 0; }
 .seen-in .topic-list { margin-top: 6px; }
-.seen-more { margin: 14px 0 0; font-family: var(--font-news); font-size: 14px; font-weight: 600; }
+.seen-more { margin: 14px 0 0; font-family: var(--font-read); font-size: 14px; font-weight: 600; }
 .promise-list { list-style: none; padding: 0; margin: 18px 0 0; }
 .promise { padding-block: 18px; border-bottom: 1px solid var(--line); scroll-margin-top: 70px; }
 .promise p { margin: 0; }
-.promise-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; font-family: var(--font-news); font-size: 14px; color: var(--mist); }
-.status { border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.3; }
+.promise-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; font-family: var(--font-read); font-size: 14px; color: var(--mist); }
+.status { border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 800; line-height: 1.3; }
 .status-delivered { background: var(--calm); color: var(--calm-ink); }
 .status-partial { background: var(--tint); color: var(--sun-ink); }
 .status-not_yet { background: var(--sky); color: var(--mist); border: 1px solid var(--line); }
 .status-late { background: var(--sun); color: var(--on-sun); }
-.promise .promise-text { margin-top: 6px; font-family: var(--font-news); font-size: 19px; font-weight: 800; line-height: 1.3; color: var(--ink); }
+.promise .promise-text { margin-top: 6px; font-family: var(--font-read); font-size: 19px; font-weight: 800; line-height: 1.3; color: var(--ink); }
 .promise .promise-note { margin-top: 6px; font-size: 16px; color: var(--mist); }
-.promise .promise-meta { margin-top: 8px; font-family: var(--font-news); font-size: 13px; line-height: 1.5; color: var(--mist); }
+.promise .promise-meta { margin-top: 8px; font-family: var(--font-read); font-size: 13px; line-height: 1.5; color: var(--mist); }
 .promise-meta a { color: var(--mist); }
 .promise-meta a:hover { color: var(--sun-ink); }
 .promise-rules { margin-top: 20px; font-size: 15px; color: var(--mist); }
@@ -229,32 +230,32 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 /* Historie-stil fra 19. okt.: kort fortalt, derfor er det vigtigt, samlede historier. */
 :root { --calm: #EAF2EC; --calm-ink: #1F6B3E; }
 @media (prefers-color-scheme: dark) { :root { --calm: #1C3326; --calm-ink: #8FD3A8; } }
-.issue-body p.short { font-family: var(--font-news); font-size: 17px; line-height: 1.45; font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin: 0 0 14px; max-width: none; }
-.issue-body p.short span { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sun-ink); margin-bottom: 2px; }
+.issue-body p.short { font-family: var(--font-read); font-size: 17px; line-height: 1.45; font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin: 0 0 14px; max-width: none; }
+.issue-body p.short span { display: block; font-size: 11px; font-weight: 800; color: var(--sun-ink); margin-bottom: 2px; }
 .issue-body .why { background: var(--calm); border-radius: 12px; padding: 12px 16px; margin: 6px 0 12px; }
-.issue-body .why b { display: block; font-family: var(--font-news); font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--calm-ink); margin-bottom: 4px; }
+.issue-body .why b { display: block; font-family: var(--font-read); font-size: 12px; font-weight: 800; color: var(--calm-ink); margin-bottom: 4px; }
 .issue-body .why p { margin: 0; }
-.issue-body p.todo { font-family: var(--font-news); font-size: 15px; font-weight: 600; }
+.issue-body p.todo { font-family: var(--font-read); font-size: 15px; font-weight: 600; }
 .issue-body p.todo b { color: var(--sun-ink); }
-.issue-body h4 { font-family: var(--font-news); font-size: 17px; font-weight: 800; line-height: 1.25; border-top: 1px solid var(--line); padding-top: 12px; margin: 16px 0 6px; }
-.issue-body h4 span { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mist); margin-right: 8px; }
+.issue-body h4 { font-family: var(--font-read); font-size: 17px; font-weight: 800; line-height: 1.25; border-top: 1px solid var(--line); padding-top: 12px; margin: 16px 0 6px; }
+.issue-body h4 span { font-size: 11px; font-weight: 800; color: var(--mist); margin-right: 8px; }
 
 /* Udgavesiden som mailen (Jesper 12/11, variant A, _layouts/issue.html): ét kort pr. historie på
    himmelblå, mailens skrift (Arial 17 px, linjeafstand 1,6), ingen versaler og ingen kursiv (læsevenligt
    for ordblinde). Alt er afgrænset til .issue-cards, så andre sider bruger de gamle regler ovenfor. */
-:root { --tile: #0E1A33; --on-tile: #FFFFFF; --tile-sub: #D3DCEA; --font-mail: Arial, "Helvetica Neue", Helvetica, sans-serif; }
+:root { --tile: #0E1A33; --on-tile: #FFFFFF; --tile-sub: #D3DCEA; }
 @media (prefers-color-scheme: dark) { :root { --tile: #263A63; --tile-sub: #C9D4E6; } }
-.issue-cards { background: none; border-radius: 0; padding: 0; margin-top: 6px; font-family: var(--font-mail); font-size: 17px; line-height: 1.6; }
-.issue-cards h1, .issue-cards h2, .issue-cards h3, .issue-cards h4 { font-family: var(--font-mail); letter-spacing: 0; }
-.issue-cards em, .issue-cards i { font-style: normal; }
+.issue-cards { background: none; border-radius: 0; padding: 0; margin-top: 6px; font-size: 17px; line-height: 1.6; }
+.issue-cards h1, .issue-cards h2, .issue-cards h3, .issue-cards h4 { letter-spacing: 0; }
+em, i { font-style: normal; }
 .ic-top { padding: 10px 4px 0; }
-.issue-cards .issue-date { font-family: var(--font-mail); font-size: 15px; letter-spacing: 0; text-transform: none; margin: 0; }
+.issue-cards .issue-date { font-size: 15px; letter-spacing: 0; text-transform: none; margin: 0; }
 .issue-cards .issue-date b { color: var(--sun-ink); }
 .issue-cards h1 { font-size: clamp(27px, 5.4vw, 36px); line-height: 1.18; font-weight: 800; letter-spacing: -0.01em; margin: 10px 0 0; }
 .issue-cards .issue-lead { font-size: 18px; line-height: 1.55; margin: 12px 0 0; }
-.issue-cards .disclosure { display: flex; align-items: flex-start; border: 0; border-radius: 0; padding: 0; margin: 12px 0 0; font-family: var(--font-mail); font-size: 14px; font-weight: 400; line-height: 1.45; }
+.issue-cards .disclosure { display: flex; align-items: flex-start; border: 0; border-radius: 0; padding: 0; margin: 12px 0 0; font-size: 14px; font-weight: 400; line-height: 1.45; }
 .issue-cards .disclosure::before { margin-top: 6px; }
-.issue-cards .issue-sub { font-family: var(--font-mail); font-size: 16px; margin: 10px 0 0; }
+.issue-cards .issue-sub { font-size: 16px; margin: 10px 0 0; }
 .ic-card { background: var(--paper); border-radius: 16px; padding: 20px; margin: 0 0 16px; }
 @media (min-width: 600px) { .ic-card { padding: 24px 28px; } }
 .ic-today { border: 2px solid var(--ink); }
@@ -278,23 +279,23 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 .issue-cards .issue-body .ic-lead h3 { font-size: clamp(24px, 4.4vw, 28px); }
 .ic-story p { margin: 14px 0 0; max-width: none; }
 .issue-cards .item-meta { margin: 10px 0 0; }
-.issue-cards .signal, .issue-cards .track, .issue-cards .tag, .issue-cards .share-btn { font-family: var(--font-mail); text-transform: none; letter-spacing: 0; }
+.issue-cards .signal, .issue-cards .track, .issue-cards .tag, .issue-cards .share-btn { text-transform: none; letter-spacing: 0; }
 .issue-cards .signal, .issue-cards .track { font-size: 14px; font-weight: 700; }
 .issue-cards .share-btn { font-size: 14px; font-weight: 700; padding: 4px 12px; }
 .issue-cards .share-btn svg { width: 13px; height: 13px; }
 .issue-cards .tag { font-size: 13px; font-weight: 700; }
 /* "Kort fortalt" står i teksten (mailen bruger det), men på siden følger hele historien, så den korte tekst er indledningen (Jesper 12/11). */
-.issue-cards .issue-body p.short { font-family: var(--font-mail); font-size: 18px; line-height: 1.55; font-weight: 700; border: 0; padding: 0; margin: 16px 0 0; }
+.issue-cards .issue-body p.short { font-size: 18px; line-height: 1.55; font-weight: 700; border: 0; padding: 0; margin: 16px 0 0; }
 .issue-cards .issue-body p.short span { display: none; }
 .issue-cards .issue-body .why { margin: 16px 0 0; padding: 12px 14px; }
-.issue-cards .issue-body .why b { font-family: var(--font-mail); font-size: 15px; letter-spacing: 0; text-transform: none; }
+.issue-cards .issue-body .why b { font-size: 15px; letter-spacing: 0; text-transform: none; }
 .issue-cards .issue-body .why p { margin: 4px 0 0; }
-.issue-cards .issue-body p.todo { font-family: var(--font-mail); font-size: 17px; font-weight: 400; margin: 16px 0 0; }
+.issue-cards .issue-body p.todo { font-size: 17px; font-weight: 400; margin: 16px 0 0; }
 .issue-cards .issue-body p.todo b { font-weight: 700; }
-.issue-cards .issue-body .sources { font-family: var(--font-mail); font-size: 14px; font-weight: 400; line-height: 1.6; margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
-.issue-cards .issue-body h4 { font-family: var(--font-mail); }
+.issue-cards .issue-body .sources { font-size: 14px; font-weight: 400; line-height: 1.6; margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.issue-cards .issue-body h4 { }
 .issue-cards .issue-body h4 span { font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; }
-.issue-cards .issue-body blockquote strong { font-family: var(--font-mail); }
+.issue-cards .issue-body blockquote strong { }
 /* Grafik fra items (_includes/issue-graphics.html), samme regler som mailens. */
 .g-tiles { display: flex; gap: 10px; margin: 16px 0 0; }
 .g-tile { flex: 1 1 0; min-width: 0; background: var(--tint); color: var(--ink); border-radius: 12px; padding: 14px; overflow-wrap: anywhere; }
@@ -320,17 +321,72 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 /* Forklaret, kildemærker, tilmelding og navigation i samme stil. */
 .ic-ex hr.bonus { display: none; }
 .issue-cards .ex-head { margin: 0 0 2px; }
-.issue-cards .ex-head h2 { font-family: var(--font-mail); font-size: 15px; letter-spacing: 0; text-transform: none; }
-.issue-cards .ex-head span, .issue-cards .lib-link, .issue-cards .more-title { font-family: var(--font-mail); font-size: 15px; }
-.issue-cards .ex-meta { font-family: var(--font-mail); font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; }
+.issue-cards .ex-head h2 { font-size: 15px; letter-spacing: 0; text-transform: none; }
+.issue-cards .ex-head span, .issue-cards .lib-link, .issue-cards .more-title { font-size: 15px; }
+.issue-cards .ex-meta { font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; }
 .issue-cards .issue-body .ex-main h3 { font-size: 22px; font-weight: 800; line-height: 1.3; letter-spacing: 0; }
-.issue-cards details.ex-more summary { font-family: var(--font-mail); }
+.issue-cards details.ex-more summary { }
 .issue-cards details.ex-more summary small { font-size: 15px; font-weight: 400; }
-.ic-legend .legend { margin: 0; padding: 0; border: 0; font-family: var(--font-mail); font-size: 14px; }
+.ic-legend .legend { margin: 0; padding: 0; border: 0; font-size: 14px; }
 .ic-legend .legend a { font-weight: 700; }
 .issue-cards .issue-signup { margin: 0 0 16px; border: 0; padding: 20px; }
 @media (min-width: 600px) { .issue-cards .issue-signup { padding: 24px 28px; } }
-.issue-cards .signup-label { font-family: var(--font-mail); font-size: 18px; letter-spacing: 0; text-transform: none; }
-.issue-cards .signup input[type="email"], .issue-cards .signup button { font-family: var(--font-mail); font-size: 17px; }
-.issue-cards .signup-note, .issue-cards .signup-msg { font-family: var(--font-mail); font-size: 14px; }
-.issue-cards .issue-nav { margin: 8px 4px 0; padding-top: 0; border-top: 0; font-family: var(--font-mail); font-size: 16px; font-weight: 700; }
+.issue-cards .signup-label { font-size: 18px; letter-spacing: 0; text-transform: none; }
+.issue-cards .signup input[type="email"], .issue-cards .signup button { font-size: 17px; }
+.issue-cards .signup-note, .issue-cards .signup-msg { font-size: 14px; }
+.issue-cards .issue-nav { margin: 8px 4px 0; padding-top: 0; border-top: 0; font-size: 16px; font-weight: 700; }
+
+/* Designrunde 2 (Jesper 12/11: A, B og C). */
+/* A: velkomst til nye læsere øverst og tilmelding efter historie 3; skjult for læsere fra mailen (?ref=mail). */
+.welcome { background: var(--tile); color: var(--on-tile); border-radius: 16px; padding: 20px; margin: 10px 0 18px; }
+@media (min-width: 600px) { .welcome { padding: 24px 28px; } }
+.welcome-h { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 800; }
+.welcome-text { margin: 8px 0 0; color: var(--tile-sub); font-size: 17px; line-height: 1.55; }
+.from-mail .welcome, .from-mail .ic-mid { display: none; }
+.signup-compact { margin-top: 14px; max-width: none; }
+.signup-compact .signup-label { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.signup .signup-row input[type="email"], .signup .signup-row button { border-radius: 12px; font-size: 17px; }
+.welcome .signup input[type="email"] { background: #FFFFFF; color: #0E1A33; border-color: #FFFFFF; }
+.welcome .signup-note, .welcome .signup-note a { color: var(--tile-sub); }
+.welcome .signup-ok { background: var(--paper); color: var(--ink); }
+.ic-count { margin: 10px 0 0; font-size: 16px; color: var(--mist); }
+.ic-mid { border: 2px solid var(--sun); }
+.ic-mid-h { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 800; }
+.ic-mid-text { margin: 6px 0 0; color: var(--mist); }
+/* B: "Fangsten" som egen boks, kilder som knapper. */
+.issue-cards .catch { margin: 16px 0 0; background: var(--tint); border-radius: 12px; padding: 12px 14px; }
+.issue-cards .catch p { margin: 4px 0 0; }
+.issue-cards .catch .catch-label { margin: 0; font-size: 15px; font-weight: 800; color: var(--sun-ink); }
+.src { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.issue-cards .src .src-label { margin: 0; font-size: 14px; font-weight: 700; color: var(--mist); }
+.src ul { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.src li { max-width: 100%; }
+.src a { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; max-width: 100%; border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 14px; background: var(--paper); color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.src a:hover, .src a:focus-visible { border-color: var(--sun); color: var(--ink); }
+.src-site { overflow-wrap: anywhere; }
+.src-arr { color: var(--mist); font-weight: 400; }
+/* C: forsiden i samme stil som udgaverne. */
+.intro { padding-block: 26px 8px; }
+.intro .kicker { font-size: 15px; }
+.intro h1 { font-weight: 800; font-size: clamp(28px, 6vw, 42px); line-height: 1.15; letter-spacing: -0.01em; }
+.intro > p { font-size: 18px; line-height: 1.55; }
+.intro-signup { background: var(--paper); border-radius: 16px; padding: 20px; margin-top: 18px; }
+@media (min-width: 600px) { .intro-signup { padding: 24px 28px; } }
+.intro-signup .signup { margin-top: 0; max-width: none; }
+.signup-label { font-size: 18px; }
+.latest { background: var(--paper); border: 2px solid var(--ink); border-radius: 16px; padding: 20px; margin: 18px 0 0; }
+@media (min-width: 600px) { .latest { padding: 24px 28px; } }
+.latest-label { margin: 0; font-size: 15px; font-weight: 800; color: var(--sun-ink); }
+.latest h2 { margin: 8px 0 0; font-size: clamp(22px, 4.4vw, 28px); line-height: 1.25; font-weight: 800; letter-spacing: 0; }
+.latest h2 a { color: var(--ink); text-decoration: none; }
+.latest h2 a:hover { color: var(--sun-ink); }
+.latest ol { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.latest li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 17px; line-height: 1.5; }
+.latest > p { margin: 12px 0 0; color: var(--mist); }
+.latest-go { display: inline-block; margin-top: 18px; background: var(--tile); color: var(--on-tile); border-radius: 12px; padding: 13px 20px; font-weight: 800; text-decoration: none; }
+.latest-go:hover, .latest-go:focus-visible { color: var(--on-sun); background: var(--sun); }
+.arch-h { margin: 32px 4px 10px; font-size: 18px; font-weight: 800; letter-spacing: 0; }
+.issue-list { margin-top: 0; }
+.issue-list time { font-size: 14px; }
+.issue-title { font-size: 19px; line-height: 1.3; }
+.issue-summary { line-height: 1.5; }

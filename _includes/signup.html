@@ -1,19 +1,24 @@
+{%- comment -%}
+Tilmeldingsformular. Kan stå flere gange på én side: `sid` giver hver sin id (standard "signup",
+som #signup-links peger på). `compact=true` skjuler overskriften visuelt (boksen har sin egen).
+{%- endcomment -%}
 {%- assign t = site.data.i18n[include.lang] -%}
-<form class="signup" id="signup" action="{{ site.signup_endpoint }}/subscribe" method="post" novalidate>
-  <label for="signup-email" class="signup-label">{{ t.signup_label }}</label>
+{%- assign sid = include.sid | default: 'signup' -%}
+<form class="signup{% if include.compact %} signup-compact{% endif %}" id="{{ sid }}" action="{{ site.signup_endpoint }}/subscribe" method="post" novalidate>
+  <label for="{{ sid }}-email" class="signup-label">{{ t.signup_label }}</label>
   <div class="signup-row">
-    <input id="signup-email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="{{ t.signup_placeholder }}" />
+    <input id="{{ sid }}-email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="{{ t.signup_placeholder }}" />
     <button type="submit">{{ t.signup_button }}</button>
   </div>
   <!-- Honeypot: skjult for mennesker, bots udfylder det. -->
-  <div class="signup-hp" aria-hidden="true"><label for="signup-website">Website</label><input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
+  <div class="signup-hp" aria-hidden="true"><label for="{{ sid }}-website">Website</label><input id="{{ sid }}-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
   <input type="hidden" name="lang" value="{{ include.lang }}" />
   <p class="signup-note">{{ t.signup_note }} <a href="{{ t.privacy_url | relative_url }}">{{ t.privacy_label }}</a></p>
-  <p class="signup-msg" id="signup-msg" role="status" aria-live="polite" hidden></p>
+  <p class="signup-msg" id="{{ sid }}-msg" role="status" aria-live="polite" hidden></p>
 </form>
 <script>
 (function () {
-  var f = document.getElementById('signup'), msg = document.getElementById('signup-msg'), btn = f.querySelector('button');
+  var f = document.getElementById({{ sid | jsonify }}), msg = document.getElementById({{ sid | append: '-msg' | jsonify }}), btn = f.querySelector('button');
   var text = { ok: {{ t.signup_ok | jsonify }}, email: {{ t.signup_err_email | jsonify }}, err: {{ t.signup_err | jsonify }} };
   function show(kind) { msg.textContent = text[kind]; msg.className = 'signup-msg signup-' + (kind === 'ok' ? 'ok' : 'err'); msg.hidden = false; }
   f.addEventListener('submit', function (e) {

@@ -1,0 +1,43 @@
+{%- comment -%}
+Forsiden pr. sprog (index.html, da/index.html): intro + tilmelding, seneste udgave med "Dagen på 60
+sekunder" og en knap, derefter arkivet. Samme stil som udgaverne (Jesper 12/11, C). Parameter: lang.
+{%- endcomment -%}
+{%- assign t = site.data.i18n[include.lang] -%}
+{%- if include.lang == 'da' -%}{%- assign issues = site.da | sort: "date" | reverse -%}{%- else -%}{%- assign issues = site.posts -%}{%- endif -%}
+<section class="intro">
+  <p class="kicker">{{ t.kicker }}</p>
+  <h1>{{ t.tagline }}</h1>
+  <p>{{ t.intro }}</p>
+  <div class="intro-signup">{% include signup.html lang=include.lang %}</div>
+</section>
+{%- assign latest = issues | first -%}
+{%- if latest %}
+<section class="latest" aria-labelledby="latest-h">
+  <p class="latest-label">{{ t.latest_label }} · <time datetime="{{ latest.date | date: '%Y-%m-%d' }}">{{ latest.date | date: t.date_format }}</time>{% if latest.minutes %} · {{ latest.minutes }} min{% endif %}</p>
+  <h2 id="latest-h"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
+  {%- if latest.today %}
+  <ol>
+    {%- for d in latest.today %}
+    <li><span class="ic-n" aria-hidden="true">{{ forloop.index }}</span><span>{{ d.t }}</span></li>
+    {%- endfor %}
+  </ol>
+  {%- elsif latest.summary %}
+  <p>{{ latest.summary }}</p>
+  {%- endif %}
+  <a class="latest-go" href="{{ latest.url | relative_url }}">{{ t.latest_button }}</a>
+</section>
+{%- endif %}
+<h2 class="arch-h">{{ t.all_issues }}</h2>
+<ol class="issue-list">
+  {%- for post in issues %}
+  <li>
+    <a href="{{ post.url | relative_url }}">
+      <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: t.date_format }}</time>
+      <span class="issue-title">{{ post.title }}</span>
+      {% if post.summary %}<span class="issue-summary">{{ post.summary }}</span>{% endif %}
+    </a>
+  </li>
+  {%- else %}
+  <li class="empty">{{ t.empty }}</li>
+  {%- endfor %}
+</ol>
