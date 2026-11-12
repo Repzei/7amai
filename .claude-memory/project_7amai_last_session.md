@@ -16,11 +16,14 @@ Detaljer i [[project-7amai-todo]] (afsnit UDGAVESIDEN SOM MAILEN). Overskriv den
 - **Udgavesiden i mailens sprog, live på alle udgaver EN + DA** (91d2134 testside, 252a6d5 go-live): ét hvidt kort pr. historie på himmelblå, emne-ikon + "1 · Emne · min", nøgletal/fliser/trin/søjler fra `items`, hele teksten, grøn Derfor-boks, Arial 17 px, ingen versaler. Fordi alle nye læsere (LinkedIn-lanceringen) lander på siden, og den føltes "kedelig og tung" ved siden af mailen.
 - **Forklaret-fejl rettet**: hovedbegrebet stod som rå markdown på alle udgavesider (markdownify i `_includes/explained.html`).
 - Læselinjen: den bevægende sol er erstattet af en 3 px orange streg øverst (Jespers valg, f402a61), fuld når den sidste historie slutter (22b30e1).
+- **Designrunde 2 live** (5b838d1): A velkomst + tilmelding efter historie 3 (skjult fra mailen), kort top; B Fangsten-boks + kildeknapper; C ny forside (`_includes/home.html`); Lexend på hele sitet, ingen versaler/kursiv.
 - Køreplan (`.agent/roadmap.json`) + CLAUDE.md-filtabel opdateret.
 
 ## Valg Jesper traf
 - 12/11: variant A ("lav a"); kunne ikke se forskel på A og C. B (fold-ud) fravalgt.
 - 12/11: ingen "Kort fortalt:" på siden (skjult med CSS); i mailen bliver det stående.
+- 12/11: læselinjen som tynd streg, fuld ved sidste historie.
+- 12/11: designrunde 2, "alle skal laves både a, b og c", skrift Lexend (fravalgt Arial og Atkinson). Mailen forbliver Arial.
 
 ## Faldgruber
 - Ingen Ruby/Jekyll lokalt. Mønster der virkede: midlertidig samling `_cardtest` (noindex, sitemap false, egen permalink) med kopier af ægte udgaver, push, test, fjern igen ved go-live.
@@ -30,5 +33,5 @@ Detaljer i [[project-7amai-todo]] (afsnit UDGAVESIDEN SOM MAILEN). Overskriv den
 
 ## Hvor vi starter næste gang
 1. Har Jesper set siden på telefonen? Rettelser efter hans ønske.
-2. Overvej (kun med Jespers ja): forside, Forklaret-, emne- og metodesider i samme skrift/stil, så hele sitet hænger sammen.
+2. Mål ca. 25/11, om udgavesidens tilmeldinger (velkomst + midt i) virker. mail-style.html (Rettelser i mailen) har stadig versaler, hvis Jesper vil have det rettet.
 3. Ellers som før: LinkedIn-lanceringen (Jesper), TJEK Anthropic-reglen 12-14/11, "Shipped or not?" ca. 16/11, måling ca. 25/11.

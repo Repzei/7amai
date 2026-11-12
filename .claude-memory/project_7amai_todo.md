@@ -21,7 +21,13 @@ Jesper 12/11: siden var "kedelig og tung" og afspejlede ikke mailen; alle nye l�
 - [x] Fejl rettet: Forklaret-hovedteksten blev vist som rå markdown ("**", ">") på ALLE udgavesider (`main.content` er urenderet, når udgaverne bygges) -> `| markdownify` i `_includes/explained.html`.
 - Testet live-HTML: 375 px + desktop, lys + mørk, EN + DA, ingen vandret scroll, canonical/hreflang/og:image/beacon uændrede, /card-test/ 404, mailen uændret.
 - [x] Jesper 12/11: den bevægende sol-linje (sticky, med 0:00/7:00) "forstyrrende når man læser" -> valgte "Tynd streg": 3 px orange streg helt øverst (fixed), ingen sol, ingen tal, intet felt over teksten (f402a61); fuld ved slutningen af den sidste historie, Forklaret/tilmelding tæller ikke (22b30e1, Jesper: "den skal slutte ved den sidste artikel"). Fravalgt: fjerne helt, stillestående sol. Sol-linjen er nu kun i delingsbilledet (og-source).
-- [ ] Jesper ser siden på sin telefon (fx https://7amai.com/da/2026/11/12/). Ikke gjort (udenfor opgaven): forsiden, Forklaret-, emne- og metodesiderne bruger stadig den gamle skrift (Newsreader-serif, versaler i små labels).
+- [x] DESIGNRUNDE 2 LIVE 12/11 (2c7f9f6 testsider, 5b838d1 go-live). Mockups: https://claude.ai/artifact/DWzSNDk4dMPSFQA8vb9wFn. Jesper: "alle skal laves både a, b og c men kan god lide lexend teksten".
+  - A: mørkeblå velkomst med tilmelding øverst ("Ny her? Det her er 7am AI") + tilmelding efter historie 3; begge skjult ved `?ref=mail` (klasse `from-mail` på html). Kort top: dato, overskrift, "5 hovedhistorier og 2 ekstra · 7 min"; den grå opsummering vises ikke længere (er stadig meta description).
+  - B: "Fangsten:"/"Forbeholdet:"/"Hagen:"/"The catch:" (i18n `catch_words`) som egen boks; kilder som knapper med kildemærke (ukendt format bliver stående).
+  - C: forsiden (`_includes/home.html`) med seneste udgave + "Dagen på 60 sekunder" + knap, derefter arkivet. Lexend (`--font-read`) på HELE sitet, ingen versaler og ingen kursiv nogen steder; logoet Schibsted Grotesk. Mailen er stadig Arial (mailprogrammer henter ikke skrifter).
+  - `signup.html` kan stå flere gange på en side (`sid`, `compact`). Testet: 375 px + desktop, lys + mørk, EN + DA, 8/10 og 15/10 (2 historier, ingen midter-tilmelding), 11 andre sidetyper, alle formularer, ?ref=mail. Sitemap uændret (168), /card-test/ 404, mailen uændret.
+- [ ] Jesper ser det hele på sin telefon. Ikke rørt: mail-style.html (Rettelser i mailen) har stadig versaler.
+- [ ] Mål ca. 25/11: tilmeldinger fra udgavesiden (nu 3 formularer) mod før.
 
 ## VEJEN UD TIL LÆSERNE (analyse 2026-11-11, bestilt fra marketing; AFVENTER JESPERS VALG, intet bygget, STRATEGI uændret)
 Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11). Udgangspunkt: 95 besøg/30 d, 3 tilmeldte, Bluesky 2 besøg på ca. 15 opslag, Threads 5 på 2.
