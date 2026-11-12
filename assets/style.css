@@ -138,15 +138,10 @@ h1, h2, h3 { font-family: var(--font-news); line-height: 1.12; text-wrap: balanc
 
 .issue-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); font-family: var(--font-news); font-size: 14px; font-weight: 600; }
 
-/* Horisont-læselinjen (sticky): en halv sol bevæger sig hen ad horisonten, mens man læser. */
-.hz-wrap { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 3; background: var(--paper); padding-block: 8px 6px; margin-bottom: 4px; }
-.hz { position: relative; height: 14px; }
-.hz-line, .hz-fill { position: absolute; left: 0; bottom: 2px; height: 3px; border-radius: 2px; }
-.hz-line { right: 0; background: var(--line); }
-.hz-fill { width: var(--p, 0%); background: var(--ink); }
-.hz-sun { position: absolute; bottom: 2px; left: var(--p, 0%); width: 18px; height: 9px; border-radius: 18px 18px 0 0; background: var(--sun); transform: translateX(-50%); }
-.hz-txt { display: flex; justify-content: space-between; font-family: var(--font-news); font-size: 12px; font-weight: 700; color: var(--mist); font-variant-numeric: tabular-nums; margin-top: 2px; }
-@media (prefers-reduced-motion: no-preference) { .hz-fill, .hz-sun { transition: width .15s linear, left .15s linear; } }
+/* Læselinjen: en tynd orange streg helt øverst, der vokser, mens man læser. Ingen sol, ingen tal og intet felt
+   over teksten (Jesper 12/11: den bevægende sol forstyrrede læsningen). */
+.read-line { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 3; height: 3px; pointer-events: none; }
+.read-line span { display: block; height: 100%; width: var(--p, 0%); background: var(--sun); border-radius: 0 2px 2px 0; }
 
 /* Kildemærker og nøgletal (bruges af agenten fra trin 4). */
 .tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-news); font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--mist); }
@@ -260,8 +255,6 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 .issue-cards .disclosure { display: flex; align-items: flex-start; border: 0; border-radius: 0; padding: 0; margin: 12px 0 0; font-family: var(--font-mail); font-size: 14px; font-weight: 400; line-height: 1.45; }
 .issue-cards .disclosure::before { margin-top: 6px; }
 .issue-cards .issue-sub { font-family: var(--font-mail); font-size: 16px; margin: 10px 0 0; }
-.issue-cards .hz-wrap { background: var(--sky); margin: 8px 0; padding-inline: 4px; }
-.issue-cards .hz-txt { font-family: var(--font-mail); }
 .ic-card { background: var(--paper); border-radius: 16px; padding: 20px; margin: 0 0 16px; }
 @media (min-width: 600px) { .ic-card { padding: 24px 28px; } }
 .ic-today { border: 2px solid var(--ink); }
@@ -279,8 +272,8 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 .ic-extra h2 ~ h2 { margin-top: 20px; }
 .ic-head { display: flex; align-items: center; gap: 12px; margin: 0; font-size: 15px; line-height: 1.3; font-weight: 700; color: var(--sun-ink); }
 .ic-head img { width: 40px; height: 40px; flex: none; display: block; }
-/* scroll-margin: ankre (#historie fra mailen og Del) lander, så ikonlinjen over overskriften ikke gemmer sig under sol-linjen. */
-.issue-cards .issue-body .ic-story h3 { font-size: 22px; line-height: 1.3; font-weight: 800; letter-spacing: 0; margin: 14px 0 0; scroll-margin-top: 120px; }
+/* scroll-margin: ankre (#historie fra mailen og Del) lander, så ikonlinjen over overskriften kan ses. */
+.issue-cards .issue-body .ic-story h3 { font-size: 22px; line-height: 1.3; font-weight: 800; letter-spacing: 0; margin: 14px 0 0; scroll-margin-top: 84px; }
 .issue-cards .issue-body .ic-story h3:first-child { margin-top: 0; }
 .issue-cards .issue-body .ic-lead h3 { font-size: clamp(24px, 4.4vw, 28px); }
 .ic-story p { margin: 14px 0 0; max-width: none; }
