@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: e46f3b18-5cc3-4f90-9572-4af7f0591899
-  modified: 2026-10-14T21:16:51.065Z
+  modified: 2026-11-11T21:07:48.457Z
 ---
 
 Lærdomme fra 7am AI ([[project-7amai]], [[project-7amai-infra]]). De fleste gælder alle Claude cloud-routines, også Gainfully-indholdsagenten.
@@ -29,3 +29,6 @@ Lærdomme fra 7am AI ([[project-7amai]], [[project-7amai-infra]]). De fleste gæ
 13. **Lad aldrig AI'en bygge HTML i hånden ud fra byggeklodser, når Jekyll kan.** Mailen 21/10 mistede afsnittene under `#### <span>1 of 2</span>`, fordi agenten læste linjen under overskriften som en del af den; kramdown gjorde det rigtigt. Nu bygger Jekyll mailen (`/mail/en/`). Generelt: generér output deterministisk fra samme kilde, og lad AI'en kun hente og sende.
 14. **GitHub Pages: `site.github.build_revision` virker** (SHA'en for buildet) og kan bruges til at vente på, at en bestemt commit er bygget. Pages-CDN'en har `max-age=600`, men en ny build blev set med det samme med `?v=<tilfældig>`. Ingen Ruby lokalt (Windows): test Liquid ved at pushe sider, der ikke er linket (noindex, `sitemap: false`), og tjek `gh api repos/Repzei/7amai/pages/builds/latest`. Liquid-tip: konstanter med både ' og " laves med `{% capture %}`.
 15. **Krøllede parenteser i en Liquid-streng får Pages-buildet til at fejle** (`{{ x | replace: "{n}", y }}` -> "Variable was not properly terminated"). Brug en pladsholder uden `{}` (fx `%n`). Et fejlet build lader den forrige udgave af siden stå live, men indtil fejlen er rettet, fejler alle senere builds (også routinens udgave), så tjek `gh run list --limit 1` efter hvert push. Sket 2/11, rettet efter 5 min.
+16. **Agenten er part i sagen: Claude skriver om Anthropic.** 13 af 31 leads (5 af 6 i træk) handlede om Anthropic/Claude, uden at nogen opdagede det før 11/11. Årsagen var interessekonflikten, og Anthropic stod også først i SOURCES og i specialisternes opgaver. Rettet med en hård kontrol i `readability.py` (højst 1 hovedhistorie, lead højst 2 af 7, tæller kun når navnet står blandt overskriftens første 3 ord), ikke kun med en tekst i prompten. Kør nye regler bagud mod alle gamle udgaver før commit. Det fandt to falske positiver: Claude brugt som målestok og dansk genitiv "Anthropics".
+17. **Tre Liquid-fælder på Pages** (supplerer 14, sås 12/11): filter-argumenter kan ikke være kæder (`replace_first: a, b | append: c` virker ikke), brug `capture`. `capitalize` sænker resten af ordet ("AWS" bliver "Aws"), brug `slice: 0 | upcase` + resten. Indhold fra en anden samling (`main.content` fra `_explained`) er urenderet markdown, når udgaverne bygges, brug `| markdownify` (Forklaret stod som rå "**" og ">" på alle udgaver til 12/11).
+18. **Designpræferencer til 7am AI's sider (Jesper er ordblind, 12/11):** Lexend som skrift, ingen versaler, ingen kursiv og ingen bevægelse, der forstyrrer læsningen (den bevægende sol blev en 3 px streg). Tjek nye designforslag mod listen, før de vises. Mailen forbliver Arial.
