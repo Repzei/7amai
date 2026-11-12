@@ -3,13 +3,13 @@ title: "AWS giver kodeagenter en gratis kopi af sin cloud, bygget af agenter"
 summary: "Med AWS Emulator kan udviklere og deres agenter teste mod over 200 AWS-tjenester på deres egen maskine, gratis, og agenter har skrevet al koden. Desuden: Nvidias bestyrelse overvejer Jensen Huangs fremtid, Googles billige Decisions API, United blokerer AI-agenter, der booker fly, og en britisk chipstartup henter 720 mio. $."
 date: 2026-11-12 07:00:00 +0100
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "emulator", from: 1, more: ["ai-agent", "open-weight"] }
 today:
   - { t: "AWS udgiver en gratis lokal kopi af sin cloud, og agenter har skrevet al koden.", why: "Udviklere, der bygger på AWS, og alle, der er nysgerrige på, hvordan agenter skriver software." }
   - { t: "Nvidias bestyrelse holdt møde om at fjerne topchefen Jensen Huang, skriver Reuters.", why: "Alle, der følger chippene, som AI kører på." }
-  - { t: "Googles nye Decisions API vælger mellem faste svar for 0,10 $ pr. million tokens.", why: "Udviklere, der sorterer, fordeler eller tjekker ting med AI." }
+  - { t: "Googles nye Decisions API vælger mellem faste svar for 0,10 $ pr. million input-tokens.", why: "Udviklere, der sorterer, fordeler eller tjekker ting med AI." }
   - { t: "United Airlines blokerer personlige AI-agenter fra at booke fly for rejsende.", why: "Alle, der lader en assistent handle eller booke for sig." }
   - { t: "Den britiske chipstartup Fractile henter 720 mio. $ til sine AI-chips.", why: "Alle, der følger Europas plads i AI-hardware." }
 other_lang_url: /2026/11/12/
@@ -29,7 +29,7 @@ items:
 
 <p class="short"><span>Kort fortalt</span>AWS har udgivet en gratis kopi af sin cloud, der kører på din egen maskine, så udviklere og deres agenter kan teste uden en regning. Agenter har skrevet al koden.</p>
 
-Det har altid været besværligt at teste kode, der bruger Amazons cloud. Du betaler for en rigtig testkonto eller bruger et værktøj udefra, der kun efterligner en del af AWS. Og en agent, der ikke kan tjekke sit arbejde, kræver et menneske, der holder øje.
+Det har altid været besværligt at teste kode, der bruger Amazons cloud. Rigtige testopsætninger koster penge og kan ikke genskabe mange situationer, når man har brug for det. Og en agent, der ikke kan tjekke sit arbejde, kræver et menneske, der holder øje.
 
 Onsdag udgav AWS så AWS Emulator. Den efterligner over 200 AWS-tjenester, og kører gratis og uden net.
 
@@ -75,7 +75,7 @@ Googles nye Gemini Decisions API svarer kun ja eller nej, vælger fra en liste e
 
 Svarene er gratis, og Google siger, at det er næsten 5 gange billigere end Gemini 3.5 Flash-Lite.
 
-I går føjede Hugging Face samme slags model til sine open source-værktøjer. Fangsten: Googles prissammenligning er dets egen.
+Fangsten: Googles prissammenligning er dets egen, og understøttelse i Google Cloud kommer først "snart".
 
 <div class="why"><b>Derfor er det vigtigt</b><p>Det er som at hyre en dommer i stedet for en kommentator. Du har brug for en model, der afgør sagen og siger, hvor sikker den er. Er den i tvivl, kan din kode sende sagen videre til et menneske.</p></div>
 
@@ -112,21 +112,21 @@ Fractiles svar er en chip med almindelig hukommelse stablet direkte ovenpå. Sto
 
 Fangsten: de første chips og systemer kommer først næste år, siger stifteren, og der er endnu ingen tal for hastigheden.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>De fleste AI-chips kommer i dag fra amerikanske firmaer. Storbritannien siger, at landet støtter Fractile for at få "en større andel" i den hardware, økonomien skal køre på. Det er som at eje en del af kraftværket i stedet for kun at betale elregningen.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>Storbritannien siger, at landet støtter Fractile for at få "en større andel" i den hardware, økonomien skal køre på. Det er som at eje en del af kraftværket i stedet for kun at betale elregningen.</p></div>
 
 Kilde: [techcrunch.com](https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/) · <span class="tag tag-reported">Rapporteret</span>
 {: .sources}
 
 ## Open source og lokal AI
 
-### MiniMax deler en stærk billedmodel, men licensen lukker EU ude {#minimax-h3-image}
+### MiniMax deler en ny billedmodel, men licensen lukker EU ude {#minimax-h3-image}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1 min</span></p>
 
 <p class="short"><span>Kort fortalt</span>Det kinesiske AI-firma MiniMax har frigivet vægtene til H3-Image, en model der laver og redigerer billeder i 4K. Men licensen tillader ikke brug i EU, Storbritannien, Sydkorea eller USA.</p>
 
 Åbne billedmodeller er populære, fordi du kan køre dem selv og holde dine billeder private.
 
-H3-Image laver nye billeder og redigerer op til 16 referencebilleder. MiniMax siger, at den laver et 4K-billede på under 10 sekunder, og den virker allerede i ComfyUI. Men selve modelfilen fylder 68,65 GB, så den kræver datacenterkort som Nvidias H200.
+H3-Image laver nye billeder og redigerer op til 16 referencebilleder. MiniMax siger, at den laver et 4K-billede på under 10 sekunder, og den virker allerede i ComfyUI. Men selve modelfilen fylder 68,65 GB, langt mere end et almindeligt grafikkort kan rumme.
 
 Den egentlige fangst står i licensen. Modellen er kun fri at bruge uden for de "udelukkede områder": EU, Storbritannien, Sydkorea og USA. Firmaer med over 1 million dollar i årlig omsætning skal også have skriftlig tilladelse.
 

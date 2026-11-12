@@ -23,4 +23,4 @@ Det sidste er fangsten. En emulator efterligner, hvordan det rigtige system opf�
 
 Emulatorer er blevet vigtigere med AI-kodeagenter. En agent arbejder bedst, når den kan prøve noget, se resultatet og prøve igen. Koster hvert forsøg penge eller rører rigtige kundedata, må et menneske holde øje. En gratis og sikker kopi lader agenten tjekke sit eget arbejde.
 
-**Hvad betyder det for dig:** emulatorer gør test billigere og sikrere, for mennesker og for AI-agenter. Siger en agent, at den har testet sin kode, så spørg: mod det rigtige system eller mod en kopi? Og hvor god er kopien?
+**Hvad betyder det for dig:** emulatorer gør test billigere og sikrere, for mennesker og for AI-agenter. Siger en agent, at den har testet sin kode, så tjek, om det var mod det rigtige system. Var det en kopi, så tjek, hvor god kopien er.

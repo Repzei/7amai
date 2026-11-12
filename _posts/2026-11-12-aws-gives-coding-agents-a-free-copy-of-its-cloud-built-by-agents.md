@@ -3,13 +3,13 @@ title: "AWS gives coding agents a free copy of its cloud, built by agents"
 summary: "AWS Emulator lets developers and their agents test against more than 200 AWS services on their own machine, for free, and agents wrote all of its code. Also: Nvidia's board weighs Jensen Huang's future, Google's cheap Decisions API, United blocks AI booking agents and a British chip startup raises $720M."
 date: 2026-11-12 07:00:00 +0100
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "emulator", from: 1, more: ["ai-agent", "open-weight"] }
 today:
   - { t: "AWS releases a free local copy of its cloud, and agents wrote all the code.", why: "Developers who build on AWS, and anyone curious how agents write software." }
   - { t: "Nvidia's board met to decide whether to remove CEO Jensen Huang, Reuters reports.", why: "Anyone who follows the chips that AI runs on." }
-  - { t: "Google's new Decisions API picks between fixed answers for $0.10 per million tokens.", why: "Developers who sort, route or check things with AI." }
+  - { t: "Google's new Decisions API picks between fixed answers for $0.10 per million input tokens.", why: "Developers who sort, route or check things with AI." }
   - { t: "United Airlines blocks personal AI agents from booking flights for travelers.", why: "Anyone who lets an assistant shop or book for them." }
   - { t: "British chip startup Fractile raises $720M for its AI chips.", why: "Anyone following Europe's place in AI hardware." }
 other_lang_url: /da/2026/11/12/
@@ -29,7 +29,7 @@ items:
 
 <p class="short"><span>The short version</span>AWS has released a free copy of its cloud that runs on your own machine, so developers and their agents can test without a bill. Agents wrote all of its code.</p>
 
-Testing code that uses Amazon's cloud has always been awkward. You pay for a real test account, or use an outside tool that copies only part of AWS. And an agent that cannot check its work needs a human watching.
+Testing code that uses Amazon's cloud has always been awkward. Real test setups cost money and cannot recreate many situations on demand. And an agent that cannot check its work needs a human watching.
 
 On Wednesday, AWS released AWS Emulator. It copies more than 200 AWS services, and runs free and offline.
 
@@ -37,7 +37,7 @@ How it was built is the bigger story. AWS says agents wrote and tested all of th
 
 Before any change goes in, security agents try to break it. Simon Willison counted 29,684 changes in the first three weeks.
 
-The catch: it is for building and testing, not for real workloads or security tests. It does not yet match AWS everywhere, and the account comes from AWS itself.
+The catch: it is for building and testing, not for real workloads or security tests. It does not yet match AWS everywhere, and the story of how it was built comes from AWS itself.
 
 <div class="why"><b>Why it matters</b><p>It is like a flight simulator for code: you can crash a hundred times for free. An agent that can check its own work can work alone much longer. AWS used exactly that trick to build the simulator.</p></div>
 
@@ -75,7 +75,7 @@ Google's new Gemini Decisions API answers only yes or no, picks from a list, or 
 
 Output is free, and Google says it is nearly 5 times cheaper than Gemini 3.5 Flash-Lite.
 
-Yesterday, Hugging Face added the same kind of model to its open source tools. The catch: Google's price comparison is its own.
+The catch: Google's price comparison is its own, and support in Google Cloud is still "coming soon".
 
 <div class="why"><b>Why it matters</b><p>It is like hiring a referee instead of a commentator. You need a model that decides and says how sure it is. When it is unsure, your code can pass the case to a person.</p></div>
 
@@ -112,21 +112,21 @@ Fractile's answer is a chip with ordinary memory stacked directly on top of it. 
 
 The catch: the first chips and systems ship only next year, the founder says, and there are no speed figures yet.
 
-<div class="why"><b>Why it matters</b><p>Most AI chips today come from American companies. Britain says it backs Fractile to get "a greater stake" in the hardware its economy will run on. It is like owning a share of the power plant instead of only paying the power bill.</p></div>
+<div class="why"><b>Why it matters</b><p>Britain says it backs Fractile to get "a greater stake" in the hardware its economy will run on. It is like owning a share of the power plant instead of only paying the power bill.</p></div>
 
 Source: [techcrunch.com](https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/) · <span class="tag tag-reported">Reported</span>
 {: .sources}
 
 ## Open source & local AI
 
-### MiniMax shares a strong image model, but its license shuts out the EU {#minimax-h3-image}
+### MiniMax shares a new image model, but its license shuts out the EU {#minimax-h3-image}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1 min</span></p>
 
 <p class="short"><span>The short version</span>Chinese lab MiniMax has released the weights of H3-Image, a model that makes and edits 4K images. But its license does not allow use in the EU, the UK, South Korea or the US.</p>
 
 Open image models are popular, because you can run them yourself and keep your pictures private.
 
-H3-Image makes new images and edits up to 16 reference images. MiniMax says it makes a 4K image in under 10 seconds, and it already works in ComfyUI. But the model file alone is 68.65 GB, so it needs data center cards like Nvidia's H200.
+H3-Image makes new images and edits up to 16 reference images. MiniMax says it makes a 4K image in under 10 seconds, and it already works in ComfyUI. But the model file alone is 68.65 GB, far more than a normal graphics card can hold.
 
 The real catch is in the license. It is free to use only outside the "Excluded Territories": the EU, the UK, South Korea and the US. Companies with more than $1 million in yearly revenue also need written approval.
 
