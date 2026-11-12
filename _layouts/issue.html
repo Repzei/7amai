@@ -131,12 +131,14 @@ Indholdet ændres ikke, kun hvordan det vises ("Kort fortalt" skjules med CSS, f
 {% include share.html %}
 <script>
 (function () {
-  // Læselinjen: stregen øverst følger, hvor langt man er nået i udgaven.
+  // Læselinjen: stregen øverst følger, hvor langt man er nået, og er fuld, når bunden af den
+  // sidste historie er på skærmen (Forklaret, tilmelding m.m. tæller ikke med; Jesper 12/11).
   var a = document.getElementById('issue'), line = document.getElementById('read-line');
   if (!a || !line) return;
+  var stories = a.querySelectorAll('.ic-story'), last = stories.length ? stories[stories.length - 1] : a;
   function tick() {
-    var r = a.getBoundingClientRect(), vh = window.innerHeight;
-    var p = Math.min(1, Math.max(0, (vh * 0.5 - r.top) / Math.max(1, r.height - vh * 0.5)));
+    var top = a.getBoundingClientRect().top, bottom = last.getBoundingClientRect().bottom, vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh * 0.5 - top) / Math.max(1, bottom - top - vh * 0.5)));
     line.style.setProperty('--p', (p * 100).toFixed(1) + '%');
   }
   window.addEventListener('scroll', tick, { passive: true });
