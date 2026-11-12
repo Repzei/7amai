@@ -4,37 +4,30 @@ description: "7am AI HANDOFF fra seneste session - hvad blev lavet, valg Jesper 
 metadata:
   node_type: memory
   type: project
-  modified: 2026-11-06T12:59:16.982Z
-  originSessionId: 7843c4d5-d2f3-4d82-b945-17d4e6156cee
+  originSessionId: b8e3a230-7b07-4e90-9530-645548d14765
+  modified: 2026-11-12T20:47:25.439Z
 ---
 
-# 7am AI: handoff (seneste: 6. nov. 2026, skridt 4 "Shipped or not?" live og routinen tjekket)
+# 7am AI: handoff (seneste: 12. nov. 2026, udgavesiden som mailen; side-session startet fra marketing)
 
-Detaljer står i [[project-7amai-todo]] (afsnit TILLID, MAN KAN SE); dette er overblikket. Overskriv denne fil ved hver sessions afslutning.
+Detaljer i [[project-7amai-todo]] (afsnit UDGAVESIDEN SOM MAILEN). Overskriv denne fil ved hver sessions afslutning.
 
 ## Lavet og hvorfor
-- **4/11 skridt 4 live (bc81503, e50d333, ce47033, b899fe2):** /shipped/ "Shipped or not?" + /da/leveret/ "Leveret eller ej?" fra `_data/promises.yml`: daterede løfter fra AI-firmaer og om de kom, kun Official-kilder. Første to: Moonshot Kimi K3.1 Pro og Mistral Large 4 (begge leveret).
-- Udkast-routinen vedligeholder listen fra 5/11 (INSTRUCTIONS U5c, kontrol i U6, med i PR'en, slutlinje "Shipped: n nye, m ændrede"). Tjekket 6/11: den virker; #27 tilføjede selv Thinking Machines Inkling 2 Small (`not_yet`, frist 15/11).
-- **6/11 (63ce820):** ingen "Bekræftet"-linje ved `not_yet`, fordi den kunne læses som bekræftet levering.
-
-- **6/11 2b live (754d6b1):** rettelser@ er fejl-adresse på How we work, brief@ videresendes, så svar på nyhedsbrevet når frem. Privatlivspolitikken EN/DA dækker nu mails til os. Testmail og deploy af systemfanen gjort af Jesper.
+- **Udgavesiden i mailens sprog, live på alle udgaver EN + DA** (91d2134 testside, 252a6d5 go-live): ét hvidt kort pr. historie på himmelblå, emne-ikon + "1 · Emne · min", nøgletal/fliser/trin/søjler fra `items`, hele teksten, grøn Derfor-boks, Arial 17 px, ingen versaler. Fordi alle nye læsere (LinkedIn-lanceringen) lander på siden, og den føltes "kedelig og tung" ved siden af mailen.
+- **Forklaret-fejl rettet**: hovedbegrebet stod som rå markdown på alle udgavesider (markdownify i `_includes/explained.html`).
+- Køreplan (`.agent/roadmap.json`) + CLAUDE.md-filtabel opdateret.
 
 ## Valg Jesper traf
-- 6/11: mails fra læsere gemmes "så længe det er nødvendigt", ikke en fast frist.
-- 2/11: routinen vedligeholder listen. 4/11: navnet "Shipped or not?" / "Leveret eller ej?"; "ja gå live med den".
-- Mit valg, sagt til Jesper: link i sidefoden og på How we work, ikke i menuen, fordi den er fuld ved 375 px.
-- "Bekræftet"-datoen er den dag, firmaets egen kilde viser status, ellers tjekdagen. Kimi står 4/11, fordi filerne er dateret 2/11, men det kan ikke ses, hvornår repoet blev offentligt.
+- 12/11: variant A ("lav a"); kunne ikke se forskel på A og C. B (fold-ud) fravalgt.
+- 12/11: ingen "Kort fortalt:" på siden (skjult med CSS); i mailen bliver det stående.
 
 ## Faldgruber
-- **Sessionen kan ikke flyttes til 7amai** med change_directory (hook: mappen under `.claude` kan ikke slås op). Start 7am AI-sessioner direkte i `C:/Users/havnd/.claude/projects/MitProjekt/7amai`, ellers gælder repoets hooks ikke. Stien `MitProjekt/7amai` direkte under brugermappen findes ikke.
-- `gh run watch` kan hænge over 5 min; vent i baggrunden med en curl-løkke mod den ændrede side.
-- **Jespers terminal er Windows PowerShell 5.1:** ingen `&&`, brug `;`.
-- **`wrangler deploy` blokeres af auto-mode** (produktion): Jesper kører det selv. Giv altid den fulde `cd`-sti til workerens mappe (`C:\Users\havnd\.claude\projects\MitProjekt\7amai\worker\stats`), ellers fejler det med "Could not detect a directory containing static files".
-- Test nye ting på ulinkede testsider (noindex, sitemap false), og fjern det efter Jespers ja.
-- **Ingen `{` `}` i Liquid-strenge** (se [[feedback-7amai-lessons]] 15). Tjek `gh run list --limit 1` efter hvert push.
-- Ændres flow, tjenester eller format: opdatér dashboardets systemfane og roadmap.json i samme ændring.
+- Ingen Ruby/Jekyll lokalt. Mønster der virkede: midlertidig samling `_cardtest` (noindex, sitemap false, egen permalink) med kopier af ægte udgaver, push, test, fjern igen ved go-live.
+- Browser-panelet må ikke åbne 7amai.com: hent den byggede HTML med curl og server den lokalt (`python -m http.server` i scratchpad, samme port som allerede er godkendt).
+- Liquid: filter-argumenter kan ikke være kæder (`replace_first: a, b | append: c` virker ikke); brug `capture`.
+- `main.content` fra en anden samling er urenderet markdown, når udgaverne bygges: brug `| markdownify`.
 
 ## Hvor vi starter næste gang
-1. Ca. 10/11: Bluesky-besøg.
-2. **Ca. 16/11:** Inkling 2 Small-fristen (15/11) er passeret: står den som `delivered` med Official-kilde eller `late`? Første rigtige statusskift.
-3. Ca. 25/11: mål forward/share/Search Console (også danske forespørgsler) og vælg næste skridt.
+1. Har Jesper set siden på telefonen? Rettelser efter hans ønske.
+2. Overvej (kun med Jespers ja): forside, Forklaret-, emne- og metodesider i samme skrift/stil, så hele sitet hænger sammen.
+3. Ellers som før: LinkedIn-lanceringen (Jesper), TJEK Anthropic-reglen 12-14/11, "Shipped or not?" ca. 16/11, måling ca. 25/11.

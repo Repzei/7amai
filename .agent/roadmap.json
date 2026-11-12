@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29",
+  "updated": "2026-11-12",
   "note": "Køreplanen på dashboardet (fanen 'Sådan virker det') læses live herfra. Status: done, doing, next, later, jesper (Jespers eget trin). Opdateres sammen med 7am AI's to-do.",
   "phases": [
     {
@@ -57,6 +57,10 @@
         },
         {
           "t": "Visuel mail: kort pr. historie, ikon, nøgletal og grafik (kun tal fra historien), udviklerstof samlet nederst",
+          "s": "done"
+        },
+        {
+          "t": "Udgavesiden i mailens sprog: kort pr. historie med ikon, nøgletal og grafik, hele teksten (12/11)",
           "s": "done"
         },
         {

@@ -5,13 +5,36 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-11-06T12:59:12.340Z
+  modified: 2026-11-12T20:47:15.970Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-27)
 
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
+
+## UDGAVESIDEN SOM MAILEN (2026-11-12, LIVE: 91d2134 + 252a6d5; side-session fra marketing)
+Jesper 12/11: siden var "kedelig og tung" og afspejlede ikke mailen; alle nye læsere (LinkedIn, Bluesky, Threads) lander på siden. Mockups (ægte 12/11, mail/nu/A/B/C): https://claude.ai/artifact/T42krNzgo1KX4jTqGyUkHq
+- [x] Jesper valgte A ("lav a"), efter at have sagt "kan ikke se forskel på a og c" (C = ét ark med streger). B (fold-ud) fravalgt.
+- [x] Jesper: "Kort fortalt:" giver ikke mening på siden, hvor hele historien følger. Skjult med CSS på siden; står stadig i teksten og i MAILEN (dér er den kort). Den korte tekst er nu fed indledning.
+- [x] `_layouts/issue.html` deler ved `<h3>` som email.html: kort pr. historie, ikon + "1 · Emne · min" fra `items`, `_includes/issue-graphics.html` (fliser/trin/søjler, samme regler som mail-graphics), Arial 17 px, ingen versaler; CSS afgrænset til `.issue-cards`. "Dagen på 60 sekunder" linker til historierne. Gælder hele arkivet (testet 8/10 gammelt format, 20/10 dele, 27/10 fliser, 5/11 + 8/11 søjler, 12/11 trin).
+- [x] Fejl rettet: Forklaret-hovedteksten blev vist som rå markdown ("**", ">") på ALLE udgavesider (`main.content` er urenderet, når udgaverne bygges) -> `| markdownify` i `_includes/explained.html`.
+- Testet live-HTML: 375 px + desktop, lys + mørk, EN + DA, ingen vandret scroll, canonical/hreflang/og:image/beacon uændrede, /card-test/ 404, mailen uændret.
+- [ ] Jesper ser siden på sin telefon (fx https://7amai.com/da/2026/11/12/). Ikke gjort (udenfor opgaven): forsiden, Forklaret-, emne- og metodesiderne bruger stadig den gamle skrift (Newsreader-serif, versaler i små labels).
+
+## VEJEN UD TIL LÆSERNE (analyse 2026-11-11, bestilt fra marketing; AFVENTER JESPERS VALG, intet bygget, STRATEGI uændret)
+Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11). Udgangspunkt: 95 besøg/30 d, 3 tilmeldte, Bluesky 2 besøg på ca. 15 opslag, Threads 5 på 2.
+- Fund: produktet er ikke flaskehalsen, ingen kender det. Alle store med kendt vækstvej startede fra en persons publikum (Neuron: Pete Huangs LinkedIn; Rundown: Cheungs X) eller betalte annoncer. De store lover selv 3-5 min, så "7 minutter" er ingen fordel; kilder/vished er. AI-mærket koster tillid (Reuters 2025: 12 % trygge ved helt AI-lavede nyheder). Intet dagligt dansk AI-nyhedsbrev fundet (Version2 ugentligt/2x, AI Portalen månedligt, AI Trainer hver 2. uge, AI Nyt lukket 2024 pga. tid). Tal 11/11: Rundown 3,5 mio. (28/10: 2 mio.), TLDR AI 1,1 mio., Neuron 700k, Last Week in AI 195k, Import AI 149k, Ben's Bites 118k, Interconnects 88k. SparkLoop min. $2.000/md og Resend ikke på listen.
+- Forslag: A personlig dansk lancering (Jespers LinkedIn én gang + 20-30 beskeder + 1-2 fællesskaber; ANBEFALET FØRST, 0 kr, 1-2 t af Jesper), B dansk først i budskabet (de første 500), C kilderne før AI-mærket + interessekonflikt-reglen synlig på /how-we-work/, D fyld "Shipped or not?" op til 20+ løfter fra arkivet før lancering (ikke HN), E bytte-omtale med danske nyhedsbreve ved ca. 100.
+- Fravalgt: betalt vækst, platformskifte, Show HN nu, forside-optimering (for lidt trafik), fast "Jesper's pick".
+- [x] 11/11 Jesper valgte A: "gainfully passer ikke på linked in det er et andet publikum" (LinkedIn bruges kun til 7am AI; én gang, ingen rutine, så 7am AI stadig passer sig selv). Tekster (opslag, personlig besked, fællesskabsopslag) skrevet i marketing-sessionen 11/11.
+- [ ] Jesper poster på LinkedIn + sender 20-30 beskeder. Udgangspunkt: 3 tilmeldte. Mål ca. 25/11 (sammen med skridt 5): tilmeldte DA/EN og besøg fra "Andre sociale medier" (LinkedIn havner dér).
+
+## ANTHROPIC-BALANCE (2026-11-11, commits 97ab0ae..fa92955; fundet i marketing-sessionens positionsanalyse, Jesper: "dette skal fixes")
+- Fund: 13 af 31 leads om Anthropic/Claude (5 af de seneste 6), 10/11 havde 3 Anthropic-hovedhistorier (Fable + IPO ikke samlet trods "samme firma"-reglen). Årsag: udkast-agenten ER Claude, og intet tog højde for interessekonflikten; Anthropic står også først i SOURCES og i specialisternes opgaver.
+- [x] `readability.py` (køres i U6) melder RET ved: (a) over 1 hovedhistorie, hvor Anthropic/Claude/Fable/Mythos/Opus|Sonnet|Haiku+tal står blandt overskriftens første 3 ord (Claude som målestok tæller ikke), (b) Anthropic/Claude i lead-overskriften mere end 2 gange i 7 udgaver (6 forrige filer i samme mappe + dagens). Også dansk genitiv. INSTRUCTIONS U3 "Interessekonflikt" + trin B, EDITORIAL kriterie 6 (ingen ny kriterie-tælling, så systemfanen er uændret), SOURCES-note, CLAUDE.md. Bagud-test: ville have slået til på 15 af 31 dage, EN = DA; 11/11 OK.
+- [ ] TJEK 12/11-14/11: 5 af de 6 forrige leads er Anthropic, så ingen Anthropic-lead før ca. 17/11. Står lead på en anden historie, og melder PR'en readability OK? Kommer en reel Anthropic-storhistorie (fx børsnoteringen), skal den stå som historie 2, ikke forsvinde.
+- [ ] Ikke bygget (afventer Jesper): synlig oplysning til læserne, fx linje på /how-we-work/ "7am AI skrives med Claude, lavet af Anthropic; derfor højst ..." (tillid man kan se).
 
 ## SITEMAP UDEN NOINDEX-SIDER (2026-11-10, commit 01a8577; Search Console-fund via marketing)
 - [x] Eget `sitemap.xml` (kopi af jekyll-sitemap-skabelonen) udelader `noindex: true` og tynde emnesider (`topic_thin` i `_includes/topic-count.html`, samme betingelse som noindex i default.html). Live: 162 -> 160 URL'er (topics/news + da/emner/nyheder væk), ingen lastmod ændret, 0 af 160 sider med noindex.
