@@ -15,6 +15,7 @@ Detaljer i [[project-7amai-todo]] (afsnit UDGAVESIDEN SOM MAILEN). Overskriv den
 ## Lavet og hvorfor
 - **Udgavesiden i mailens sprog, live på alle udgaver EN + DA** (91d2134 testside, 252a6d5 go-live): ét hvidt kort pr. historie på himmelblå, emne-ikon + "1 · Emne · min", nøgletal/fliser/trin/søjler fra `items`, hele teksten, grøn Derfor-boks, Arial 17 px, ingen versaler. Fordi alle nye læsere (LinkedIn-lanceringen) lander på siden, og den føltes "kedelig og tung" ved siden af mailen.
 - **Forklaret-fejl rettet**: hovedbegrebet stod som rå markdown på alle udgavesider (markdownify i `_includes/explained.html`).
+- Læselinjen: den bevægende sol er erstattet af en 3 px orange streg øverst (Jespers valg, f402a61).
 - Køreplan (`.agent/roadmap.json`) + CLAUDE.md-filtabel opdateret.
 
 ## Valg Jesper traf

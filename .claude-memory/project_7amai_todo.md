@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-11-12T20:47:15.970Z
+  modified: 2026-11-12T20:51:18.403Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-27)
@@ -20,6 +20,7 @@ Jesper 12/11: siden var "kedelig og tung" og afspejlede ikke mailen; alle nye l�
 - [x] `_layouts/issue.html` deler ved `<h3>` som email.html: kort pr. historie, ikon + "1 · Emne · min" fra `items`, `_includes/issue-graphics.html` (fliser/trin/søjler, samme regler som mail-graphics), Arial 17 px, ingen versaler; CSS afgrænset til `.issue-cards`. "Dagen på 60 sekunder" linker til historierne. Gælder hele arkivet (testet 8/10 gammelt format, 20/10 dele, 27/10 fliser, 5/11 + 8/11 søjler, 12/11 trin).
 - [x] Fejl rettet: Forklaret-hovedteksten blev vist som rå markdown ("**", ">") på ALLE udgavesider (`main.content` er urenderet, når udgaverne bygges) -> `| markdownify` i `_includes/explained.html`.
 - Testet live-HTML: 375 px + desktop, lys + mørk, EN + DA, ingen vandret scroll, canonical/hreflang/og:image/beacon uændrede, /card-test/ 404, mailen uændret.
+- [x] Jesper 12/11: den bevægende sol-linje (sticky, med 0:00/7:00) "forstyrrende når man læser" -> valgte "Tynd streg": 3 px orange streg helt øverst (fixed), ingen sol, ingen tal, intet felt over teksten (f402a61). Fravalgt: fjerne helt, stillestående sol. Sol-linjen er nu kun i delingsbilledet (og-source).
 - [ ] Jesper ser siden på sin telefon (fx https://7amai.com/da/2026/11/12/). Ikke gjort (udenfor opgaven): forsiden, Forklaret-, emne- og metodesiderne bruger stadig den gamle skrift (Newsreader-serif, versaler i små labels).
 
 ## VEJEN UD TIL LÆSERNE (analyse 2026-11-11, bestilt fra marketing; AFVENTER JESPERS VALG, intet bygget, STRATEGI uændret)
