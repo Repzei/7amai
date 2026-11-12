@@ -1,0 +1,52 @@
+{%- comment -%}
+Grafik i en historie på udgavesiden: samme data og regler som mailens mail-graphics.html
+(nøgletal, `tiles`, `steps`, `bars` fra historiens linje i `items:`), men med CSS fra style.css.
+Nøgletallet vises ikke som flise, når historien har søjler (søjlerne viser det). Højst 3 fliser.
+Parametre: item, num, num_label.
+{%- endcomment -%}
+{%- assign g = include.item -%}
+{%- assign has_bars = false -%}{%- if g.bars and g.bars.rows and g.bars.rows.size > 0 -%}{%- assign has_bars = true -%}{%- endif -%}
+{%- assign tile_count = 0 -%}
+{%- if include.num != '' and has_bars == false -%}{%- assign tile_count = 1 -%}{%- endif -%}
+{%- if g.tiles -%}{%- assign tile_count = tile_count | plus: g.tiles.size -%}{%- endif -%}
+{%- if tile_count > 3 -%}{%- assign tile_count = 3 -%}{%- endif -%}
+{%- if tile_count > 0 %}
+<div class="g-tiles g-tiles-{{ tile_count }}">
+  {%- assign shown = 0 -%}
+  {%- if include.num != '' and has_bars == false -%}{%- assign shown = 1 %}
+  <div class="g-tile g-tile-key"><b>{{ include.num }}</b><span>{{ include.num_label }}</span></div>
+  {%- endif -%}
+  {%- for tile in g.tiles -%}
+    {%- if shown >= 3 -%}{%- break -%}{%- endif -%}
+    {%- assign shown = shown | plus: 1 %}
+  <div class="g-tile"><b>{{ tile.n }}</b><span>{{ tile.t }}</span></div>
+  {%- endfor %}
+</div>
+{%- endif -%}
+{%- if g.steps and g.steps.list and g.steps.list.size > 0 %}
+<div class="g-box">
+  {%- if g.steps.title %}<p class="g-title">{{ g.steps.title }}</p>{% endif %}
+  <ol class="g-steps">
+  {%- for s in g.steps.list %}
+    {%- unless forloop.first %}<li class="g-arrow" aria-hidden="true">&darr;</li>{% endunless %}
+    <li class="g-step"><b>{{ forloop.index }}.</b> {{ s }}</li>
+  {%- endfor %}
+  </ol>
+</div>
+{%- endif -%}
+{%- if has_bars -%}
+  {%- assign bmax = g.bars.max | plus: 0 -%}
+  {%- if bmax == 0 -%}
+    {%- for r in g.bars.rows -%}{%- assign rv = r.v | plus: 0 -%}{%- if rv > bmax -%}{%- assign bmax = rv -%}{%- endif -%}{%- endfor -%}
+  {%- endif -%}
+  {%- if bmax > 0 %}
+<div class="g-box">
+  {%- if g.bars.title %}<p class="g-title">{{ g.bars.title }}</p>{% endif %}
+  {%- for r in g.bars.rows -%}
+    {%- assign w = r.v | times: 100.0 | divided_by: bmax | round -%}
+    {%- if w < 2 -%}{%- assign w = 2 -%}{%- endif -%}{%- if w > 100 -%}{%- assign w = 100 -%}{%- endif %}
+  <div class="g-bar"><span class="g-bar-l">{{ r.l }}</span><span class="g-bar-track"><span class="g-bar-fill{% if r.hl %} g-bar-hl{% endif %}" style="width:{{ w }}%"></span></span><span class="g-bar-v">{{ r.t | default: r.v }}</span></div>
+  {%- endfor %}
+</div>
+  {%- endif -%}
+{%- endif -%}

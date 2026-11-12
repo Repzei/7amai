@@ -251,3 +251,100 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 .issue-body p.todo b { color: var(--sun-ink); }
 .issue-body h4 { font-family: var(--font-news); font-size: 17px; font-weight: 800; line-height: 1.25; border-top: 1px solid var(--line); padding-top: 12px; margin: 16px 0 6px; }
 .issue-body h4 span { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mist); margin-right: 8px; }
+
+/* Udgavesiden som mailen (Jesper 12/11, variant A, _layouts/issue-cards.html): ét kort pr. historie på
+   himmelblå, mailens skrift (Arial 17 px, linjeafstand 1,6), ingen versaler og ingen kursiv (læsevenligt
+   for ordblinde). Alt er afgrænset til .issue-cards, så andre sider bruger de gamle regler ovenfor. */
+:root { --tile: #0E1A33; --on-tile: #FFFFFF; --tile-sub: #D3DCEA; --font-mail: Arial, "Helvetica Neue", Helvetica, sans-serif; }
+@media (prefers-color-scheme: dark) { :root { --tile: #263A63; --tile-sub: #C9D4E6; } }
+.issue-cards { background: none; border-radius: 0; padding: 0; margin-top: 6px; font-family: var(--font-mail); font-size: 17px; line-height: 1.6; }
+.issue-cards h1, .issue-cards h2, .issue-cards h3, .issue-cards h4 { font-family: var(--font-mail); letter-spacing: 0; }
+.issue-cards em, .issue-cards i { font-style: normal; }
+.ic-top { padding: 10px 4px 0; }
+.issue-cards .issue-date { font-size: 15px; letter-spacing: 0; text-transform: none; margin: 0; }
+.issue-cards .issue-date b { color: var(--sun-ink); }
+.issue-cards h1 { font-size: clamp(27px, 5.4vw, 36px); line-height: 1.18; font-weight: 800; letter-spacing: -0.01em; margin: 10px 0 0; }
+.issue-cards .issue-lead { font-size: 18px; line-height: 1.55; margin: 12px 0 0; }
+.issue-cards .disclosure { display: flex; align-items: flex-start; border: 0; border-radius: 0; padding: 0; margin: 12px 0 0; font-family: var(--font-mail); font-size: 14px; font-weight: 400; line-height: 1.45; }
+.issue-cards .disclosure::before { margin-top: 6px; }
+.issue-cards .issue-sub { font-family: var(--font-mail); font-size: 16px; margin: 10px 0 0; }
+.issue-cards .hz-wrap { background: var(--sky); margin: 8px 0; padding-inline: 4px; }
+.issue-cards .hz-txt { font-family: var(--font-mail); }
+.ic-card { background: var(--paper); border-radius: 16px; padding: 20px; margin: 0 0 16px; }
+@media (min-width: 600px) { .ic-card { padding: 24px 28px; } }
+.ic-today { border: 2px solid var(--ink); }
+.ic-today h2 { margin: 0; font-size: 15px; font-weight: 800; line-height: 1.3; color: var(--sun-ink); }
+.ic-today ol { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 12px; }
+.ic-today li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; line-height: 1.55; }
+.ic-n { width: 26px; height: 26px; border-radius: 50%; background: var(--tile); color: var(--on-tile); font-size: 14px; font-weight: 800; line-height: 1; display: grid; place-items: center; margin-top: 1px; }
+.ic-today a { color: var(--ink); text-decoration: none; }
+.ic-today a:hover, .ic-today a:focus-visible { text-decoration: underline; color: var(--ink); }
+.ic-today small { display: block; margin-top: 2px; font-size: 15px; line-height: 1.45; color: var(--mist); }
+.issue-cards .issue-body { border-top: 0; }
+.issue-cards .issue-body > h2, .ic-extra h2 { display: flex; align-items: center; gap: 10px; margin: 28px 4px 12px; font-size: 18px; font-weight: 800; line-height: 1.3; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.issue-cards .issue-body > h2::after { content: ""; flex: 1; height: 2px; background: var(--line); }
+.ic-extra h2 { margin: 0 0 8px; }
+.ic-extra h2 ~ h2 { margin-top: 20px; }
+.ic-head { display: flex; align-items: center; gap: 12px; margin: 0; font-size: 15px; line-height: 1.3; font-weight: 700; color: var(--sun-ink); }
+.ic-head img { width: 40px; height: 40px; flex: none; display: block; }
+.issue-cards .issue-body .ic-story h3 { font-size: 22px; line-height: 1.3; font-weight: 800; letter-spacing: 0; margin: 14px 0 0; scroll-margin-top: 56px; }
+.issue-cards .issue-body .ic-story h3:first-child { margin-top: 0; }
+.issue-cards .issue-body .ic-lead h3 { font-size: clamp(24px, 4.4vw, 28px); }
+.ic-story p { margin: 14px 0 0; max-width: none; }
+.issue-cards .item-meta { margin: 10px 0 0; }
+.issue-cards .signal, .issue-cards .track, .issue-cards .tag, .issue-cards .share-btn { font-family: var(--font-mail); text-transform: none; letter-spacing: 0; }
+.issue-cards .signal, .issue-cards .track { font-size: 14px; font-weight: 700; }
+.issue-cards .share-btn { font-size: 14px; font-weight: 700; padding: 4px 12px; }
+.issue-cards .share-btn svg { width: 13px; height: 13px; }
+.issue-cards .tag { font-size: 13px; font-weight: 700; }
+/* "Kort fortalt" står i teksten (mailen bruger det), men på siden følger hele historien, så den korte tekst er indledningen (Jesper 12/11). */
+.issue-cards .issue-body p.short { font-family: var(--font-mail); font-size: 18px; line-height: 1.55; font-weight: 700; border: 0; padding: 0; margin: 16px 0 0; }
+.issue-cards .issue-body p.short span { display: none; }
+.issue-cards .issue-body .why { margin: 16px 0 0; padding: 12px 14px; }
+.issue-cards .issue-body .why b { font-family: var(--font-mail); font-size: 15px; letter-spacing: 0; text-transform: none; }
+.issue-cards .issue-body .why p { margin: 4px 0 0; }
+.issue-cards .issue-body p.todo { font-family: var(--font-mail); font-size: 17px; font-weight: 400; margin: 16px 0 0; }
+.issue-cards .issue-body p.todo b { font-weight: 700; }
+.issue-cards .issue-body .sources { font-family: var(--font-mail); font-size: 14px; font-weight: 400; line-height: 1.6; margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.issue-cards .issue-body h4 { font-family: var(--font-mail); }
+.issue-cards .issue-body h4 span { font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; }
+.issue-cards .issue-body blockquote strong { font-family: var(--font-mail); }
+/* Grafik fra items (_includes/issue-graphics.html), samme regler som mailens. */
+.g-tiles { display: flex; gap: 10px; margin: 16px 0 0; }
+.g-tile { flex: 1 1 0; min-width: 0; background: var(--tint); color: var(--ink); border-radius: 12px; padding: 14px; overflow-wrap: anywhere; }
+.g-tile b { display: block; font-size: 34px; line-height: 1.1; font-weight: 800; }
+.g-tiles-2 .g-tile b { font-size: 28px; }
+.g-tiles-3 .g-tile b { font-size: 22px; }
+.g-tile span { display: block; margin-top: 6px; font-size: 15px; line-height: 1.45; }
+.g-tile-key { background: var(--tile); color: var(--on-tile); }
+.g-tile-key span { color: var(--tile-sub); }
+@media (max-width: 420px) { .g-tiles-3 { flex-direction: column; } }
+.g-box { margin: 16px 0 0; background: var(--sky); border-radius: 12px; padding: 14px; }
+.ic-story .g-title { margin: 0 0 8px; font-size: 15px; line-height: 1.4; font-weight: 700; color: var(--mist); }
+.g-steps { list-style: none; margin: 0; padding: 0; }
+.g-step { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 16px; line-height: 1.5; }
+.g-step:last-child { background: var(--tint); border-color: var(--sun); }
+.g-arrow { text-align: center; font-size: 18px; font-weight: 800; line-height: 1; padding: 3px 0; color: var(--sun-ink); }
+.g-bar { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 8px; align-items: center; margin-top: 8px; font-size: 15px; line-height: 1.3; }
+.g-bar-l { font-weight: 700; overflow-wrap: anywhere; }
+.g-bar-track { display: block; height: 24px; border-radius: 6px; background: var(--paper); }
+.g-bar-fill { display: block; height: 24px; border-radius: 6px; background: var(--ink); }
+.g-bar-hl { background: var(--sun); }
+.g-bar-v { min-width: 3ch; text-align: right; font-size: 16px; font-weight: 800; }
+/* Forklaret, kildemærker, tilmelding og navigation i samme stil. */
+.ic-ex hr.bonus { display: none; }
+.issue-cards .ex-head { margin: 0 0 2px; }
+.issue-cards .ex-head h2 { font-family: var(--font-mail); font-size: 15px; letter-spacing: 0; text-transform: none; }
+.issue-cards .ex-head span, .issue-cards .lib-link, .issue-cards .more-title { font-family: var(--font-mail); font-size: 15px; }
+.issue-cards .ex-meta { font-family: var(--font-mail); font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; }
+.issue-cards .issue-body .ex-main h3 { font-size: 22px; font-weight: 800; line-height: 1.3; letter-spacing: 0; }
+.issue-cards details.ex-more summary { font-family: var(--font-mail); }
+.issue-cards details.ex-more summary small { font-size: 15px; font-weight: 400; }
+.ic-legend .legend { margin: 0; padding: 0; border: 0; font-family: var(--font-mail); font-size: 14px; }
+.ic-legend .legend a { font-weight: 700; }
+.issue-cards .issue-signup { margin: 0 0 16px; border: 0; padding: 20px; }
+@media (min-width: 600px) { .issue-cards .issue-signup { padding: 24px 28px; } }
+.issue-cards .signup-label { font-family: var(--font-mail); font-size: 18px; letter-spacing: 0; text-transform: none; }
+.issue-cards .signup input[type="email"], .issue-cards .signup button { font-family: var(--font-mail); font-size: 17px; }
+.issue-cards .signup-note, .issue-cards .signup-msg { font-family: var(--font-mail); font-size: 14px; }
+.issue-cards .issue-nav { margin: 8px 4px 0; padding-top: 0; border-top: 0; font-family: var(--font-mail); font-size: 16px; font-weight: 700; }

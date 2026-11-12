@@ -24,6 +24,10 @@ collections:
   explained:
     output: true
     permalink: /explained/:name/
+  # MIDLERTIDIG testside til det nye udgavelayout (issue-cards, 12/11). Fjernes ved go-live.
+  cardtest:
+    output: true
+    permalink: /card-test/:name/
 feed:
   path: feed.xml
   collections:

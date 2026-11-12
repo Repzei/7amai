@@ -1,0 +1,145 @@
+---
+layout: default
+---
+{%- comment -%}
+Udgavesiden i mailens visuelle sprog (Jesper 12/11, variant A): ét kort pr. historie med emne-ikon,
+"1 · Emne · min", nøgletal/grafik fra `items`, hele teksten og grøn "Derfor"-boks.
+Teksten deles ved hver <h3> som i _layouts/email.html; ankeret finder historiens linje i `items:`.
+Indholdet ændres ikke, kun hvordan det vises ("Kort fortalt" skjules med CSS, fordi hele historien følger).
+{%- endcomment -%}
+{%- assign t = site.data.i18n[page.lang] -%}
+{%- if page.minutes -%}{%- assign mins = page.minutes -%}{%- else -%}{%- assign words = content | strip_html | number_of_words -%}{%- assign mins = words | plus: 199 | divided_by: 200 -%}{%- endif -%}
+{%- assign ex_min = 0 -%}
+{%- if page.explained -%}
+  {%- assign ex_pool = site.explained | where: "lang", page.lang -%}
+  {%- assign ex_main = ex_pool | where: "slug", page.explained.main | first -%}
+  {%- if ex_main -%}
+    {%- assign ex_words = ex_main.content | strip_html | number_of_words -%}
+    {%- for s in page.explained.more -%}{%- assign ex_e = ex_pool | where: "slug", s | first -%}{%- if ex_e -%}{%- assign ex_w = ex_e.short | strip_html | number_of_words -%}{%- assign ex_words = ex_words | plus: ex_w -%}{%- endif -%}{%- endfor -%}
+    {%- assign ex_min = ex_words | plus: 199 | divided_by: 200 -%}
+  {%- endif -%}
+{%- endif -%}
+<article class="issue issue-cards" id="issue">
+  <header class="ic-top">
+    <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: t.date_format }}</time> · <b>07:00</b> · {{ mins | ceil }} min{% if ex_min > 0 %} <span class="ex-time">+ {{ ex_min }} min {{ t.explained_name }}</span>{% endif %}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="issue-lead">{{ page.summary }}</p>{% endif %}
+    <p class="disclosure{% if page.reviewed %} disclosure-reviewed{% endif %}">{% if page.reviewed %}{{ t.disclosure_reviewed }}{% elsif page.checked %}{{ t.disclosure_checked }}{% else %}{{ t.disclosure_ai }}{% endif %}</p>
+    <p class="issue-sub"><a href="#signup">{{ t.issue_subscribe }} &darr;</a></p>
+  </header>
+  <div class="hz-wrap" aria-hidden="true">
+    <div class="hz" id="hz"><span class="hz-line"></span><span class="hz-fill"></span><span class="hz-sun"></span></div>
+    <div class="hz-txt"><span id="hz-clock">0:00</span><span>{{ mins | ceil }}:00</span></div>
+  </div>
+  {%- if page.today %}
+  <section class="ic-card ic-today" aria-labelledby="minute-h">
+    <h2 id="minute-h">{{ t.today_title }}</h2>
+    <ol>
+      {%- for d in page.today %}
+      {%- assign ti = page.items | where: "n", forloop.index | first %}
+      <li><span class="ic-n" aria-hidden="true">{{ forloop.index }}</span><span>{% if ti.anchor %}<a href="#{{ ti.anchor }}">{{ d.t }}</a>{% else %}{{ d.t }}{% endif %}{% if d.why %} <small>{{ d.why }}</small>{% endif %}</span></li>
+      {%- endfor %}
+    </ol>
+  </section>
+  {%- endif %}
+  <div class="issue-body">
+    {%- assign chunks = content | split: '<h3' -%}
+    {%- assign pre = chunks[0] | strip -%}
+    {%- if pre != '' %}
+    <div class="ic-card ic-extra">{{ pre }}</div>
+    {%- endif -%}
+    {%- for chunk in chunks offset:1 -%}
+      {%- assign head = chunk | split: '</h3>' | first -%}
+      {%- assign rest = chunk | remove_first: head | remove_first: '</h3>' -%}
+      {%- assign head_parts = head | split: '"' -%}
+      {%- assign anchor = head_parts[1] -%}
+      {%- assign title = head | split: '">' | last -%}
+      {%- assign item = page.items | where: "anchor", anchor | first -%}
+      {%- if item and item.n -%}
+        {%- assign num_prefix = item.n | append: '. ' -%}
+        {%- assign title_start = title | slice: 0, num_prefix.size -%}
+        {%- if title_start == num_prefix -%}{%- assign title = title | remove_first: num_prefix -%}{%- endif -%}
+      {%- endif -%}
+      {%- assign story = rest | split: '<h2' | first -%}
+      {%- assign tail = rest | remove_first: story | strip -%}
+      {%- assign num = '' -%}{%- assign num_label = '' -%}{%- assign num_block = '' -%}
+      {%- if story contains '<div class="number">' -%}
+        {%- assign parts = story | split: '<div class="number">' -%}
+        {%- assign num_html = parts[1] | split: '</div>' | first -%}
+        {%- assign num_block = '<div class="number">' | append: num_html | append: '</div>' -%}
+        {%- assign num = num_html | split: '</b>' | first | remove: '<b>' -%}
+        {%- assign num_label = num_html | split: '<span>' | last | remove: '</span>' -%}
+      {%- endif -%}
+      {%- capture graphics %}{% include issue-graphics.html item=item num=num num_label=num_label %}{% endcapture -%}
+      {%- assign graphics = graphics | strip -%}
+      {%- if num_block != '' -%}
+        {%- assign story = story | replace_first: num_block, graphics -%}
+      {%- elsif graphics != '' -%}
+        {%- if story contains '<p class="short">' -%}
+          {%- capture short_open %}{{ graphics }}<p class="short">{% endcapture -%}
+          {%- assign story = story | replace_first: '<p class="short">', short_open -%}
+        {%- elsif story contains '<p class="item-meta">' -%}
+          {%- assign meta_end = story | split: '<p class="item-meta">' | last | split: '</p>' | first -%}
+          {%- assign meta_block = '<p class="item-meta">' | append: meta_end | append: '</p>' -%}
+          {%- capture meta_graphics %}{{ meta_block }}{{ graphics }}{% endcapture -%}
+          {%- assign story = story | replace_first: meta_block, meta_graphics -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- assign item_min = '' -%}
+      {%- if story contains '<p class="item-meta">' -%}
+        {%- assign meta = story | split: '<p class="item-meta">' | last | split: '</p>' | first -%}
+        {%- assign last_track = meta | split: '<span class="track">' | last | split: '</span>' | first -%}
+        {%- if meta contains '<span class="track">' and last_track contains 'min' -%}
+          {%- assign item_min = last_track -%}
+          {%- assign min_span = '<span class="track">' | append: item_min | append: '</span>' -%}
+          {%- assign story = story | remove_first: min_span -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- assign topic = item.topic | default: 'news' %}
+    <article class="ic-card ic-story{% if forloop.first %} ic-lead{% endif %}">
+      {%- if item %}
+      <p class="ic-head"><img src="{{ '/assets/mail-icons/' | append: topic | append: '.png' | relative_url }}" width="40" height="40" alt=""><span>{% if item.n %}{{ item.n }} · {% endif %}{{ t.topics[topic] | default: t.topics.news }}{% if item_min != '' %} · {{ item_min }}{% endif %}</span></p>
+      {%- endif %}
+      <h3 id="{{ anchor }}">{{ title }}</h3>
+      {{ story }}
+    </article>
+      {%- if tail != '' -%}
+        {%- assign tail_text = tail | strip_html | strip -%}
+        {%- assign tail_head = tail | split: '</h2>' | first | split: '>' | last | strip -%}
+        {%- if tail_text == tail_head %}
+    {{ tail }}
+        {%- else %}
+    <div class="ic-card ic-extra">{{ tail }}</div>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor %}
+    {%- if page.explained %}
+    <section class="ic-card ic-ex">{% include explained.html %}</section>
+    {%- endif %}
+  </div>
+  <div class="ic-card ic-legend"><p class="legend"><a href="{{ t.how_url | relative_url }}#{% if page.lang == 'da' %}maerker{% else %}labels{% endif %}">{{ t.legend }}</a><span class="tag tag-official">{{ t.legend_official }}</span><span class="tag tag-reported">{{ t.legend_reported }}</span><span class="tag tag-unconfirmed">{{ t.legend_unconfirmed }}</span></p></div>
+  <section class="issue-signup">{% include signup.html lang=page.lang %}</section>
+  <nav class="issue-nav">
+    {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">&larr; {{ page.previous.date | date: '%d.%m' }}</a>{% else %}<span></span>{% endif %}
+    <a href="{{ t.home | relative_url }}">{{ t.all_issues }}</a>
+    {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.date | date: '%d.%m' }} &rarr;</a>{% else %}<span></span>{% endif %}
+  </nav>
+</article>
+{% include share.html %}
+<script>
+(function () {
+  // Horisont-læselinjen: solen følger, hvor langt man er nået i udgaven.
+  var a = document.getElementById('issue'), hz = document.getElementById('hz'), c = document.getElementById('hz-clock');
+  if (!a || !hz) return;
+  var total = {{ mins }} * 60;
+  function tick() {
+    var r = a.getBoundingClientRect(), vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh * 0.5 - r.top) / Math.max(1, r.height - vh * 0.5)));
+    hz.style.setProperty('--p', (p * 100).toFixed(1) + '%');
+    var s = Math.round(p * total); c.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+  window.addEventListener('scroll', tick, { passive: true });
+  window.addEventListener('resize', tick);
+  tick();
+})();
+</script>

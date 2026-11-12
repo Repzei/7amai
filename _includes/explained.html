@@ -14,7 +14,8 @@ Hovedbegrebet vises i fuld længde, de øvrige som fold-ud med feltet `short`.
 <div class="ex-main">
 <h3 id="explained-{{ main.slug }}">{{ main.title }}</h3>
 <div class="ex-meta">{% if ex.from %}<span class="pill">{{ t.explained_from }} #{{ ex.from }}</span>{% endif %}<span>{{ main.minutes | default: 1 }} min</span></div>
-{{ main.content }}
+{%- comment -%}markdownify: udgaverne bygges før biblioteket, så content er stadig rå markdown her (sås som "**" og ">" på siden til 12/11).{%- endcomment %}
+{{ main.content | markdownify }}
 <p class="lib-link"><a href="{{ main.url | relative_url }}">{{ t.explained_permalink }}</a></p>
 </div>
 {%- if ex.more and ex.more.size > 0 %}
