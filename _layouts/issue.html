@@ -19,13 +19,20 @@ Indholdet ændres ikke, kun hvordan det vises ("Kort fortalt" skjules med CSS, f
     {%- assign ex_min = ex_words | plus: 199 | divided_by: 200 -%}
   {%- endif -%}
 {%- endif -%}
+{%- assign extra = 0 -%}{%- if page.items and page.today -%}{%- assign extra = page.items.size | minus: page.today.size -%}{%- endif -%}
+{%- comment -%} Læsere fra mailen er tilmeldt: velkomst og tilmelding midt i udgaven skjules for dem (Jesper 12/11, A). {%- endcomment %}
+<script>if (/[?&]ref=mail(&|$)/.test(location.search)) document.documentElement.classList.add('from-mail');</script>
 <article class="issue issue-cards" id="issue">
+  <section class="welcome" aria-labelledby="welcome-h">
+    <p class="welcome-h" id="welcome-h">{{ t.welcome_title }}</p>
+    <p class="welcome-text">{{ t.welcome_text }}</p>
+    {% include signup.html lang=page.lang sid="signup-top" compact=true %}
+  </section>
   <header class="ic-top">
-    <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: t.date_format }}</time> · <b>07:00</b> · {{ mins | ceil }} min{% if ex_min > 0 %} <span class="ex-time">+ {{ ex_min }} min {{ t.explained_name }}</span>{% endif %}</p>
+    <p class="issue-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: t.date_format }}</time> · <b>07:00</b></p>
     <h1>{{ page.title }}</h1>
-    {% if page.summary %}<p class="issue-lead">{{ page.summary }}</p>{% endif %}
+    <p class="ic-count">{% if page.today %}{{ page.today.size }} {{ t.mail_count }}{% if extra > 0 %} {{ t.count_and }} {{ extra }} {{ t.count_more }}{% endif %} · {% endif %}{{ mins | ceil }} min{% if ex_min > 0 %} <span class="ex-time">+ {{ ex_min }} min {{ t.explained_name }}</span>{% endif %}</p>
     <p class="disclosure{% if page.reviewed %} disclosure-reviewed{% endif %}">{% if page.reviewed %}{{ t.disclosure_reviewed }}{% elsif page.checked %}{{ t.disclosure_checked }}{% else %}{{ t.disclosure_ai }}{% endif %}</p>
-    <p class="issue-sub"><a href="#signup">{{ t.issue_subscribe }} &darr;</a></p>
   </header>
   <div class="read-line" id="read-line" aria-hidden="true"><span></span></div>
   {%- if page.today %}
@@ -98,6 +105,46 @@ Indholdet ændres ikke, kun hvordan det vises ("Kort fortalt" skjules med CSS, f
           {%- assign story = story | remove_first: min_span -%}
         {%- endif -%}
       {%- endif -%}
+      {%- comment -%} "Fangsten:" o.l. (i18n catch_words) som egen boks ved siden af den grønne "Derfor" (B). {%- endcomment -%}
+      {%- for cw in t.catch_words -%}
+        {%- assign catch_open = '<p>' | append: cw | append: ': ' -%}
+        {%- if story contains catch_open -%}
+          {%- assign c_text = story | split: catch_open | last | split: '</p>' | first -%}
+          {%- assign c_old = catch_open | append: c_text | append: '</p>' -%}
+          {%- assign c_first = c_text | slice: 0 | upcase -%}
+          {%- assign c_rest = c_text | slice: 1, c_text.size -%}
+          {%- capture c_new %}<div class="catch"><p class="catch-label">{{ cw }}</p><p>{{ c_first }}{{ c_rest }}</p></div>{% endcapture -%}
+          {%- assign story = story | replace_first: c_old, c_new -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- comment -%} Kilderne som knapper med kildemærket (B). Ukendt format: linjen bliver, som den er. {%- endcomment -%}
+      {%- if story contains '<p class="sources">' -%}
+        {%- assign s_inner = story | split: '<p class="sources">' | last | split: '</p>' | first -%}
+        {%- assign s_old = '<p class="sources">' | append: s_inner | append: '</p>' -%}
+        {%- assign s_head = s_inner | split: '<a ' | first -%}
+        {%- assign s_label = s_head | remove: ':' | strip -%}
+        {%- assign s_tokens = s_inner | remove_first: s_head | split: ' · ' -%}
+        {%- assign s_ok = true -%}{%- assign chip_open = false -%}{%- assign chips = '' -%}
+        {%- for tok in s_tokens -%}
+          {%- assign tk = tok | strip -%}
+          {%- if tk contains '<a ' -%}
+            {%- if chip_open -%}{%- assign chips = chips | append: '</a></li>' -%}{%- endif -%}
+            {%- assign a_open = tk | split: '>' | first | append: '>' -%}
+            {%- assign a_text = tk | remove_first: a_open | remove: '</a>' -%}
+            {%- capture chip %}<li>{{ a_open }}<span class="src-site">{{ a_text }} <span class="src-arr" aria-hidden="true">&#8599;</span></span>{% endcapture -%}
+            {%- assign chips = chips | append: chip -%}{%- assign chip_open = true -%}
+          {%- elsif chip_open and tk contains 'class="tag' -%}
+            {%- assign chips = chips | append: tk -%}
+          {%- else -%}
+            {%- assign s_ok = false -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if chip_open -%}{%- assign chips = chips | append: '</a></li>' -%}{%- endif -%}
+        {%- if s_ok and chip_open and s_label != '' -%}
+          {%- capture s_new %}<div class="src"><p class="src-label">{{ s_label }}</p><ul>{{ chips }}</ul></div>{% endcapture -%}
+          {%- assign story = story | replace_first: s_old, s_new -%}
+        {%- endif -%}
+      {%- endif -%}
       {%- assign topic = item.topic | default: 'news' %}
     <article class="ic-card ic-story{% if forloop.first %} ic-lead{% endif %}">
       {%- if item %}
@@ -106,6 +153,13 @@ Indholdet ændres ikke, kun hvordan det vises ("Kort fortalt" skjules med CSS, f
       <h3 id="{{ anchor }}">{{ title }}</h3>
       {{ story }}
     </article>
+      {%- if forloop.index == 3 and chunks.size > 4 %}
+    <section class="ic-card ic-mid" aria-labelledby="mid-h">
+      <p class="ic-mid-h" id="mid-h">{{ t.mid_title }}</p>
+      <p class="ic-mid-text">{{ t.mid_text }}</p>
+      {% include signup.html lang=page.lang sid="signup-mid" compact=true %}
+    </section>
+      {%- endif -%}
       {%- if tail != '' -%}
         {%- assign tail_text = tail | strip_html | strip -%}
         {%- assign tail_head = tail | split: '</h2>' | first | split: '>' | last | strip -%}

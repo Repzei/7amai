@@ -125,9 +125,6 @@ h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balanc
 .corr-date { font-family: var(--font-read); font-size: 13px; font-weight: 800; color: var(--sun-ink); }
 .corr-body p { margin: 4px 0 0; }
 .corr-empty { color: var(--mist); }
-.issue-sub { margin: 10px 0 0; font-family: var(--font-read); font-size: 14px; font-weight: 800; }
-.issue-sub a { color: var(--sun-ink); text-decoration: none; border-bottom: 1px solid var(--line); }
-.issue-sub a:hover, .issue-sub a:focus-visible { border-bottom-color: var(--sun); }
 .issue-signup { margin-top: 32px; padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; }
 .issue-signup .signup { margin-top: 0; }
 .signal, .track { font-family: var(--font-read); font-size: 11px; font-weight: 800; line-height: 1.3; }
@@ -252,10 +249,8 @@ em, i { font-style: normal; }
 .issue-cards .issue-date { font-size: 15px; letter-spacing: 0; text-transform: none; margin: 0; }
 .issue-cards .issue-date b { color: var(--sun-ink); }
 .issue-cards h1 { font-size: clamp(27px, 5.4vw, 36px); line-height: 1.18; font-weight: 800; letter-spacing: -0.01em; margin: 10px 0 0; }
-.issue-cards .issue-lead { font-size: 18px; line-height: 1.55; margin: 12px 0 0; }
 .issue-cards .disclosure { display: flex; align-items: flex-start; border: 0; border-radius: 0; padding: 0; margin: 12px 0 0; font-size: 14px; font-weight: 400; line-height: 1.45; }
 .issue-cards .disclosure::before { margin-top: 6px; }
-.issue-cards .issue-sub { font-size: 16px; margin: 10px 0 0; }
 .ic-card { background: var(--paper); border-radius: 16px; padding: 20px; margin: 0 0 16px; }
 @media (min-width: 600px) { .ic-card { padding: 24px 28px; } }
 .ic-today { border: 2px solid var(--ink); }
@@ -382,7 +377,7 @@ em, i { font-style: normal; }
 .latest h2 a:hover { color: var(--sun-ink); }
 .latest ol { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
 .latest li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 17px; line-height: 1.5; }
-.latest > p { margin: 12px 0 0; color: var(--mist); }
+.latest > p:not(.latest-label) { margin: 12px 0 0; color: var(--mist); }
 .latest-go { display: inline-block; margin-top: 18px; background: var(--tile); color: var(--on-tile); border-radius: 12px; padding: 13px 20px; font-weight: 800; text-decoration: none; }
 .latest-go:hover, .latest-go:focus-visible { color: var(--on-sun); background: var(--sun); }
 .arch-h { margin: 32px 4px 10px; font-size: 18px; font-weight: 800; letter-spacing: 0; }
