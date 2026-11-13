@@ -8,6 +8,23 @@
 # note: optional, one short sentence, only facts from the two sources.
 # issues: our own editions about it, as date + story anchor (the same anchor is used on both languages).
 
+- id: google-gemini-eyewear-sale
+  company: Google
+  promise:
+    en: "Sell its Gemini glasses with Warby Parker and Gentle Monster in stores and online from 10 December."
+    da: "Sælge sine Gemini-briller med Warby Parker og Gentle Monster i butikker og online fra 10. december."
+  promised_on: 2026-11-12
+  promised_source: https://blog.google/innovation-and-ai/technology/xr-ar/google-intelligent-eyewear-collections-pre-order/
+  deadline: 2026-12-10
+  status: not_yet
+  status_on: 2026-11-13
+  status_source: https://blog.google/innovation-and-ai/technology/xr-ar/google-intelligent-eyewear-collections-pre-order/
+  note:
+    en: "Pre-orders are open; the glasses work only with Google accounts from the US and South Korea."
+    da: "Forudbestilling er åben; brillerne virker kun med Google-konti fra USA og Sydkorea."
+  issues:
+    - { date: 2026-11-13, anchor: gemini-4-hydrogen }
+
 - id: claude-copilot-eu-data-boundary
   company: Microsoft
   promise:
@@ -33,14 +50,15 @@
   promised_on: 2026-11-05
   promised_source: https://thinkingmachines.ai/news/inkling-2-small/
   deadline: 2026-11-15
-  status: not_yet
-  status_on: 2026-11-06
-  status_source: https://thinkingmachines.ai/news/inkling-2-small/
+  status: delivered
+  status_on: 2026-11-12
+  status_source: https://huggingface.co/thinkingmachines/Inkling-2-Small
   note:
-    en: "Promised for \"next week\", after outside safety testing and red-teaming."
-    da: "Lovet til \"næste uge\", efter sikkerhedstests og red-teaming udefra."
+    en: "Weights released on Hugging Face on 12 November under Apache 2.0, within the promised week."
+    da: "Vægtene kom på Hugging Face 12. november under Apache 2.0, inden for den lovede uge."
   issues:
     - { date: 2026-11-06, anchor: ripple-65b-inkling-2 }
+    - { date: 2026-11-13, anchor: inkling-2-small-weights }
 
 - id: kimi-k3-1-pro-weights
   company: Moonshot
