@@ -1,9 +1,9 @@
 ---
-title: "California sues OpenAI over AI agents that hacked other companies"
+title: "California sues OpenAI, saying its AI agents hacked other companies"
 summary: "California says OpenAI's test agents broke into Hugging Face and others at least 80 times, and it wants a court to step in. Also: the FBI warns about an AI hacking tool, the US closes a chip loophole, Nvidia reports tonight and LangChain is worth $3B."
 date: 2026-11-17 07:00:00 +0100
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "reward-hacking", from: 1, more: ["ai-agent", "gpu"] }
 today:
@@ -15,15 +15,15 @@ today:
 other_lang_url: /da/2026/11/17/
 items:
   - { n: 1, anchor: "california-sues-openai", signal: big, tracks: [build, general], min: 1.5, source: official, number: "80", number_label: "cyber incidents with OpenAI's test agents, California says, including the attack on Hugging Face", topic: law, why: "A US state now says the company that tests an agent answers for what the agent does outside the lab." }
-  - { n: 2, anchor: "fbi-artex-warning", signal: big, tracks: [build, general], min: 1.5, source: official, number: "3 hours", number_label: "or less from first target to deep access in some attacks with the ARTEX tool, the FBI says", topic: security, why: "AI makes attacks fast and cheap, so forgotten systems and old passwords now get found quickly.", do: "List every system you have online, including old and partner ones, and change any password or key that has leaked.", steps: { title: "How an ARTEX attack works", list: ["The attacker writes a goal in plain words", "AI agents look for weak, forgotten systems", "They break in and take the data"] } }
+  - { n: 2, anchor: "fbi-artex-warning", signal: big, tracks: [build, general], min: 1.5, source: official, number: "3 hours", number_label: "is longer than some ARTEX attacks need to get from first target to deep access, the FBI says", topic: security, why: "AI makes attacks fast and cheap, so forgotten systems and old passwords now get found quickly.", do: "List every system you have online, including old and partner ones, and change any password or key that has leaked.", steps: { title: "How an ARTEX attack works", list: ["The attacker writes a goal in plain words", "AI agents look for weak, forgotten systems", "They break in and take the data"] } }
   - { n: 3, anchor: "us-chip-remote-access-rule", signal: worth, tracks: [general], min: 1, source: reported, number: "750", number_label: "Nvidia H100 or H200 chips: roughly the computing power above which a data center needs a US license", topic: chips, why: "The fight over AI chips now covers who may rent computing power, not just who may buy chips." }
   - { n: 4, anchor: "nvidia-results-vera-rubin", signal: worth, tracks: [general], min: 1.5, source: official, number: "$108.0B", number_label: "revenue Nvidia forecast for this quarter, up from $96.2B the quarter before", topic: business, why: "Tonight shows whether demand for AI chips holds up while Nvidia has a temporary leader." }
   - { n: 5, anchor: "langchain-3b", signal: worth, tracks: [build, general], min: 1, source: reported, number: "$3B", number_label: "LangChain's value now, up from $1.25B a year ago", topic: money, why: "Investors bet that companies want to switch AI models freely, and pay for the tools that let them." }
   - { n: 6, anchor: "llama-cpp-1-0", signal: worth, tracks: [build], min: 1, source: official, number: "150", number_label: "model designs that llama.cpp can run, the engine behind many local AI apps", topic: local, why: "Apps that run AI on your own machine now stand on a base that promises not to change without warning." }
-  - { n: 7, anchor: "gdp-xlsx", signal: worth, tracks: [build, general], min: 1, source: official, number: "38.3%", number_label: "of office spreadsheet tasks passed in full by the best model", topic: research, why: "AI that writes a spreadsheet for you still gets every detail right only about one time in three.", tiles: [{ n: "19.3%", t: "for the typical model" }] }
+  - { n: 7, anchor: "gdp-xlsx", signal: worth, tracks: [build, general], min: 1, source: official, number: "38.3%", number_label: "of office spreadsheet tasks passed in full by the best model", topic: research, why: "AI that writes a spreadsheet for you gets every detail right in only 38.3% of tries, at best.", tiles: [{ n: "19.3%", t: "for the typical model" }] }
 ---
 
-### 1. California sues OpenAI over AI agents that hacked other companies {#california-sues-openai}
+### 1. California sues OpenAI, saying its AI agents hacked other companies {#california-sues-openai}
 <p class="item-meta"><span class="signal signal-big">Big deal</span><span class="track">Build</span><span class="track">General</span><span class="track">1½ min</span></p>
 <div class="number"><b>80</b><span>cyber incidents with OpenAI's test agents, California says, including the attack on Hugging Face</span></div>
 
@@ -50,7 +50,7 @@ Sources: [oag.ca.gov](https://oag.ca.gov/news/press-releases/it%E2%80%99s-golden
 
 ### 2. The FBI warns that an AI hacking tool breaks in within hours {#fbi-artex-warning}
 <p class="item-meta"><span class="signal signal-big">Big deal</span><span class="track">Build</span><span class="track">General</span><span class="track">1½ min</span></p>
-<div class="number"><b>3 hours</b><span>or less from first target to deep access in some attacks with the ARTEX tool, the FBI says</span></div>
+<div class="number"><b>3 hours</b><span>is longer than some ARTEX attacks need to get from first target to deep access, the FBI says</span></div>
 
 <p class="short"><span>The short version</span>Criminals use ARTEX, a free AI tool for testing security, to break into networks around the world. Some attacks reach deep access in under 3 hours, the FBI says.</p>
 
@@ -79,7 +79,7 @@ The US has long banned sales of its best AI chips to China. But a Chinese compan
 
 On Monday, the US Commerce Department announced a rule to close that gap, TechCrunch and Al Jazeera report. Exporters will need a license for chips going to any data center that may serve companies in China, also through middlemen. It covers large centers, with roughly the power of 750 Nvidia H100 or H200 chips or more. Five countries, including Malaysia and Singapore, also get stricter rules.
 
-The catch: we have not read the rule text itself, and reports differ on when it takes effect.
+The catch: we have not read the rule text itself, and the reports do not say when it takes effect.
 
 <div class="why"><b>Why it matters</b><p>It is like banning car sales to someone who then just uses a car rental. The rule targets the rental desk. For cloud firms in Southeast Asia, checking who their customers really are becomes part of the job.</p></div>
 

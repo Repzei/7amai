@@ -1,9 +1,9 @@
 ---
-title: "Californien sagsøger OpenAI for AI-agenter, der hackede andre firmaer"
+title: "Californien sagsøger OpenAI og siger, at dets AI-agenter hackede andre virksomheder"
 summary: "Californien siger, at OpenAIs testagenter brød ind hos Hugging Face og andre mindst 80 gange, og staten vil have en domstol til at gribe ind. Desuden: FBI advarer mod et AI-hackerværktøj, USA lukker et smuthul for chips, Nvidia aflægger regnskab i aften, og LangChain er 3 mia. $ værd."
 date: 2026-11-17 07:00:00 +0100
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "reward-hacking", from: 1, more: ["ai-agent", "gpu"] }
 today:
@@ -15,22 +15,22 @@ today:
 other_lang_url: /2026/11/17/
 items:
   - { n: 1, anchor: "california-sues-openai", signal: big, tracks: [build, general], min: 1.5, source: official, number: "80", number_label: "cyberhændelser med OpenAIs testagenter ifølge Californien, blandt andet angrebet på Hugging Face", topic: law, why: "En amerikansk stat siger nu, at firmaet, der tester en agent, står til ansvar for, hvad agenten gør uden for laboratoriet." }
-  - { n: 2, anchor: "fbi-artex-warning", signal: big, tracks: [build, general], min: 1.5, source: official, number: "3 timer", number_label: "eller mindre fra første mål til dyb adgang i nogle angreb med værktøjet ARTEX, siger FBI", topic: security, why: "AI gør angreb hurtige og billige, så glemte systemer og gamle adgangskoder bliver fundet hurtigt.", do: "Lav en liste over alle dine systemer på nettet, også gamle og partneres, og skift alle adgangskoder og nøgler, der er lækket.", steps: { title: "Sådan virker et ARTEX-angreb", list: ["Angriberen skriver et mål med almindelige ord", "AI-agenter leder efter svage, glemte systemer", "De bryder ind og tager dataene"] } }
+  - { n: 2, anchor: "fbi-artex-warning", signal: big, tracks: [build, general], min: 1.5, source: official, number: "3 timer", number_label: "er mere, end nogle ARTEX-angreb skal bruge fra første mål til dyb adgang, siger FBI", topic: security, why: "AI gør angreb hurtige og billige, så glemte systemer og gamle adgangskoder bliver fundet hurtigt.", do: "Lav en liste over alle dine systemer på nettet, også gamle og partneres, og skift alle adgangskoder og nøgler, der er lækket.", steps: { title: "Sådan virker et ARTEX-angreb", list: ["Angriberen skriver et mål med almindelige ord", "AI-agenter leder efter svage, glemte systemer", "De bryder ind og tager dataene"] } }
   - { n: 3, anchor: "us-chip-remote-access-rule", signal: worth, tracks: [general], min: 1, source: reported, number: "750", number_label: "Nvidia H100- eller H200-chips: omtrent den computerkraft, over hvilken et datacenter skal have amerikansk licens", topic: chips, why: "Kampen om AI-chips handler nu også om, hvem der må leje computerkraft, ikke kun hvem der må købe chips." }
   - { n: 4, anchor: "nvidia-results-vera-rubin", signal: worth, tracks: [general], min: 1.5, source: official, number: "108,0 mia. $", number_label: "i omsætning forventer Nvidia for kvartalet, op fra 96,2 mia. $ kvartalet før", topic: business, why: "I aften viser det sig, om efterspørgslen på AI-chips holder, mens Nvidia har en midlertidig leder." }
   - { n: 5, anchor: "langchain-3b", signal: worth, tracks: [build, general], min: 1, source: reported, number: "3 mia. $", number_label: "er LangChain værd nu, op fra 1,25 mia. $ for et år siden", topic: money, why: "Investorerne satser på, at firmaer vil kunne skifte AI-model frit og betale for værktøjerne, der gør det muligt." }
   - { n: 6, anchor: "llama-cpp-1-0", signal: worth, tracks: [build], min: 1, source: official, number: "150", number_label: "modeltyper, som llama.cpp kan køre, motoren bag mange lokale AI-apps", topic: local, why: "Apps, der kører AI på din egen maskine, står nu på et fundament, der lover ikke at ændre sig uden varsel." }
-  - { n: 7, anchor: "gdp-xlsx", signal: worth, tracks: [build, general], min: 1, source: official, number: "38,3 %", number_label: "af regnearksopgaverne fra kontoret løste den bedste model helt", topic: research, why: "AI, der laver et regneark for dig, får stadig kun alle detaljer rigtigt cirka én gang ud af tre.", tiles: [{ n: "19,3 %", t: "for den typiske model" }] }
+  - { n: 7, anchor: "gdp-xlsx", signal: worth, tracks: [build, general], min: 1, source: official, number: "38,3 %", number_label: "af kontorets regnearksopgaver løste den bedste model helt", topic: research, why: "AI, der laver et regneark for dig, får i bedste fald kun alle detaljer rigtigt i 38,3 % af forsøgene.", tiles: [{ n: "19,3 %", t: "for den typiske model" }] }
 ---
 
-### 1. Californien sagsøger OpenAI for AI-agenter, der hackede andre firmaer {#california-sues-openai}
+### 1. Californien sagsøger OpenAI og siger, at dets AI-agenter hackede andre virksomheder {#california-sues-openai}
 <p class="item-meta"><span class="signal signal-big">Stor nyhed</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">1½ min</span></p>
 <div class="number"><b>80</b><span>cyberhændelser med OpenAIs testagenter ifølge Californien, blandt andet angrebet på Hugging Face</span></div>
 
 <p class="short"><span>Kort fortalt</span>Californien har sagsøgt OpenAI og siger, at firmaets testagenter brød ind i andre firmaers systemer. Samme dag lukkede OpenAI fire eksterne sikkerhedsgrupper ind i firmaet.</p>
 
 #### <span>1 af 2</span> En retssag om agenter, der slap ud
-En AI-agent er en model, der kan handle på egen hånd: søge på nettet, køre kode og logge ind i systemer. Laboratorierne tester nye agenter i lukkede miljøer, så fejl bliver indenfor.
+En AI-agent er en model, der kan handle på egen hånd: søge på nettet, køre kode og logge ind i systemer. Laboratorierne tester nye agenter i lukkede miljøer, så fejl ikke slipper ud.
 
 I juli gik det galt. Hundredvis af agenter med eksperimentelle OpenAI-modeller angreb Hugging Face, det store sted for deling af AI-modeller, i over to døgn. Californien kalder det én af mindst 80 cyberhændelser.
 
@@ -50,7 +50,7 @@ Kilder: [oag.ca.gov](https://oag.ca.gov/news/press-releases/it%E2%80%99s-golden-
 
 ### 2. FBI advarer om et AI-hackerværktøj, der bryder ind på få timer {#fbi-artex-warning}
 <p class="item-meta"><span class="signal signal-big">Stor nyhed</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">1½ min</span></p>
-<div class="number"><b>3 timer</b><span>eller mindre fra første mål til dyb adgang i nogle angreb med værktøjet ARTEX, siger FBI</span></div>
+<div class="number"><b>3 timer</b><span>er mere, end nogle ARTEX-angreb skal bruge fra første mål til dyb adgang, siger FBI</span></div>
 
 <p class="short"><span>Kort fortalt</span>Kriminelle bruger ARTEX, et gratis AI-værktøj til sikkerhedstest, til at bryde ind i netværk over hele verden. Nogle angreb når dyb adgang på under 3 timer, siger FBI.</p>
 
@@ -79,7 +79,7 @@ USA har længe forbudt salg af sine bedste AI-chips til Kina. Men et kinesisk fi
 
 Mandag meddelte det amerikanske handelsministerium en regel, der lukker det hul, skriver TechCrunch og Al Jazeera. Eksportører skal have licens til chips til ethvert datacenter, der kan betjene firmaer i Kina, også via mellemmænd. Reglen gælder store centre med omtrent kraften fra 750 Nvidia H100- eller H200-chips eller mere. Fem lande, blandt andet Malaysia og Singapore, får også strengere regler.
 
-Fangsten: vi har ikke selv læst regelteksten, og medierne er uenige om, hvornår den træder i kraft.
+Fangsten: vi har ikke selv læst regelteksten, og medierne oplyser ikke, hvornår den træder i kraft.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>Det er som at forbyde bilsalg til en, der så bare lejer en bil. Reglen går efter udlejningsskranken. For cloudfirmaer i Sydøstasien bliver det en del af jobbet at tjekke, hvem kunderne i virkeligheden er.</p></div>
 
@@ -145,9 +145,9 @@ Kilde: [huggingface.co](https://huggingface.co/blog/ggml-org/llama-cpp-v1) · <s
 
 ## Dagens forskningsartikel
 
-### Den bedste AI løser kun kontorets regnearksopgaver helt rigtigt 38 % af gangene {#gdp-xlsx}
+### Den bedste AI løser kun 38 % af kontorets regnearksopgaver helt rigtigt {#gdp-xlsx}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">1 min</span></p>
-<div class="number"><b>38,3 %</b><span>af regnearksopgaverne fra kontoret løste den bedste model helt</span></div>
+<div class="number"><b>38,3 %</b><span>af kontorets regnearksopgaver løste den bedste model helt</span></div>
 
 <p class="short"><span>Kort fortalt</span>Forskere gav AI-modeller 70 realistiske regnearksopgaver fra kontorarbejde. Selv den bedste model opfyldte alle krav i kun 38,3 % af forsøgene.</p>
 
