@@ -13,6 +13,17 @@ metadata:
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 
+## KORT MAIL UDEN SCROLL (2026-11-18, LIVE 0eb56ef; side-session fra marketing)
+Jesper 18/11: mailen var god, men for lang (ca. 700 ord), og man behøvede ikke klikke. Målet er trafik til siden (senere evt. annoncer). Mockups A/B/C: https://claude.ai/artifact/Ch3zJoMgNGGKX7EbRtABX2
+- [x] Jesper valgte B ("helt klar b"): "man skal kunne åbne mailen og blive informeret uden at skulle scrolle ned". Fravalgt: A (Kort fortalt pr. historie) og C (routine skriver "På siden:"-krog) som for lange.
+- [x] `_layouts/email.html` + `email-text.html`: AI-mærkning, hovedhistorien (ikon, overskrift som link, nøgletal 24 px + label, Kort fortalt + "Læs hele historien →"), "Også i dag"/"Also today" (i18n `mail_also_today`) med de andre historiers overskrifter + ikon som links. Under folden: "Læs hele udgaven · N min", Forklaret (kun hovedbegrebet), rettelser, videresend. Derfor/Gør dette/grafik/Dagen på 60 sekunder/Til udviklere er væk fra mailen (står på siden). `_includes/mail-graphics.html` slettet. Ca. 1.100 px i alt (før ca. 3 skærme); alle 6 historier slutter ved ca. 770 px i 375 px bredde (DA 18/11). I Gmail-appen ses ca. 600 px: hovedhistorien + de første overskrifter.
+- [x] Alle links `?ref=mail` (uændret), URL-format/ankre uændrede (marketing påvirkes ikke). Udgavesiden er uændret.
+- [x] `fetch-mail.sh`: tekstversionen må være ned til 800 tegn (var 2000; den korte .txt er ca. 1.700). Ellers ville afsendelsen 19/11 være stoppet.
+- [x] STYLE.md "Mailen": hver overskrift skal fortælle nyheden alene (ingen teasere), lead-`number_label` kort (ca. 12 ord, ikke håndhævet). INSTRUCTIONS A2, CLAUDE.md, roadmap, systemfanen (worker/stats) opdateret.
+- [ ] Jesper deployer systemfanen: `cd worker/stats` + `npx.cmd wrangler deploy` (kun teksten i systemfanen).
+- [ ] TJEK 19/11 efter 07:00: mailen sendt i det nye format (sent.log / Jespers indbakke). Ingen testmail sendt (Resend-nøglen findes kun i cloud); Jesper kan se den nu på https://7amai.com/mail/da/
+- [ ] Mål ca. 2/12 og 25/11: besøg fra "Mailen" (var 8 af 104 på 30 dage) og læsetid.
+
 ## UDGAVESIDEN SOM MAILEN (2026-11-12, LIVE: 91d2134 + 252a6d5; side-session fra marketing)
 Jesper 12/11: siden var "kedelig og tung" og afspejlede ikke mailen; alle nye læsere (LinkedIn, Bluesky, Threads) lander på siden. Mockups (ægte 12/11, mail/nu/A/B/C): https://claude.ai/artifact/T42krNzgo1KX4jTqGyUkHq
 - [x] Jesper valgte A ("lav a"), efter at have sagt "kan ikke se forskel på a og c" (C = ét ark med streger). B (fold-ud) fravalgt.

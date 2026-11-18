@@ -8,30 +8,23 @@ metadata:
   modified: 2026-11-12T20:47:25.439Z
 ---
 
-# 7am AI: handoff (seneste: 12. nov. 2026, udgavesiden som mailen; side-session startet fra marketing)
+# 7am AI: handoff (seneste: 18. nov. 2026, kort mail; side-session startet fra marketing)
 
-Detaljer i [[project-7amai-todo]] (afsnit UDGAVESIDEN SOM MAILEN). Overskriv denne fil ved hver sessions afslutning.
+Detaljer i [[project-7amai-todo]] (afsnit KORT MAIL UDEN SCROLL). Overskriv denne fil ved hver sessions afslutning.
 
 ## Lavet og hvorfor
-- **Udgavesiden i mailens sprog, live på alle udgaver EN + DA** (91d2134 testside, 252a6d5 go-live): ét hvidt kort pr. historie på himmelblå, emne-ikon + "1 · Emne · min", nøgletal/fliser/trin/søjler fra `items`, hele teksten, grøn Derfor-boks, Arial 17 px, ingen versaler. Fordi alle nye læsere (LinkedIn-lanceringen) lander på siden, og den føltes "kedelig og tung" ved siden af mailen.
-- **Forklaret-fejl rettet**: hovedbegrebet stod som rå markdown på alle udgavesider (markdownify i `_includes/explained.html`).
-- Læselinjen: den bevægende sol er erstattet af en 3 px orange streg øverst (Jespers valg, f402a61), fuld når den sidste historie slutter (22b30e1).
-- **Designrunde 2 live** (5b838d1): A velkomst + tilmelding efter historie 3 (skjult fra mailen), kort top; B Fangsten-boks + kildeknapper; C ny forside (`_includes/home.html`); Lexend på hele sitet, ingen versaler/kursiv.
-- Køreplan (`.agent/roadmap.json`) + CLAUDE.md-filtabel opdateret.
+- **Kort mail live** (304cf79/22f21fa testside, 0eb56ef go-live): hovedhistorien + overskrifter som links, kan læses uden at scrolle. Fordi mailen var så komplet, at ingen klikkede (8 af 104 besøg fra mailen), og målet er trafik til siden.
+- fetch-mail.sh accepterer nu en kortere tekstversion (800 tegn), ellers ville afsendelsen stoppe.
 
 ## Valg Jesper traf
-- 12/11: variant A ("lav a"); kunne ikke se forskel på A og C. B (fold-ud) fravalgt.
-- 12/11: ingen "Kort fortalt:" på siden (skjult med CSS); i mailen bliver det stående.
-- 12/11: læselinjen som tynd streg, fuld ved sidste historie.
-- 12/11: designrunde 2, "alle skal laves både a, b og c", skrift Lexend (fravalgt Arial og Atkinson). Mailen forbliver Arial.
+- 18/11: variant B, "informeret uden at skulle scrolle ned". A og C for lange.
 
 ## Faldgruber
-- Ingen Ruby/Jekyll lokalt. Mønster der virkede: midlertidig samling `_cardtest` (noindex, sitemap false, egen permalink) med kopier af ægte udgaver, push, test, fjern igen ved go-live.
-- Browser-panelet må ikke åbne 7amai.com: hent den byggede HTML med curl og server den lokalt (`python -m http.server` i scratchpad, samme port som allerede er godkendt).
-- Liquid: filter-argumenter kan ikke være kæder (`replace_first: a, b | append: c` virker ikke); brug `capture`.
-- `main.content` fra en anden samling er urenderet markdown, når udgaverne bygges: brug `| markdownify`.
+- fetch-mail.sh har en minimumslængde pr. fil: ændres mailens længde, så tjek den.
+- Ukendte sider på 7amai.com svarer 503 (ikke 404) lige nu; set 18/11, ikke undersøgt.
+- Lokal test: hent den byggede /mail/ med curl og server den på localhost (127.0.0.1 afvises af browser-panelet, localhost virker).
 
 ## Hvor vi starter næste gang
-1. Har Jesper set siden på telefonen? Rettelser efter hans ønske.
-2. Mål ca. 25/11, om udgavesidens tilmeldinger (velkomst + midt i) virker. mail-style.html (Rettelser i mailen) har stadig versaler, hvis Jesper vil have det rettet.
-3. Ellers som før: LinkedIn-lanceringen (Jesper), TJEK Anthropic-reglen 12-14/11, "Shipped or not?" ca. 16/11, måling ca. 25/11.
+1. 19/11 efter 07:00: kom mailen ud i det nye format? Jesper deployer systemfanen.
+2. Mål ca. 25/11 / 2/12: besøg fra "Mailen".
+3. Ellers som før: LinkedIn-lanceringen (Jesper), "Shipped or not?", måling ca. 25/11.
