@@ -1,6 +1,6 @@
 {%- comment -%}
 Den korte mail (Jesper 18/11, variant B): man skal være informeret uden at scrolle, og hele
-historien står på siden. Første skærm: hovedhistorien (nøgletal + Kort fortalt + knap) og
+historien står på siden. Første skærm: hovedhistorien (nøgletal + Kort fortalt + link) og
 derefter resten af dagens historier som overskrifter med link. Under folden: hele udgaven,
 Forklaret, rettelser og videresend. Derfor, Gør dette og grafikken findes kun på siden.
 Kun tabeller og inline styles (ingen flexbox/grid), fordi Outlook og Gmail ikke forstår resten.
@@ -70,22 +70,23 @@ Metadata til routinen: 7amai-date (udgavens dato) og 7amai-revision (den commit,
     <td width="28" valign="middle" style="width:28px;"><img src="{{ icon_base }}{{ topic }}.png" width="28" height="28" alt="" style="display:block;border:0;width:28px;height:28px;"></td>
     <td valign="middle" style="padding:0 0 0 10px;{{ ff }}font-size:14px;line-height:1.3;font-weight:700;color:#B4500A;">{{ topic_label }}{% if item_min != '' %} · {{ item_min }}{% endif %}</td>
   </tr></table>
-  <h2 style="margin:10px 0 0;{{ ff }}font-size:20px;line-height:1.28;font-weight:800;color:#0E1A33;"><a href="{{ story_url }}" style="color:#0E1A33;text-decoration:none;">{{ title }}</a></h2>
+  <h2 style="margin:10px 0 0;{{ ff }}font-size:19px;line-height:1.26;font-weight:800;color:#0E1A33;"><a href="{{ story_url }}" style="color:#0E1A33;text-decoration:none;">{{ title }}</a></h2>
   {%- if num != '' %}
   <table role="presentation" cellpadding="0" cellspacing="0" style="margin:10px 0 0;"><tr>
-    <td valign="middle" style="padding:0 10px 0 0;{{ ff }}font-size:26px;line-height:1.1;font-weight:800;color:#B4500A;white-space:nowrap;">{{ num }}</td>
-    <td valign="middle" style="{{ ff }}font-size:14px;line-height:1.35;color:#55627A;">{{ num_label }}</td>
+    <td valign="middle" style="padding:0 10px 0 0;{{ ff }}font-size:24px;line-height:1.1;font-weight:800;color:#B4500A;white-space:nowrap;">{{ num }}</td>
+    <td valign="middle" style="{{ ff }}font-size:13px;line-height:1.3;color:#55627A;">{{ num_label }}</td>
   </tr></table>
   {%- endif -%}
   {%- if short_text != '' %}
-  <p style="margin:10px 0 0;{{ ff }}font-size:16px;line-height:1.5;color:#0E1A33;">{{ short_text }}</p>
+  <p style="margin:10px 0 0;{{ ff }}font-size:16px;line-height:1.5;color:#0E1A33;">{{ short_text }} <a href="{{ story_url }}" style="color:#B4500A;font-weight:800;text-decoration:none;white-space:nowrap;">{{ t.mail_story }} →</a></p>
+  {%- else %}
+  <p style="margin:10px 0 0;{{ ff }}font-size:16px;line-height:1.5;"><a href="{{ story_url }}" style="color:#B4500A;font-weight:800;text-decoration:none;">{{ t.mail_story }} →</a></p>
   {%- endif %}
-  <table role="presentation" cellpadding="0" cellspacing="0" style="margin:12px 0 0;"><tr><td style="background:#0E1A33;border-radius:10px;mso-padding-alt:10px 16px;"><a href="{{ story_url }}" style="display:inline-block;padding:10px 16px;{{ ff }}font-size:16px;line-height:1.2;font-weight:800;color:#FFFFFF;text-decoration:none;">{{ t.mail_story }}</a></td></tr></table>
 </td></tr></table>
     {%- endcapture -%}
   {%- else -%}
     {%- capture list_line %}
-  <tr><td width="22" valign="top" style="width:22px;padding:11px 0 0;"><img src="{{ icon_base }}{{ topic }}.png" width="22" height="22" alt="" style="display:block;border:0;width:22px;height:22px;"></td><td valign="top" style="padding:10px 0 10px 10px;{{ ff }}font-size:16px;line-height:1.35;"><a href="{{ story_url }}" style="color:#0E1A33;font-weight:700;text-decoration:none;">{{ title }}</a></td></tr>
+  <tr><td width="22" valign="top" style="width:22px;padding:8px 0 0;"><img src="{{ icon_base }}{{ topic }}.png" width="22" height="22" alt="" style="display:block;border:0;width:22px;height:22px;"></td><td valign="top" style="padding:7px 0 7px 10px;{{ ff }}font-size:16px;line-height:1.3;"><a href="{{ story_url }}" style="color:#0E1A33;font-weight:700;text-decoration:none;">{{ title }}</a></td></tr>
     {%- endcapture -%}
     {%- assign list_html = list_html | append: list_line -%}
   {%- endif -%}
@@ -123,7 +124,7 @@ Metadata til routinen: 7amai-date (udgavens dato) og 7amai-revision (den commit,
     <td valign="middle"><a href="{{ home_url }}?ref=mail" style="text-decoration:none;color:#0E1A33;"><img src="{{ '/assets/logo-mail.png' | absolute_url }}" width="30" height="30" alt="" style="display:inline-block;vertical-align:middle;border:0;border-radius:7px;"><span style="{{ ff }}font-size:18px;font-weight:800;vertical-align:middle;margin-left:8px;">7am AI</span></a></td>
     <td align="right" valign="middle" style="{{ ff }}font-size:14px;font-weight:700;color:#55627A;">{{ post.date | date: t.date_format }}</td>
   </tr></table>
-  <p style="margin:8px 0 0;{{ ff }}font-size:13px;line-height:1.4;color:#55627A;">{{ disclosure }}</p>
+  <p style="margin:6px 0 0;{{ ff }}font-size:12px;line-height:1.4;color:#55627A;">{{ disclosure }}</p>
 </td></tr>
 <tr><td>
 {{ lead_html }}
