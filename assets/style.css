@@ -377,14 +377,11 @@ em, i { font-style: normal; }
 @media (min-width: 600px) { .welcome { padding: 24px 28px; } }
 .welcome-h { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 800; }
 .welcome-text { margin: 8px 0 0; color: var(--mist); font-size: 17px; line-height: 1.55; }
-.from-mail .welcome, .from-mail .ic-mid { display: none; }
+.from-mail .welcome { display: none; }
 .signup-compact { margin-top: 14px; max-width: none; }
 .signup-compact .signup-label { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .signup .signup-row input[type="email"], .signup .signup-row button { border-radius: 12px; font-size: 17px; }
 .ic-count { margin: 10px 0 0; font-size: 16px; color: var(--mist); }
-.ic-mid { border: 2px solid var(--sun); }
-.ic-mid-h { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 800; }
-.ic-mid-text { margin: 6px 0 0; color: var(--mist); }
 /* B: "Fangsten" som egen boks, kilder som knapper. */
 .issue-cards .catch { margin: 16px 0 0; background: var(--tint); border-radius: 12px; padding: 12px 14px; }
 .issue-cards .catch p { margin: 4px 0 0; }

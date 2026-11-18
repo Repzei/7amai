@@ -20,7 +20,7 @@ Indholdet ændres ikke, kun hvordan det vises ("Kort fortalt" skjules med CSS, f
   {%- endif -%}
 {%- endif -%}
 {%- assign extra = 0 -%}{%- if page.items and page.today -%}{%- assign extra = page.items.size | minus: page.today.size -%}{%- endif -%}
-{%- comment -%} Læsere fra mailen er tilmeldt: velkomst og tilmelding midt i udgaven skjules for dem (Jesper 12/11, A). {%- endcomment %}
+{%- comment -%} Læsere fra mailen er tilmeldt: velkomsten i toppen skjules for dem (Jesper 12/11, A). Ingen tilmelding midt i udgaven: den afbrød læsningen (Jesper 18/11). {%- endcomment %}
 <script>if (/[?&]ref=mail(&|$)/.test(location.search)) document.documentElement.classList.add('from-mail');</script>
 <article class="issue issue-cards" id="issue">
   <section class="welcome" aria-labelledby="welcome-h">
@@ -153,13 +153,6 @@ Indholdet ændres ikke, kun hvordan det vises ("Kort fortalt" skjules med CSS, f
       <h3 id="{{ anchor }}">{{ title }}</h3>
       {{ story }}
     </article>
-      {%- if forloop.index == 3 and chunks.size > 4 %}
-    <section class="ic-card ic-mid" aria-labelledby="mid-h">
-      <p class="ic-mid-h" id="mid-h">{{ t.mid_title }}</p>
-      <p class="ic-mid-text">{{ t.mid_text }}</p>
-      {% include signup.html lang=page.lang sid="signup-mid" compact=true %}
-    </section>
-      {%- endif -%}
       {%- if tail != '' -%}
         {%- assign tail_text = tail | strip_html | strip -%}
         {%- assign tail_head = tail | split: '</h2>' | first | split: '>' | last | strip -%}
