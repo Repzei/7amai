@@ -81,32 +81,36 @@ ny. Fælles "Kort fortalt" øverst, hver del 1-2 korte afsnit, ét fælles "Derf
 
 ## Dagen på 60 sekunder (`today:` i front matter)
 Én linje pr. hovedhistorie (også samlede historier), i samme rækkefølge: `t` er nyheden i én
-sætning (højst ca. 15 ord; mailen viser den alene, uden `why`), `why` er en kort halv sætning om,
-hvem det betyder noget for (vises kun på siden). Læseren skal kunne få hele dagen ud af boksen
+sætning (højst ca. 15 ord), `why` er en kort halv sætning om, hvem det betyder noget for. Boksen
+vises kun på siden, ikke i mailen. Læseren skal kunne få hele dagen ud af boksen
 alene. Ingen nye fakta, kun det, der står i historierne.
 
-## Mailen (kort pr. historie, Jesper 26. okt. 2026)
-Mailen viser ikke brødteksten. Hver historie bliver et kort: emne-ikon, nummer · emne · minutter,
-overskrift, nøgletal eller grafik, "Kort fortalt", en kort "Derfor", evt. "Gør dette" og en knap
-til hele historien på siden. Mange læsere læser langsomt, er ordblinde, bruger oplæsning eller
-gider ikke lange tekster, så mailen skal kunne læses på 2-3 minutter. Brødteksten skrives som før;
-mailen henter "Kort fortalt", overskrift og nøgletal derfra. Disse felter skrives i historiens
-linje i `items:` (alle historier, også Open source og Paper):
+## Mailen (kort, Jesper 18. nov. 2026) og kortene på siden
+Mailen skal kunne læses uden at scrolle og skal skabe trafik til siden. Den viser kun: hovedhistorien
+(emne-ikon, overskrift, nøgletal, "Kort fortalt" og et link) og derefter de andre historiers
+overskrifter med emne-ikon som links til siden. "Derfor", "Gør dette", grafik og "Dagen på 60
+sekunder" står kun på siden. Derfor:
+- **Hver overskrift skal fortælle nyheden alene** (hvem gjorde hvad), for i mailen er den alt, læseren
+  ser. Ingen teaser-overskrifter og ingen clickbait.
+- Hovedhistoriens "Kort fortalt" skal give hele nyheden i 2 sætninger, og dens `number_label`
+  skal være kort (højst ca. 12 ord), fordi den står ved siden af tallet på første skærm.
+
+Udgavesiden viser hver historie som et kort: emne-ikon, nummer · emne · minutter, overskrift,
+nøgletal eller grafik, hele teksten, Derfor-boks. Disse felter skrives i historiens linje i `items:`
+(alle historier, også Open source og Paper):
 - `topic` (skal med): ét af `security`, `price`, `money`, `chips`, `voice`, `research`, `model`,
   `code`, `agent`, `law`, `open`, `local`, `business`, `image`, `news` (ikonerne i
   `assets/mail-icons/`, navnene i `_data/i18n.yml`). Vælg det, læseren genkender emnet på.
-- `why` (skal med): mailens "Derfor", én sætning på højst ca. 20 ord (readability.py stopper ved 25).
+- `why` (skal med): den korte "Derfor", én sætning på højst ca. 20 ord (readability.py stopper ved 25).
   Kernen af "Derfor er det vigtigt" i almindeligt sprog, uden sammenligningen, hvis den kræver
   forklaring. Ingen nye fakta.
 - `do` (kun når historien har "Gør dette"/"Prøv det"): samme handling i én kort sætning.
-- **Sporet bestemmer, hvor historien står.** Historier med `build` og uden `general` samles nederst
-  i "Til udviklere"/"For developers" med overskrift og `why` som én linje. Giv derfor også
-  `general`, når nyheden betyder noget for folk, der ikke koder (priser og firmaer, der køber AI,
-  sikkerhed for alle, der bruger en agent, nye ting man kan prøve uden at kode).
+- `tracks`: giv også `general`, når nyheden betyder noget for folk, der ikke koder (priser og
+  firmaer, der køber AI, sikkerhed for alle, der bruger en agent, nye ting man kan prøve uden at kode).
 
-### Grafik i mailen (valgfri)
+### Grafik på siden (valgfri)
 Layoutet tegner grafikken i HTML med ægte tekst. Aldrig billeder med tekst: oplæsning skal kunne
-læse den, og mange mailprogrammer blokerer billeder. Højst to grafikker pr. historie, oftest én,
+læse den. Højst to grafikker pr. historie, oftest én,
 og ingen grafik er bedre end en tvunget.
 **Hård regel: hvert tal i grafikken står ordret i historiens tekst** (samme tal, skrevet som på
 sproget). Aldrig udregnet, afrundet eller omsat: står der "halvdelen", må en søjle ikke vise 50 %.
@@ -144,4 +148,4 @@ Eksempel: udgaven 26. oktober 2026 (`_posts/2026-10-26-*.md` og `_da/2026-10-26-
 ## Tjek før du er færdig
 Kør `python3 .agent/readability.py --fix` på begge udgaver (U6). Læs derefter hver historie højt i
 tankerne: Har den én tråd? Giver "Derfor er det vigtigt" et aha? Står der noget, kilden ikke siger?
-Og mailen: forstår man historien alene ud fra kortet (overskrift, tal, "Kort fortalt", `why`)?
+Og mailen: forstår man hver nyhed alene ud fra overskriften, og hovedhistorien ud fra overskrift, tal og "Kort fortalt"?

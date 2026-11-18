@@ -42,7 +42,7 @@ for suffix in ['', '-da']:
     for name, body in [(f'mail{suffix}.html', h), (f'mail{suffix}.txt', t)]:
         if '{{' in body: bad.append(f'{name}: {{{{ står tilbage')
         if chr(0x2013) in body or chr(0x2014) in body: bad.append(f'{name}: em/en dash')
-        if len(body) < 2000: bad.append(f'{name}: for kort ({len(body)} tegn)')
+        if len(body) < (2000 if name.endswith('.html') else 800): bad.append(f'{name}: for kort ({len(body)} tegn)')
     subject = html.unescape(re.search(r'<title>(.*?)</title>', h, re.S).group(1)).strip()
     open(f'{tmp}/subject{suffix}.txt', 'w', encoding='utf-8').write(subject)
     print(f'Emne{suffix or "-en"}: {subject}')

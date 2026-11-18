@@ -371,9 +371,9 @@ på `main` efter merge som sandheden.
 Du skriver IKKE mailen. Jekyll bygger den på GitHub Pages ud fra filerne på `main`, samme kilde
 som hjemmesiden: `/mail/en/` og `/mail/da/` (HTML) og `/mail/en.txt` og `/mail/da.txt` (tekst),
 lavet af `_layouts/email.html` og `_layouts/email-text.html`. Siden viser altid den nyeste udgave
-og har mærkningen (Reviewed/kontrolleret/AI) fra front matter. Mailen er visuel: ét kort pr.
-historie (emne-ikon, nøgletal/grafik, "Kort fortalt", kort "Derfor", knap til historien på siden),
-udviklerstof samlet nederst; data fra `items` (STYLE.md "Mailen"), grafik i `_includes/mail-graphics.html`. Skal mailens udseende eller
+og har mærkningen (Reviewed/kontrolleret/AI) fra front matter. Mailen er kort (Jesper 18/11):
+hovedhistorien (overskrift, nøgletal, "Kort fortalt", link) og de andre historiers overskrifter som
+links til siden, så den kan læses uden at scrolle (STYLE.md "Mailen"). Skal mailens udseende eller
 tekster ændres, så ret i de to layouts, `_includes/mail-style.html`, `_includes/mail-text.html`
 eller `_data/i18n.yml` (`mail_*`), aldrig i den hentede fil.
 

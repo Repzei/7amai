@@ -1,5 +1,0 @@
----
-layout: email-short-text
-lang: en
-sitemap: false
----
