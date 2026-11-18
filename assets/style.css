@@ -67,7 +67,7 @@ h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balanc
 :focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
 
 .site-head, .site-foot, .wrap { max-width: 720px; margin: 0 auto; padding-inline: 20px; }
-.site-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-block: 22px 14px; border-bottom: 1.5px solid #EAF0F8; }
+.site-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-block: 22px 14px; }
 /* Båndet i fuld bredde uden ekstra markup: skyggen fylder ud til siderne, clip-path skærer top og bund af. */
 .site-head { background: var(--band); box-shadow: 0 0 0 100vmax var(--band); clip-path: inset(0 -100vmax); }
 .logo { display: inline-flex; align-items: flex-end; gap: 8px; color: #FFFFFF; text-decoration: none; font-family: var(--font-logo); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; line-height: 1; }
