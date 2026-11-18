@@ -95,6 +95,16 @@ h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balanc
 :root[data-theme="dark"] .theme-btn .i-sun { display: block; }
 :root[data-theme="dark"] .theme-btn .i-moon { display: none; }
 @media (max-width: 420px) { .theme-btn { width: 26px; height: 26px; margin-bottom: -5px; } }
+/* Solbue (Jesper 18/11, B+C): båndets bundkant er horisonten. Solen står op ved sidevisning og glider til sin plads efter læserens klokke (06-18), om natten månen. Starter under horisonten (-100deg), så uden JavaScript ses kun buen. */
+.sky { --r: 46px; position: relative; flex: none; width: calc(var(--r) * 2 + 16px); height: calc(var(--r) + 10px); margin: 0 10px -14px auto; overflow: hidden; }
+.sky::before { content: ""; position: absolute; left: 8px; bottom: calc(var(--r) * -1); width: calc(var(--r) * 2); height: calc(var(--r) * 2); box-sizing: border-box; border: 1.5px dashed rgba(185, 196, 216, 0.28); border-radius: 50%; }
+.orbit { position: absolute; left: 50%; bottom: 0; width: 0; height: 0; transform: rotate(var(--a, -100deg)); transition: transform 2.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.sun, .moon { position: absolute; left: -7px; top: calc(var(--r) * -1 - 7px); width: 14px; height: 14px; border-radius: 50%; }
+.sun { background: #FF8A2A; box-shadow: 0 0 0 4px rgba(255, 138, 42, 0.18), 0 0 18px 4px rgba(255, 138, 42, 0.45); }
+.moon { box-shadow: 4px -3px 0 0 #DDE3EE; }
+/* På telefoner er der ikke plads mellem logo og menu (målt: 375 px blev 434 px bred). */
+@media (max-width: 540px) { .sky { display: none; } }
+@media (prefers-reduced-motion: reduce) { .orbit { transition: none; } }
 .site-foot { padding-block: 40px 56px; color: var(--mist); font-family: var(--font-read); font-size: 13px; border-top: 1px solid var(--line); margin-top: 64px; }
 
 .intro { padding-block: 36px 24px; }
