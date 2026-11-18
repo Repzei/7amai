@@ -19,8 +19,8 @@ Remote code execution, ofte forkortet RCE, betyder, at en person langt væk kan 
 
 En almindelig årsag er et program, der skriver data ud over enden af den hukommelse, det har sat af. Sikkerhedskataloget CWE kalder det en out-of-bounds write. Styrer en angriber det, der løber over, kan angriberen nogle gange ændre programmets egne instrukser og få det til at køre uventet kode.
 
-Sprog som Java og Python beskytter mod det, forklarer sikkerhedsorganisationen OWASP. De tjekker hver skrivning, så data ikke kan løbe over. Men der er én undtagelse: motoren, der kører sproget. Den er ofte skrevet i hurtigere og mindre beskyttet kode, så en fejl dér kan stadig åbne døren.
+Programmer i sprog som Java og Python er immune over for den slags, forklarer sikkerhedsorganisationen OWASP. Men der er én undtagelse: motoren, der kører sproget. Den er ofte skrevet i hurtigere og mindre beskyttet kode, så en fejl dér kan stadig åbne døren.
 
-Derfor scorer RCE-huller ofte højt på CVSS-skalaen, hvor 9,0 eller mere betyder kritisk. Et hul, der ikke kræver login, kaldes unauthenticated eller pre-auth. Det er det værste tilfælde, fordi alle, der kan nå serveren, kan prøve.
+Et hul, der ikke kræver login, kaldes unauthenticated eller pre-auth. Det er det værste tilfælde, fordi alle, der kan nå serveren, kan prøve.
 
 **Hvad betyder det for dig:** når en sikkerhedsmeddelelse siger "remote code execution", så tag den alvorligt med det samme. Find ud af, om du bruger den ramte software, og opdatér den først, før de mindre rettelser.

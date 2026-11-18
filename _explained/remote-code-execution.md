@@ -19,8 +19,8 @@ Remote code execution, often shortened to RCE, means that someone far away can m
 
 A common cause is a program that writes data past the end of the memory it set aside. The security catalog CWE calls this an out-of-bounds write. If an attacker controls what spills over, they can sometimes change the program's own instructions and make it run unexpected code.
 
-Languages like Java and Python protect against this, the security group OWASP explains. They check every write, so data cannot spill over. But there is one exception: the engine that runs the language. It is often written in faster, less protected code, so a bug there can still open the door.
+Programs in languages like Java and Python are immune to this kind of spill, the security group OWASP explains. But there is one exception: the engine that runs the language. It is often written in faster, less protected code, so a bug there can still open the door.
 
-That is why RCE holes often score high on the CVSS scale, where 9.0 or more means critical. A hole that needs no login is called unauthenticated or pre-auth. That is the worst case, because anyone who can reach the server can try.
+A hole that needs no login is called unauthenticated or pre-auth. That is the worst case, because anyone who can reach the server can try.
 
 **Why it matters to you:** when a security notice says "remote code execution", treat it as urgent. Find out if you run the affected software, and update it first, before the smaller fixes.
