@@ -15,9 +15,11 @@ Detaljer i [[project-7amai-todo]] (afsnit KORT MAIL UDEN SCROLL). Overskriv denn
 ## Lavet og hvorfor
 - **Kort mail live** (304cf79/22f21fa testside, 0eb56ef go-live): hovedhistorien + overskrifter som links, kan læses uden at scrolle. Fordi mailen var så komplet, at ingen klikkede (8 af 104 besøg fra mailen), og målet er trafik til siden.
 - fetch-mail.sh accepterer nu en kortere tekstversion (800 tegn), ellers ville afsendelsen stoppe.
+- **Læsbar baggrund live** (76c5a6d): natblåt bånd i toppen, papir under (lys), neutral mørkegrå (mørk, følger systemet). Evidens tjekket (se to-do LÆSBAR BAGGRUND).
 
 ## Valg Jesper traf
 - 18/11: variant B, "informeret uden at skulle scrolle ned". A og C for lange.
+- 18/11: baggrund A (papir) med mørk tilstand der følger systemet i grå; "blå er ikke god at læse på".
 
 ## Faldgruber
 - fetch-mail.sh har en minimumslængde pr. fil: ændres mailens længde, så tjek den.

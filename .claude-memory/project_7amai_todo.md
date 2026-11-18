@@ -13,6 +13,13 @@ metadata:
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
 
+## LÆSBAR BAGGRUND (2026-11-18, LIVE 76c5a6d)
+Jesper 18/11: "blå er ikke så god at læse på"; kun toppen må være blå. Mockups: https://claude.ai/artifact/RYPJzMzNU5ej3gVeuS2D4Q (v1: A papir / B grå / C hvid; v2: endeligt forslag).
+- [x] Jesper valgte A + bad om evidens. Fund (tjekket 18/11): mørk tekst på lys bund læses bedst (Piepenbrock, Mayr & Buchner 2013 Ergonomics; Buchner m.fl. 2009: skyldes lysstyrke), BDA: lys men ikke ren hvid bund (svag evidens, gratis), blå bund hverken bedre eller værre (kontrasten tæller), NN/g: lys bedst for de fleste, men lad mørk tilstand være et valg. Derfor justeret: mørk tilstand følger systemet i neutral grå.
+- [x] Kun `assets/style.css` (+ STRATEGI farver): `--band` #0E1A33 som fuld-bredde bånd på `.site-head` (box-shadow + clip-path, ingen markup), hvid streg, hvidt logo, menu #B9C4D8. Lys: papir #F5F3EE, kort #FFF, tekst #1A1D24, dæmpet #46526A (7,1:1, før 5,5:1), streger #DEDAD2. Mørk: #14161B / kort #1C1F26 / tekst #E6E8EC / dæmpet #A3AAB8 / talfelter `--tile` #2A2E36. Lys tilstands talfelter og velkomstboks er stadig natblå (accent, ikke baggrund).
+- Testet lokalt (live HTML + ny CSS): udgave DA, forside, Forklaret, Shipped; 375 px lys + mørk, desktop; ingen vandret scroll. Mailen uændret (#EEF3FA).
+- [ ] Jesper ser det på telefonen; evt. finjustering.
+
 ## KORT MAIL UDEN SCROLL (2026-11-18, LIVE 0eb56ef; side-session fra marketing)
 Jesper 18/11: mailen var god, men for lang (ca. 700 ord), og man behøvede ikke klikke. Målet er trafik til siden (senere evt. annoncer). Mockups A/B/C: https://claude.ai/artifact/Ch3zJoMgNGGKX7EbRtABX2
 - [x] Jesper valgte B ("helt klar b"): "man skal kunne åbne mailen og blive informeret uden at skulle scrolle ned". Fravalgt: A (Kort fortalt pr. historie) og C (routine skriver "På siden:"-krog) som for lange.
