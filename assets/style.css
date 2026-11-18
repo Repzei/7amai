@@ -95,7 +95,7 @@ h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balanc
 :root[data-theme="dark"] .theme-btn .i-sun { display: block; }
 :root[data-theme="dark"] .theme-btn .i-moon { display: none; }
 @media (max-width: 420px) { .theme-btn { width: 26px; height: 26px; margin-bottom: -5px; } }
-/* Solur (Jesper 18/11): halvbuen er hele døgnet, venstre ende kl. 0, toppen kl. 12, højre ende kl. 24; båndets bund er horisonten. Solen viser klokken, månen sidder 12 timer forskudt, så begge altid ses; solen dæmpes om natten (18-6), månen om dagen. Ved sidevisning står begge op fra venstre (-105deg) og glider på plads. `.jump-s`/`.jump-m` slår animationen fra, når en af dem springer fra højre ende til venstre. Månen drejes modsat, så den står lodret. */
+/* Solur (Jesper 18/11): halvbuen er hele døgnet, båndets bund er horisonten. Én ad gangen som på himlen: solen 06-18 og månen 18-06 står op i venstre side, er øverst kl. 12 og kl. 0 og går ned i højre side; den anden ligger under horisonten (105deg). Ved sidevisning står den synlige op fra venstre (-105deg) og glider på plads. `.jump-s`/`.jump-m` slår animationen fra for den skjulte og når en af dem springer tilbage til venstre, så intet kører baglæns hen over buen. Månen drejes modsat, så den står lodret. */
 .sky { --r: 46px; --s: -105deg; --m: -105deg; position: relative; flex: none; width: calc(var(--r) * 2 + 16px); height: calc(var(--r) + 10px); margin: 0 10px -14px auto; overflow: hidden; }
 .sky::before { content: ""; position: absolute; left: 8px; bottom: calc(var(--r) * -1); width: calc(var(--r) * 2); height: calc(var(--r) * 2); box-sizing: border-box; border: 1.5px dashed rgba(185, 196, 216, 0.28); border-radius: 50%; }
 .orbit { position: absolute; left: 50%; bottom: 0; width: 0; height: 0; transform: rotate(var(--s)); transition: transform 2.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
@@ -103,7 +103,6 @@ h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balanc
 .sun, .moon { position: absolute; left: -7px; top: calc(var(--r) * -1 - 7px); width: 14px; height: 14px; border-radius: 50%; transition: opacity 1s; }
 .sun { background: #FF8A2A; box-shadow: 0 0 0 4px rgba(255, 138, 42, 0.18), 0 0 18px 4px rgba(255, 138, 42, 0.45); }
 .moon { left: -9px; box-shadow: 4px 0 0 0 #DDE3EE; transform: rotate(calc(-1 * var(--m))); transition: transform 2.6s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 1s; }
-.night .sun, .sky:not(.night) .moon { opacity: 0.35; }
 .jump-s .orbit:not(.orbit-moon), .jump-m .orbit-moon, .jump-m .moon { transition: none; }
 /* På telefoner er der ikke plads mellem logo og menu (målt: 375 px blev 434 px bred). */
 @media (max-width: 540px) { .sky { display: none; } }
