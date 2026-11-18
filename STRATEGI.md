@@ -50,10 +50,13 @@ Design: **First Light, ren version ("version 2")**, endeligt valgt af Jesper 12.
 Retro-varianten (70'er-sol i bånd) blev fravalgt til hverdag: fed, men "som en meme-coin, den
 holder ikke ved"; den rene er fremtidssikret. 70'er-solen må bruges til særlige øjeblikke
 (merch, jubilæumsudgave, kampagner).
-- Farver (lys = morgen): natblå blæk #0E1A33, morgenhimmel #EEF3FA, papir #FFFFFF, sol #FF8A2A,
-  sol-tekst #B4500A, guld #FFC447 (Big deal), dis #55627A (dæmpet tekst), horisont #D3DCEA.
-- Mørk tilstand = nattehimlen før solopgang: #0E1A33 baggrund, #16233F flader, #EAF0F8 tekst,
-  sol-tekst #FFA366. Solen beholder sine farver.
+- Farver på sitet (Jesper 18/11: "blå er ikke god at læse på"): toppen er et natblåt bånd #0E1A33 med
+  hvid streg; under det papir #F5F3EE, kort #FFFFFF, tekst #1A1D24, dæmpet tekst #46526A (7,1:1),
+  streger #DEDAD2, sol #FF8A2A, sol-tekst #B4500A, guld #FFC447 (Big deal). Talfelter natblå.
+- Mørk tilstand følger systemet, uden blå under toppen: #14161B baggrund, #1C1F26 kort, #E6E8EC tekst,
+  #A3AAB8 dæmpet, talfelter #2A2E36, sol-tekst #FFA366. Begrundelse (kilder i 7am AI-to-do'en):
+  mørk tekst på lys bund læses bedst, ikke ren hvid bund (ordblinde), mørk tilstand som valg.
+- Mailen beholder sine farver (morgenhimmel #EEF3FA bag hvide kort).
 - Skrift: Schibsted Grotesk (overskrifter, mærker, tal) og Newsreader (brødtekst).
 - Solorange og guld er kun til mærket, Big deal, officielle kilder og den primære knap.
 

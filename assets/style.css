@@ -1,12 +1,16 @@
-/* 7am AI · First Light (STRATEGI.md 1.1). Lys = morgen, mørk = natten før solopgang.
+/* 7am AI · First Light (STRATEGI.md 1.1). Toppen er et natblåt bånd; under det papir (lys) eller
+   neutral mørkegrå (mørk, følger systemet). Jesper 18/11: ingen blå bag teksten. Evidens: mørk tekst
+   på lys bund læses bedst (Piepenbrock m.fl. 2013), ikke ren hvid bund (BDA), mørk tilstand som valg
+   (NN/g). Kontrast: brødtekst 15,2:1 på papir, grå tekst 7,1:1 (AAA) i begge tilstande.
    Alt på solorange og guld har natblå tekst (hvid på orange er kun 2,35:1). */
 :root {
   color-scheme: light dark;
-  --sky: #EEF3FA;
+  --band: #0E1A33;
+  --sky: #F5F3EE;
   --paper: #FFFFFF;
-  --ink: #0E1A33;
-  --mist: #55627A;
-  --line: #D3DCEA;
+  --ink: #1A1D24;
+  --mist: #46526A;
+  --line: #DEDAD2;
   --sun: #FF8A2A;
   --sun-ink: #B4500A;
   --gold: #FFC447;
@@ -19,13 +23,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --sky: #0E1A33;
-    --paper: #16233F;
-    --ink: #EAF0F8;
-    --mist: #A9B6CC;
-    --line: #2A3A5C;
+    --sky: #14161B;
+    --paper: #1C1F26;
+    --ink: #E6E8EC;
+    --mist: #A3AAB8;
+    --line: #2E323B;
     --sun-ink: #FFA366;
-    --tint: #2A2A3A;
+    --tint: #2B2926;
   }
 }
 
@@ -41,10 +45,12 @@ h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balanc
 :focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
 
 .site-head, .site-foot, .wrap { max-width: 720px; margin: 0 auto; padding-inline: 20px; }
-.site-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-block: 22px 14px; border-bottom: 1.5px solid var(--ink); }
-.logo { display: inline-flex; align-items: flex-end; gap: 8px; color: var(--ink); text-decoration: none; font-family: var(--font-logo); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; line-height: 1; }
+.site-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-block: 22px 14px; border-bottom: 1.5px solid #EAF0F8; }
+/* Båndet i fuld bredde uden ekstra markup: skyggen fylder ud til siderne, clip-path skærer top og bund af. */
+.site-head { background: var(--band); box-shadow: 0 0 0 100vmax var(--band); clip-path: inset(0 -100vmax); }
+.logo { display: inline-flex; align-items: flex-end; gap: 8px; color: #FFFFFF; text-decoration: none; font-family: var(--font-logo); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; line-height: 1; }
 .logo .mark { width: 36px; height: 30px; flex: none; }
-.logo:hover { color: var(--ink); }
+.logo:hover { color: #FFFFFF; }
 .head-nav { display: flex; gap: 16px; }
 .logo { white-space: nowrap; flex: none; }
 @media (max-width: 420px) {
@@ -52,7 +58,8 @@ h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balanc
   .head-nav { gap: 10px; }
   .head-link { font-size: 13px; }
 }
-.head-link { color: var(--mist); font-family: var(--font-read); font-size: 14px; font-weight: 600; text-decoration: none; }
+.head-link { color: #B9C4D8; font-family: var(--font-read); font-size: 14px; font-weight: 600; text-decoration: none; }
+.head-link:hover, .head-link:focus-visible { color: #FFFFFF; }
 .site-foot { padding-block: 40px 56px; color: var(--mist); font-family: var(--font-read); font-size: 13px; border-top: 1px solid var(--line); margin-top: 64px; }
 
 .intro { padding-block: 36px 24px; }
@@ -241,7 +248,7 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
    himmelblå, mailens skrift (Arial 17 px, linjeafstand 1,6), ingen versaler og ingen kursiv (læsevenligt
    for ordblinde). Alt er afgrænset til .issue-cards, så andre sider bruger de gamle regler ovenfor. */
 :root { --tile: #0E1A33; --on-tile: #FFFFFF; --tile-sub: #D3DCEA; }
-@media (prefers-color-scheme: dark) { :root { --tile: #263A63; --tile-sub: #C9D4E6; } }
+@media (prefers-color-scheme: dark) { :root { --tile: #2A2E36; --tile-sub: #C9CDD4; } }
 .issue-cards { background: none; border-radius: 0; padding: 0; margin-top: 6px; font-size: 17px; line-height: 1.6; }
 .issue-cards h1, .issue-cards h2, .issue-cards h3, .issue-cards h4 { letter-spacing: 0; }
 em, i { font-style: normal; }
