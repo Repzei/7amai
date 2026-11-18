@@ -25,6 +25,6 @@ Detaljer i [[project-7amai-todo]] (afsnit KORT MAIL UDEN SCROLL). Overskriv denn
 - Lokal test: hent den byggede /mail/ med curl og server den på localhost (127.0.0.1 afvises af browser-panelet, localhost virker).
 
 ## Hvor vi starter næste gang
-1. 19/11 efter 07:00: kom mailen ud i det nye format? Jesper deployer systemfanen.
+1. 19/11 efter 07:00: kom mailen ud i det nye format? (Systemfanen deployet 18/11.)
 2. Mål ca. 25/11 / 2/12: besøg fra "Mailen".
 3. Ellers som før: LinkedIn-lanceringen (Jesper), "Shipped or not?", måling ca. 25/11.

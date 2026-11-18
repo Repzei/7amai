@@ -20,7 +20,7 @@ Jesper 18/11: mailen var god, men for lang (ca. 700 ord), og man behøvede ikke 
 - [x] Alle links `?ref=mail` (uændret), URL-format/ankre uændrede (marketing påvirkes ikke). Udgavesiden er uændret.
 - [x] `fetch-mail.sh`: tekstversionen må være ned til 800 tegn (var 2000; den korte .txt er ca. 1.700). Ellers ville afsendelsen 19/11 være stoppet.
 - [x] STYLE.md "Mailen": hver overskrift skal fortælle nyheden alene (ingen teasere), lead-`number_label` kort (ca. 12 ord, ikke håndhævet). INSTRUCTIONS A2, CLAUDE.md, roadmap, systemfanen (worker/stats) opdateret.
-- [ ] Jesper deployer systemfanen: `cd worker/stats` + `npx.cmd wrangler deploy` (kun teksten i systemfanen).
+- [x] Systemfanen deployet af Jesper 18/11.
 - [ ] TJEK 19/11 efter 07:00: mailen sendt i det nye format (sent.log / Jespers indbakke). Ingen testmail sendt (Resend-nøglen findes kun i cloud); Jesper kan se den nu på https://7amai.com/mail/da/
 - [ ] Mål ca. 2/12 og 25/11: besøg fra "Mailen" (var 8 af 104 på 30 dage) og læsetid.
 
