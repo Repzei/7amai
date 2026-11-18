@@ -21,8 +21,10 @@
   --font-logo: "Schibsted Grotesk", Arial, sans-serif;
 }
 
+/* Mørk tilstand: følger systemet, men knappen i toppen (data-theme på <html>, gemt i localStorage)
+   vinder begge veje. Alle mørke farver står kun her, to gange med samme værdier. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --sky: #14161B;
     --paper: #1C1F26;
     --ink: #E6E8EC;
@@ -30,8 +32,28 @@
     --line: #2E323B;
     --sun-ink: #FFA366;
     --tint: #2B2926;
+    --calm: #1C3326;
+    --calm-ink: #8FD3A8;
+    --tile: #2A2E36;
+    --tile-sub: #C9CDD4;
+    color-scheme: dark;
   }
 }
+:root[data-theme="dark"] {
+  --sky: #14161B;
+  --paper: #1C1F26;
+  --ink: #E6E8EC;
+  --mist: #A3AAB8;
+  --line: #2E323B;
+  --sun-ink: #FFA366;
+  --tint: #2B2926;
+  --calm: #1C3326;
+  --calm-ink: #8FD3A8;
+  --tile: #2A2E36;
+  --tile-sub: #C9CDD4;
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -54,12 +76,23 @@ h1, h2, h3 { font-family: var(--font-read); line-height: 1.12; text-wrap: balanc
 .head-nav { display: flex; gap: 16px; }
 .logo { white-space: nowrap; flex: none; }
 @media (max-width: 420px) {
-  .site-head { gap: 8px; }
-  .head-nav { gap: 10px; }
-  .head-link { font-size: 13px; }
+  .site-head { gap: 8px; padding-inline: 14px; }
+  .head-nav { gap: 9px; }
+  .head-link { font-size: 12.5px; }
+  .logo { font-size: 18px; gap: 6px; }
+  .logo .mark { width: 30px; height: 25px; }
 }
 .head-link { color: #B9C4D8; font-family: var(--font-read); font-size: 14px; font-weight: 600; text-decoration: none; }
 .head-link:hover, .head-link:focus-visible { color: #FFFFFF; }
+.head-nav { align-items: flex-end; }
+.theme-btn { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; margin: 0 0 -6px; padding: 0; border: 1px solid #3A4A6B; border-radius: 999px; background: transparent; color: #B9C4D8; cursor: pointer; flex: none; }
+.theme-btn:hover, .theme-btn:focus-visible { color: #FFFFFF; border-color: #B9C4D8; }
+.theme-btn svg { width: 16px; height: 16px; }
+.theme-btn .i-sun { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .theme-btn .i-sun { display: block; } :root:not([data-theme="light"]) .theme-btn .i-moon { display: none; } }
+:root[data-theme="dark"] .theme-btn .i-sun { display: block; }
+:root[data-theme="dark"] .theme-btn .i-moon { display: none; }
+@media (max-width: 420px) { .theme-btn { width: 26px; height: 26px; margin-bottom: -5px; } }
 .site-foot { padding-block: 40px 56px; color: var(--mist); font-family: var(--font-read); font-size: 13px; border-top: 1px solid var(--line); margin-top: 64px; }
 
 .intro { padding-block: 36px 24px; }
@@ -233,7 +266,6 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
 
 /* Historie-stil fra 19. okt.: kort fortalt, derfor er det vigtigt, samlede historier. */
 :root { --calm: #EAF2EC; --calm-ink: #1F6B3E; }
-@media (prefers-color-scheme: dark) { :root { --calm: #1C3326; --calm-ink: #8FD3A8; } }
 .issue-body p.short { font-family: var(--font-read); font-size: 17px; line-height: 1.45; font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin: 0 0 14px; max-width: none; }
 .issue-body p.short span { display: block; font-size: 11px; font-weight: 800; color: var(--sun-ink); margin-bottom: 2px; }
 .issue-body .why { background: var(--calm); border-radius: 12px; padding: 12px 16px; margin: 6px 0 12px; }
@@ -248,7 +280,6 @@ details.ex-more[open] .plus { transform: rotate(45deg); border-color: var(--sun)
    himmelblå, mailens skrift (Arial 17 px, linjeafstand 1,6), ingen versaler og ingen kursiv (læsevenligt
    for ordblinde). Alt er afgrænset til .issue-cards, så andre sider bruger de gamle regler ovenfor. */
 :root { --tile: #0E1A33; --on-tile: #FFFFFF; --tile-sub: #D3DCEA; }
-@media (prefers-color-scheme: dark) { :root { --tile: #2A2E36; --tile-sub: #C9CDD4; } }
 .issue-cards { background: none; border-radius: 0; padding: 0; margin-top: 6px; font-size: 17px; line-height: 1.6; }
 .issue-cards h1, .issue-cards h2, .issue-cards h3, .issue-cards h4 { letter-spacing: 0; }
 em, i { font-style: normal; }

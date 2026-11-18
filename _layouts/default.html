@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>try{var th=localStorage.getItem('theme');if(th==='light'||th==='dark')document.documentElement.setAttribute('data-theme',th)}catch(e){}</script>
   {%- assign thin = false -%}
   {%- if page.topic -%}{%- include topic-count.html -%}{%- assign thin = topic_thin -%}{%- endif -%}
   {%- if page.noindex or thin %}
@@ -71,8 +72,10 @@
       <a class="head-link" href="{{ t.topics_url | relative_url }}">{{ t.topics_label }}</a>
       <a class="head-link" href="{{ t.explained_url | relative_url }}">{{ t.explained_name }}</a>
       <a class="head-link" href="{{ t.feed | relative_url }}">RSS</a>
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="{{ t.theme_toggle }}" title="{{ t.theme_toggle }}"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg></button>
     </nav>
   </header>
+  <script>document.getElementById('theme-btn').addEventListener('click',function(){var r=document.documentElement,cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),next=cur==='dark'?'light':'dark';r.setAttribute('data-theme',next);try{localStorage.setItem('theme',next)}catch(e){}});</script>
   <main class="wrap">
     {{ content }}
   </main>
