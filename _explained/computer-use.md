@@ -19,9 +19,9 @@ Most AI tools can only work with apps that were built for them. A program has to
 
 > **Think of it like this:** a new colleague sits at your desk. They cannot read the program's code. They look at the screen, move the mouse and type, just like you, and check after each step that it worked.
 
-It works as a loop. The app takes a screenshot and sends it to the model with the task. The model answers with one action, such as "click here" or "type this". The app does it, takes a new screenshot and sends it back. That repeats until the task is done.
+It works as a loop. A control program takes a screenshot and sends it to the model with the task. The model answers with an action, such as "click here" or "type this". The program does it, takes a new screenshot and sends it back. That repeats until the task is done.
 
-Because the model reads the screen, it also reads whatever is on it. A web page can hide text that tries to give the agent new orders. That is called prompt injection. Google's and Anthropic's guides give the same advice. Run the agent in a closed-off space, and keep passwords and payment details away from it. Let a person approve steps that matter, like buying, sending or deleting.
+Because the model reads the screen, it also reads whatever is on it. A web page can hide text that tries to give the agent new orders. That is called [prompt injection](/explained/prompt-injection/). Google's and Anthropic's guides give the same advice. Run the agent in a sandbox, an isolated environment, and keep passwords and payment details away from it. Let a person approve steps that matter, like buying, sending or deleting.
 
 It is also slower than an API. Each step needs a new picture and a new answer.
 
