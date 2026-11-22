@@ -18,7 +18,7 @@ Zero data retention, or ZDR, is a promise from an AI provider. It does not store
 
 When you send a prompt to an AI model, the provider has to read it to answer. The question is what happens afterwards. Some providers keep prompts to train new models. Others keep them for a while to look for abuse. A ZDR provider keeps nothing routinely once the request is done, and so it cannot train on your data either.
 
-The router OpenRouter, for example, sorts providers into three groups. ZDR keeps nothing. Safety retention may keep data to stop abuse, but not for training. The third group keeps data and trains on it. You can tell it to send your requests only to ZDR providers. OpenRouter notes some limits. Keeping a prompt briefly in memory to answer faster does not count as storing it. And tools you add, such as web search, may have their own rules.
+The router OpenRouter, for example, sorts providers into three groups. ZDR keeps nothing. Safety retention may keep data to stop abuse, but not for training. The third group keeps data and trains on it. You can tell it to send your requests only to ZDR providers. OpenRouter notes some limits. Keeping a prompt in memory to answer faster does not count as storing it. Content flagged in a screening for child abuse may also be kept for review. And tools you add, such as web search, may have their own rules.
 
 The biggest limit is that the promise only binds the company that makes it. Your prompt may pass through an app, a router and a hosting firm on its way to the model. If one of them logs it, or is hacked, the ZDR label does not help.
 

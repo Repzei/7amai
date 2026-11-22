@@ -3,7 +3,7 @@ title: "Attackers stole prompts from three AI hosting firms, a researcher finds"
 summary: "A researcher planted fake secrets in about 2 million AI prompts and found that attackers stole data from three hosting firms. Also: OpenAI says its models improved AMD's chip designs, AI reads programs as raw bytes, China plans rules for billing tokens, adapters that fit an open model to coding tools, and a model that edits its own weights."
 date: 2026-11-22 07:00:00 +0100
 reviewed: false
-checked: false
+checked: true
 minutes: 7
 explained: { main: "zero-data-retention", from: 1, more: ["token", "open-weight"] }
 today:
@@ -17,7 +17,7 @@ items:
   - { n: 2, anchor: "openai-amd-chip-design", signal: worth, tracks: [general], min: 1, source: official, number: "14%", number_label: "better on AMD's GPU design, at best", topic: chips, why: "AI is starting to improve the chips that AI itself runs on." }
   - { n: 3, anchor: "ai-reads-machine-code", signal: worth, tracks: [build], min: 1.5, source: official, topic: security, why: "Reading raw machine code was a rare skill, and now a model can do it for small programs." }
   - { n: 4, anchor: "china-token-standards", signal: quick, tracks: [general], min: 1, source: reported, topic: price, why: "A shared way to count tokens would make AI prices easier to compare.", bars: { title: "Daily AI tokens used in China", rows: [{ l: "March", v: 140, t: "140 trillion" }, { l: "June", v: 500, t: "500 trillion", hl: true }] } }
-  - { n: 5, anchor: "harness-adapters", signal: worth, tracks: [build, europe], min: 1.5, source: official, topic: open, why: "You can get more out of an open model you already run, without a bigger one.", do: "If you run Qwen3.8-27B with OpenCode, try the adapter on Hugging Face.", bars: { title: "Terminal-Bench tasks passed with pi", max: 100, rows: [{ l: "Base model", v: 39, t: "39%" }, { l: "With adapter", v: 55, t: "55%", hl: true }] } }
+  - { n: 5, anchor: "harness-adapters", signal: worth, tracks: [build, europe], min: 1.5, source: official, topic: open, why: "You can get more out of an open model you already run, without a bigger one.", do: "If you run Qwen3.8-27B with OpenCode, try the OpenCode adapter on Hugging Face.", bars: { title: "Terminal-Bench tasks passed with pi", max: 100, rows: [{ l: "Base model", v: 39, t: "39%" }, { l: "With adapter", v: 55, t: "55%", hl: true }] } }
   - { n: 6, anchor: "model-rewrites-own-weights", signal: worth, tracks: [general], min: 1.5, source: official, number: "6.6", number_label: "points more accurate on unseen problems after its own edit", topic: research, why: "A model can improve itself without training, as long as every change is checked by tests." }
 ---
 
@@ -29,11 +29,11 @@ items:
 
 When you use an open model through an app, your prompt often passes through several companies. A router such as OpenRouter sends it to a hosting firm, which runs the model. Many promise zero data retention (see Explained below): they do not store what you send.
 
-HD Moore at the security firm Dragos tested that promise. From July to November, his team sent about 2 million prompts. Each held unique web links and fake passwords, called canaries, so Dragos would see if anyone used them.
+HD Moore at the security firm Dragos tested that promise. From July to November, his team sent about 2 million prompts. Each held unique web links and bait logins, called canaries, so Dragos would see if anyone used them.
 
-The results were bad. Attackers stole data from three hosting firms, and none of them knew until Dragos told them. In one case, attackers took a couple hundred fake AWS keys and tried them. And a Chinese AI lab's systems opened the secret links from more than half the prompts sent to its models. That included about two-thirds of those marked "no data collection".
+The results were bad. Attackers stole data from three hosting firms, and none of them knew until Dragos told them. In one case, attackers took a couple hundred bait AWS keys and tried them. And a Chinese AI lab's systems visited the secret links from more than half the prompts sent to its models. That included about two-thirds of those marked "no data collection".
 
-The fallout came this weekend. Together AI said an AI coding agent had put a login key for its stored prompt samples in a public GitHub project. Someone used it to download them. OpenRouter dropped three providers and removed 125 endpoints from its zero-retention list. It says OpenRouter itself was not breached.
+The fallout came this weekend. Together AI said an AI coding agent had put a login key for its stored prompt samples in a public GitHub project. Someone used it to download them. OpenRouter dropped three providers and removed 125 endpoints from its zero-retention list. OpenRouter says it was not breached itself.
 
 The catch: Dragos does not name most of the firms. But it says real customer requests were almost certainly copied along with its bait.
 
@@ -48,13 +48,13 @@ Sources: [dragos.com](https://www.dragos.com/blog/ai-supply-chain-security-canar
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1 min</span></p>
 <div class="number"><b>14%</b><span>better on AMD's GPU design, at best</span></div>
 
-<p class="short"><span>The short version</span>OpenAI says its AI models rewrote parts of AMD's next flagship graphics chip and made them up to 14% better. AMD has already put some of the changes in a chip sent for manufacturing.</p>
+<p class="short"><span>The short version</span>OpenAI says its models rewrote parts of AMD's flagship graphics chip design. Power, speed and size together got up to 14% better. AMD has already put some of the changes in a chip sent for manufacturing.</p>
 
 Chip designers trade off three things: how much power a chip uses, how fast it is and how much space it takes.
 
 This week OpenAI said its models rewrote the code that describes AMD's circuits. Design software from Synopsys checked that each change still did the same job. On AMD's flagship GPU design, the gains reached up to 14% against heavily optimized starting points. AMD also confirmed single-digit gains on key parts of its next flagship CPU.
 
-The catch: "up to" is the best case, not the average. OpenAI does not say how the gain splits between power, speed and size. And the chips are not out yet.
+The catch: "up to" is the best case, not the average. OpenAI does not say how the gain splits between the three.
 
 <div class="why"><b>Why it matters</b><p>AI chips are scarce and expensive. Now AI is helping to design the next ones. It is like an apprentice who starts sharpening the workshop's own tools: each gain is small, but every chip made afterwards benefits.</p></div>
 
@@ -70,11 +70,11 @@ The programs on your computer are machine code: long rows of bytes. To read one 
 
 George Xenos and Sotiris Giannopoulos gave GPT-6.1 Sol only a hex dump, which is the raw bytes written out as text. The model named all four programs. It also found a real bug in one of them, FreeBSD's ministat. It added features by editing bytes, and all three patched programs passed hidden tests. It even wrote small working programs from a spec.
 
-Then it looked at one Windows malware sample. It concluded that the file downloads code and runs it, which a public sandbox report confirms. The open model DeepSeek V4.1 Flash got the same answer, with about 17 times as many reasoning tokens.
+Then it looked at one Windows malware sample. It concluded that the file downloads code and runs it, and a public sandbox report shows the same server address. The open model DeepSeek V4.1 Flash got the same answer, but with fewer details right and about 17 times as many reasoning tokens.
 
-The catch: the programs were small, and the largest was 67 KB. Each byte costs about 2.4 tokens, so big programs do not fit in a model's working memory. These are one team's tests, mostly single runs.
+The catch: the programs were small, and the largest was 67 KB. Each byte costs about 2.4 tokens, so big programs do not fit in a model's working memory. It is one team's single runs.
 
-<div class="why"><b>Why it matters</b><p>Reading machine code used to take years to learn. If a model can do it, checking a suspicious file gets faster for defenders. But it also gets faster for attackers.</p></div>
+<div class="why"><b>Why it matters</b><p>Reading machine code is a rare specialist skill. If a model can do it, checking a suspicious file gets faster for defenders. But it also gets faster for attackers.</p></div>
 
 Source: [sgiannopoulos.github.io](https://sgiannopoulos.github.io/blog/machine-code-programming/) · <span class="tag tag-official">Official</span>
 {: .sources}
@@ -84,11 +84,11 @@ Source: [sgiannopoulos.github.io](https://sgiannopoulos.github.io/blog/machine-c
 
 <p class="short"><span>The short version</span>China's data regulator says it will set standards for how AI tokens are measured, billed and checked for quality. It has not said when.</p>
 
-AI services charge by the token, a small piece of text (see Explained below). But each company counts tokens its own way, so two prices per token are hard to compare.
+AI services charge by the token, a small piece of text (see Explained below). But a token is not a fixed size, so two prices per token are hard to compare.
 
-On Saturday, Liu Liehong, head of China's National Data Administration, posted that the agency will improve those standards. The Next Web reports it, citing Bloomberg. He said firms that sell tokens as a service, "token factories", are becoming an industry. Daily token use in China passed 140 trillion in March and 500 trillion in June, according to Chinese media.
+On Saturday, Liu Liehong, head of China's National Data Administration, posted that the agency will improve those standards. The Next Web reports it, citing Bloomberg. He said firms that sell tokens as a service, "token factories", are becoming an industry. Daily token use in China passed 140 trillion in March and 500 trillion in June, according to the agency.
 
-The catch: there is no date and no draft yet, so nobody knows what the rules will say.
+The catch: there is no date yet, so nobody knows what the rules will say or when.
 
 <div class="why"><b>Why it matters</b><p>Today a token is a bit like a "cup" in old recipes: everyone uses the word, but the size varies. A shared measure would let buyers compare prices, the way the kilowatt-hour made power bills comparable.</p></div>
 
@@ -108,11 +108,11 @@ Hugging Face tried to close that gap with LoRA adapters. An adapter is a small a
 
 With pi, the adapted model passed about 55% of the Terminal-Bench tasks, up from about 39%. It also used 1.5K tokens per task instead of 2.9K.
 
-The catch: these are Hugging Face's own tests, and on unfamiliar tasks the gains were mostly within noise.
+The catch: these are Hugging Face's own tests, and on a different kind of test the gains were mostly within noise.
 
 <div class="why"><b>Why it matters</b><p>It is like adjusting the seat and mirrors of a car to the driver. You can get more out of a model you already run at home, without moving to a bigger one.</p></div>
 
-<p class="todo"><b>Try it:</b> If you run Qwen3.8-27B with OpenCode, try the adapter on Hugging Face. There is also a GGUF build for local tools.</p>
+<p class="todo"><b>Try it:</b> If you run Qwen3.8-27B with OpenCode, try the OpenCode adapter on Hugging Face. There is also a GGUF build for local tools.</p>
 
 Sources: [huggingface.co (blog)](https://huggingface.co/blog/harness-adapters-at-scale) · <span class="tag tag-official">Official</span> · [huggingface.co (adapter)](https://huggingface.co/harness-hub/Qwen3.8-27B-super-adapter) · <span class="tag tag-official">Official</span>
 {: .sources}
@@ -131,7 +131,7 @@ Jiajun Fan and ten colleagues tried something else. They gave an open 27B model 
 
 Its own edit made it 6.6 points more accurate on problems it had never seen. Over eight sessions in a row, its accuracy only went up. Given a broken copy of itself, it repaired the copy to over 80% of the original accuracy on image tasks.
 
-The catch: only the largest model in the family managed this. Smaller ones failed or broke themselves, and others have not checked the preprint yet.
+The catch: only the largest model in the family managed this. Smaller ones failed or broke themselves, and the paper has not been peer reviewed yet.
 
 <div class="why"><b>Why it matters</b><p>Earlier this week we wrote that self-improving agents often cannot tell better from worse. Here the model checks every edit against tests first. It is like a student who corrects their own exam, but only keeps a change when the answer key agrees.</p></div>
 
