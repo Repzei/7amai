@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: b8e3a230-7b07-4e90-9530-645548d14765
-  modified: 2026-11-23T21:05:47.316Z
+  modified: 2026-11-23T21:11:10.985Z
 ---
 
 # 7am AI: handoff (seneste: 23. nov. 2026, sikkerhedsnet mod ugegrænsen)
@@ -13,7 +13,8 @@ metadata:
 Detaljer i [[project-7amai-todo]] (afsnit UGEGRÆNSEN STOPPER UDGAVEN). Overskriv denne fil ved hver sessions afslutning.
 
 ## 23/11 (fra marketing-mappen)
-- Ingen udgave 23/11: ugegrænsen. Bygget: udkast gemmes før kontrollen (U5d), alarm 07:30 (deployet), manuel SEN AFSENDELSE og dobbeltspærre i /broadcast (venter på Jespers deploy).
+- Ingen udgave 23/11: ugegrænsen. Bygget: udkast gemmes før kontrollen (U5d), alarm 07:30 (deployet), manuel SEN AFSENDELSE og dobbeltspærre i /broadcast. Alt deployet kl. 22:08; intet af det er kørt rigtigt endnu. Dagens udgave (23/11) er ikke lavet.
+- Faldgrube: udkast-routinens status kan stå som SUCCEEDED, selv om ugegrænsen afbrød den. Læs loggen (get_run_log) eller se efter PR'en.
 - Jesper ville kun aktivere det tæt på grænsen; afvist, fordi routinen ikke kan læse kvoten. Han overvejer Max; anbefalet at vente en uge med 85 %-reglen fra HQ.
 - Næste: TJEK 24/11 (U5d i skyen, afsendelse, ingen falsk alarm), Search Console 24/11, måling 25/11. Resten nedenfor er fra 18/11.
 
