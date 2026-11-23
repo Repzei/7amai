@@ -63,7 +63,7 @@ async function watchIssue(now, env) {
   }
   if (!problem) return;
 
-  const text = `${problem}\n\nKørslerne: https://claude.ai/code/routines\nUdkast og PR'er: https://github.com/Repzei/7amai/pulls\n\nTjek først, om Claude-planens ugegrænse er brugt op.`;
+  const text = `${problem}\n\nKørslerne: https://claude.ai/code/routines\nUdkast og PR'er: https://github.com/Repzei/7amai/pulls\n\nTjek først, om Claude-planens ugegrænse er brugt op. Når der er plads igen samme dag: kør routinen "7am AI · udkast" (hvis der ingen PR er), og derefter "7am AI · SEN AFSENDELSE (manuel)".`;
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${String(env.RESEND_API_KEY).trim()}`, "Content-Type": "application/json" },
@@ -112,6 +112,23 @@ async function broadcast(request, env) {
   const segment = b.lang === "da" ? env.SEGMENT_DA : b.lang === "en" ? env.SEGMENT_EN : "";
   if (!segment || !b.subject || !b.html) return json(400, { ok: false, error: "missing_fields" });
 
+  // Samme udgave må aldrig gå ud to gange (fx sen afsendelse efter en kørsel, der nåede at sende, men ikke at logge).
+  // Testmails ([TEST]) tæller ikke. Er databasen nede, sendes der som normalt: en udgave er vigtigere end spærren.
+  const day = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Copenhagen" }).format(new Date());
+  let claimed = false;
+  if (env.DB && !String(b.subject).startsWith("[TEST]")) {
+    try {
+      await env.DB.prepare("CREATE TABLE IF NOT EXISTS sends (day TEXT NOT NULL, lang TEXT NOT NULL, PRIMARY KEY (day, lang))").run();
+      const r = await env.DB.prepare("INSERT OR IGNORE INTO sends (day, lang) VALUES (?, ?)").bind(day, b.lang).run();
+      if (r.meta.changes === 0) return json(200, { ok: true, skipped: "already_sent" });
+      claimed = true;
+    } catch (e) { console.log("sends-spærren virkede ikke", e.message); }
+  }
+  const release = async () => {
+    if (!claimed) return;
+    try { await env.DB.prepare("DELETE FROM sends WHERE day = ? AND lang = ?").bind(day, b.lang).run(); } catch (e) { console.log("sends-spærren blev ikke fjernet", e.message); }
+  };
+
   const unsub = b.lang === "da" ? "Afmeld" : "Unsubscribe";
   const footer = `<p style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#55627A;text-align:center;margin:16px 0;"><a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color:#55627A;">${unsub}</a></p>`;
   const html = b.html.includes("{{{RESEND_UNSUBSCRIBE_URL}}}") ? b.html : b.html.replace(/<\/body>/i, `${footer}</body>`);
@@ -124,6 +141,8 @@ async function broadcast(request, env) {
     body: JSON.stringify({ segment_id: segment, from: env.FROM, subject: String(b.subject).slice(0, 200), html, text, name: String(b.name || b.subject).slice(0, 70), send: true }),
   });
   const out = await res.text();
+  // Kun et klart afslag (4xx) fjerner spærren. Ved 5xx eller netværksfejl kan mailen være sendt alligevel.
+  if (res.status >= 400 && res.status < 500) await release();
   // Et segment uden tilmeldte (fx det danske i starten) er ikke en fejl: der er bare ingen at sende til.
   if (res.status === 422 && /no contacts/i.test(out)) return json(200, { ok: true, skipped: "empty_segment" });
   return json(res.ok ? 200 : 502, res.ok ? { ok: true, resend: JSON.parse(out || "{}") } : { ok: false, error: "resend_failed", detail: out.slice(0, 300) });

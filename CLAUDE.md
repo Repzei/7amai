@@ -47,7 +47,7 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 | `_layouts/topic.html`, `topics/`, `da/emner/`, `_includes/topic-count.html`, `_includes/topics-index.html`, `_data/topic_slugs.yml` | Emnesider (live 2/11): én side pr. emne i `i18n.topics` (EN `/topics/<key>/`, DA `/da/emner/<dansk slug>/`) med alle historier, hvis `items` har `topic: <key>` (kun udgaver fra 26/10). Oversigt `/topics/`, `/da/emner/`, link i menuen. Emner under 3 historier får automatisk noindex i default.html (tyndt indhold). Nyt emne: i18n `topics` (begge sprog) + `topic_slugs.yml` + en side pr. sprog + ikon |
 | `_data/promises.yml`, `shipped.html`, `da/leveret.html`, `_includes/promises-list.html` | "Shipped or not?" / "Leveret eller ej?" (live 4/11): daterede løfter fra AI-firmaer og om de kom, kun Official-kilder. Vedligeholdes af udkast-routinen (INSTRUCTIONS U5c, kontrol i U6, med i PR'en). Linket fra sidefoden og fra /how-we-work/ (ikke menuen: den er fuld ved 375 px) |
 | `_includes/share.html` | Del-knap ved hver historie på udgavesiden (i `.item-meta`): telefonens del-menu eller kopiér link med `?ref=share#anker`. Udgaven har også tilmeldingsformular nederst og et link til den øverst (29/10) |
-| `worker/` | Tilmeldings-worker `7amai-signup`: /subscribe, /confirm, /broadcast, /hit (D1 `7amai-stats`, EU) + intern RPC-entrypoint `Stats` (tæller tilmeldte; Resend-nøglen ligger kun her). Cron 07:30 dansk tid: mailer redaktøren (secret `ALERT_TO`), hvis dagens dato mangler i `.agent/sent.log` (uden om Claude, så den også virker ved ugegrænsen). Skema: `worker/schema.sql` |
+| `worker/` | Tilmeldings-worker `7amai-signup`: /subscribe, /confirm, /broadcast, /hit (D1 `7amai-stats`, EU) + intern RPC-entrypoint `Stats` (tæller tilmeldte; Resend-nøglen ligger kun her). Cron 07:30 dansk tid: mailer redaktøren (secret `ALERT_TO`), hvis dagens dato mangler i `.agent/sent.log` (uden om Claude, så den også virker ved ugegrænsen). /broadcast afviser samme dato + sprog to gange (tabellen `sends`, oprettes af workeren selv). Skema: `worker/schema.sql` |
 | `worker/stats/` | Privat dashboard `7amai-stats` (https://7amai-stats.jesperkhl.workers.dev, Basic Auth med secret STATS_PASSWORD): tilmeldte, besøg, kilder, læsetid, læst til ende, top-udgaver. Henter tilmeldte via service binding til `Stats` |
 | `.agent/roadmap.json` | Køreplanen (faser + status) som dashboardet viser live. Opdateres sammen med to-do'en, når noget bliver færdigt eller planen ændres |
 | `.agent/EDITORIAL.md` | Jespers 10 redaktionelle kriterier (redaktørkontrol, trin U6) |
@@ -70,6 +70,8 @@ Sprog: engelsk hovedudgave på `/`, dansk udgave på `/da/`. Format: kerne på c
 ## Kør og test
 - Kør routinen manuelt via RemoteTrigger `run` (eller claude.ai/code/routines). Efter 00:00 dansk
   tid laver en manuel kørsel næste dags udgave.
+- Mangler dagens udgave: kør "7am AI · udkast" (genoptager, hvis branchen findes uden PR), og derefter
+  "7am AI · SEN AFSENDELSE (manuel)" (INSTRUCTIONS A0; kun samme dag, kl. 7 eller senere).
 - Fejlfinding: RemoteTrigger `list_runs` og `get_run_log`. "Sendt <dato>"-commit = mail sendt.
 - Visuel kontrol: åbn udgaven på 375 px bredde i lys og mørk tilstand; ingen vandret scroll.
 

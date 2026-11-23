@@ -1,8 +1,11 @@
 ---
 name: project-7amai-infra
-description: 7am AI teknik og drift - repo, Jekyll/GitHub Pages, cloud-routine og miljø (ID'er), Resend, DNS hos Cloudflare (domæne registreret hos simply.com), og hvordan man ændrer det
+description: "7am AI teknik og drift - repo, Jekyll/GitHub Pages, cloud-routine og miljø (ID'er), Resend, DNS hos Cloudflare (domæne registreret hos simply.com), og hvordan man ændrer det"
 metadata:
+  node_type: memory
   type: project
+  originSessionId: 712fb2ba-fe1d-4c8d-8477-986d5aaa8322
+  modified: 2026-11-23T21:05:23.051Z
 ---
 
 # 7am AI: teknik og drift
@@ -25,6 +28,8 @@ Formål og beslutninger: [[project-7amai]]. Faldgruber: [[feedback-7amai-lessons
 - **Udkast-model fra 2026-10-15: Opus 5.5** (Jesper valgte kvalitet frem for forbrug) med allowed_tools inkl. `Agent` til fire parallelle research-specialister. Afsendelse kører stadig Sonnet 5.5 (mekanisk).
 - **Udkast:** "7am AI · udkast", id `trig_01UdzqNcTDciDH39dndFmm6U`, cron `30 3 * * *` UTC fra 2026-10-15 (05:30 sommer / 04:30 vinter; før: `0 4 * * *`). INGEN udkast-mail fra 2026-10-15 (Jesper er sjældent oppe; godkender kun via PR). Research, EN + DA, PR på `issue/<dato>`.
 - **Afsendelse:** "7am AI · afsendelse kl. 7", id `trig_01YSVgMBzR1gFKyWPqKPLgw4`, cron `0 5,6 * * *` UTC (alle 7 dage); agenten stopper straks, hvis klokken ikke er 07 dansk tid (rammer kl. 7 i både sommer- og vintertid). PR merget af Jesper = `reviewed: true`; ellers merger agenten selv og udgaven er AI-mærket. Sender endelig mail, logger i sent.log.
+- **Sen afsendelse (23/11):** "7am AI · SEN AFSENDELSE (manuel)", id `trig_01Q3PE3a3r5iq5tdubryGGxm`, deaktiveret, startes kun manuelt, når dagens udgave mangler (INSTRUCTIONS A0). Kør udkastet først, hvis der ingen PR er. Workeren afviser dobbelt broadcast (D1-tabellen `sends`).
+- **Alarm (23/11):** cron `30 5,6 * * *` i `7amai-signup`, gør kun noget kl. 07 dansk tid; secret `ALERT_TO`. Kører uden om Claude. Ugegrænsen (Pro) nulstilles mandag kl. 07 UTC og stopper ALLE routines, når den er brugt op.
 - **Test:** "7am AI · TEST udkast (manuel)", id `trig_01AXHWRTQU7esucVQbPwfkSW`, deaktiveret; køres manuelt. Prompten med `DATO-OVERRIDE: ÅÅÅÅ-MM-DD` springer weekend/klokkeslæt over og sætter [TEST] i mailemner.
 - Alle: Sonnet 5.5, ingen connectors (ryd dem efter hver create/update).
 - Miljø: "7am-ai", id `env_01CanacjFNnL3tfRTKUqMifC` (separat fra Gainfully-agentens Default-miljø). Netværk **Full**. Env-variabler `NEWSLETTER_TO` (Jespers Gmail) og `NEWSLETTER_FROM` (`7am AI <brief@7amai.com>`). Resend-nøglen er en **network secret** (Bearer, host api.resend.com): proxyen sætter den på, agenten kan aldrig læse den.

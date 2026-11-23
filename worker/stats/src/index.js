@@ -416,6 +416,8 @@ footer { margin-top:24px; }
         <li>Udgaven mangler i sent.log kl. 07:30: workeren mailer Jesper (kører uden om Claude, også når ugegrænsen er brugt op)</li>
         <li>Udkastet afbrydes i redaktørkontrollen: teksten ligger på issue-branchen uden PR, så intet sendes. Køres udkastet igen samme dag, fortsætter det fra kontrollen</li>
         <li>Mailen er ikke bygget efter 10 min: intet sendes, fejlen står i kørselsloggen</li>
+        <li>Udgaven mangler, og der er plads igen samme dag: Jesper starter routinen "SEN AFSENDELSE (manuel)"</li>
+        <li>Samme udgave kan ikke gå ud to gange: workeren husker dato og sprog (tabellen sends i D1)</li>
         <li>Broadcast fejler: mailen går til Jesper i stedet</li>
         <li>Tomt segment: springes over, ikke en fejl</li>
         <li>Agenten skriver altid status i sin sidste linje (se kørselsloggen)</li></ul></div>

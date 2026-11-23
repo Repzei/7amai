@@ -372,6 +372,13 @@ Afslut med én linje: PR-URL, titel, antal historier, kernens læsetid, dagens t
    (routinen kører både 05 og 06 UTC for at ramme kl. 7 i både sommer- og vintertid).
 2. Står `<dato>` allerede i `.agent/sent.log` på `main`: stop.
 
+**Sen afsendelse:** kun når prompten indeholder linjen `SEN AFSENDELSE` (Jesper starter den selv, når
+udgaven mangler). Så gælder i stedet for punkt 1: timen skal være 07 eller senere, og `<dato>` er altid
+i dag. Send aldrig en ældre udgave. Er der ingen PR for i dag, så stop. Følg derefter A1-A3 med én
+forskel i A1: `reviewed: true` sættes kun, hvis `merged_at` er før kl. 07:00 dansk tid i dag. Er PR'en
+merget senere, forbliver den `false`, og du sender bare videre fra `main`. Siger `broadcast.mjs`, at
+segmentet allerede har fået udgaven, så fortsæt og log den i A3.
+
 ### A1. Godkendt eller ej?
 Find PR'en for `issue/<dato>`: `gh api "repos/Repzei/7amai/pulls?state=all&head=Repzei:issue/<dato>" -q '.[0] | {number, state, merged_at, html_url}'`.
 - **`merged_at` er sat** (Jesper har merget; agenten merger aldrig i UDKAST): godkendt. `git checkout main && git pull`,
@@ -413,7 +420,8 @@ datoen på siden er `<dato>`. Det tjekker også for `{{` og em/en dash og skrive
 **Fallback:** fejler den engelske broadcast (exit 3 = BROADCAST_TOKEN mangler, eller anden fejl),
 så send den engelske til redaktøren som før: `node .agent/send-mail.mjs "$(cat /tmp/subject.txt)" /tmp/mail.html /tmp/mail.txt`,
 og skriv årsagen i din afsluttende besked. Spring så den danske broadcast over. Send aldrig
-samme udgave to gange til samme segment.
+samme udgave to gange til samme segment (workeren afviser det også). I en SEN AFSENDELSE må du ikke
+bruge fallback'en: fejler broadcast, så stop og skriv fejlen.
 
 ### A3. Log
 Lykkes den engelske afsendelse (broadcast eller fallback): tilføj `<dato>` som ny linje i

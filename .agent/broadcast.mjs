@@ -62,4 +62,8 @@ if (/"skipped":"empty_segment"/.test(body)) {
   console.log(`Segment ${lang} har ingen tilmeldte endnu: intet sendt (ikke en fejl).`)
   process.exit(0)
 }
+if (/"skipped":"already_sent"/.test(body)) {
+  console.log(`Segment ${lang}: dagens udgave er allerede sendt, eller Resend svarede uklart på et tidligere forsøg. Intet sendt igen. Skriv det i den afsluttende besked.`)
+  process.exit(0)
+}
 console.log(`Sendt til segment ${lang}: ${body.slice(0, 200)}`)

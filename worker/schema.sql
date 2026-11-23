@@ -13,3 +13,6 @@ CREATE TABLE IF NOT EXISTS visits (
 );
 CREATE INDEX IF NOT EXISTS idx_visits_day ON visits(day);
 CREATE INDEX IF NOT EXISTS idx_visits_path ON visits(path);
+
+-- Spaerre mod dobbelt broadcast (dato + sprog, intet om personer). Workeren opretter den selv.
+CREATE TABLE IF NOT EXISTS sends (day TEXT NOT NULL, lang TEXT NOT NULL, PRIMARY KEY (day, lang));
