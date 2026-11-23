@@ -33,7 +33,8 @@ Fælles regler:
 - Emnelinjen sendes altid uforkortet. Afsendelsesscriptet klarer Resends grænse på 70 tegn for
   det interne navn; forkort aldrig emnet på grund af en fejl om `name`.
 - Hårde regler håndhæves af `.claude/hooks/guard.mjs` og blokerer handlingen med en forklaring:
-  `reviewed: true` kun når Jesper har merget før kl. 07:00, ingen merge før kl. 07:00, ingen mail
+  `reviewed: true` kun når Jesper har merget før kl. 07:00, ingen merge før kl. 07:00, ingen PR
+  så længe udgaven har `control: pending` (U5d), ingen mail
   med em/en dash eller `{{`, Resend kun via `send-mail.mjs`/`broadcast.mjs`, ingen em/en dash i tekstfiler.
   Bliver du blokeret: ret årsagen. Prøv aldrig at komme uden om reglen.
 
@@ -42,8 +43,15 @@ Fælles regler:
 ## UDKAST
 
 ### U0. Skal der laves et udkast?
-1. Findes `_posts/<dato>-*.md` på `main` eller branchen `issue/<dato>` på origin
-   (`git ls-remote --heads origin issue/<dato>`): stop, udkastet findes allerede.
+1. Findes `_posts/<dato>-*.md` på `main`: stop, udgaven er allerede udgivet.
+2. Findes branchen `issue/<dato>` på origin (`git ls-remote --heads origin issue/<dato>`), så se, om der er en PR:
+   `gh api "repos/Repzei/7amai/pulls?state=all&head=Repzei:issue/<dato>" -q length`.
+   - **Der er en PR (tallet er ikke 0):** stop, udkastet findes allerede.
+   - **Kaldet fejler:** stop og skriv fejlen. Gæt ikke.
+   - **Ingen PR (0):** en tidligere kørsel blev afbrudt efter U5d (fx ugegrænsen). Genoptag:
+     `git checkout -B issue/<dato> origin/issue/<dato>`, spring U1-U5d over, og kør U6 helt forfra
+     (alle kilder genåbnes) og derefter U7. Kandidatlisten fra U2 findes ikke længere; skriv det i
+     PR'en i stedet for listen. Skriv "genoptaget" i din afsluttende linje.
 
 ### U1. Hvad ved vi i forvejen?
 Læs de 5 seneste filer i `_posts/` (og `_da/`, hvis der er færre end 5 engelske). De er din
@@ -309,6 +317,14 @@ noget er leveret, ændrer ikke status, før firmaets egen side, kode eller model
    `delivered`-linjer ændres ikke ellers, medmindre firmaet selv trækker det lovede tilbage.
 Ingen ændringer er det normale på en stille dag. Skriv aldrig en linje for at have noget at vise.
 
+### U5d. Gem udkastet (før kontrollen)
+Så arbejdet ikke går tabt, hvis kørslen afbrydes i U6 (det skete 23/11). Sæt `control: pending` i
+front matter (linjen efter `checked: false`) i BEGGE filer, og gem på branchen uden PR:
+`git checkout -b issue/<dato>`, `git add -A _posts _da _explained _data/promises.yml`,
+`git commit -m "Udkast <dato> (ikke kontrolleret)"`, `git push -u origin issue/<dato>`.
+Opret IKKE PR'en nu: uden PR sender AFSENDELSE intet, så et ukontrolleret udkast ikke kan komme ud.
+Guard-hooken blokerer PR'en, så længe `control: pending` står i en af filerne.
+
 ### U6. Redaktørkontrol (obligatorisk, spring den ALDRIG over)
 Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils fremgangsmåde
 (ret / nedgradér / fjern, tilføj aldrig nye historier). Gør det i denne rækkefølge:
@@ -325,7 +341,8 @@ Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils
    `explained:` findes som filer på begge sprog.
 3. Opdatér `minutes`, `min`, `items` og nummereringen, hvis noget er fjernet.
 4. Sæt `checked: true` i front matter i BEGGE filer, når alle kilder er genåbnet og alle 10
-   kriterier er tjekket.
+   kriterier er tjekket. Fjern linjen `control: pending` i BEGGE filer, når HELE kontrollen er
+   gennemført (også i det sjældne tilfælde, hvor `checked` forbliver `false`).
 5. **Delingsbillede** (link-kortet på Bluesky, LinkedIn m.fl.), når teksten er endelig:
    `python3 -c "import PIL" 2>/dev/null || pip install --quiet pillow`, derefter
    `python3 .agent/og-image.py _posts/<fil> _da/<fil>`. Det skriver `assets/og/<dato>.png` og
@@ -337,7 +354,7 @@ hvilken i rapporten. "Åbnet under research", "stille dag" eller "for få histor
 grund. Gem rapporten til PR-beskrivelsen.
 
 ### U7. Pull request
-1. `git checkout -b issue/<dato>`, commit begge filer + nye filer i `_explained/` + delingsbillederne i `assets/og/` + `_data/promises.yml`, hvis den er ændret (`Udkast <dato>`), `git push -u origin issue/<dato>`.
+1. Du står på `issue/<dato>` fra U5d. Commit begge filer + nye filer i `_explained/` + delingsbillederne i `assets/og/` + `_data/promises.yml`, hvis den er ændret (`Udkast <dato>`), `git push`. Kør det i sin egen kommando, FØR PR'en oprettes.
 2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<redaktørkontrollens rapport, derefter overskrifterne som liste + kilder, til sidst kandidatlisten fra U2 (mindst 15)>" -q .html_url`.
    Notér PR-URL'en.
 

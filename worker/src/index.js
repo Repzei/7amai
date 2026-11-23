@@ -3,6 +3,7 @@
 // GET  /confirm    -> tjekker signaturen og tilføjer kontakten til EN- eller DA-segmentet i Resend
 // Afmelding klares af Resend via {{{RESEND_UNSUBSCRIBE_URL}}} i hver udsendelse.
 // POST /hit        -> anonym besøgsstatistik i D1 "7amai-stats" (se schema.sql), læses af worker/stats
+// Cron 07:30       -> mailer redaktøren (secret ALERT_TO), hvis dagens dato mangler i .agent/sent.log
 
 import { WorkerEntrypoint } from "cloudflare:workers";
 import { subscriberStats } from "./subscribers.js";
@@ -37,7 +38,39 @@ export default {
     if (url.pathname === "/broadcast" && request.method === "POST") return broadcast(request, env);
     return new Response("Not found", { status: 404 });
   },
+  async scheduled(event, env) {
+    await watchIssue(new Date(event.scheduledTime), env);
+  },
 };
+
+// Kører uden om Claude, så alarmen også virker, når ugegrænsen er brugt op.
+// Cron er UTC og rammer to gange; kun den, der er kl. 07 dansk tid, gør noget (sommer- og vintertid).
+async function watchIssue(now, env) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Copenhagen", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23",
+  }).formatToParts(now).map((x) => [x.type, x.value]));
+  if (p.hour !== "07") return;
+  if (!env.ALERT_TO || !env.RESEND_API_KEY) throw new Error("alarm: ALERT_TO eller RESEND_API_KEY mangler");
+
+  const day = `${p.year}-${p.month}-${p.day}`;
+  let problem = "";
+  try {
+    const res = await fetch(`${env.SENT_LOG}?t=${now.getTime()}`);
+    if (!res.ok) problem = `Kunne ikke læse sent.log (HTTP ${res.status}), så det er ukendt, om udgaven ${day} er sendt.`;
+    else if (!(await res.text()).split("\n").some((line) => line.trim() === day)) problem = `Udgaven ${day} er ikke sendt: datoen manglede i sent.log kl. 07:30.`;
+  } catch (e) {
+    problem = `Kunne ikke læse sent.log (${e.message}), så det er ukendt, om udgaven ${day} er sendt.`;
+  }
+  if (!problem) return;
+
+  const text = `${problem}\n\nKørslerne: https://claude.ai/code/routines\nUdkast og PR'er: https://github.com/Repzei/7amai/pulls\n\nTjek først, om Claude-planens ugegrænse er brugt op.`;
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${String(env.RESEND_API_KEY).trim()}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from: env.FROM, to: [String(env.ALERT_TO).trim()], subject: `7am AI: tjek udgaven ${day}`, text }),
+  });
+  if (!res.ok) throw new Error(`alarm: Resend ${res.status} ${(await res.text()).slice(0, 200)}`);
+}
 
 // Anonym besøgsstatistik: kun tal, intet om personen (ingen IP, user agent eller klokkeslæt gemmes).
 // Siden sender med sendBeacon som text/plain, så browseren ikke laver en CORS-preflight.

@@ -10,6 +10,8 @@
 // 3. Ingen mail med em/en dash eller tilbagevaerende {{ fra skabelonen.
 // 4. Kald til Resend og workerens /broadcast kun via .agent/send-mail.mjs og .agent/broadcast.mjs.
 // 5. Ingen em/en dash i filer der skrives i repoet.
+// 6. Ingen PR, saa laenge en ny udgave har "control: pending" (gemt foer redaktoerkontrollen, U5d).
+//    Uden PR sender AFSENDELSE intet.
 
 import fs from 'fs'
 import path from 'path'
@@ -48,6 +50,21 @@ if (tool === 'Edit' || tool === 'Write' || tool === 'MultiEdit') {
 
 const beforeSeven = () => copenhagen(process.env.GUARD_NOW || new Date().toISOString()).time < '07:00'
 
+// Regel 6: kun filer, der er nye eller aendrede i forhold til main. Baade HEAD og arbejdskopien
+// tjekkes, saa hverken en glemt commit eller en uncommittet rettelse slipper igennem.
+const blockIfPending = () => {
+  let files
+  try { files = git('diff', '--name-only', 'origin/main', 'HEAD').split('\n') } catch { return }
+  for (const f of files.map(s => s.trim()).filter(f => /^(_posts|_da)\/\d{4}-.+\.md$/.test(f))) {
+    let text = ''
+    try { text += fs.readFileSync(path.join(root, f), 'utf8') + '\n' } catch {}
+    try { text += git('show', `HEAD:${f}`) } catch {}
+    if (/^control:\s*pending\b/m.test(text)) {
+      block(`${f} har stadig "control: pending". Gennemfoer redaktoerkontrollen (U6), fjern linjen, commit og push, foer PR'en oprettes.`)
+    }
+  }
+}
+
 // Cloud-miljoeet har en indbygget GitHub-connector (MCP), som ikke kan slaas fra. Den maa
 // merge efter samme regel som gh api, men ikke skrive filer: saa ville regel 1 kunne omgaas,
 // fordi den tjekker git commit/push.
@@ -55,6 +72,7 @@ if (/^mcp__github__/.test(tool)) {
   if (/merge/i.test(tool) && beforeSeven()) {
     block('agenten maa ikke merge foer kl. 07:00 dansk tid. En merge foer kl. 7 betyder "godkendt af Jesper".')
   }
+  if (/create_pull_request/i.test(tool)) blockIfPending()
   if (/create_or_update_file|push_files|delete_file|create_branch|update_pull_request_branch/i.test(tool)) {
     block('skriv ikke filer via GitHub-connectoren. Brug git (commit + push) og gh api, som beskrevet i INSTRUCTIONS.md.')
   }
@@ -92,6 +110,9 @@ if (/pulls\/\d+\/merge/.test(cmd) && /(-X|--method)\s*PUT/i.test(cmd)) {
     block('agenten maa ikke merge foer kl. 07:00 dansk tid. En merge foer kl. 7 betyder "godkendt af Jesper".')
   }
 }
+
+// Regel 6: oprettelse af PR (POST til /pulls med head, eller gh pr create). Opslag har head i selve URL'en.
+if (/\bgh\s+pr\s+create\b/.test(cmd) || (/repos\/[^\s"']+\/pulls["']?(?=\s|$)/.test(cmd) && /\bhead["']?\s*[=:]/.test(cmd))) blockIfPending()
 
 // Regel 1: reviewed: true kraever Jespers merge foer kl. 07:00.
 const isCommit = /\bgit\b[^|;&]*?\bcommit\b/.test(cmd)

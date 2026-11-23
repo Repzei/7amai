@@ -8,6 +8,11 @@ FROM = "7am AI <brief@7amai.com>"
 # Segment-ID'er fra Resend (Audience > Segments). Ikke hemmelige; sættes, når segmenterne er oprettet.
 SEGMENT_EN = "9df4ffd3-4a15-4e18-a2ec-15b3ad3ff93e"
 SEGMENT_DA = "dc0facb5-533c-4b69-babc-9e0017206d5d"
+SENT_LOG = "https://raw.githubusercontent.com/Repzei/7amai/main/.agent/sent.log"
+
+# Alarm, når dagens udgave mangler (watchIssue). 07:30 dansk tid i både sommer- og vintertid.
+[triggers]
+crons = ["30 5,6 * * *"]
 
 # Anonym besøgsstatistik (POST /hit). Samme database læses af dashboardet i worker/stats. EU (weur).
 [[d1_databases]]
@@ -18,4 +23,5 @@ database_id = "4f2e0520-82ad-4ffd-a1f2-17decfb4741d"
 # Hemmeligheder sættes med `npx wrangler secret put <NAVN>` og ligger aldrig i repoet:
 #   RESEND_API_KEY   (Resend-nøgle med fuld adgang)
 #   SIGNING_SECRET   (lang tilfældig streng)
+#   ALERT_TO         (redaktørens adresse til alarmen)
 #   BROADCAST_TOKEN  (lang tilfældig streng; samme værdi lægges som network secret i 7am-ai-miljøet)

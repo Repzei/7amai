@@ -5,13 +5,21 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-11-12T20:51:18.403Z
+  modified: 2026-11-23T20:51:48.152Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-27)
 
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
+
+## UGEGRÆNSEN STOPPER UDGAVEN (fundet 2026-11-23; sikkerhedsnet bygget 23/11, alarmen IKKE deployet endnu)
+Ingen udgave 14-16/11 og 23/11. Routine-log læst for 16/11 (udkast) og 23/11 (udkast + afsendelse): "You've hit your weekly limit · resets 7am (UTC)" (Pro-plan, ekstra forbrug slået fra; nulstilles mandag kl. 8 dansk tid). 23/11 stoppede udkastet kl. 04:44 midt i redaktørkontrollen (U6), før commit, så DA + EN-udkastet gik tabt. Routinens status står som SUCCEEDED for udkastet trods fejl; afsendelsen står som FAILED (USAGE_LIMIT_REACHED). 16/11 kl. 22:53 fik prompten Sonnet-specialister; grænsen blev ramt igen alligevel.
+- [x] 23/11 (Jesper: "lav 2 og 3 som sikkerhedsnet"): udkastet gemmes på `issue/<dato>` uden PR før redaktørkontrollen (INSTRUCTIONS U5d, `control: pending`, guard regel 6; U0 genoptager, hvis branchen findes uden PR). Alarm: cron i `7amai-signup` kl. 07:30 dansk tid læser sent.log og mailer `ALERT_TO`. 10 %-tærsklen er ikke bygget: routinen kan ikke læse ugekvoten, og begge dele er kun virksomme, når noget mangler. 23 scratch-tests grønne + wrangler dry-run.
+- [ ] Jesper: `wrangler secret put ALERT_TO` + deploy af worker og worker/stats (systemfanen). Før det sender alarmen intet.
+- [ ] TJEK 24/11: udkastet har commit "(ikke kontrolleret)" + senere commit på branchen, PR oprettet, og `control: pending` er væk i begge filer.
+- [ ] Jesper overvejer Max i stedet for ekstra forbrug. Forbrugstal for lokale sessioner står i HQ-to-do'en (sky-rutiner ikke med).
+- [ ] Ikke bygget: sen afsendelse. A0 kræver kl. 07, så et genoptaget udkast efter kl. 8 kan ikke sendes samme dag (kun næste dag).
 
 ## LÆSBAR BAGGRUND (2026-11-18, LIVE 76c5a6d)
 Jesper 18/11: "blå er ikke så god at læse på"; kun toppen må være blå. Mockups: https://claude.ai/artifact/RYPJzMzNU5ej3gVeuS2D4Q (v1: A papir / B grå / C hvid; v2: endeligt forslag).
@@ -32,7 +40,7 @@ Jesper 18/11: mailen var god, men for lang (ca. 700 ord), og man behøvede ikke 
 - [x] `fetch-mail.sh`: tekstversionen må være ned til 800 tegn (var 2000; den korte .txt er ca. 1.700). Ellers ville afsendelsen 19/11 være stoppet.
 - [x] STYLE.md "Mailen": hver overskrift skal fortælle nyheden alene (ingen teasere), lead-`number_label` kort (ca. 12 ord, ikke håndhævet). INSTRUCTIONS A2, CLAUDE.md, roadmap, systemfanen (worker/stats) opdateret.
 - [x] Systemfanen deployet af Jesper 18/11.
-- [ ] TJEK 19/11 efter 07:00: mailen sendt i det nye format (sent.log / Jespers indbakke). Ingen testmail sendt (Resend-nøglen findes kun i cloud); Jesper kan se den nu på https://7amai.com/mail/da/
+- [x] (tjekket 23/11: "Sendt"-commits 19-22/11 findes, udseendet i indbakken er ikke set af Claude) TJEK 19/11 efter 07:00: mailen sendt i det nye format (sent.log / Jespers indbakke). Ingen testmail sendt (Resend-nøglen findes kun i cloud); Jesper kan se den nu på https://7amai.com/mail/da/
 - [ ] Mål ca. 2/12 og 25/11: besøg fra "Mailen" (var 8 af 104 på 30 dage) og læsetid.
 
 ## UDGAVESIDEN SOM MAILEN (2026-11-12, LIVE: 91d2134 + 252a6d5; side-session fra marketing)
@@ -231,7 +239,7 @@ Jesper: bonus (On the radar + Try it today) var "rodet" og gav ham intet. Valgte
 - [ ] Emnesider + "Shipped or not?" (fase 2, SEO).
 - [x] `noindex` fjernet 2026-10-13 (Jesper: "gøre siden synlig for Google"), jekyll-sitemap tilføjet (robots.txt laves automatisk), OG/Twitter-kort med assets/og.png (kilde: `.agent/og-source.html`, renderet med headless Edge for de rigtige skrifttyper), canonical, hreflang en/da/x-default. Velkomstsiderne har `noindex: true` + `sitemap: false`. Sitemap indsendes i GSC (I MORGEN punkt 4).
 - [ ] **Feedback uden tracking:** "Nyttig 👍 / Ikke nyttig 👎" nederst i hver mail og udgave; anonym optælling pr. udgave i workeren (fx Cloudflare KV eller Analytics Engine, ingen personhenførbare data, nævnes i privatlivspolitikken). Fodrer redaktørkontrol og STYLE.md med læsernes mening. Højeste langsigtede værdi.
-- [ ] **Overvågning af afsendelsen:** tjek ca. 07:15 om `<dato>` står i sent.log; hvis ikke, besked til Jesper (fx lille cloud-routine eller Cloudflare Cron Trigger i workeren). Vigtigt så snart andre end Jesper er tilmeldt.
+- [ ] (bygget 23/11, venter på deploy, se UGEGRÆNSEN øverst) **Overvågning af afsendelsen:** tjek ca. 07:15 om `<dato>` står i sent.log; hvis ikke, besked til Jesper (fx lille cloud-routine eller Cloudflare Cron Trigger i workeren). Vigtigt så snart andre end Jesper er tilmeldt.
 - [x] **Dansk som indgang: JA (Jesper 2026-10-19)**, fordi der næsten ikke findes danske AI-nyhedsbreve. Separate danske marketing-konti (Bluesky/Threads) med opslag fra `_da/`; STRATEGI 3 opdateret. Forslag til senere: dansk SEO (danske søgeord på /da/, fx "AI-nyheder"), danske udviklermiljøer og LinkedIn.
 - [ ] beehiiv revurderes ved ca. 1.000 læsere.
 

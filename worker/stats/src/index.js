@@ -359,7 +359,7 @@ footer { margin-top:24px; }
       <div class="card"><div class="role">Domæne, mail og små servere</div><h3>Cloudflare</h3><ul>
         <li>DNS for 7amai.com (alle records "DNS only")</li>
         <li>Email Routing: privacy@, rettelser@ og brief@7amai.com til Jespers Gmail</li>
-        <li>Worker <b>7amai-signup</b>: /subscribe, /confirm, /broadcast, /hit</li>
+        <li>Worker <b>7amai-signup</b>: /subscribe, /confirm, /broadcast, /hit og alarmen kl. 07:30</li>
         <li>Worker <b>7amai-stats</b>: dette dashboard (adgangskode)</li>
         <li>D1-database <b>7amai-stats</b> i EU: anonyme besøg</li></ul></div>
       <div class="card"><div class="role">Mailudsendelse</div><h3>Resend</h3><ul>
@@ -394,6 +394,7 @@ footer { margin-top:24px; }
         <tr><td>SIGNING_SECRET</td><td>Worker 7amai-signup</td><td>Signerer bekræftelseslinks</td></tr>
         <tr><td>BROADCAST_TOKEN</td><td>Worker 7amai-signup + miljø 7am-ai</td><td>Agenten må bede workeren sende udgaven</td></tr>
         <tr><td>Resend sende-nøgle</td><td>Miljø 7am-ai (network secret)</td><td>Mail til Jesper (fallback)</td></tr>
+        <tr><td>ALERT_TO</td><td>Worker 7amai-signup</td><td>Modtager af alarmen, når udgaven mangler</td></tr>
         <tr><td>STATS_PASSWORD</td><td>Worker 7amai-stats</td><td>Login til dette dashboard</td></tr>
       </tbody></table></div>
 
@@ -402,6 +403,7 @@ footer { margin-top:24px; }
       <div class="card"><h3>Hårde regler (guard.mjs)</h3><ul>
         <li>"Reviewed by Jesper" kun ved Jespers merge før 07:00</li>
         <li>Agenten må ikke merge før 07:00</li>
+        <li>Ingen PR, før redaktørkontrollen er færdig (control: pending)</li>
         <li>Ingen mail med em dash eller {{-rester</li>
         <li>Tal i mailens grafik skal stå i historien (readability.py i redaktørkontrollen)</li>
         <li>Mail kun via send-mail.mjs og broadcast.mjs</li>
@@ -411,6 +413,8 @@ footer { margin-top:24px; }
         <li>readability.py: korte sætninger og ærlige læsetider</li>
         <li>Kun fakta fra kilder, agenten selv har åbnet</li></ul></div>
       <div class="card"><h3>Når noget fejler</h3><ul>
+        <li>Udgaven mangler i sent.log kl. 07:30: workeren mailer Jesper (kører uden om Claude, også når ugegrænsen er brugt op)</li>
+        <li>Udkastet afbrydes i redaktørkontrollen: teksten ligger på issue-branchen uden PR, så intet sendes. Køres udkastet igen samme dag, fortsætter det fra kontrollen</li>
         <li>Mailen er ikke bygget efter 10 min: intet sendes, fejlen står i kørselsloggen</li>
         <li>Broadcast fejler: mailen går til Jesper i stedet</li>
         <li>Tomt segment: springes over, ikke en fejl</li>
