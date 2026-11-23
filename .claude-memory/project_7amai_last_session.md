@@ -5,12 +5,17 @@ metadata:
   node_type: memory
   type: project
   originSessionId: b8e3a230-7b07-4e90-9530-645548d14765
-  modified: 2026-11-12T20:47:25.439Z
+  modified: 2026-11-23T21:05:47.316Z
 ---
 
-# 7am AI: handoff (seneste: 18. nov. 2026, kort mail; side-session startet fra marketing)
+# 7am AI: handoff (seneste: 23. nov. 2026, sikkerhedsnet mod ugegrænsen)
 
-Detaljer i [[project-7amai-todo]] (afsnit KORT MAIL UDEN SCROLL). Overskriv denne fil ved hver sessions afslutning.
+Detaljer i [[project-7amai-todo]] (afsnit UGEGRÆNSEN STOPPER UDGAVEN). Overskriv denne fil ved hver sessions afslutning.
+
+## 23/11 (fra marketing-mappen)
+- Ingen udgave 23/11: ugegrænsen. Bygget: udkast gemmes før kontrollen (U5d), alarm 07:30 (deployet), manuel SEN AFSENDELSE og dobbeltspærre i /broadcast (venter på Jespers deploy).
+- Jesper ville kun aktivere det tæt på grænsen; afvist, fordi routinen ikke kan læse kvoten. Han overvejer Max; anbefalet at vente en uge med 85 %-reglen fra HQ.
+- Næste: TJEK 24/11 (U5d i skyen, afsendelse, ingen falsk alarm), Search Console 24/11, måling 25/11. Resten nedenfor er fra 18/11.
 
 ## Lavet og hvorfor
 - **Kort mail live** (304cf79/22f21fa testside, 0eb56ef go-live): hovedhistorien + overskrifter som links, kan læses uden at scrolle. Fordi mailen var så komplet, at ingen klikkede (8 af 104 besøg fra mailen), og målet er trafik til siden.
