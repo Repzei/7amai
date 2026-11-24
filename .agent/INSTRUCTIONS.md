@@ -28,8 +28,8 @@ Fælles regler:
   Repo: `Repzei/7amai`.
 - Dato i dansk tid: `TZ=Europe/Copenhagen date +%F`, ugedag `+%u`, time `+%H`.
 - Sandboxen kan starte med en gammel lokal `main`. Start derfor altid med
-  `git fetch -q origin && git checkout -q main && git reset -q --hard origin/main` (der er aldrig
-  lokalt arbejde at miste ved start), så `git pull` ikke fejler.
+  `git fetch -q origin && git checkout -q -B main origin/main`, så `git pull` ikke fejler. Brug ikke
+  `reset --hard`: auto mode kan afvise den som destruktiv (skete 22/11).
 - Emnelinjen sendes altid uforkortet. Afsendelsesscriptet klarer Resends grænse på 70 tegn for
   det interne navn; forkort aldrig emnet på grund af en fejl om `name`.
 - Hårde regler håndhæves af `.claude/hooks/guard.mjs` og blokerer handlingen med en forklaring:

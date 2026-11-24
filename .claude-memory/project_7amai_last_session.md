@@ -8,15 +8,19 @@ metadata:
   modified: 2026-11-23T21:11:10.985Z
 ---
 
-# 7am AI: handoff (seneste: 23. nov. 2026, sikkerhedsnet mod ugegrænsen)
+# 7am AI: handoff (seneste: 24. nov. 2026, tjek af sikkerhedsnettet)
 
 Detaljer i [[project-7amai-todo]] (afsnit UGEGRÆNSEN STOPPER UDGAVEN). Overskriv denne fil ved hver sessions afslutning.
 
+## 24/11 (fra marketing-mappen)
+- Sikkerhedsnettet virkede i første rigtige kørsel (U5d, afsendelse, ingen falsk alarm). `reset --hard` erstattet i INSTRUCTIONS.md. LinkedIn ikke gjort; Search Console-tal i to-do.
+- Næste: TJEK 25/11 (start uden afvisning), dashboard + Indeksering > Sider fra Jesper, og Jespers svar om LinkedIn.
+
 ## 23/11 (fra marketing-mappen)
-- Ingen udgave 23/11: ugegrænsen. Bygget: udkast gemmes før kontrollen (U5d), alarm 07:30 (deployet), manuel SEN AFSENDELSE og dobbeltspærre i /broadcast. Alt deployet kl. 22:08; intet af det er kørt rigtigt endnu. Dagens udgave (23/11) er ikke lavet.
+- Ingen udgave 23/11: ugegrænsen. Bygget: udkast gemmes før kontrollen (U5d), alarm 07:30 (deployet), manuel SEN AFSENDELSE og dobbeltspærre i /broadcast. Alt deployet kl. 22:08; kørt rigtigt første gang 24/11 (sen afsendelse er stadig ikke prøvet). Dagens udgave (23/11) er ikke lavet.
 - Faldgrube: udkast-routinens status kan stå som SUCCEEDED, selv om ugegrænsen afbrød den. Læs loggen (get_run_log) eller se efter PR'en.
 - Jesper ville kun aktivere det tæt på grænsen; afvist, fordi routinen ikke kan læse kvoten. Han overvejer Max; anbefalet at vente en uge med 85 %-reglen fra HQ.
-- Næste: TJEK 24/11 (U5d i skyen, afsendelse, ingen falsk alarm), Search Console 24/11, måling 25/11. Resten nedenfor er fra 18/11.
+- Resten nedenfor er fra 18/11.
 
 ## Lavet og hvorfor
 - **Kort mail live** (304cf79/22f21fa testside, 0eb56ef go-live): hovedhistorien + overskrifter som links, kan læses uden at scrolle. Fordi mailen var så komplet, at ingen klikkede (8 af 104 besøg fra mailen), og målet er trafik til siden.

@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-11-23T21:11:08.667Z
+  modified: 2026-11-24T14:55:50.355Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-10-27)
@@ -19,8 +19,11 @@ Ingen udgave 14-16/11 og 23/11. Routine-log læst for 16/11 (udkast) og 23/11 (u
 - [x] 23/11 kl. 22: Jesper satte ALERT_TO og deployede worker + worker/stats (tjekket med wrangler).
 - [x] Sen afsendelse (Jesper: "ja byg det"): manuel routine `SEN AFSENDELSE` + A0-regler (kl. 7 eller senere, kun i dag, ingen fallback, `reviewed` kun ved merge før 07:00) + dobbeltspærre i /broadcast (D1 `sends`; fail-open hvis D1 er nede, beholdes ved 5xx/netværksfejl). 33 scratch-tests grønne. Ikke kørt i skyen.
 - [x] 23/11 kl. 22:08: Jesper deployede worker + worker/stats igen (versions-id'er tjekket; wrangler viste `schedule: 30 5,6 * * *`).
-- [ ] TJEK 24/11 efter 07:30: udgaven er sendt, broadcast en + da ok med dobbeltspærren (første rigtige kørsel), og ingen falsk alarm.
-- [ ] TJEK 24/11: udkastet har commit "(ikke kontrolleret)" + senere commit på branchen, PR oprettet, og `control: pending` er væk i begge filer.
+- [x] TJEK 24/11 (routine-log læst): sendt 07:08, broadcast en ok (Resend 7edf02d2), da = ingen tilmeldte (exit 0, som altid). Dobbeltspærren gav ingen falsk afvisning; at den afviser en rigtig dublet, er ikke prøvet i drift.
+- [x] 24/11: Jesper bekræfter, at der ikke kom en falsk alarm-mail.
+- [x] TJEK 24/11: U5d virker i skyen: 99cdfcd "(ikke kontrolleret)" 03:40 UTC, 0301ab9 03:44, PR 41 03:45, `control: pending` væk i begge filer.
+- [x] FUND 24/11 rettet (Jesper: ja): INSTRUCTIONS.md bruger nu `git fetch -q origin && git checkout -q -B main origin/main` i stedet for `reset --hard`, som auto mode afviste under AFSENDELSE 22/11 (agenten valgte selv checkout -B). Prøvet i scratch-repo: detached + gammel main ok, pull ok, afbryder ved lokal ændring. TJEK 25/11: udkast + afsendelse starter uden afvisning. Marketing ROUTINE.md:14 har samme mønster (beskyttet, kræver ny hash; tages ved næste regelændring).
+- [ ] FUND 24/11 (lille): systemets Pillow i skyen er i stykker, agenten brugte en venv (billedet blev OK). Evt. `pip install pillow` i miljøets setup-script.
 - [ ] Jesper overvejer Max i stedet for ekstra forbrug. Forbrugstal for lokale sessioner står i HQ-to-do'en (sky-rutiner ikke med).
 
 ## LÆSBAR BAGGRUND (2026-11-18, LIVE 76c5a6d)
@@ -68,6 +71,7 @@ Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11
 - Fravalgt: betalt vækst, platformskifte, Show HN nu, forside-optimering (for lidt trafik), fast "Jesper's pick".
 - [x] 11/11 Jesper valgte A: "gainfully passer ikke på linked in det er et andet publikum" (LinkedIn bruges kun til 7am AI; én gang, ingen rutine, så 7am AI stadig passer sig selv). Tekster (opslag, personlig besked, fællesskabsopslag) skrevet i marketing-sessionen 11/11.
 - [ ] Jesper poster på LinkedIn + sender 20-30 beskeder. Udgangspunkt: 3 tilmeldte. Mål ca. 25/11 (sammen med skridt 5): tilmeldte DA/EN og besøg fra "Andre sociale medier" (LinkedIn havner dér).
+  - 24/11: Jesper har IKKE postet eller sendt beskeder endnu. Målingen 25/11 kan derfor ikke vise lanceringen. "Andre sociale medier" på dashboardet er altså ikke LinkedIn-lanceringen.
 
 ## ANTHROPIC-BALANCE (2026-11-11, commits 97ab0ae..fa92955; fundet i marketing-sessionens positionsanalyse, Jesper: "dette skal fixes")
 - Fund: 13 af 31 leads om Anthropic/Claude (5 af de seneste 6), 10/11 havde 3 Anthropic-hovedhistorier (Fable + IPO ikke samlet trods "samme firma"-reglen). Årsag: udkast-agenten ER Claude, og intet tog højde for interessekonflikten; Anthropic står også først i SOURCES og i specialisternes opgaver.
@@ -77,7 +81,7 @@ Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11
 
 ## SITEMAP UDEN NOINDEX-SIDER (2026-11-10, commit 01a8577; Search Console-fund via marketing)
 - [x] Eget `sitemap.xml` (kopi af jekyll-sitemap-skabelonen) udelader `noindex: true` og tynde emnesider (`topic_thin` i `_includes/topic-count.html`, samme betingelse som noindex i default.html). Live: 162 -> 160 URL'er (topics/news + da/emner/nyheder væk), ingen lastmod ændret, 0 af 160 sider med noindex.
-- [ ] Ca. 24/11: Search Console "Ekskluderet af noindex" må ikke længere nævne sider fra sitemap'et.
+- [ ] Ca. 24/11: Search Console "Ekskluderet af noindex" må ikke længere nævne sider fra sitemap'et. (24/11: ikke set, Jesper sendte Effektivitet; mangler Indeksering > Sider)
 
 ## Status
 - Live på https://7amai.com (EN) og /da/ (DA). **Synlig for Google fra 2026-10-13** (noindex fjernet, undtagen velkomstsiderne; sitemap via jekyll-sitemap, OG-billede assets/og.png, canonical + hreflang).
@@ -104,6 +108,7 @@ Skrevet i STRATEGI 7.1 + 8 + 9 + låste beslutninger, roadmap.json (ny fase "Næ
   - [ ] TJEK ca. 16/11: første rigtige statusskift. Fristen for Inkling 2 Small er 15/11, så routinen skal have sat `delivered` (med Official-kilde) eller `late`. Farven for `late` er stadig kun testet kunstigt.
   - [x] D4 LIVE 4/11 (b899fe2, Jesper: "ja gå live med den"): /shipped/ + /da/leveret/ uden noindex og i sitemap, link i sidefoden på alle sider + eget afsnit på /how-we-work/#shipped og /da/metode/#leveret. IKKE i menuen: den er fuld ved 375 px. Tjekket live i 375 px: ingen vandret scroll, alle 4 statusfarver i lys + mørk (delvist/forsinket/ikke endnu kun testet ved at ændre siden i browseren, ingen rigtige data endnu).
 - [ ] 5. Ca. 25/11: mål (Bluesky, ?ref=forward, Search Console) og vælg næste skridt med Jesper
+  - Search Console 24/11 (skærmbillede, 3 mdr., første visninger ca. 19/10): 7 klik, 691 eksponeringer, CTR 1 %, gns. placering 18,8, 64 forespørgsler. "7amai" 4 klik/75 eksp., "hvor meget er en gigawatt" 1/4, "anthropic ai speed increase" 0/109, "supply chain attack" 0/25, token 0/10, remote code execution 0/10, "hvad er en api nøgle" 0/9, "rekursiv selvforbedring", "hvad betyder gw", "kvantisering" 0/6 hver. Dashboard mangler stadig.
 
 ## MARKEDSPOSITION-ANALYSE (2026-10-28, bestilt af Jesper i marketing-sessionen; BESLUTTET 29/10, se ovenfor)
 Artifact: https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE (kilder hentet 28/10).
