@@ -25,6 +25,7 @@ Ingen udgave 14-16/11 og 23/11. Routine-log læst for 16/11 (udkast) og 23/11 (u
 - [x] FUND 24/11 rettet (Jesper: ja): INSTRUCTIONS.md bruger nu `git fetch -q origin && git checkout -q -B main origin/main` i stedet for `reset --hard`, som auto mode afviste under AFSENDELSE 22/11 (agenten valgte selv checkout -B). Prøvet i scratch-repo: detached + gammel main ok, pull ok, afbryder ved lokal ændring. TJEK 25/11: udkast + afsendelse starter uden afvisning. Marketing ROUTINE.md:14 har samme mønster (beskyttet, kræver ny hash; tages ved næste regelændring).
 - [ ] FUND 24/11 (lille): systemets Pillow i skyen er i stykker, agenten brugte en venv (billedet blev OK). Evt. `pip install pillow` i miljøets setup-script.
 - [ ] Jesper overvejer Max i stedet for ekstra forbrug. Forbrugstal for lokale sessioner står i HQ-to-do'en (sky-rutiner ikke med).
+  - 24/11 målt: 40 af 44 udgaver siden 12/10 (91 %), alle 4 huller (14-16/11, 23/11) = ugegrænsen. get_usage 24/11 ca. 15:14 UTC: uge 24 % efter 32 timer (19 % af ugen); samme tempo rammer 100 % ca. lørdag 28/11 kl. 22 dansk tid (lineært skøn), så 29/11 og 30/11 er i fare.
 
 ## LÆSBAR BAGGRUND (2026-11-18, LIVE 76c5a6d)
 Jesper 18/11: "blå er ikke så god at læse på"; kun toppen må være blå. Mockups: https://claude.ai/artifact/RYPJzMzNU5ej3gVeuS2D4Q (v1: A papir / B grå / C hvid; v2: endeligt forslag).
@@ -72,6 +73,7 @@ Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11
 - [x] 11/11 Jesper valgte A: "gainfully passer ikke på linked in det er et andet publikum" (LinkedIn bruges kun til 7am AI; én gang, ingen rutine, så 7am AI stadig passer sig selv). Tekster (opslag, personlig besked, fællesskabsopslag) skrevet i marketing-sessionen 11/11.
 - [ ] Jesper poster på LinkedIn + sender 20-30 beskeder. Udgangspunkt: 3 tilmeldte. Mål ca. 25/11 (sammen med skridt 5): tilmeldte DA/EN og besøg fra "Andre sociale medier" (LinkedIn havner dér).
   - 24/11: Jesper har IKKE postet eller sendt beskeder endnu. Målingen 25/11 kan derfor ikke vise lanceringen. "Andre sociale medier" på dashboardet er altså ikke LinkedIn-lanceringen.
+  - **BESLUTTET 24/11 (Jesper): LinkedIn-lanceringen VENTER**, til driften kører stabilt ("skal køre 100% når det bliver lanceret"). Foreslået kriterium (afventer ja): 14 dage i træk uden hul (25/11-8/12; dækker mandagene 30/11 og 7/12, hvor udkastet kører kl. 04:30, før ugekvoten nulstilles kl. 08:00).
 
 ## ANTHROPIC-BALANCE (2026-11-11, commits 97ab0ae..fa92955; fundet i marketing-sessionens positionsanalyse, Jesper: "dette skal fixes")
 - Fund: 13 af 31 leads om Anthropic/Claude (5 af de seneste 6), 10/11 havde 3 Anthropic-hovedhistorier (Fable + IPO ikke samlet trods "samme firma"-reglen). Årsag: udkast-agenten ER Claude, og intet tog højde for interessekonflikten; Anthropic står også først i SOURCES og i specialisternes opgaver.
@@ -81,7 +83,7 @@ Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11
 
 ## SITEMAP UDEN NOINDEX-SIDER (2026-11-10, commit 01a8577; Search Console-fund via marketing)
 - [x] Eget `sitemap.xml` (kopi af jekyll-sitemap-skabelonen) udelader `noindex: true` og tynde emnesider (`topic_thin` i `_includes/topic-count.html`, samme betingelse som noindex i default.html). Live: 162 -> 160 URL'er (topics/news + da/emner/nyheder væk), ingen lastmod ændret, 0 af 160 sider med noindex.
-- [ ] Ca. 24/11: Search Console "Ekskluderet af noindex" må ikke længere nævne sider fra sitemap'et. (24/11: ikke set, Jesper sendte Effektivitet; mangler Indeksering > Sider)
+- [ ] Ca. 24/11: Search Console "Ekskluderet af noindex" må ikke længere nævne sider fra sitemap'et. 24/11: rapporten (data til ca. 16/11): 106 indekserede, 72 ikke (noindex 9, omdirigering 3, registreret 46, crawlet 14, 5xx 0 godkendt). Live: alle 200 sitemap-URL'er svarer 200 uden noindex-meta. Hvilke 9 sider er ikke set; mangler klik på noindex-rækken.
 
 ## Status
 - Live på https://7amai.com (EN) og /da/ (DA). **Synlig for Google fra 2026-10-13** (noindex fjernet, undtagen velkomstsiderne; sitemap via jekyll-sitemap, OG-billede assets/og.png, canonical + hreflang).

@@ -14,7 +14,9 @@ Detaljer i [[project-7amai-todo]] (afsnit UGEGRÆNSEN STOPPER UDGAVEN). Overskri
 
 ## 24/11 (fra marketing-mappen)
 - Sikkerhedsnettet virkede i første rigtige kørsel (U5d, afsendelse, ingen falsk alarm). `reset --hard` erstattet i INSTRUCTIONS.md. LinkedIn ikke gjort; Search Console-tal i to-do.
-- Næste: TJEK 25/11 (start uden afvisning), dashboard + Indeksering > Sider fra Jesper, og Jespers svar om LinkedIn.
+- Jesper 24/11: LinkedIn venter til stabil drift. Foreslået 14 dage uden hul, afventer ja.
+- 503 på ukendte adresser (18/11 og én gang 24/11) kunne ikke genskabes: 9 af 9 gav 404.
+- Næste: TJEK 25/11 (start uden afvisning), hold øje med ugekvoten før 29-30/11, dashboard + noindex-rækken fra Jesper.
 
 ## 23/11 (fra marketing-mappen)
 - Ingen udgave 23/11: ugegrænsen. Bygget: udkast gemmes før kontrollen (U5d), alarm 07:30 (deployet), manuel SEN AFSENDELSE og dobbeltspærre i /broadcast. Alt deployet kl. 22:08; kørt rigtigt første gang 24/11 (sen afsendelse er stadig ikke prøvet). Dagens udgave (23/11) er ikke lavet.
