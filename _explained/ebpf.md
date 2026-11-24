@@ -14,7 +14,7 @@ short: |
 ---
 eBPF is a Linux technology that runs small programs inside the kernel, the core of the operating system. It lets you add new behavior to a running system, without changing the kernel's own code.
 
-Before eBPF, adding that kind of behavior meant one of two things. You waited years for a change to the official kernel. Or you wrote a kernel module, which is risky, because one bug can bring the whole machine down.
+Before eBPF, adding that kind of behavior meant one of two things. You waited years for a change to the official kernel. Or you wrote a kernel module, which is risky, because one bug can damage the kernel.
 
 > **Think of it like this:** the kernel is a busy factory floor where only trusted staff may work. With eBPF, you can send in a small robot with a fixed task. A guard at the door checks every robot first. If it could get stuck or touch the wrong machine, it does not get in.
 
@@ -24,4 +24,4 @@ The guard is called the verifier. It checks that the program has permission to l
 
 Most people never write eBPF themselves. They use it through tools for networking, monitoring and security in data centers and the cloud.
 
-**Why it matters to you:** eBPF is how security tools can change what a running server does in seconds. That makes it possible to block a known hole on a live system while the real fix is being tested.
+**Why it matters to you:** eBPF is one way security tools can change what a running server does without a restart. That makes it possible to block a known hole on a live system while the real fix is being tested.

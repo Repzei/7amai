@@ -10,11 +10,11 @@ read_more:
 short: |
   eBPF er en teknologi i Linux, der lader små programmer køre inde i styresystemets kerne. Du kan tilføje ny adfærd, mens computeren kører, uden at ændre kernen eller genstarte.
 
-  Før et program må køre, tjekker en kontrol, der hedder verifieren, at det ikke kan få systemet til at gå ned eller køre i ring for evigt. Derfor bruges eBPF til sikkerhed, netværk og overvågning.
+  Før et program må køre, tjekker en kontrol, der hedder verifieren, at det ikke kan få systemet til at gå ned eller sidde fast i en uendelig løkke. Derfor bruges eBPF til sikkerhed, netværk og overvågning.
 ---
 eBPF er en teknologi i Linux, der kører små programmer inde i kernen, styresystemets inderste del. Den lader dig tilføje ny adfærd til et kørende system uden at ændre kernens egen kode.
 
-Før eBPF betød den slags én af to ting. Enten ventede man i årevis på en ændring i den officielle kerne. Eller man skrev et kernemodul, og det er risikabelt, fordi én fejl kan vælte hele maskinen.
+Før eBPF betød den slags én af to ting. Enten ventede man i årevis på en ændring i den officielle kerne. Eller man skrev et kernemodul, og det er risikabelt, fordi én fejl kan ødelægge kernen.
 
 > **Tænk på det sådan her:** kernen er et travlt fabriksgulv, hvor kun betroede folk må arbejde. Med eBPF kan du sende en lille robot ind med en fast opgave. En vagt ved døren tjekker hver robot først. Kan den sætte sig fast eller røre den forkerte maskine, kommer den ikke ind.
 
@@ -24,4 +24,4 @@ Vagten hedder verifieren. Den tjekker, at programmet har lov til at blive indlæ
 
 De fleste skriver aldrig selv eBPF. De bruger det gennem værktøjer til netværk, overvågning og sikkerhed i datacentre og skyen.
 
-**Hvad betyder det for dig:** eBPF er grunden til, at sikkerhedsværktøjer kan ændre, hvad en kørende server gør, på få sekunder. Det gør det muligt at blokere et kendt hul på et kørende system, mens den rigtige rettelse bliver testet.
+**Hvad betyder det for dig:** eBPF er én måde, sikkerhedsværktøjer kan ændre, hvad en kørende server gør, uden genstart. Det gør det muligt at blokere et kendt hul på et kørende system, mens den rigtige rettelse bliver testet.
