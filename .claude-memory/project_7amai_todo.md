@@ -26,6 +26,7 @@ Ingen udgave 14-16/11 og 23/11. Routine-log læst for 16/11 (udkast) og 23/11 (u
 - [ ] FUND 24/11 (lille): systemets Pillow i skyen er i stykker, agenten brugte en venv (billedet blev OK). Evt. `pip install pillow` i miljøets setup-script.
 - [ ] Jesper overvejer Max i stedet for ekstra forbrug. Forbrugstal for lokale sessioner står i HQ-to-do'en (sky-rutiner ikke med).
   - 24/11 målt: 40 af 44 udgaver siden 12/10 (91 %), alle 4 huller (14-16/11, 23/11) = ugegrænsen. get_usage 24/11 ca. 15:14 UTC: uge 24 % efter 32 timer (19 % af ugen); samme tempo rammer 100 % ca. lørdag 28/11 kl. 22 dansk tid (lineært skøn), så 29/11 og 30/11 er i fare.
+  - **BESLUTTET 24/11 (Jesper): "vi holder det lige på 85%"**: HQ's 85 %-regel er uændret (mit forslag om 80 % fravalgt).
 
 ## LÆSBAR BAGGRUND (2026-11-18, LIVE 76c5a6d)
 Jesper 18/11: "blå er ikke så god at læse på"; kun toppen må være blå. Mockups: https://claude.ai/artifact/RYPJzMzNU5ej3gVeuS2D4Q (v1: A papir / B grå / C hvid; v2: endeligt forslag).
