@@ -344,8 +344,9 @@ Tjek begge filer mod Jespers kriterier i `.agent/EDITORIAL.md` og følg den fils
    kriterier er tjekket. Fjern linjen `control: pending` i BEGGE filer, når HELE kontrollen er
    gennemført (også i det sjældne tilfælde, hvor `checked` forbliver `false`).
 5. **Delingsbillede** (link-kortet på Bluesky, LinkedIn m.fl.), når teksten er endelig:
-   `python3 -c "import PIL" 2>/dev/null || pip install --quiet pillow`, derefter
-   `python3 .agent/og-image.py _posts/<fil> _da/<fil>`. Det skriver `assets/og/<dato>.png` og
+   `python3 -m venv /tmp/og-venv && /tmp/og-venv/bin/pip install --quiet pillow`, derefter
+   `/tmp/og-venv/bin/python .agent/og-image.py _posts/<fil> _da/<fil>` (altid venv: systemets Pillow
+   i skyen kan importeres, men er i stykker, set 24/11 og 25/11). Det skriver `assets/og/<dato>.png` og
    `assets/og/da/<dato>.png` ud fra udgavens egne data (lead-historiens nøgletal og forklaring,
    overskrift, læsetid); skriv aldrig selv tekst til billedet. Fejler det, så fortsæt uden (siden
    bruger så `assets/og.png`) og skriv det i rapporten.
@@ -357,6 +358,9 @@ grund. Gem rapporten til PR-beskrivelsen.
 1. Du står på `issue/<dato>` fra U5d. Commit begge filer + nye filer i `_explained/` + delingsbillederne i `assets/og/` + `_data/promises.yml`, hvis den er ændret (`Udkast <dato>`), `git push`. Kør det i sin egen kommando, FØR PR'en oprettes.
 2. Opret PR: `gh api repos/Repzei/7amai/pulls -f base=main -f head=issue/<dato> -f title="7am AI <dato>: <titel>" -f body="<redaktørkontrollens rapport, derefter overskrifterne som liste + kilder, til sidst kandidatlisten fra U2 (mindst 15)>" -q .html_url`.
    Notér PR-URL'en.
+   Stopper et sikkerhedsfilter din tekst undervejs, så drop den historie, fortsæt med de næste
+   kandidater, og skriv den rigtige grund i kandidatlisten ("stoppet af sikkerhedsfilter"), aldrig en
+   redaktionel grund i stedet (skete 25/11).
 
 ### U8. Ingen udkast-mail
 Der sendes ingen udkast-mail. PR'en er nok: redaktøren kan godkende den, hvis han er oppe.
