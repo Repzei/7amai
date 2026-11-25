@@ -3,8 +3,7 @@ title: "Versine lets AI assistants send money with your approval"
 summary: "A startup called Versine lets you pay people by asking your AI assistant. Every payment needs your passkey, or a cap you set in advance. Also: Tidal deletes songs made fully by AI, Anthropic's shares slip under their sale price, hobby searches find planet candidates, and an open image model fixes its own text."
 date: 2026-11-25 07:00:00 +0100
 reviewed: false
-checked: false
-control: pending
+checked: true
 minutes: 7
 explained: { main: "mcp", from: 1, more: ["ai-agent", "open-weight"] }
 today:
@@ -16,7 +15,7 @@ today:
 other_lang_url: /da/2026/11/25/
 items:
   - { n: 1, anchor: "versine-chat-payments", signal: worth, tracks: [build, general], min: 1.5, source: official, topic: agent, why: "An assistant that can pay is useful, but money you cannot claw back needs hard limits in front of it.", steps: { title: "How a Versine payment works", list: ["You ask your assistant to pay someone", "Versine sends a request to its app", "You approve it with your passkey", "The money moves and cannot be reversed"] } }
-  - { n: 2, anchor: "tidal-ai-tracks", signal: worth, tracks: [general], min: 1, source: reported, number: "43%", number_label: "of uploads to Tidal in 90 days were made fully by AI", topic: news, why: "When almost half of new uploads come from AI, a music service has to decide what it is for." }
+  - { n: 2, anchor: "tidal-ai-tracks", signal: worth, tracks: [general], min: 1, source: reported, number: "43%", number_label: "of tracks uploaded to Tidal in 90 days were AI-generated", topic: news, why: "When almost half of new uploads come from AI, a music service has to decide what it is for." }
   - { n: 3, anchor: "ai-share-prices", signal: worth, tracks: [general], min: 1, source: reported, number: "$76", number_label: "Anthropic's low on Tuesday, under its $83 sale price", topic: money, why: "Investors still pay up for AI firms with business customers, but no longer for every AI share.", bars: { title: "Anthropic's share price", max: 110, rows: [{ l: "Sold at", v: 83, t: "$83" }, { l: "Tuesday low", v: 76, t: "$76", hl: true }] } }
   - { n: 4, anchor: "openai-exoplanets", signal: quick, tracks: [general], min: 1, source: official, number: "19 million", number_label: "stars searched in one of the two hobby projects", topic: research, why: "Work that needed a research group can now be done by one person with public data." }
   - { n: 5, anchor: "sensenova-u1-6", signal: quick, tracks: [build], min: 1, source: official, number: "92.28", number_label: "points on a text-in-images test, up from 86.04 in one pass", topic: image, why: "A model that checks its own picture catches the broken text before you have to." }
@@ -29,7 +28,7 @@ items:
 
 <p class="short"><span>The short version</span>A startup called Versine lets you pay people by asking your AI assistant. Every payment needs your fingerprint or face, unless you set a cap in advance.</p>
 
-Assistants can book, search and write for you. Paying has stayed off limits, because a wrong payment is hard to undo. Versine, which launched on Tuesday, is one answer.
+Assistants can book, search and write for you. Paying has stayed off limits, because a wrong payment is hard to undo. Versine, launched this week, is one answer.
 
 It connects through MCP (see Explained below), the standard that lets an assistant use outside services. You ask ChatGPT, Claude or Gemini to send money, and Versine sends a request to its own app. You approve it there with your passkey, so the phone signs the payment you see on screen.
 
@@ -37,18 +36,18 @@ You can also hand over some of that control. Each assistant can get a cap, such 
 
 There are real catches. The founders say payments are final by design, so there is no dispute button if an assistant is tricked. It is only for US residents over 18, and the company says it is not a bank.
 
-<div class="why"><b>Why it matters</b><p>Giving an assistant a budget is like handing a teenager a prepaid card instead of your wallet. It only works if the card has a limit. That limit is the part worth reading before you connect anything.</p></div>
+<div class="why"><b>Why it matters</b><p>Giving an assistant a budget is like handing a teenager a prepaid card instead of your wallet. It only works if the card has a limit, and that limit is the part worth reading first.</p></div>
 
 Sources: [versine.com](https://versine.com) · <span class="tag tag-official">Official</span> · [news.ycombinator.com](https://news.ycombinator.com/item?id=50634426) · <span class="tag tag-official">Official</span>
 {: .sources}
 
 ### 2. Tidal will delete songs made fully by AI, starting 9 December {#tidal-ai-tracks}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1 min</span></p>
-<div class="number"><b>43%</b><span>of uploads to Tidal in 90 days were made fully by AI</span></div>
+<div class="number"><b>43%</b><span>of tracks uploaded to Tidal in 90 days were AI-generated</span></div>
 
 <p class="short"><span>The short version</span>Tidal says it will remove tracks made entirely by AI from 9 December. It expects to delete more than 29 million songs by the end of the year.</p>
 
-In June, Tidal stopped paying royalties on fully AI-made songs and tagged them. That did not slow the flood. Robert Anderson, who leads Tidal Music, says more than 43% of uploads in the past 90 days were made fully by AI, TechCrunch reports.
+In June, Tidal stopped paying royalties on wholly AI-made songs, and it tagged them. That did not slow the flood. Robert Anderson, who leads Tidal Music, says more than 43% of tracks uploaded in the past 90 days were AI-generated, TechCrunch reports.
 
 So Tidal is going further and deleting them. By its own count, about 27 million such tracks sit in the catalogue. That is 6.3% of it, and 96% of them have never been streamed once. Songs made with AI help can stay.
 
@@ -66,9 +65,9 @@ Source: [techcrunch.com](https://techcrunch.com/2026/11/24/tidal-to-ban-and-remo
 
 Anthropic listed on Nasdaq last week at $83 a share, and closed its first day at $97.17, as we wrote on 20 November. By midday Tuesday it was down to $76, nearly 12% below Monday's close, TechCrunch reports. Nvidia fell more than 7% the same morning, giving back part of Monday's jump after Jensen Huang returned as chief executive.
 
-A share below its sale price matters, because banks normally price an offering under what they expect.
+A share below its sale price matters, because underwriters normally price a sale under what they expect it to trade at.
 
-Private money looks different. On Monday, Sierra, which builds customer-service agents, raised $1.75B at a $30B value, double its price six months ago. Sierra says its yearly revenue rate doubled to $400M in five months.
+Private money looks different. On Monday, Sierra, which builds customer-service agents, raised $1.75B at a $30B value, double its price six months ago. Sierra says its run-rate revenue doubled to $400M in five months.
 
 <div class="why"><b>Why it matters</b><p>Two markets are judging AI with different yardsticks. Public investors ask what a company earns now. Private ones still pay for growth, as long as paying business customers stand behind it.</p></div>
 
@@ -83,11 +82,11 @@ Sources: [techcrunch.com (Anthropic)](https://techcrunch.com/2026/11/24/anthropi
 
 A planet passing in front of its star dims the light a little, every orbit. Finding that pattern is a software problem, which suits a coding tool.
 
-OpenAI says one of its engineers, Kevin Bond, used Codex to read published methods and build a search. He ran it over about 100,000 stars from the Kepler telescope. It flagged two new candidates, with dips every 13.8 and 4.8 days.
+OpenAI says one of its engineers, Kevin Bond, used Codex to read published methods and build a search. He ran it over about 100,000 stars from the Kepler telescope. Two signals stood out, with dips every 13.8 and 4.8 days.
 
 Ethan Byrd, who runs the startup Primitive, searched about 19 million stars. He got 49 candidates, and one is now with NASA researchers.
 
-The catch: candidates are not planets. Two stars crossing each other can make the same dip, and confirming one can take years. A SETI astronomer ran his own search, and found two of Bond's signals.
+The catch: candidates are not planets. Two stars crossing each other can make the same dip, and confirming one can take years. An astronomer at the SETI Institute ran his own search, and found two of Bond's signals.
 
 <div class="why"><b>Why it matters</b><p>The data was public for years. What changed is the work in front of it. Reading the research and writing the code is no longer a job for a group.</p></div>
 
@@ -102,9 +101,9 @@ Source: [openai.com](https://openai.com/index/searching-for-distant-planets-with
 
 AI pictures still get text wrong. Letters go missing on a poster, and a chart gets the wrong labels. Usually you spot it and ask again.
 
-U1.6, released on Tuesday, does that step itself. It drafts the image, reads it back against the prompt, and draws a corrected version. On SenseTime's own test of dense infographics, that lifts the score from 86.04 to 92.28 points of 100.
+U1.6, released on Tuesday, does that step itself. It drafts the image, reads it back against the prompt, and draws a corrected version. On SenseTime's own test of dense infographics, the score goes from 86.04 to 92.28 points. Those numbers are for the API version.
 
-The weights are on Hugging Face and the code on GitHub under Apache 2.0, with ComfyUI support. SenseTime says it needs about 24 GB of graphics memory.
+The weights are on Hugging Face and the code on GitHub under Apache 2.0, with ComfyUI support. SenseTime says its balanced setup needs about 24 GB of graphics memory.
 
 The catch: the numbers are SenseTime's own, and the test was built for infographics.
 
@@ -122,11 +121,11 @@ Sources: [sensetime.com](https://www.sensetime.com/cn/news/sensenova-u1-6-open-s
 
 A local model does not remember that you told it yesterday to stop writing comments. Each session starts over.
 
-Songe, which reached the Hacker News front page on Tuesday, records what happens after each step: tool errors, failed commands, and your corrections.
+Songe, which reached the Hacker News front page on Tuesday, records what happens after each step: tool errors, retries, and your corrections.
 
 It then has two modes. A "Quick Dream" takes minutes and adds your preferences to the model's instructions. A "Deep Dream" takes an hour or more, and trains a small add-on from practice tasks it writes itself.
 
-A new version is only used if it beats the old one on your own conversations, and one click rolls it back. The project says nothing leaves your machine.
+A new version is only used if it beats the old one on your own conversations. The project says nothing leaves your machine.
 
 The catch: it is early, with 713 stars and no releases yet. Training needs a graphics card or Apple Silicon.
 
