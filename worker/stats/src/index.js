@@ -98,19 +98,24 @@ async function systemStatus() {
 
 const ISSUE_PATH = "(path GLOB '/[0-9][0-9][0-9][0-9]/*' OR path GLOB '/da/[0-9][0-9][0-9][0-9]/*')";
 
+// Et besøg tæller først ved 10 sek. aktiv tid: link-forhåndsvisninger og bots giver mange besøg på 0 sek.
+const REAL_SECONDS = 10;
+const REAL = `seconds >= ${REAL_SECONDS}`;
+
 async function visitStats(env, days, from, week, prevWeekFrom) {
   const db = env.DB;
   const [daily, bySrc, issues, reads, prev] = await Promise.all([
-    db.prepare("SELECT day, COUNT(*) AS n, SUM(src = 'mail') AS mail FROM visits WHERE day >= ? GROUP BY day").bind(from).all(),
-    db.prepare("SELECT src, COUNT(*) AS n FROM visits WHERE day >= ? GROUP BY src ORDER BY n DESC").bind(from).all(),
-    db.prepare(`SELECT path, COUNT(*) AS n, AVG(CASE WHEN seconds >= 3 THEN seconds END) AS avg, AVG(scroll >= 90) AS done FROM visits WHERE day >= ? AND ${ISSUE_PATH} GROUP BY path ORDER BY n DESC LIMIT 15`).bind(from).all(),
+    db.prepare(`SELECT day, COUNT(*) AS n, SUM(src = 'mail') AS mail FROM visits WHERE day >= ? AND ${REAL} GROUP BY day`).bind(from).all(),
+    db.prepare(`SELECT src, SUM(${REAL}) AS n, COUNT(*) AS raw FROM visits WHERE day >= ? GROUP BY src ORDER BY n DESC, raw DESC`).bind(from).all(),
+    db.prepare(`SELECT path, COUNT(*) AS n, AVG(seconds) AS avg, AVG(scroll >= 90) AS done FROM visits WHERE day >= ? AND ${REAL} AND ${ISSUE_PATH} GROUP BY path ORDER BY n DESC LIMIT 15`).bind(from).all(),
     db.prepare(`SELECT seconds, scroll FROM visits WHERE day >= ? AND ${ISSUE_PATH} LIMIT 50000`).bind(from).all(),
-    db.prepare("SELECT COUNT(*) AS n FROM visits WHERE day >= ? AND day < ?").bind(prevWeekFrom, week).first(),
+    db.prepare(`SELECT COUNT(*) AS n FROM visits WHERE day >= ? AND day < ? AND ${REAL}`).bind(prevWeekFrom, week).first(),
   ]);
   const byDay = Object.fromEntries((daily.results || []).map(r => [r.day, r]));
   const series = days.map(day => ({ day, n: byDay[day]?.n || 0, mail: byDay[day]?.mail || 0 }));
   const issueRows = reads.results || [];
-  const engaged = issueRows.filter(r => r.seconds >= 3).map(r => r.seconds).sort((a, b) => a - b);
+  const real = issueRows.filter(r => r.seconds >= REAL_SECONDS);
+  const engaged = real.map(r => r.seconds).sort((a, b) => a - b);
   const median = engaged.length ? engaged[Math.floor(engaged.length / 2)] : null;
   return {
     series,
@@ -118,12 +123,13 @@ async function visitStats(env, days, from, week, prevWeekFrom) {
     total7: series.slice(-7).reduce((s, d) => s + d.n, 0),
     prev7: prev?.n || 0,
     mail30: series.reduce((s, d) => s + d.mail, 0),
-    bySrc: (bySrc.results || []).map(r => ({ src: r.src, n: r.n })),
-    issueVisits: issueRows.length,
+    bySrc: (bySrc.results || []).map(r => ({ src: r.src, n: r.n, raw: r.raw })),
+    raw30: (bySrc.results || []).reduce((s, r) => s + r.raw, 0),
+    issueVisits: real.length,
     avgSec: engaged.length ? Math.round(engaged.reduce((s, x) => s + x, 0) / engaged.length) : null,
     medianSec: median,
-    bounce: issueRows.length ? issueRows.filter(r => r.seconds < 3).length / issueRows.length : null,
-    completion: issueRows.length ? issueRows.filter(r => r.scroll >= 90).length / issueRows.length : null,
+    bounce: issueRows.length ? 1 - real.length / issueRows.length : null,
+    completion: real.length ? real.filter(r => r.scroll >= 90).length / real.length : null,
     issues: (issues.results || []).map(r => ({ path: r.path, n: r.n, avg: r.avg == null ? null : Math.round(r.avg), done: r.done })),
   };
 }
@@ -166,7 +172,7 @@ th { text-align:left; font-size:12px; color:var(--mist); font-weight:700; paddin
 td { padding:8px; border-bottom:1px solid var(--line); }
 td.num, th.num { text-align:right; }
 td a { color:var(--ink); }
-.hbar { display:grid; grid-template-columns: 90px 1fr 48px; gap:8px; align-items:center; margin:6px 0; font-size:14px; }
+.hbar { display:grid; grid-template-columns: 90px 1fr 72px; gap:8px; align-items:center; margin:6px 0; font-size:14px; }
 .hbar .track { height:10px; background:var(--line); border-radius:4px; overflow:hidden; }
 .hbar .fill { height:100%; background:var(--mark); border-radius:0 4px 4px 0; }
 .hbar .n { text-align:right; font-variant-numeric: tabular-nums; }
@@ -254,7 +260,7 @@ footer { margin-top:24px; }
   <div id="app"></div>
   <footer class="muted">
     Besøg tælles anonymt uden cookies: ingen IP, ingen personer, så det er besøg, ikke unikke læsere.
-    Læsetid = aktiv tid med siden synlig på udgavesider (besøg under 3 sek. tæller som "kiggede kun forbi").
+    Læsetid = aktiv tid med siden synlig på udgavesider (besøg under 10 sek. tæller ikke med i tallene; andelen af dem vises som "kiggede kun forbi", og tallet i parentes ved kilderne er alle besøg).
     Læst til ende = scrollet mindst 90 %. Tilmeldte = aktive kontakter i Resend (EN + DA). Seneste 30 dage, dansk tid.
   </footer>
   </section>
@@ -530,16 +536,16 @@ footer { margin-top:24px; }
       '<div class="kpis">' +
         kpi("Tilmeldte", s.total, "EN " + s.en.active + " · DA " + s.da.active + (s.en.unsubscribed + s.da.unsubscribed ? " · afmeldt " + (s.en.unsubscribed + s.da.unsubscribed) : "")) +
         kpi("Nye tilmeldte", "+" + s.new7, "seneste 7 dage · +" + s.new30 + " på 30 dage") +
-        kpi("Besøg", v.total7, "seneste 7 dage" + (trend == null ? "" : " · " + (trend >= 0 ? "+" : "") + trend + " % mod ugen før")) +
+        kpi("Besøg", v.total7, "mindst 10 sek., seneste 7 dage" + (trend == null ? "" : " · " + (trend >= 0 ? "+" : "") + trend + " % mod ugen før")) +
         kpi("Læsetid", clock(v.medianSec), "median pr. udgavebesøg · gns. " + dur(v.avgSec)) +
         kpi("Læst til ende", pct(v.completion), "af " + v.issueVisits + " udgavebesøg · kiggede kun forbi " + pct(v.bounce)) +
       "</div>" +
       '<div class="grid2">' +
-        '<div class="card"><h2>Besøg pr. dag</h2><div class="chart" id="c-visits"></div><div class="muted">' + v.total30 + " besøg på 30 dage, heraf " + v.mail30 + " fra mailen</div></div>" +
+        '<div class="card"><h2>Besøg pr. dag</h2><div class="chart" id="c-visits"></div><div class="muted">' + v.total30 + " besøg på mindst 10 sek. på 30 dage, heraf " + v.mail30 + " fra mailen (alle besøg: " + v.raw30 + ")</div></div>" +
         '<div class="card"><h2>Tilmeldte over tid</h2><div class="chart" id="c-subs"></div><div class="muted">Aktive tilmeldte efter tilmeldingsdato</div></div>' +
       "</div>" +
       '<div class="grid2" style="margin-top:12px">' +
-        '<div class="card"><h2>Hvor kommer besøgene fra</h2><div id="c-src"></div></div>' +
+        '<div class="card"><h2>Hvor kommer besøgene fra</h2><div id="c-src"></div><div class="muted">Besøg på mindst 10 sek. (alle besøg)</div></div>' +
         '<div class="card"><h2>Udgaver</h2><table><thead><tr><th>Udgave</th><th class="num">Besøg</th><th class="num">Gns. læsetid</th><th class="num">Til ende</th></tr></thead><tbody id="t-issues"></tbody></table></div>' +
       "</div>";
 
@@ -548,7 +554,7 @@ footer { margin-top:24px; }
 
     var maxSrc = Math.max(1, Math.max.apply(null, v.bySrc.map(function (r) { return r.n; }).concat([0])));
     document.getElementById("c-src").innerHTML = v.bySrc.length ? v.bySrc.map(function (r) {
-      return '<div class="hbar"><span>' + esc(SRC[r.src] || r.src) + '</span><div class="track"><div class="fill" style="width:' + Math.round(r.n / maxSrc * 100) + '%"></div></div><span class="n">' + r.n + "</span></div>";
+      return '<div class="hbar"><span>' + esc(SRC[r.src] || r.src) + '</span><div class="track"><div class="fill" style="width:' + Math.round(r.n / maxSrc * 100) + '%"></div></div><span class="n">' + r.n + ' <span class="muted">(' + r.raw + ")</span></span></div>";
     }).join("") : '<div class="muted">Ingen besøg endnu.</div>';
 
     document.getElementById("t-issues").innerHTML = v.issues.length ? v.issues.map(function (r) {
