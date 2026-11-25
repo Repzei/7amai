@@ -14,7 +14,8 @@ Detaljer i [[project-7amai-todo]] (afsnit UGEGRÆNSEN STOPPER UDGAVEN). Overskri
 
 ## 25/11 (fra marketing-mappen)
 - Udgaven sendt 07:09, opstart uden afvisning. Rettet i INSTRUCTIONS: Pillow altid via venv, ærlig grund når sikkerhedsfilteret stopper en historie (proteindesign blev stoppet 25/11).
-- Næste: TJEK 26/11 (billedet i første forsøg), Jespers svar om biologi-emner, 14-dages-kriteriet og dashboard-tal (måling 25/11 er ikke lavet; kræver dashboardet).
+- Jesper 25/11: biologi-emner ud (ja), 14 dage uden hul er LinkedIn-kriteriet (dag 1 = 25/11), måling via wrangler (ja). Målingen: få rigtige læsere, meget af "social"/Threads ligner bots; søgning på danske Explained-sider er lyspunktet (tal i to-do punkt 5).
+- Næste: TJEK 26/11 (billedet i første forsøg, intet filterstop), antal tilmeldte fra dashboardet, vælg næste skridt (forslag: flere danske Explained-sider, og 0-sekunders-besøg ud af dashboardet).
 
 ## 24/11 (fra marketing-mappen)
 - Sikkerhedsnettet virkede i første rigtige kørsel (U5d, afsendelse, ingen falsk alarm). `reset --hard` erstattet i INSTRUCTIONS.md. LinkedIn ikke gjort; Search Console-tal i to-do.

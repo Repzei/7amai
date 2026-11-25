@@ -26,7 +26,7 @@ Ingen udgave 14-16/11 og 23/11. Routine-log læst for 16/11 (udkast) og 23/11 (u
 - [x] FUND 24/11 + 25/11: systemets Pillow i skyen er i stykker (`import PIL` lykkes, `from PIL import Image` fejler, og pip tror, den er installeret). 25/11 rettet: INSTRUCTIONS U6 bruger altid `/tmp/og-venv`. Prøvet lokalt (Windows-venv), ikke i skyen. TJEK 26/11: billedet laves i første forsøg.
 - [x] TJEK 25/11 (routine-log læst): sendt 07:09, broadcast en ok (a94d399a), da = ingen tilmeldte, PR 42, U5d virker. Dag 1 uden hul i 14-dages-kriteriet (hvis Jesper siger ja).
 - [x] FUND 25/11: Opus 5.5's sikkerhedsfilter stoppede første udgave (lead om GPT-6-proteindesign); agenten skiftede historie, og kørslen faldt tilbage til Opus 5 og blev færdig. PR'ens kandidatliste skrev "uden for avisens område", ikke den rigtige grund. Rettet i U7: skriv "stoppet af sikkerhedsfilter".
-- [ ] Afventer Jesper: skal laboratorie-biologi (proteindesign, biosikkerhed) helt ud af udvælgelsen? Risiko: filteret stopper igen og kan koste en udgave.
+- [x] BESLUTTET 25/11 (Jesper: ja): laboratorie-biologi ud af udvælgelsen (INSTRUCTIONS U3). AI i sundhed for almindelige mennesker er stadig ok. TJEK fra 26/11: ingen filterstop i loggen.
 - [ ] Jesper overvejer Max i stedet for ekstra forbrug. Forbrugstal for lokale sessioner står i HQ-to-do'en (sky-rutiner ikke med).
   - 24/11 målt: 40 af 44 udgaver siden 12/10 (91 %), alle 4 huller (14-16/11, 23/11) = ugegrænsen. get_usage 25/11 ca. 20:40 UTC: uge 46 % efter ca. 62 timer (37 % af ugen), samme tempo = 100 % ca. lørdag 28/11 kl. 23 dansk tid. get_usage 24/11 ca. 15:14 UTC: uge 24 % efter 32 timer (19 % af ugen); samme tempo rammer 100 % ca. lørdag 28/11 kl. 22 dansk tid (lineært skøn), så 29/11 og 30/11 er i fare.
   - **BESLUTTET 24/11 (Jesper): "vi holder det lige på 85%"**: HQ's 85 %-regel er uændret (mit forslag om 80 % fravalgt).
@@ -51,7 +51,7 @@ Jesper 18/11: mailen var god, men for lang (ca. 700 ord), og man behøvede ikke 
 - [x] STYLE.md "Mailen": hver overskrift skal fortælle nyheden alene (ingen teasere), lead-`number_label` kort (ca. 12 ord, ikke håndhævet). INSTRUCTIONS A2, CLAUDE.md, roadmap, systemfanen (worker/stats) opdateret.
 - [x] Systemfanen deployet af Jesper 18/11.
 - [x] (tjekket 23/11: "Sendt"-commits 19-22/11 findes, udseendet i indbakken er ikke set af Claude) TJEK 19/11 efter 07:00: mailen sendt i det nye format (sent.log / Jespers indbakke). Ingen testmail sendt (Resend-nøglen findes kun i cloud); Jesper kan se den nu på https://7amai.com/mail/da/
-- [ ] Mål ca. 2/12 og 25/11: besøg fra "Mailen" (var 8 af 104 på 30 dage) og læsetid.
+- [ ] Mål igen ca. 2/12: besøg fra "Mailen". 25/11 målt: 0 besøg 18/11-25/11 (seneste 17/11; links med ?ref=mail er tjekket og rigtige). Før: 12 besøg 16/10-17/11. Meget få modtagere (3 tilmeldte 11/11), så tallet siger lidt.
 
 ## UDGAVESIDEN SOM MAILEN (2026-11-12, LIVE: 91d2134 + 252a6d5; side-session fra marketing)
 Jesper 12/11: siden var "kedelig og tung" og afspejlede ikke mailen; alle nye læsere (LinkedIn, Bluesky, Threads) lander på siden. Mockups (ægte 12/11, mail/nu/A/B/C): https://claude.ai/artifact/T42krNzgo1KX4jTqGyUkHq
@@ -67,7 +67,7 @@ Jesper 12/11: siden var "kedelig og tung" og afspejlede ikke mailen; alle nye l�
   - C: forsiden (`_includes/home.html`) med seneste udgave + "Dagen på 60 sekunder" + knap, derefter arkivet. Lexend (`--font-read`) på HELE sitet, ingen versaler og ingen kursiv nogen steder; logoet Schibsted Grotesk. Mailen er stadig Arial (mailprogrammer henter ikke skrifter).
   - `signup.html` kan stå flere gange på en side (`sid`, `compact`). Testet: 375 px + desktop, lys + mørk, EN + DA, 8/10 og 15/10 (2 historier, ingen midter-tilmelding), 11 andre sidetyper, alle formularer, ?ref=mail. Sitemap uændret (168), /card-test/ 404, mailen uændret.
 - [ ] Jesper ser det hele på sin telefon. Ikke rørt: mail-style.html (Rettelser i mailen) har stadig versaler.
-- [ ] Mål ca. 25/11: tilmeldinger fra udgavesiden (nu 3 formularer) mod før.
+- [ ] (25/11: tilmeldte ikke set, kræver dashboardet) Mål ca. 25/11: tilmeldinger fra udgavesiden (nu 3 formularer) mod før.
 
 ## VEJEN UD TIL LÆSERNE (analyse 2026-11-11, bestilt fra marketing; AFVENTER JESPERS VALG, intet bygget, STRATEGI uændret)
 Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11). Udgangspunkt: 95 besøg/30 d, 3 tilmeldte, Bluesky 2 besøg på ca. 15 opslag, Threads 5 på 2.
@@ -77,7 +77,7 @@ Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11
 - [x] 11/11 Jesper valgte A: "gainfully passer ikke på linked in det er et andet publikum" (LinkedIn bruges kun til 7am AI; én gang, ingen rutine, så 7am AI stadig passer sig selv). Tekster (opslag, personlig besked, fællesskabsopslag) skrevet i marketing-sessionen 11/11.
 - [ ] Jesper poster på LinkedIn + sender 20-30 beskeder. Udgangspunkt: 3 tilmeldte. Mål ca. 25/11 (sammen med skridt 5): tilmeldte DA/EN og besøg fra "Andre sociale medier" (LinkedIn havner dér).
   - 24/11: Jesper har IKKE postet eller sendt beskeder endnu. Målingen 25/11 kan derfor ikke vise lanceringen. "Andre sociale medier" på dashboardet er altså ikke LinkedIn-lanceringen.
-  - **BESLUTTET 24/11 (Jesper): LinkedIn-lanceringen VENTER**, til driften kører stabilt ("skal køre 100% når det bliver lanceret"). Foreslået kriterium (afventer ja): 14 dage i træk uden hul (25/11-8/12; dækker mandagene 30/11 og 7/12, hvor udkastet kører kl. 04:30, før ugekvoten nulstilles kl. 08:00).
+  - **BESLUTTET 24/11 (Jesper): LinkedIn-lanceringen VENTER**, til driften kører stabilt ("skal køre 100% når det bliver lanceret"). **Kriterium godkendt 25/11 (Jesper: "enig")**, dag 1 = 25/11, dag 14 = 8/12: 14 dage i træk uden hul (25/11-8/12; dækker mandagene 30/11 og 7/12, hvor udkastet kører kl. 04:30, før ugekvoten nulstilles kl. 08:00).
 
 ## ANTHROPIC-BALANCE (2026-11-11, commits 97ab0ae..fa92955; fundet i marketing-sessionens positionsanalyse, Jesper: "dette skal fixes")
 - Fund: 13 af 31 leads om Anthropic/Claude (5 af de seneste 6), 10/11 havde 3 Anthropic-hovedhistorier (Fable + IPO ikke samlet trods "samme firma"-reglen). Årsag: udkast-agenten ER Claude, og intet tog højde for interessekonflikten; Anthropic står også først i SOURCES og i specialisternes opgaver.
@@ -114,6 +114,8 @@ Skrevet i STRATEGI 7.1 + 8 + 9 + låste beslutninger, roadmap.json (ny fase "Næ
   - [ ] TJEK ca. 16/11: første rigtige statusskift. Fristen for Inkling 2 Small er 15/11, så routinen skal have sat `delivered` (med Official-kilde) eller `late`. Farven for `late` er stadig kun testet kunstigt.
   - [x] D4 LIVE 4/11 (b899fe2, Jesper: "ja gå live med den"): /shipped/ + /da/leveret/ uden noindex og i sitemap, link i sidefoden på alle sider + eget afsnit på /how-we-work/#shipped og /da/metode/#leveret. IKKE i menuen: den er fuld ved 375 px. Tjekket live i 375 px: ingen vandret scroll, alle 4 statusfarver i lys + mørk (delvist/forsinket/ikke endnu kun testet ved at ændre siden i browseren, ingen rigtige data endnu).
 - [ ] 5. Ca. 25/11: mål (Bluesky, ?ref=forward, Search Console) og vælg næste skridt med Jesper
+  - MÅLT 25/11 (D1 direkte via wrangler, kun læsning; tilmeldte IKKE set): besøg uden intern 28/10-10/11 = 34, 12/11-25/11 = 82, men stigningen er ikke flere læsere: (a) "social" 42 siden 11/11, 29 af dem 0 sekunder, 7 på mindst 10 sek., ingen nåede 90 % scroll; (b) Threads 15, 14 under 10 sek.; det ligner link-forhåndsvisninger/bots (kan ikke bevises, værten gemmes ikke); (c) 18/11 ligner vores egen test (mange direkte besøg på 60 sek. med 5-10 % scroll). Bluesky 2 i alt, forward 1, mailen 0 siden 18/11.
+  - Lyspunkt: søgning 6 besøg siden 11/11, 5 på mindst 10 sek., 3 læste til bunden, alle 3 på danske Explained-sider (api-key, gigawatt, recursive-self-improvement).
   - Search Console 24/11 (skærmbillede, 3 mdr., første visninger ca. 19/10): 7 klik, 691 eksponeringer, CTR 1 %, gns. placering 18,8, 64 forespørgsler. "7amai" 4 klik/75 eksp., "hvor meget er en gigawatt" 1/4, "anthropic ai speed increase" 0/109, "supply chain attack" 0/25, token 0/10, remote code execution 0/10, "hvad er en api nøgle" 0/9, "rekursiv selvforbedring", "hvad betyder gw", "kvantisering" 0/6 hver. Dashboard mangler stadig.
 
 ## MARKEDSPOSITION-ANALYSE (2026-10-28, bestilt af Jesper i marketing-sessionen; BESLUTTET 29/10, se ovenfor)
