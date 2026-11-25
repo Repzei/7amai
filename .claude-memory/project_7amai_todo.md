@@ -8,7 +8,7 @@ metadata:
   modified: 2026-11-24T14:55:50.355Z
 ---
 
-# 7am AI: to-do (START HER, opdateret 2026-10-27)
+# 7am AI: to-do (START HER, opdateret 2026-11-25)
 
 Beslutninger og strategi: [[project-7amai]] (fuld strategi i `MitProjekt/7amai/STRATEGI.md`). Drift og ID'er: [[project-7amai-infra]]. Faldgruber: [[feedback-7amai-lessons]].
 Gainfully har sin egen to-do ([[gainfully-todo-liste-status]]); bland dem ikke.
@@ -22,10 +22,13 @@ Ingen udgave 14-16/11 og 23/11. Routine-log læst for 16/11 (udkast) og 23/11 (u
 - [x] TJEK 24/11 (routine-log læst): sendt 07:08, broadcast en ok (Resend 7edf02d2), da = ingen tilmeldte (exit 0, som altid). Dobbeltspærren gav ingen falsk afvisning; at den afviser en rigtig dublet, er ikke prøvet i drift.
 - [x] 24/11: Jesper bekræfter, at der ikke kom en falsk alarm-mail.
 - [x] TJEK 24/11: U5d virker i skyen: 99cdfcd "(ikke kontrolleret)" 03:40 UTC, 0301ab9 03:44, PR 41 03:45, `control: pending` væk i begge filer.
-- [x] FUND 24/11 rettet (Jesper: ja): INSTRUCTIONS.md bruger nu `git fetch -q origin && git checkout -q -B main origin/main` i stedet for `reset --hard`, som auto mode afviste under AFSENDELSE 22/11 (agenten valgte selv checkout -B). Prøvet i scratch-repo: detached + gammel main ok, pull ok, afbryder ved lokal ændring. TJEK 25/11: udkast + afsendelse starter uden afvisning. Marketing ROUTINE.md:14 har samme mønster (beskyttet, kræver ny hash; tages ved næste regelændring).
-- [ ] FUND 24/11 (lille): systemets Pillow i skyen er i stykker, agenten brugte en venv (billedet blev OK). Evt. `pip install pillow` i miljøets setup-script.
+- [x] FUND 24/11 rettet (Jesper: ja): INSTRUCTIONS.md bruger nu `git fetch -q origin && git checkout -q -B main origin/main` i stedet for `reset --hard`, som auto mode afviste under AFSENDELSE 22/11 (agenten valgte selv checkout -B). Prøvet i scratch-repo: detached + gammel main ok, pull ok, afbryder ved lokal ændring. TJEKKET 25/11 (routine-log): begge startede uden afvisning. Marketing ROUTINE.md:14 har samme mønster (beskyttet, kræver ny hash; tages ved næste regelændring).
+- [x] FUND 24/11 + 25/11: systemets Pillow i skyen er i stykker (`import PIL` lykkes, `from PIL import Image` fejler, og pip tror, den er installeret). 25/11 rettet: INSTRUCTIONS U6 bruger altid `/tmp/og-venv`. Prøvet lokalt (Windows-venv), ikke i skyen. TJEK 26/11: billedet laves i første forsøg.
+- [x] TJEK 25/11 (routine-log læst): sendt 07:09, broadcast en ok (a94d399a), da = ingen tilmeldte, PR 42, U5d virker. Dag 1 uden hul i 14-dages-kriteriet (hvis Jesper siger ja).
+- [x] FUND 25/11: Opus 5.5's sikkerhedsfilter stoppede første udgave (lead om GPT-6-proteindesign); agenten skiftede historie, og kørslen faldt tilbage til Opus 5 og blev færdig. PR'ens kandidatliste skrev "uden for avisens område", ikke den rigtige grund. Rettet i U7: skriv "stoppet af sikkerhedsfilter".
+- [ ] Afventer Jesper: skal laboratorie-biologi (proteindesign, biosikkerhed) helt ud af udvælgelsen? Risiko: filteret stopper igen og kan koste en udgave.
 - [ ] Jesper overvejer Max i stedet for ekstra forbrug. Forbrugstal for lokale sessioner står i HQ-to-do'en (sky-rutiner ikke med).
-  - 24/11 målt: 40 af 44 udgaver siden 12/10 (91 %), alle 4 huller (14-16/11, 23/11) = ugegrænsen. get_usage 24/11 ca. 15:14 UTC: uge 24 % efter 32 timer (19 % af ugen); samme tempo rammer 100 % ca. lørdag 28/11 kl. 22 dansk tid (lineært skøn), så 29/11 og 30/11 er i fare.
+  - 24/11 målt: 40 af 44 udgaver siden 12/10 (91 %), alle 4 huller (14-16/11, 23/11) = ugegrænsen. get_usage 25/11 ca. 20:40 UTC: uge 46 % efter ca. 62 timer (37 % af ugen), samme tempo = 100 % ca. lørdag 28/11 kl. 23 dansk tid. get_usage 24/11 ca. 15:14 UTC: uge 24 % efter 32 timer (19 % af ugen); samme tempo rammer 100 % ca. lørdag 28/11 kl. 22 dansk tid (lineært skøn), så 29/11 og 30/11 er i fare.
   - **BESLUTTET 24/11 (Jesper): "vi holder det lige på 85%"**: HQ's 85 %-regel er uændret (mit forslag om 80 % fravalgt).
 
 ## LÆSBAR BAGGRUND (2026-11-18, LIVE 76c5a6d)

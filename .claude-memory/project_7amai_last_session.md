@@ -8,9 +8,13 @@ metadata:
   modified: 2026-11-23T21:11:10.985Z
 ---
 
-# 7am AI: handoff (seneste: 24. nov. 2026, tjek af sikkerhedsnettet)
+# 7am AI: handoff (seneste: 25. nov. 2026, tjek + to rettelser)
 
 Detaljer i [[project-7amai-todo]] (afsnit UGEGRÆNSEN STOPPER UDGAVEN). Overskriv denne fil ved hver sessions afslutning.
+
+## 25/11 (fra marketing-mappen)
+- Udgaven sendt 07:09, opstart uden afvisning. Rettet i INSTRUCTIONS: Pillow altid via venv, ærlig grund når sikkerhedsfilteret stopper en historie (proteindesign blev stoppet 25/11).
+- Næste: TJEK 26/11 (billedet i første forsøg), Jespers svar om biologi-emner, 14-dages-kriteriet og dashboard-tal (måling 25/11 er ikke lavet; kræver dashboardet).
 
 ## 24/11 (fra marketing-mappen)
 - Sikkerhedsnettet virkede i første rigtige kørsel (U5d, afsendelse, ingen falsk alarm). `reset --hard` erstattet i INSTRUCTIONS.md. LinkedIn ikke gjort; Search Console-tal i to-do.
