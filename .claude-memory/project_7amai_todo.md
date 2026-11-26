@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-11-26T12:24:36.991Z
+  modified: 2026-11-26T12:33:50.849Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-11-25)
@@ -117,7 +117,8 @@ Skrevet i STRATEGI 7.1 + 8 + 9 + låste beslutninger, roadmap.json (ny fase "Næ
   - MÅLT 25/11 (D1 direkte via wrangler, kun læsning; tilmeldte IKKE set): besøg uden intern 28/10-10/11 = 34, 12/11-25/11 = 82, men stigningen er ikke flere læsere: (a) "social" 42 siden 11/11, 29 af dem 0 sekunder, 7 på mindst 10 sek., ingen nåede 90 % scroll; (b) Threads 15, 14 under 10 sek.; det ligner link-forhåndsvisninger/bots (kan ikke bevises, værten gemmes ikke); (c) 18/11 ligner vores egen test (mange direkte besøg på 60 sek. med 5-10 % scroll). Bluesky 2 i alt, forward 1, mailen 0 siden 18/11.
   - [x] 25/11 (Jesper: ja): dashboardet (worker/stats) tæller kun besøg på mindst 10 sek. (Besøg, graf, kilder, udgaver, læsetid, læst til ende; "kiggede kun forbi" = under 10 sek., før 3). Alle besøg står i parentes ved kilderne. Testet lokalt med de rigtige rækker, desktop + 375 px. [x] Jesper deployede worker/stats 26/11 (version 9291af44). Nye tal kan ikke sammenlignes med gamle skærmbilleder.
   - Lyspunkt: søgning 6 besøg siden 11/11, 5 på mindst 10 sek., 3 læste til bunden, alle 3 på danske Explained-sider (api-key, gigawatt, recursive-self-improvement).
-  - Search Console 24/11 (skærmbillede, 3 mdr., første visninger ca. 19/10): 7 klik, 691 eksponeringer, CTR 1 %, gns. placering 18,8, 64 forespørgsler. "7amai" 4 klik/75 eksp., "hvor meget er en gigawatt" 1/4, "anthropic ai speed increase" 0/109, "supply chain attack" 0/25, token 0/10, remote code execution 0/10, "hvad er en api nøgle" 0/9, "rekursiv selvforbedring", "hvad betyder gw", "kvantisering" 0/6 hver. Dashboard mangler stadig.
+  - Search Console 24/11 (skærmbillede, 3 mdr., første visninger ca. 19/10): 7 klik, 691 eksponeringer, CTR 1 %, gns. placering 18,8, 64 forespørgsler. "7amai" 4 klik/75 eksp., "hvor meget er en gigawatt" 1/4, "anthropic ai speed increase" 0/109, "supply chain attack" 0/25, token 0/10, remote code execution 0/10, "hvad er en api nøgle" 0/9, "rekursiv selvforbedring", "hvad betyder gw", "kvantisering" 0/6 hver.
+  - [x] 26/11 NÆSTE SKRIDT VALGT (Jesper: "ja gør det"): dansk søgning via Explained. 5 nye begreber EN+DA (3ec253f): data-center (17 danske udgaver nævner det), large-language-model, fine-tuning, eu-ai-act, agi. Danske titler = søgespørgsmål. eu-ai-act-tidslinjen tjekket mod Kommissionens Service Desk 26/11 (2/12 2026 nyt deepfake-forbud, højrisiko Annex III 2/12 2027, Annex I 2/8 2028); siden skal tjekkes igen, hvis datoer flyttes. Mål i Search Console ca. 10/12: visninger/klik på de 5 sider. Virker det, så flere i samme stil (fx inferens, hallucination, RAG).
 
 ## MARKEDSPOSITION-ANALYSE (2026-10-28, bestilt af Jesper i marketing-sessionen; BESLUTTET 29/10, se ovenfor)
 Artifact: https://claude.ai/artifact/P2yq6Z2SueV2gaT6qXikCE (kilder hentet 28/10).
