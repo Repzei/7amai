@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 357a3ff8-508a-4843-b7a6-d890875d466e
-  modified: 2026-11-24T14:55:50.355Z
+  modified: 2026-11-26T12:24:36.991Z
 ---
 
 # 7am AI: to-do (START HER, opdateret 2026-11-25)
@@ -67,7 +67,7 @@ Jesper 12/11: siden var "kedelig og tung" og afspejlede ikke mailen; alle nye l�
   - C: forsiden (`_includes/home.html`) med seneste udgave + "Dagen på 60 sekunder" + knap, derefter arkivet. Lexend (`--font-read`) på HELE sitet, ingen versaler og ingen kursiv nogen steder; logoet Schibsted Grotesk. Mailen er stadig Arial (mailprogrammer henter ikke skrifter).
   - `signup.html` kan stå flere gange på en side (`sid`, `compact`). Testet: 375 px + desktop, lys + mørk, EN + DA, 8/10 og 15/10 (2 historier, ingen midter-tilmelding), 11 andre sidetyper, alle formularer, ?ref=mail. Sitemap uændret (168), /card-test/ 404, mailen uændret.
 - [ ] Jesper ser det hele på sin telefon. Ikke rørt: mail-style.html (Rettelser i mailen) har stadig versaler.
-- [ ] (25/11: tilmeldte ikke set, kræver dashboardet) Mål ca. 25/11: tilmeldinger fra udgavesiden (nu 3 formularer) mod før.
+- [x] Målt 26/11 (Jesper, dashboard): 3 tilmeldte (EN 3, DA 0, 1 afmeldt). Samme som 11/11: de 3 formularer på udgavesiden og LinkedIn-skridtet har ikke givet nye tilmeldinger endnu. Næste måling sammen med mailen ca. 2/12.
 
 ## VEJEN UD TIL LÆSERNE (analyse 2026-11-11, bestilt fra marketing; AFVENTER JESPERS VALG, intet bygget, STRATEGI uændret)
 Artifact: https://claude.ai/artifact/BrF7xh2FdE8YiBuyUmN8tp (kilder hentet 11/11). Udgangspunkt: 95 besøg/30 d, 3 tilmeldte, Bluesky 2 besøg på ca. 15 opslag, Threads 5 på 2.
