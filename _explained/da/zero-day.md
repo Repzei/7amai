@@ -16,10 +16,10 @@ En zero-day er en svaghed i software eller hardware, som de, der har lavet den, 
 
 > **Tænk på det sådan her:** En zero-day er et knust vindue bag i en butik, som ejeren aldrig har set. En tyv, der finder det først, kan komme ind, og ingen lås på hoveddøren hjælper.
 
-De fleste angreb bruger kendte huller. Dem findes der allerede en rettelse til, og angrebet virker kun på systemer, der ikke har installeret den. Derfor beskytter det dig mod de fleste angreb at opdatere din telefon og computer.
+Mange angreb bruger kendte huller. Dem findes der allerede en rettelse til, og angrebet virker kun på systemer, der ikke har installeret den. Derfor beskytter det dig mod mange angreb at opdatere din telefon og computer.
 
 En zero-day er anderledes, for der findes ingen rettelse endnu. Når udviklerne hører om hullet, kan de skrive en rettelse. Fra da af er det et kendt hul, og kapløbet handler om, hvem der når at installere rettelsen.
 
 Før tog det dygtige folk lang tid at finde zero-days. Derfor er de værdifulde, både for sikkerhedsforskere, der melder dem, og for angribere, der bruger dem. Nu hjælper AI-værktøjer med at lede på begge sider.
 
-**Hvad betyder det for dig:** Du kan ikke selv lukke en zero-day. Det, der hjælper, er at have mindre udsat: færre tjenester åbne mod internettet, login foran resten og opdateringer installeret hurtigt, når der kommer en rettelse.
+**Hvad betyder det for dig:** Du kan ikke selv lukke en zero-day. Det, der hjælper, er at udsætte mindre. Hav færre tjenester åbne mod internettet, sæt login foran resten, og opdatér hurtigt, når der kommer en rettelse.
