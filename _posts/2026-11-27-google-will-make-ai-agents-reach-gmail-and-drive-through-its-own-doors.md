@@ -3,8 +3,7 @@ title: "Google will make AI agents reach Gmail and Drive through its own doors"
 summary: "Google's new terms say AI agents must use its own MCP servers to reach Gmail, Drive and Calendar, and agents that skip them get a small quota from 1 February 2027. Also: Nvidia pauses servers to Southeast Asia, ChatGPT gets one shared limit, prompts that may have gone to ByteDance, llama.cpp 1.1, and bias tests that miss refusals."
 date: 2026-11-27 07:00:00 +0100
 reviewed: false
-checked: false
-control: pending
+checked: true
 minutes: 7
 explained: { main: "api", from: 1, more: ["mcp", "zero-data-retention"] }
 today:
@@ -15,10 +14,10 @@ today:
 other_lang_url: /da/2026/11/27/
 items:
   - { n: 1, anchor: "workspace-agents-mcp", signal: big, tracks: [build, general], min: 2, source: official, number: "1 February 2027", number_label: "when agents that skip Google's MCP servers get a small quota", topic: agent, why: "Agents get their own metered entrance to your inbox, so Google can see them, count them and charge for them.", do: "If your tool lets an agent read Gmail, Drive or Calendar, move it to Google's MCP servers before 1 February 2027.", steps: { title: "What changes for an agent", list: ["It must reach Workspace through Google's MCP servers", "Free use stops at 5,000 requests a day", "From 1 February 2027, direct API calls get the small quota", "Paid MCP use for Gmail, Calendar and Drive is billed from 1 April 2027"] } }
-  - { n: 2, anchor: "nvidia-southeast-asia-sp", signal: worth, tracks: [general], min: 1.5, source: reported, number: "24%", number_label: "of China's AI computing power, from data centers like these", topic: chips, why: "Rules about who may use a chip now decide where AI computing power can be built, and that reaches the price of renting it." }
+  - { n: 2, anchor: "nvidia-southeast-asia-sp", signal: worth, tracks: [general], min: 1.5, source: reported, number: "24%", number_label: "of China's AI computing power, from remote data centers like these", topic: chips, why: "Export rules now decide where AI servers can go, and a lower Nvidia rating could make data centers dearer to fund." }
   - { n: 3, anchor: "chatgpt-shared-limit", signal: worth, tracks: [general], min: 1, source: official, topic: price, why: "Chats and agent tasks now draw from one pot, so heavy agent use can leave less room for chatting." }
   - { n: 4, anchor: "openrouter-ark-routing", signal: worth, tracks: [build, general, europe], min: 1.5, source: official, number: "16", number_label: "Novita endpoints removed from OpenRouter", topic: security, why: "Your prompt can pass through companies you never chose, and a privacy label only holds if every one of them keeps it." }
-  - { n: 5, anchor: "llama-cpp-1-1", signal: worth, tracks: [build, europe], min: 1.5, source: official, topic: local, why: "Talking to a model on your own machine now takes one free program, not a stack of tools.", do: "Update to llama.cpp 1.1 and try the new Llama Chat page." }
+  - { n: 5, anchor: "llama-cpp-1-1", signal: worth, tracks: [build, europe], min: 1, source: official, topic: local, why: "Talking to a model on your own machine now takes one free program, not a stack of tools.", do: "Update to llama.cpp 1.1 and try the new Llama Chat page." }
   - { n: 6, anchor: "refusal-not-scored", signal: worth, tracks: [build, general], min: 1.5, source: official, number: "2.15 times", number_label: "as many refusals for prompts about North Koreans as about Americans", topic: research, why: "A refusal is also an answer, and a bias test that throws refusals away cannot see who gets turned away." }
 ---
 
@@ -28,11 +27,11 @@ items:
 
 <p class="short"><span>The short version</span>Google's new terms say AI agents must use its own MCP servers to reach Gmail, Drive and other Workspace apps. From 1 February 2027, agents that call Google's normal APIs directly get only a small free quota.</p>
 
-AI assistants that sort your email or find a file in Drive often use Google's APIs (see Explained below). Every other app uses the same entrances, so Google could not easily tell an agent from a calendar app.
+AI assistants that sort your email or find a file in Drive often use Google's APIs (see Explained below). To Google, such an agent could look like any other app.
 
 That changed on Tuesday. Google added an "AI Tools Addendum" to its Workspace terms. A tool that "is or is driven by an AI Agent" must use a Google MCP server, and it must not hide what it is. MCP is the standard way for an assistant to use outside tools. Google's MCP servers for Gmail, Drive, Docs, Sheets, Calendar and other apps are now generally available.
 
-There is a meter attached. The free tier allows 5,000 requests a day, per project and per app. From 1 February 2027, agents that call the normal APIs directly are held to that free quota. From 1 April 2027, paid MCP use for Gmail, Calendar and Drive is billed from the first request.
+There is a meter attached. The free tier allows 5,000 requests a day, per project and per product. From 1 February 2027, agents that call the normal APIs directly are held to that free quota. From 1 April 2027, paid MCP use for Gmail, Calendar and Drive is billed from the first request.
 
 Builders also may not train models on your data, or keep it after you remove the tool.
 
@@ -47,7 +46,7 @@ Sources: [workspace.google.com](https://workspace.google.com/terms/ai-tools) · 
 
 ### 2. Nvidia reportedly pauses servers to Southeast Asia, and S&P may cut its rating {#nvidia-southeast-asia-sp}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">General</span><span class="track">1½ min</span></p>
-<div class="number"><b>24%</b><span>of China's AI computing power, from data centers like these</span></div>
+<div class="number"><b>24%</b><span>of China's AI computing power, from remote data centers like these</span></div>
 
 <p class="short"><span>The short version</span>Nvidia has told partners to pause server shipments to four Southeast Asian countries, the Wall Street Journal reports. Separately, S&P is weighing a cut to Nvidia's credit rating.</p>
 
@@ -56,14 +55,14 @@ On Tuesday we wrote that Jensen Huang was back as Nvidia's chief. Since then, tw
 #### <span>1 of 2</span> A pause for four countries
 Nvidia told partners such as Dell and Super Micro to stop server shipments to Malaysia, Singapore, Thailand and Indonesia. It is checking whether its partners there follow US export rules. No end date was given.
 
-The reason is a loophole. Chinese firms reportedly used Nvidia chips from data centers in these countries over the internet. The think tank Institute for Progress estimates that such data centers supply 24% of China's AI computing power. The US closed the loophole earlier this month.
+The reason is a loophole. Chinese firms reportedly used Nvidia chips from data centers in these countries over the internet. The think tank Institute for Progress estimates that remote data centers like these supply about 24% of China's AI computing power. The US closed the loophole earlier this month.
 
 #### <span>2 of 2</span> A possible lower rating
-S&P is reviewing Nvidia's credit rating, which could drop from AA to AA-. It cites "weak executive oversight and lack of succession planning" after Huang's exit and return. Nvidia has promised to guarantee 25% of the loans in a large financing plan for AI data centers.
+S&P is reviewing Nvidia's credit rating, which could drop from AA to AA-. It cites "weak executive oversight and lack of succession planning" after Huang's exit and return.
 
-The catch: both reports come through TechCrunch, and Nvidia did not comment on the pause.
+The catch: the pause comes from the Wall Street Journal via TechCrunch, and the report has no comment from Nvidia.
 
-<div class="why"><b>Why it matters</b><p>A chip is only useful where it is allowed to run. Export rules now decide where AI data centers get built, and a weaker Nvidia guarantee makes the loans behind them dearer. Both end up in what it costs to rent AI computing power.</p></div>
+<div class="why"><b>Why it matters</b><p>A chip is only useful where it is allowed to run. Export rules now decide where Nvidia's servers can go. And Nvidia backs loans for firms that build AI data centers, so a lower rating would likely make their borrowing dearer, TechCrunch writes.</p></div>
 
 Sources: [techcrunch.com (pause)](https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/) · <span class="tag tag-reported">Reported</span> · [techcrunch.com (S&P)](https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks/) · <span class="tag tag-reported">Reported</span>
 {: .sources}
@@ -77,7 +76,7 @@ A paid ChatGPT plan has limits, but most people never see them. That may change 
 
 OpenAI's help page says the allowance will be shared across ChatGPT and Codex, its coding agent, on the Plus, Pro and Business plans. It starts in December, and a small group of Pro users has it already. Chats with the Instant model will not count.
 
-OpenAI says most users will not see more frequent resets. But "a small fraction of its heaviest users may hit their limits sooner," a spokesperson told TechCrunch. Some subscribers worry they will get less use of the stronger reasoning models for the same price. Anthropic made a similar merger in September.
+OpenAI says most users will not see more frequent resets. But a spokesperson told TechCrunch that a small share of the heaviest users may hit their limits sooner. Some subscribers worry they will get less use of the stronger reasoning models for the same price. Anthropic made a similar merger in September.
 
 <div class="why"><b>Why it matters</b><p>One shared meter is like a family sharing one phone data plan: the one who streams video decides how much is left for the rest. Here, long agent tasks and quick chats draw from the same pot.</p></div>
 
@@ -105,8 +104,8 @@ Sources: [kendell.dev](https://kendell.dev/blog/arkwrapper/) · <span class="tag
 
 ## Open source & local AI
 
-### llama.cpp 1.1 adds a voice chat app and a public speed board for AMD {#llama-cpp-1-1}
-<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1½ min</span></p>
+### llama.cpp 1.1 lets you talk to its chat page and adds an AMD speed board {#llama-cpp-1-1}
+<p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1 min</span></p>
 
 <p class="short"><span>The short version</span>llama.cpp, the free engine behind many local AI apps, now has a chat page you can talk to. Its makers also launched a dashboard that tracks its speed on AMD chips.</p>
 
@@ -114,7 +113,7 @@ Version 1.1.0 came out on Thursday. Its built-in web page is now called Llama Ch
 
 The same day, the team launched a public dashboard on Hugging Face. Each week it tests speed on two AMD Radeon chips. It measures how fast a model reads 512 tokens (word pieces) of input and writes 128.
 
-The catch: the dashboard covers only two AMD chips, and developers using the old batch interface must update their code.
+The catch: the dashboard covers only two AMD chips, and developers are told to move off the old batch interface.
 
 <div class="why"><b>Why it matters</b><p>Talking to a model on your own machine now takes one free program, not a stack of tools. And AMD buyers get measured numbers instead of forum guesses.</p></div>
 
@@ -135,7 +134,7 @@ Before a model is released, testers often check its answers for bias. An early s
 
 Afifah Kashif, Malak Sadek, Jin Huang and Hatice Gunes asked what that hides. They ran seven bias tools on two sets of 360 answers from three models. Three tools count loaded words, and four use another AI model as judge.
 
-One model refused prompts about North Koreans 2.15 times as often as prompts about Americans. None of the seven tools caught it. One word list seemed to, but only because the "can" in "I can't" matched an entry.
+On one kind of prompt, one model refused to answer about North Koreans 2.15 times as often as about Americans. None of the seven tools caught it. One word list seemed to, but only because the "can" in "I can't" matched an entry.
 
 The catch: the study is small, and it is a preprint.
 

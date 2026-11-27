@@ -3,8 +3,7 @@ title: "Google tvinger AI-agenter til at bruge sine egne døre ind til Gmail og 
 summary: "Googles nye vilkår siger, at AI-agenter skal bruge Googles egne MCP-servere til Gmail, Drive og Kalender, og agenter, der går udenom, får en lille kvote fra 1. februar 2027. Desuden: Nvidia sætter servere til Sydøstasien på pause, ChatGPT får én fælles grænse, prompts, der måske er endt hos ByteDance, llama.cpp 1.1 og bias-tests, der overser afvisninger."
 date: 2026-11-27 07:00:00 +0100
 reviewed: false
-checked: false
-control: pending
+checked: true
 minutes: 7
 explained: { main: "api", from: 1, more: ["mcp", "zero-data-retention"] }
 today:
@@ -15,7 +14,7 @@ today:
 other_lang_url: /2026/11/27/
 items:
   - { n: 1, anchor: "workspace-agents-mcp", signal: big, tracks: [build, general], min: 1.5, source: official, number: "1. februar 2027", number_label: "når agenter uden om Googles MCP-servere får en lille kvote", topic: agent, why: "Agenter får deres egen indgang med måler til din indbakke, så Google kan se dem, tælle dem og tage betaling.", do: "Lader dit værktøj en agent læse Gmail, Drive eller Kalender, så flyt det over på Googles MCP-servere før 1. februar 2027.", steps: { title: "Det ændrer sig for en agent", list: ["Den skal bruge Googles MCP-servere til Workspace", "Gratis brug stopper ved 5.000 kald om dagen", "Fra 1. februar 2027 får direkte API-kald den lille kvote", "Betalt MCP-brug af Gmail, Kalender og Drive koster fra 1. april 2027"] } }
-  - { n: 2, anchor: "nvidia-southeast-asia-sp", signal: worth, tracks: [general], min: 1.5, source: reported, number: "24 %", number_label: "af Kinas AI-regnekraft kommer fra datacentre som disse", topic: chips, why: "Regler for, hvem der må bruge en chip, afgør nu, hvor AI-regnekraft bygges, og det når helt ud i prisen for at leje den." }
+  - { n: 2, anchor: "nvidia-southeast-asia-sp", signal: worth, tracks: [general], min: 1.5, source: reported, number: "24 %", number_label: "af Kinas AI-regnekraft kommer fra fjerne datacentre som disse", topic: chips, why: "Eksportregler afgør nu, hvor AI-servere må sendes hen, og en lavere rating til Nvidia kan gøre datacentre dyrere at finansiere." }
   - { n: 3, anchor: "chatgpt-shared-limit", signal: worth, tracks: [general], min: 1, source: official, topic: price, why: "Chat og agentopgaver trækker nu fra samme pulje, så meget agentbrug kan give mindre plads til at chatte." }
   - { n: 4, anchor: "openrouter-ark-routing", signal: worth, tracks: [build, general, europe], min: 1.5, source: official, number: "16", number_label: "endpoints fra Novita er fjernet fra OpenRouter", topic: security, why: "Din prompt kan komme forbi firmaer, du aldrig har valgt, og et privatlivsmærke holder kun, hvis de alle overholder det." }
   - { n: 5, anchor: "llama-cpp-1-1", signal: worth, tracks: [build, europe], min: 1, source: official, topic: local, why: "At tale med en model på din egen maskine kræver nu ét gratis program, ikke en stak værktøjer.", do: "Opdatér til llama.cpp 1.1, og prøv den nye side Llama Chat." }
@@ -28,11 +27,11 @@ items:
 
 <p class="short"><span>Kort fortalt</span>Googles nye vilkår siger, at AI-agenter skal bruge Googles egne MCP-servere til Gmail, Drive og de andre Workspace-apps. Fra 1. februar 2027 får agenter, der kalder Googles almindelige API'er direkte, kun en lille gratis kvote.</p>
 
-AI-assistenter, der sorterer din mail eller finder en fil i Drive, bruger ofte Googles API'er (se Forklaret nedenfor). Alle andre apps bruger de samme indgange, så Google kunne ikke let skelne en agent fra en kalender-app.
+AI-assistenter, der sorterer din mail eller finder en fil i Drive, bruger ofte Googles API'er (se Forklaret nedenfor). For Google kunne sådan en agent ligne enhver anden app.
 
 Det ændrede sig i tirsdags. Google føjede et "AI Tools Addendum" til sine Workspace-vilkår. Et værktøj, der er eller styres af en AI-agent, skal bruge en MCP-server fra Google, og det må ikke skjule, hvad det er. MCP er standarden for, hvordan en assistent bruger værktøjer udefra. Googles MCP-servere til Gmail, Drive, Docs, Sheets, Kalender og andre apps er nu klar til alle.
 
-Der følger en måler med. Det gratis niveau giver 5.000 kald om dagen pr. projekt og pr. app. Fra 1. februar 2027 bliver agenter, der kalder de almindelige API'er direkte, holdt til den gratis kvote. Fra 1. april 2027 koster betalt MCP-brug af Gmail, Kalender og Drive fra første kald.
+Der følger en måler med. Det gratis niveau giver 5.000 kald om dagen pr. projekt og pr. produkt. Fra 1. februar 2027 bliver agenter, der kalder de almindelige API'er direkte, holdt til den gratis kvote. Fra 1. april 2027 koster betalt MCP-brug af Gmail, Kalender og Drive fra første kald.
 
 Udviklerne må heller ikke træne modeller på dine data eller beholde dem, når du fjerner værktøjet.
 
@@ -47,7 +46,7 @@ Kilder: [workspace.google.com](https://workspace.google.com/terms/ai-tools) · <
 
 ### 2. Nvidia sætter efter sigende servere til Sydøstasien på pause, og S&P kan sænke ratingen {#nvidia-southeast-asia-sp}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Generelt</span><span class="track">1½ min</span></p>
-<div class="number"><b>24 %</b><span>af Kinas AI-regnekraft kommer fra datacentre som disse</span></div>
+<div class="number"><b>24 %</b><span>af Kinas AI-regnekraft kommer fra fjerne datacentre som disse</span></div>
 
 <p class="short"><span>Kort fortalt</span>Nvidia har bedt sine partnere stoppe leverancer af servere til fire lande i Sydøstasien, skriver Wall Street Journal. Samtidig overvejer S&P at sænke Nvidias kreditvurdering.</p>
 
@@ -56,14 +55,14 @@ I tirsdags skrev vi, at Jensen Huang var tilbage som Nvidias chef. Siden er der 
 #### <span>1 af 2</span> Pause for fire lande
 Nvidia har bedt partnere som Dell og Super Micro om at stoppe leverancer af servere til Malaysia, Singapore, Thailand og Indonesien. Firmaet undersøger, om partnerne dér følger de amerikanske eksportregler. Der er ingen slutdato.
 
-Årsagen er et smuthul. Kinesiske firmaer har efter sigende brugt Nvidia-chips i datacentre i de lande over nettet. Tænketanken Institute for Progress anslår, at den slags datacentre leverer 24 % af Kinas AI-regnekraft. USA lukkede smuthullet tidligere på måneden.
+Årsagen er et smuthul. Kinesiske firmaer har efter sigende brugt Nvidia-chips i datacentre i de lande over nettet. Tænketanken Institute for Progress anslår, at fjerne datacentre som disse leverer omkring 24 % af Kinas AI-regnekraft. USA lukkede smuthullet tidligere på måneden.
 
 #### <span>2 af 2</span> Måske en lavere rating
-S&P gennemgår Nvidias kreditvurdering, som kan falde fra AA til AA-. Bureauet peger på svagt tilsyn med ledelsen og manglende plan for en efterfølger efter Huangs exit og comeback. Nvidia har lovet at garantere for 25 % af lånene i en stor finansieringsplan for AI-datacentre.
+S&P gennemgår Nvidias kreditvurdering, som kan falde fra AA til AA-. Bureauet peger på svagt tilsyn med ledelsen og manglende plan for en efterfølger efter Huangs afgang og tilbagevenden.
 
-Fangsten: begge historier kommer via TechCrunch, og Nvidia har ikke kommenteret pausen.
+Fangsten: pausen kommer fra Wall Street Journal via TechCrunch, og artiklen har ingen kommentar fra Nvidia.
 
-<div class="why"><b>Derfor er det vigtigt</b><p>En chip er kun nyttig der, hvor den må køre. Eksportregler afgør nu, hvor AI-datacentre bliver bygget, og en svagere garanti fra Nvidia gør lånene bag dem dyrere. Begge dele ender i prisen for at leje AI-regnekraft.</p></div>
+<div class="why"><b>Derfor er det vigtigt</b><p>En chip er kun nyttig der, hvor den må køre. Eksportregler afgør nu, hvor Nvidias servere må sendes hen. Og Nvidia stiller sikkerhed for lån til firmaer, der bygger AI-datacentre, så en lavere rating vil sandsynligvis gøre deres lån dyrere, skriver TechCrunch.</p></div>
 
 Kilder: [techcrunch.com (pause)](https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/) · <span class="tag tag-reported">Rapporteret</span> · [techcrunch.com (S&P)](https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks/) · <span class="tag tag-reported">Rapporteret</span>
 {: .sources}
@@ -77,7 +76,7 @@ Et betalt ChatGPT-abonnement har grænser, men de fleste ser dem aldrig. Det kan
 
 OpenAIs hjælpeside siger, at puljen bliver delt mellem ChatGPT og Codex, firmaets kodeagent, på Plus, Pro og Business. Det starter i december, og en lille gruppe Pro-brugere har det allerede. Samtaler med Instant-modellen tæller ikke med.
 
-OpenAI siger, at de fleste ikke vil opleve, at grænsen nulstilles oftere. Men "en lille del af de tungeste brugere kan ramme grænsen hurtigere", sagde en talsperson til TechCrunch. Nogle abonnenter frygter, at de får mindre adgang til de stærkere ræsonnerende modeller for samme pris. Anthropic lavede en lignende sammenlægning i september.
+OpenAI siger, at de fleste ikke vil opleve, at grænsen nulstilles oftere. Men en talsperson sagde til TechCrunch, at en lille del af de tungeste brugere kan ramme grænsen hurtigere. Nogle abonnenter frygter, at de får mindre adgang til de stærkere ræsonnerende modeller for samme pris. Anthropic lavede en lignende sammenlægning i september.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>Én fælles måler svarer til en familie, der deler ét mobilabonnement med data: den, der streamer video, bestemmer, hvor meget der er tilbage til resten. Her trækker lange agentopgaver og hurtige chats fra den samme pulje.</p></div>
 
@@ -105,7 +104,7 @@ Kilder: [kendell.dev](https://kendell.dev/blog/arkwrapper/) · <span class="tag 
 
 ## Open source og lokal AI
 
-### llama.cpp 1.1 får en chat, man kan tale til, og en offentlig fartmåler for AMD {#llama-cpp-1-1}
+### llama.cpp 1.1 lader dig tale til chatsiden og får en fartmåler for AMD {#llama-cpp-1-1}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1 min</span></p>
 
 <p class="short"><span>Kort fortalt</span>llama.cpp, den gratis motor bag mange lokale AI-apps, har nu en chatside, du kan tale til. Holdet bag har også lanceret et dashboard, der måler farten på AMD-chips.</p>
@@ -114,7 +113,7 @@ Version 1.1.0 kom i torsdags. Den indbyggede webside hedder nu Llama Chat. Du ka
 
 Samme dag lancerede holdet et offentligt dashboard på Hugging Face. Hver uge tester det farten på to AMD Radeon-chips. Det måler, hvor hurtigt en model læser 512 tokens (orddele) og skriver 128.
 
-Fangsten: dashboardet dækker kun to AMD-chips, og udviklere, der bruger den gamle batch-grænseflade, skal opdatere deres kode.
+Fangsten: dashboardet dækker kun to AMD-chips, og udviklere bliver bedt om at gå væk fra den gamle batch-grænseflade.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>At tale med en model på din egen maskine kræver nu ét gratis program, ikke en stak værktøjer. Og folk, der køber AMD, får målte tal i stedet for gæt fra fora.</p></div>
 
@@ -135,7 +134,7 @@ Før en model bliver udgivet, tjekker testere ofte dens svar for bias. Et tidlig
 
 Afifah Kashif, Malak Sadek, Jin Huang og Hatice Gunes spurgte, hvad det skjuler. De kørte syv bias-værktøjer på to sæt med 360 svar fra tre modeller. Tre af værktøjerne tæller ladede ord, og fire bruger en anden AI-model som dommer.
 
-Én model afviste prompts om nordkoreanere 2,15 gange så ofte som prompts om amerikanere. Ingen af de syv værktøjer opdagede det. En ordliste så ud til at gøre det, men kun fordi "can" i "I can't" stod på listen.
+Ved én type prompt afviste én model at svare om nordkoreanere 2,15 gange så ofte som om amerikanere. Ingen af de syv værktøjer opdagede det. En ordliste så ud til at gøre det, men kun fordi "can" i "I can't" stod på listen.
 
 Fangsten: undersøgelsen er lille, og artiklen er ikke fagfællebedømt endnu.
 

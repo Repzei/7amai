@@ -18,7 +18,7 @@ Et API, en forkortelse for application programming interface, er et fast sæt re
 
 I praksis sender et program en kort forespørgsel over nettet, fx "giv mig de ti nyeste mails", i et format, tjenesten har beskrevet. Tjenesten tjekker, hvem der spørger, ofte med en API-nøgle, og sender et svar tilbage, som programmet kan læse. Mozillas webdokumentation beskriver et API som en kontrakt mellem tjenesten og den software, der bruger den.
 
-De fleste apps, du bruger, er bygget på andre firmaers API'er. En vejr-app henter sin prognose fra ét. En rejseside henter priser fra flyselskaber gennem dem. AI-modeller sælges på samme måde: udviklere betaler for at sende tekst til en models API og få svaret tilbage.
+De fleste apps, du bruger, er bygget på andre firmaers API'er. En vejr-app henter sin prognose fra ét. En rejseside henter priser fra flyselskaber gennem API'er. AI-modeller sælges på samme måde: udviklere betaler for at sende tekst til en models API og få svaret tilbage.
 
 AI-agenter bruger API'er til at handle på dine vegne. For at sortere din indbakke kalder en agent mailtjenestens API. Derfor sætter firmaer som Google nu deres egne regler for, hvordan agenter må bruge dem, hvor tit og til hvilken pris.
 
