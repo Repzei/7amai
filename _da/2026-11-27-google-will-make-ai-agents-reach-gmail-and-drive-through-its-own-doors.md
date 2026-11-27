@@ -18,7 +18,7 @@ items:
   - { n: 2, anchor: "nvidia-southeast-asia-sp", signal: worth, tracks: [general], min: 1.5, source: reported, number: "24 %", number_label: "af Kinas AI-regnekraft kommer fra datacentre som disse", topic: chips, why: "Regler for, hvem der må bruge en chip, afgør nu, hvor AI-regnekraft bygges, og det når helt ud i prisen for at leje den." }
   - { n: 3, anchor: "chatgpt-shared-limit", signal: worth, tracks: [general], min: 1, source: official, topic: price, why: "Chat og agentopgaver trækker nu fra samme pulje, så meget agentbrug kan give mindre plads til at chatte." }
   - { n: 4, anchor: "openrouter-ark-routing", signal: worth, tracks: [build, general, europe], min: 1.5, source: official, number: "16", number_label: "endpoints fra Novita er fjernet fra OpenRouter", topic: security, why: "Din prompt kan komme forbi firmaer, du aldrig har valgt, og et privatlivsmærke holder kun, hvis de alle overholder det." }
-  - { n: 5, anchor: "llama-cpp-1-1", signal: worth, tracks: [build, europe], min: 1, source: official, topic: local, why: "At tale med en model på din egen maskine kræver nu ét gratis program, ikke en stak værktøjer.", do: "Opdatér til llama.cpp 1.1, og åbn den chatside, som llama-server viser." }
+  - { n: 5, anchor: "llama-cpp-1-1", signal: worth, tracks: [build, europe], min: 1, source: official, topic: local, why: "At tale med en model på din egen maskine kræver nu ét gratis program, ikke en stak værktøjer.", do: "Opdatér til llama.cpp 1.1, og prøv den nye side Llama Chat." }
   - { n: 6, anchor: "refusal-not-scored", signal: worth, tracks: [build, general], min: 1.5, source: official, number: "2,15 gange", number_label: "så mange afvisninger for prompts om nordkoreanere som om amerikanere", topic: research, why: "En afvisning er også et svar, og en bias-test, der smider afvisninger væk, kan ikke se, hvem der bliver afvist." }
 ---
 
@@ -30,13 +30,13 @@ items:
 
 AI-assistenter, der sorterer din mail eller finder en fil i Drive, bruger ofte Googles API'er (se Forklaret nedenfor). Alle andre apps bruger de samme indgange, så Google kunne ikke let skelne en agent fra en kalender-app.
 
-Det ændrede sig i tirsdags. Google føjede et "AI Tools Addendum" til sine Workspace-vilkår. Et værktøj, der er eller styres af en AI-agent, skal bruge en MCP-server fra Google, og det må ikke skjule, hvad det er. MCP er standarden for, hvordan en assistent bruger værktøjer udefra. Googles MCP-servere til Gmail, Drive, Docs, Sheets, Kalender og fire andre apps er nu klar til alle.
+Det ændrede sig i tirsdags. Google føjede et "AI Tools Addendum" til sine Workspace-vilkår. Et værktøj, der er eller styres af en AI-agent, skal bruge en MCP-server fra Google, og det må ikke skjule, hvad det er. MCP er standarden for, hvordan en assistent bruger værktøjer udefra. Googles MCP-servere til Gmail, Drive, Docs, Sheets, Kalender og andre apps er nu klar til alle.
 
 Der følger en måler med. Det gratis niveau giver 5.000 kald om dagen pr. projekt og pr. app. Fra 1. februar 2027 bliver agenter, der kalder de almindelige API'er direkte, holdt til den gratis kvote. Fra 1. april 2027 koster betalt MCP-brug af Gmail, Kalender og Drive fra første kald.
 
 Udviklerne må heller ikke træne modeller på dine data eller beholde dem, når du fjerner værktøjet.
 
-Fangsten: Google bestemmer selv, hvad der tæller som en agent. Og agenterne mister de større gratis kvoter, som direkte API-kald havde.
+Fangsten: Google bestemmer selv, hvad der tæller som en agent. Og på de betalte planer betaler agenter fra første kald, mens almindelige apps får store gratis kvoter hver dag.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>Tænk på en kontorbygning, der giver budrobotter deres egen dør med en skranke. Besøgende bliver mere trygge, fordi vagten ser hver robot. Men ejeren kan også tælle hvert besøg og sende regningen.</p></div>
 
@@ -71,11 +71,11 @@ Kilder: [techcrunch.com (pause)](https://techcrunch.com/2026/11/26/nvidia-hits-p
 ### 3. ChatGPT tæller snart chat og agentarbejde mod én fælles grænse {#chatgpt-shared-limit}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Generelt</span><span class="track">1 min</span></p>
 
-<p class="short"><span>Kort fortalt</span>OpenAI slår chat og Work, firmaets agentopgaver, sammen i ChatGPT. Begge trækker fra én fælles pulje, og nogle få af de tungeste brugere kan ramme grænsen hurtigere.</p>
+<p class="short"><span>Kort fortalt</span>OpenAI slår chat og Work, firmaets værktøjer til større opgaver, sammen i ChatGPT. Begge trækker fra én fælles pulje, og nogle få af de tungeste brugere kan ramme grænsen hurtigere.</p>
 
 Et betalt ChatGPT-abonnement har grænser, men de fleste ser dem aldrig. Det kan ændre sig for nogle.
 
-OpenAIs hjælpeside siger, at puljen bliver delt mellem ChatGPT og Codex, firmaets kodeagent, på Plus, Pro og Business. Det starter i december, og en lille gruppe Pro-brugere har det allerede. Samtaler med den hurtige Instant-model tæller ikke med.
+OpenAIs hjælpeside siger, at puljen bliver delt mellem ChatGPT og Codex, firmaets kodeagent, på Plus, Pro og Business. Det starter i december, og en lille gruppe Pro-brugere har det allerede. Samtaler med Instant-modellen tæller ikke med.
 
 OpenAI siger, at de fleste ikke vil opleve, at grænsen nulstilles oftere. Men "en lille del af de tungeste brugere kan ramme grænsen hurtigere", sagde en talsperson til TechCrunch. Nogle abonnenter frygter, at de får mindre adgang til de stærkere ræsonnerende modeller for samme pris. Anthropic lavede en lignende sammenlægning i september.
 
@@ -96,7 +96,7 @@ Forskeren bag kendell.dev sendte testforespørgsler til alle værter af en DeepS
 
 Værterne havde allerede problemer. OpenRouter fjernede 22. november Ant Digitals mærke for zero data retention (se Forklaret nedenfor). Novita kaldte et tidligere problem med videresendelse et "routing configuration issue", og 16 af firmaets endpoints er siden fjernet.
 
-Fangsten: beviserne er indirekte, ruterne skifter, og forskeren har fået et legat fra OpenRouter. StreamLake og Ant Digital har ikke svaret.
+Fangsten: beviserne er indirekte, ruterne skifter, og forskeren har fået et legat fra OpenRouter.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>At bruge en åben model gennem en router er som at bestille en taxa i en app. Du har valgt firmaet, men du ved måske ikke, hvem der kører. Et løfte om privatliv holder kun, hvis alle led i kæden overholder det.</p></div>
 
@@ -112,13 +112,13 @@ Kilder: [kendell.dev](https://kendell.dev/blog/arkwrapper/) · <span class="tag 
 
 Version 1.1.0 kom i torsdags. Den indbyggede webside hedder nu Llama Chat. Du kan tale til den, og den viser teksten live. Når en model arbejder som agent, bliver trinene samlet. Versionen tilføjer også nye modeller, flere af dem til stemme.
 
-Samme dag lancerede holdet et offentligt dashboard på Hugging Face. Hver uge tester det farten på to AMD Radeon-chips, blandt andet den i Strix Halo-mini-pc'er. Det måler, hvor hurtigt en model læser 512 tokens (orddele) og skriver 128.
+Samme dag lancerede holdet et offentligt dashboard på Hugging Face. Hver uge tester det farten på to AMD Radeon-chips. Det måler, hvor hurtigt en model læser 512 tokens (orddele) og skriver 128.
 
 Fangsten: dashboardet dækker kun to AMD-chips, og udviklere, der bruger den gamle batch-grænseflade, skal opdatere deres kode.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>At tale med en model på din egen maskine kræver nu ét gratis program, ikke en stak værktøjer. Og folk, der køber AMD, får målte tal i stedet for gæt fra fora.</p></div>
 
-<p class="todo"><b>Prøv det:</b> Opdatér til llama.cpp 1.1, og åbn den chatside, som llama-server viser.</p>
+<p class="todo"><b>Prøv det:</b> Opdatér til llama.cpp 1.1, og prøv den nye side Llama Chat.</p>
 
 Kilder: [github.com](https://github.com/ggml-org/llama.cpp/releases/tag/v1.1.0) · <span class="tag tag-official">Officiel</span> · [huggingface.co](https://huggingface.co/blog/ggml-org/llamacpp-amd-bench) · <span class="tag tag-official">Officiel</span>
 {: .sources}
@@ -131,7 +131,7 @@ Kilder: [github.com](https://github.com/ggml-org/llama.cpp/releases/tag/v1.1.0) 
 
 <p class="short"><span>Kort fortalt</span>Værktøjer, der tjekker AI-modeller for bias, giver kun point til det, modellen skriver. En ny artikel viser, at de overser det, når en model afviser at svare om nogle grupper oftere end andre.</p>
 
-Før en model bliver udgivet, tjekker testere ofte dens svar for bias. Et almindeligt første skridt er at fjerne afvisningerne, fordi der ikke er noget at give point.
+Før en model bliver udgivet, tjekker testere ofte dens svar for bias. Et tidligt skridt er ofte at fjerne afvisningerne, fordi der ikke er noget at give point.
 
 Afifah Kashif, Malak Sadek, Jin Huang og Hatice Gunes spurgte, hvad det skjuler. De kørte syv bias-værktøjer på to sæt med 360 svar fra tre modeller. Tre af værktøjerne tæller ladede ord, og fire bruger en anden AI-model som dommer.
 
