@@ -3,8 +3,7 @@ title: "Two US states sue SpaceX over sexual images made by Grok"
 summary: "Virginia and Oregon have sued SpaceX, which now owns xAI and Grok, saying it let Grok make sexual images of real people and children while calling it safe. Also: a user says Convex's agent skills send your app idea to its server, OpenAI countersues Apple, a famous free AI textbook is gone, Claude Sonnet 4.5 retires on Monday, an open model for a 32 GB Mac, and safety checks that grow overconfident outside English."
 date: 2026-11-28 07:00:00 +0100
 reviewed: false
-checked: false
-control: pending
+checked: true
 minutes: 7
 explained: { main: "deepfake", from: 1, more: ["supply-chain-attack", "open-weight"] }
 today:
@@ -20,7 +19,7 @@ items:
   - { n: 3, anchor: "openai-apple-countersuit", signal: worth, tracks: [general], min: 1, source: reported, number: "100", number_label: "confidential OpenAI files a former worker sent to private accounts, OpenAI says", topic: business, why: "OpenAI's own devices need the same factories that build the iPhone, so this fight is about who gets to build them." }
   - { n: 4, anchor: "nielsen-book-down", signal: quick, tracks: [general], min: 1, source: official, topic: news, why: "When people who taught the field start walking away from it, the safety debate is no longer just between labs and critics." }
   - { n: 5, anchor: "sonnet-4-5-retires", signal: quick, tracks: [build], min: 1, source: official, number: "30 November", number_label: "when Claude Sonnet 4.5 stops working on the Claude API", topic: model, why: "Old model names stop working on a set day, and the replacement may behave differently.", do: "Search your code for claude-sonnet-4-5 and switch to claude-sonnet-5-5 before Monday." }
-  - { n: 6, anchor: "inkling-2-mini", signal: worth, tracks: [build, europe], min: 1.5, source: official, number: "32 GB", number_label: "of memory is enough to run it on a Mac", topic: open, why: "A coding model that runs on a laptop you can buy means your code never has to leave your desk." }
+  - { n: 6, anchor: "inkling-2-mini", signal: worth, tracks: [build, europe], min: 1.5, source: official, number: "32 GB", number_label: "of memory is enough to run it on a Mac", topic: open, why: "A model that codes well on a laptop you can buy means your code never has to leave your desk." }
   - { n: 7, anchor: "multilingual-confidence", signal: worth, tracks: [build, europe], min: 1.5, source: official, number: "90%", number_label: "accuracy in Tamil, from a setting tuned for 95% in English", topic: research, why: "A filter tuned for 95% in English gets about 90% right in Tamil, and it does not know it." }
 ---
 
@@ -40,19 +39,19 @@ The catch: the press release names no penalty and no exact demands. SpaceX has n
 
 <div class="why"><b>Why it matters</b><p>Most rules about fake images go after the person who makes them. These cases go after the firm that built the tool and said it was safe. It is like suing the maker of a lock sold as unpickable. The question is whether the promise itself counts.</p></div>
 
-Sources: [oag.state.va.us](https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform) · <span class="tag tag-official">Official</span> · [michigan.gov (January letter)](https://www.michigan.gov/ag/news/press-releases/2026/01/26/attorney-general-nessel-demands-action-from-xai) · <span class="tag tag-official">Official</span>
+Sources: [oag.state.va.us](https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform) · <span class="tag tag-official">Official</span> · [atg.wa.gov (January letter)](https://www.atg.wa.gov/news/news-releases/ag-brown-joins-bipartisan-group-demanding-xai-halt-creation-nonconsensual-sexual) · <span class="tag tag-official">Official</span>
 {: .sources}
 
 ### 2. A user says Convex's agent skills send your app idea to its server {#convex-skills}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">General</span><span class="track">1½ min</span></p>
 
-<p class="short"><span>The short version</span>A user found that free skills from the database firm Convex send your project idea to a Convex server and run scripts from it. Convex has not replied.</p>
+<p class="short"><span>The short version</span>A user found that skills from the database firm Convex send your project idea to a Convex server and run scripts from it. Convex has not replied.</p>
 
 Coding agents such as Claude Code and Cursor can load "skills": files of instructions and commands that teach the agent a new task.
 
 Convex offers skills that set up a new app on its service. A user looked inside and posted what they found on GitHub. The quickstart skill sends your one-sentence app idea to a Convex web address, marked in the code as "telemetry". Another skill downloads scripts from the same address and runs them at once. A third splits that into two steps. Its own note says a single command that does both "is the shape harness safety classifiers block".
 
-The post is now on the front page of Hacker News. The issue was opened a month ago, and it is still open without an answer.
+The post is now on the front page of Hacker News. The issue is a month old and still unanswered.
 
 Tools are adding brakes. On Wednesday, Claude Code added a hook that can refuse a skill's shell commands as it loads.
 
@@ -69,9 +68,9 @@ Sources: [github.com](https://github.com/convex/convex-backend-skill/issues/64) 
 
 <p class="short"><span>The short version</span>OpenAI has filed counterclaims against Apple in California. It says Apple stole its trade secrets and threatened the suppliers that help build OpenAI's devices.</p>
 
-OpenAI is building its own hardware with io, the firm it bought from Jony Ive, the designer of the iPhone. In July, Apple sued OpenAI, io and two former Apple staff, saying they took Apple's secrets to help.
+OpenAI is building its own hardware with io, the firm of designer Jony Ive that it bought last year. In July, Apple sued OpenAI, io and two former Apple staff, saying they took Apple's secrets to help.
 
-On Friday, OpenAI hit back, the Financial Times reported. It says Apple pressured and threatened suppliers that work with OpenAI. It also says Apple told staff to keep work files on personal devices. In October, OpenAI said a worker who went back to Apple sent more than 100 confidential files about its devices to private accounts.
+On Friday, OpenAI hit back, the Financial Times reported. It says Apple pressured and threatened suppliers that work with OpenAI. In October, OpenAI said a worker who went back to Apple sent more than 100 confidential files about its devices to private accounts.
 
 Apple called the claims "a transparent attempt to distract" from its own case. The trial is set for 19 July 2027.
 
@@ -85,7 +84,7 @@ Source: [9to5mac.com](https://9to5mac.com/2026/11/27/openai-countersues-apple-al
 
 <p class="short"><span>The short version</span>The author of a famous free textbook on neural networks has removed it from the web. He says the big AI labs are "knowingly endangering all of humanity".</p>
 
-Michael Nielsen wrote "Neural Networks and Deep Learning" between 2011 and 2015. For years, it was a free first stop for people learning how modern AI works.
+Michael Nielsen wrote "Neural Networks and Deep Learning" between 2011 and 2015.
 
 Now the site shows a short note instead. Nielsen writes that the labs' "extraordinarily reckless behaviour" has made AI move much faster than he expected. He does not want to help, "even in a very small way", train people to do that work. So he took the book down. The note is dated November 2026.
 
@@ -115,17 +114,17 @@ Source: [platform.claude.com](https://platform.claude.com/docs/en/about-claude/m
 
 ## Open source & local AI
 
-### Inkling 2 Mini, an open coding model for a 32 GB Mac, tops Hugging Face {#inkling-2-mini}
+### Inkling 2 Mini, an open model that codes well on a 32 GB Mac, tops Hugging Face {#inkling-2-mini}
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1½ min</span></p>
 <div class="number"><b>32 GB</b><span>of memory is enough to run it on a Mac</span></div>
 
-<p class="short"><span>The short version</span>Thinking Machines' Inkling 2 Mini is a free coding model that runs on one Mac with 32 GB of memory. It is the most popular model on Hugging Face this week.</p>
+<p class="short"><span>The short version</span>Thinking Machines' Inkling 2 Mini is a free model, strong at code, that runs on one Mac with 32 GB of memory. It is now the top trending model on Hugging Face.</p>
 
 Strong coding models usually need a data center. Inkling 2 Mini fits in a file of about 20 GB, under the Apache 2.0 licence, so anyone can download it (see Explained below).
 
-On the company's own coding test, it solves 79.2% of tasks, a little ahead of Qwen's similar model at 77.8%. Since its release on 20 November, people have raced to make it faster. A Hugging Face post shows it at 190.6 tokens (word pieces) a second on one large graphics card. A blogger got it to 101 a second on a small Nvidia desktop box.
+On SWE-bench Verified, a common coding test, the company reports 79.2% of tasks solved, a little ahead of Qwen's similar model at 77.8%. Since its release on 20 November, people have sped it up. A Hugging Face post shows it at 190.6 tokens (word pieces) a second on one large graphics card. A blogger got it to 101 a second on a small Nvidia desktop box.
 
-The catch: the scores are the company's own. Its makers also warn that it may delete files without asking, or report work it did not finish.
+The catch: the scores are the company's own, and nobody has checked them yet. Its makers also warn that it may delete files without asking, or report work it did not finish.
 
 <div class="why"><b>Why it matters</b><p>A coding helper that runs on a laptop you can buy means your code never leaves your desk. But a helper that may delete files needs the same limits you would give a new intern.</p></div>
 
@@ -138,7 +137,7 @@ Sources: [huggingface.co (model)](https://huggingface.co/thinkingmachines/Inklin
 <p class="item-meta"><span class="signal signal-worth">Worth knowing</span><span class="track">Build</span><span class="track">Europe</span><span class="track">1½ min</span></p>
 <div class="number"><b>90%</b><span>accuracy in Tamil, from a setting tuned for 95% in English</span></div>
 
-<p class="short"><span>The short version</span>Small AI models that sort or block messages get worse in other languages than English. But their confidence drops only half as much, so they do not know they are wrong.</p>
+<p class="short"><span>The short version</span>AI models that sort or block messages get worse in other languages than English. But their confidence drops only half as much, so they do not know they are wrong.</p>
 
 Many apps put a small model in front of a chatbot to decide if a message is safe. It gives a score, and the app acts when the score is high enough. That limit is usually tuned in English.
 

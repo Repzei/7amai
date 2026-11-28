@@ -3,8 +3,7 @@ title: "To amerikanske delstater sagsøger SpaceX for seksuelle billeder lavet a
 summary: "Virginia og Oregon har sagsøgt SpaceX, der nu ejer xAI og Grok, fordi Grok lavede seksuelle billeder af rigtige mennesker og børn, mens firmaet kaldte den sikker. Desuden: en bruger siger, at Convex' agent-skills sender din app-idé til firmaets server, OpenAI svarer Apple med et modsøgsmål, en kendt gratis AI-lærebog er væk, Claude Sonnet 4.5 lukker mandag, en åben model til en Mac med 32 GB, og sikkerhedstjek, der bliver for selvsikre uden for engelsk."
 date: 2026-11-28 07:00:00 +0100
 reviewed: false
-checked: false
-control: pending
+checked: true
 minutes: 7
 explained: { main: "deepfake", from: 1, more: ["supply-chain-attack", "open-weight"] }
 today:
@@ -20,7 +19,7 @@ items:
   - { n: 3, anchor: "openai-apple-countersuit", signal: worth, tracks: [general], min: 1, source: reported, number: "100", number_label: "fortrolige filer sendte en tidligere ansat til private konti, siger OpenAI", topic: business, why: "OpenAI's apparater skal bygges på de samme fabrikker som iPhone, så striden handler om, hvem der får lov at bygge dem." }
   - { n: 4, anchor: "nielsen-book-down", signal: quick, tracks: [general], min: 1, source: official, topic: news, why: "Når folk, der har undervist i faget, begynder at gå fra det, er sikkerhedsdebatten ikke længere kun mellem firmaer og kritikere." }
   - { n: 5, anchor: "sonnet-4-5-retires", signal: quick, tracks: [build], min: 1, source: official, number: "30. november", number_label: "holder Claude Sonnet 4.5 op med at virke i Claude API'et", topic: model, why: "Gamle modelnavne holder op med at virke på en fast dag, og afløseren kan svare lidt anderledes.", do: "Søg efter claude-sonnet-4-5 i din kode, og skift til claude-sonnet-5-5 før mandag." }
-  - { n: 6, anchor: "inkling-2-mini", signal: worth, tracks: [build, europe], min: 1.5, source: official, number: "32 GB", number_label: "hukommelse er nok til at køre den på en Mac", topic: open, why: "En kodemodel, der kører på en bærbar, du kan købe, betyder, at din kode aldrig behøver at forlade dit skrivebord." }
+  - { n: 6, anchor: "inkling-2-mini", signal: worth, tracks: [build, europe], min: 1.5, source: official, number: "32 GB", number_label: "hukommelse er nok til at køre den på en Mac", topic: open, why: "En model, der koder godt på en bærbar, du kan købe, betyder, at din kode aldrig behøver at forlade dit skrivebord." }
   - { n: 7, anchor: "multilingual-confidence", signal: worth, tracks: [build, europe], min: 1.5, source: official, number: "90 %", number_label: "rigtige svar på tamil, med en grænse sat til 95 % på engelsk", topic: research, why: "Et filter sat til 95 % på engelsk rammer kun omkring 90 % rigtigt på tamil, og det ved det ikke." }
 ---
 
@@ -40,19 +39,19 @@ Fangsten: pressemeddelelsen nævner hverken en bøde eller præcise krav. SpaceX
 
 <div class="why"><b>Derfor er det vigtigt</b><p>De fleste regler om falske billeder går efter den, der laver dem. Disse sager går efter firmaet, der byggede værktøjet og kaldte det sikkert. Det er som at sagsøge den, der solgte en lås som umulig at dirke op. Spørgsmålet er, om selve løftet tæller.</p></div>
 
-Kilder: [oag.state.va.us](https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform) · <span class="tag tag-official">Officiel</span> · [michigan.gov (brevet i januar)](https://www.michigan.gov/ag/news/press-releases/2026/01/26/attorney-general-nessel-demands-action-from-xai) · <span class="tag tag-official">Officiel</span>
+Kilder: [oag.state.va.us](https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform) · <span class="tag tag-official">Officiel</span> · [atg.wa.gov (brevet i januar)](https://www.atg.wa.gov/news/news-releases/ag-brown-joins-bipartisan-group-demanding-xai-halt-creation-nonconsensual-sexual) · <span class="tag tag-official">Officiel</span>
 {: .sources}
 
 ### 2. En bruger siger, at Convex' agent-skills sender din app-idé til firmaets server {#convex-skills}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Generelt</span><span class="track">1½ min</span></p>
 
-<p class="short"><span>Kort fortalt</span>En bruger har fundet ud af, at gratis skills fra databasefirmaet Convex sender din projektidé til en server hos Convex og kører scripts derfra. Convex har ikke svaret.</p>
+<p class="short"><span>Kort fortalt</span>En bruger har fundet ud af, at skills fra databasefirmaet Convex sender din projektidé til en server hos Convex og kører scripts derfra. Convex har ikke svaret.</p>
 
 Kodeagenter som Claude Code og Cursor kan indlæse "skills": filer med instruktioner og kommandoer, der lærer agenten en ny opgave.
 
 Convex tilbyder skills, der sætter en ny app op på firmaets tjeneste. En bruger kiggede indenfor og skrev om fundet på GitHub. Quickstart-skillen sender din idé på én sætning til en webadresse hos Convex, mærket "telemetry" i koden. En anden skill henter scripts fra samme adresse og kører dem med det samme. En tredje deler det i to trin. Dens egen note siger, at én kommando, der gør begge dele, er den form, som sikkerhedsfiltre i værktøjerne blokerer.
 
-Opslaget ligger nu på forsiden af Hacker News. Sagen blev åbnet for en måned siden, og den står stadig åben uden svar.
+Opslaget ligger nu på forsiden af Hacker News. Sagen er en måned gammel og stadig ubesvaret.
 
 Værktøjerne får bremser. I onsdags fik Claude Code en hook, der kan afvise en skills shell-kommandoer, når den indlæses.
 
@@ -69,9 +68,9 @@ Kilder: [github.com](https://github.com/convex/convex-backend-skill/issues/64) �
 
 <p class="short"><span>Kort fortalt</span>OpenAI har rejst modkrav mod Apple i Californien. Firmaet siger, at Apple stjal dets forretningshemmeligheder og truede de leverandører, der hjælper med at bygge OpenAI's apparater.</p>
 
-OpenAI bygger sin egen hardware med io, firmaet det købte af iPhone-designeren Jony Ive. I juli sagsøgte Apple OpenAI, io og to tidligere Apple-ansatte for at tage Apples hemmeligheder med sig.
+OpenAI bygger sin egen hardware med io, designeren Jony Ives firma, som det købte sidste år. I juli sagsøgte Apple OpenAI, io og to tidligere Apple-ansatte for at tage Apples hemmeligheder med sig.
 
-I fredags slog OpenAI igen, skriver Financial Times. Firmaet siger, at Apple pressede og truede leverandører, der arbejder med OpenAI. Det siger også, at Apple bad ansatte gemme arbejdsfiler på private enheder. I oktober sagde OpenAI, at en ansat, der vendte tilbage til Apple, sendte mere end 100 fortrolige filer om firmaets apparater til private konti.
+I fredags slog OpenAI igen, skriver Financial Times. Firmaet siger, at Apple pressede og truede leverandører, der arbejder med OpenAI. I oktober sagde OpenAI, at en ansat, der vendte tilbage til Apple, sendte mere end 100 fortrolige filer om firmaets apparater til private konti.
 
 Apple kalder kravene "et gennemskueligt forsøg på at aflede opmærksomheden" fra sin egen sag. Retssagen er sat til 19. juli 2027.
 
@@ -85,7 +84,7 @@ Kilde: [9to5mac.com](https://9to5mac.com/2026/11/27/openai-countersues-apple-all
 
 <p class="short"><span>Kort fortalt</span>Forfatteren til en kendt gratis lærebog om neurale netværk har fjernet den fra nettet. Han siger, at de store AI-firmaer "med vilje bringer hele menneskeheden i fare".</p>
 
-Michael Nielsen skrev "Neural Networks and Deep Learning" mellem 2011 og 2015. I mange år var den et gratis første stop for folk, der ville lære, hvordan moderne AI virker.
+Michael Nielsen skrev "Neural Networks and Deep Learning" mellem 2011 og 2015.
 
 Nu viser siden en kort note i stedet. Nielsen skriver, at firmaernes "ekstremt hensynsløse adfærd" har fået AI til at gå meget hurtigere, end han havde regnet med. Han vil ikke hjælpe, "heller ikke en smule", med at uddanne folk til det arbejde. Derfor har han fjernet bogen. Noten er dateret november 2026.
 
@@ -115,17 +114,17 @@ Kilde: [platform.claude.com](https://platform.claude.com/docs/en/about-claude/mo
 
 ## Open source og lokal AI
 
-### Inkling 2 Mini, en åben kodemodel til en Mac med 32 GB, topper Hugging Face {#inkling-2-mini}
+### Inkling 2 Mini, en åben model, der koder godt på en Mac med 32 GB, topper Hugging Face {#inkling-2-mini}
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1½ min</span></p>
 <div class="number"><b>32 GB</b><span>hukommelse er nok til at køre den på en Mac</span></div>
 
-<p class="short"><span>Kort fortalt</span>Thinking Machines' Inkling 2 Mini er en gratis kodemodel, der kører på én Mac med 32 GB hukommelse. Den er den mest populære model på Hugging Face i denne uge.</p>
+<p class="short"><span>Kort fortalt</span>Thinking Machines' Inkling 2 Mini er en gratis model, der er stærk til kode og kører på én Mac med 32 GB hukommelse. Den er lige nu den mest populære model på Hugging Face.</p>
 
 Stærke kodemodeller kræver som regel et datacenter. Inkling 2 Mini fylder en fil på omkring 20 GB under licensen Apache 2.0, så alle kan hente den (se Forklaret nedenfor).
 
-På firmaets egen kodetest løser den 79,2 % af opgaverne, lidt foran Qwens tilsvarende model på 77,8 %. Siden udgivelsen 20. november har folk kappedes om at gøre den hurtigere. Et indlæg fra Hugging Face viser den på 190,6 tokens (orddele) i sekundet på ét stort grafikkort. En blogger fik den op på 101 i sekundet på en lille stationær boks fra Nvidia.
+På SWE-bench Verified, en udbredt kodetest, melder firmaet 79,2 % af opgaverne løst, lidt foran Qwens tilsvarende model på 77,8 %. Siden udgivelsen 20. november har folk gjort den hurtigere. Et indlæg fra Hugging Face viser den på 190,6 tokens (orddele) i sekundet på ét stort grafikkort. En blogger fik den op på 101 i sekundet på en lille stationær boks fra Nvidia.
 
-Fangsten: tallene er firmaets egne. Udviklerne advarer også om, at den kan slette filer uden at spørge eller melde arbejde færdigt, som den ikke har lavet.
+Fangsten: tallene er firmaets egne, og ingen har tjekket dem endnu. Udviklerne advarer også om, at den kan slette filer uden at spørge eller melde arbejde færdigt, som den ikke har lavet.
 
 <div class="why"><b>Derfor er det vigtigt</b><p>En kodehjælper, der kører på en bærbar, du kan købe, betyder, at din kode aldrig forlader dit skrivebord. Men en hjælper, der kan slette filer, skal have de samme grænser, som du ville give en ny praktikant.</p></div>
 
@@ -138,7 +137,7 @@ Kilder: [huggingface.co (model)](https://huggingface.co/thinkingmachines/Inkling
 <p class="item-meta"><span class="signal signal-worth">Værd at vide</span><span class="track">Build</span><span class="track">Europa</span><span class="track">1½ min</span></p>
 <div class="number"><b>90 %</b><span>rigtige svar på tamil, med en grænse sat til 95 % på engelsk</span></div>
 
-<p class="short"><span>Kort fortalt</span>Små AI-modeller, der sorterer eller blokerer beskeder, bliver dårligere på andre sprog end engelsk. Men deres selvsikkerhed falder kun halvt så meget, så de ved ikke, at de tager fejl.</p>
+<p class="short"><span>Kort fortalt</span>AI-modeller, der sorterer eller blokerer beskeder, bliver dårligere på andre sprog end engelsk. Men deres selvsikkerhed falder kun halvt så meget, så de ved ikke, at de tager fejl.</p>
 
 Mange apps sætter en lille model foran en chatbot for at afgøre, om en besked er sikker. Den giver en score, og appen handler, når scoren er høj nok. Den grænse bliver som regel sat på engelsk.
 
